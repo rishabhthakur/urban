@@ -1,0 +1,111 @@
+.wrapper	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^.wrapper {$/;"	function	line:5
+#sidebar	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^#sidebar {$/;"	function	line:10
+#sidebar.active	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^#sidebar.active {$/;"	function	line:21
+#sidebar .sidebar-header	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^#sidebar .sidebar-header {$/;"	function	line:25
+#sidebar ul.components	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^#sidebar ul.components {$/;"	function	line:29
+#sidebar ul p	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^#sidebar ul p {$/;"	function	line:33
+#sidebar ul li a	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^#sidebar ul li a {$/;"	function	line:38
+#sidebar ul li a:hover	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^#sidebar ul li a:hover {$/;"	function	line:47
+#sidebar ul li.active>a	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^#sidebar ul li.active>a,$/;"	function	line:52
+a[aria-expanded="true"]	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^a[aria-expanded="true"] {$/;"	function	line:53
+a[data-toggle="collapse"]	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^a[data-toggle="collapse"] {$/;"	function	line:57
+.dropdown-toggle::after	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^.dropdown-toggle::after {$/;"	function	line:61
+ul ul a	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^ul ul a {$/;"	function	line:69
+#content	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^#content {$/;"	function	line:80
+#content.active	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^#content.active {$/;"	function	line:90
+@media (max-width: 768px)	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^@media (max-width: 768px) {$/;"	function	line:98
+#sidebar	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^    #sidebar {$/;"	function	line:99
+#sidebar.active	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^    #sidebar.active {$/;"	function	line:102
+#content	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^    #content {$/;"	function	line:105
+#content.active	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^    #content.active {$/;"	function	line:108
+#sidebarCollapse span	/Applications/MAMP/htdocs/fabraco/resources/sass/admin.scss	/^    #sidebarCollapse span {$/;"	function	line:111
+CreateProfilesTable	/Applications/MAMP/htdocs/fabraco/database/migrations/2018_09_16_092454_create_profiles_table.php	/^class CreateProfilesTable extends Migration$/;"	class	line:7
+up	/Applications/MAMP/htdocs/fabraco/database/migrations/2018_09_16_092454_create_profiles_table.php	/^    public function up()$/;"	function	line:14
+down	/Applications/MAMP/htdocs/fabraco/database/migrations/2018_09_16_092454_create_profiles_table.php	/^    public function down()$/;"	function	line:34
+RedirectIfAuthenticated	/Applications/MAMP/htdocs/fabraco/app/Http/Middleware/RedirectIfAuthenticated.php	/^class RedirectIfAuthenticated$/;"	class	line:8
+handle	/Applications/MAMP/htdocs/fabraco/app/Http/Middleware/RedirectIfAuthenticated.php	/^    public function handle($request, Closure $next, $guard = null)$/;"	function	line:18
+guard	/Applications/MAMP/htdocs/fabraco/app/Http/Middleware/RedirectIfAuthenticated.php	/^    public function handle($request, Closure $next, $guard = null)$/;"	variable	line:18
+LoginController	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/LoginController.php	/^class LoginController extends Controller$/;"	class	line:8
+redirectTo	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/LoginController.php	/^    protected $redirectTo = '\/';$/;"	variable	line:28
+redirectTo	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/LoginController.php	/^    protected $redirectTo = '\/';$/;"	variable	line:28
+__construct	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/LoginController.php	/^    public function __construct()$/;"	function	line:35
+RegisterController	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/RegisterController.php	/^class RegisterController extends Controller$/;"	class	line:13
+redirectTo	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/RegisterController.php	/^    protected $redirectTo = '\/';$/;"	variable	line:33
+redirectTo	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/RegisterController.php	/^    protected $redirectTo = '\/';$/;"	variable	line:33
+__construct	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/RegisterController.php	/^    public function __construct()$/;"	function	line:40
+validator	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/RegisterController.php	/^    protected function validator(array $data)$/;"	function	line:51
+create	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/RegisterController.php	/^    protected function create(array $data) {$/;"	function	line:66
+user	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/RegisterController.php	/^        $user = User::create([$/;"	variable	line:68
+strg	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/RegisterController.php	/^        $strg = storage_path('app\/public\/avatars\/user.jpg');$/;"	variable	line:81
+publc	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/RegisterController.php	/^        $publc = public_path('uploads\/avatar\/' .strtolower($data['name']). '\/user.jpg');$/;"	variable	line:82
+ResetPasswordController	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/ResetPasswordController.php	/^class ResetPasswordController extends Controller$/;"	class	line:8
+redirectTo	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/ResetPasswordController.php	/^    protected $redirectTo = '\/';$/;"	variable	line:28
+redirectTo	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/ResetPasswordController.php	/^    protected $redirectTo = '\/';$/;"	variable	line:28
+__construct	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/ResetPasswordController.php	/^    public function __construct()$/;"	function	line:35
+name	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "name": "laravel\/laravel",$/;"	function	line:2
+description	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "description": "The Laravel Framework.",$/;"	function	line:3
+keywords	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "keywords": ["framework", "laravel"],$/;"	function	line:4
+license	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "license": "MIT",$/;"	function	line:5
+type	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "type": "project",$/;"	function	line:6
+require	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "require": {$/;"	function	line:7
+php	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "php": "^7.1.3",$/;"	function	line:8
+fideloper/proxy	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "fideloper\/proxy": "^4.0",$/;"	function	line:9
+laravel/framework	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "laravel\/framework": "5.7.*",$/;"	function	line:10
+laravel/tinker	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "laravel\/tinker": "^1.0"$/;"	function	line:11
+require-dev	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "require-dev": {$/;"	function	line:13
+beyondcode/laravel-dump-server	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "beyondcode\/laravel-dump-server": "^1.0",$/;"	function	line:14
+filp/whoops	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "filp\/whoops": "^2.0",$/;"	function	line:15
+fzaninotto/faker	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "fzaninotto\/faker": "^1.4",$/;"	function	line:16
+mockery/mockery	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "mockery\/mockery": "^1.0",$/;"	function	line:17
+nunomaduro/collision	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "nunomaduro\/collision": "^2.0",$/;"	function	line:18
+phpunit/phpunit	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "phpunit\/phpunit": "^7.0"$/;"	function	line:19
+autoload	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "autoload": {$/;"	function	line:21
+files	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "files": [$/;"	function	line:22
+classmap	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "classmap": [$/;"	function	line:26
+psr-4	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "psr-4": {$/;"	function	line:30
+App\\	/Applications/MAMP/htdocs/fabraco/composer.json	/^            "App\\\\": "app\/"$/;"	function	line:31
+autoload-dev	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "autoload-dev": {$/;"	function	line:34
+psr-4	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "psr-4": {$/;"	function	line:35
+Tests\\	/Applications/MAMP/htdocs/fabraco/composer.json	/^            "Tests\\\\": "tests\/"$/;"	function	line:36
+extra	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "extra": {$/;"	function	line:39
+laravel	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "laravel": {$/;"	function	line:40
+dont-discover	/Applications/MAMP/htdocs/fabraco/composer.json	/^            "dont-discover": [$/;"	function	line:41
+scripts	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "scripts": {$/;"	function	line:45
+post-root-package-install	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "post-root-package-install": [$/;"	function	line:46
+post-create-project-cmd	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "post-create-project-cmd": [$/;"	function	line:49
+post-autoload-dump	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "post-autoload-dump": [$/;"	function	line:52
+config	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "config": {$/;"	function	line:57
+preferred-install	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "preferred-install": "dist",$/;"	function	line:58
+sort-packages	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "sort-packages": true,$/;"	function	line:59
+optimize-autoloader	/Applications/MAMP/htdocs/fabraco/composer.json	/^        "optimize-autoloader": true$/;"	function	line:60
+minimum-stability	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "minimum-stability": "dev",$/;"	function	line:62
+prefer-stable	/Applications/MAMP/htdocs/fabraco/composer.json	/^    "prefer-stable": true$/;"	function	line:63
+showLoginForm	/Applications/MAMP/htdocs/fabraco/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php	/^    public function showLoginForm()$/;"	function	line:18
+login	/Applications/MAMP/htdocs/fabraco/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php	/^    public function login(Request $request)$/;"	function	line:31
+is	/Applications/MAMP/htdocs/fabraco/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php	/^        \/\/ If the class is using the ThrottlesLogins trait, we can automatically throttle$/;"	class	line:35
+validateLogin	/Applications/MAMP/htdocs/fabraco/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php	/^    protected function validateLogin(Request $request)$/;"	function	line:62
+attemptLogin	/Applications/MAMP/htdocs/fabraco/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php	/^    protected function attemptLogin(Request $request)$/;"	function	line:76
+credentials	/Applications/MAMP/htdocs/fabraco/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php	/^    protected function credentials(Request $request)$/;"	function	line:89
+sendLoginResponse	/Applications/MAMP/htdocs/fabraco/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php	/^    protected function sendLoginResponse(Request $request)$/;"	function	line:100
+authenticated	/Applications/MAMP/htdocs/fabraco/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php	/^    protected function authenticated(Request $request, $user) {$/;"	function	line:117
+sendFailedLoginResponse	/Applications/MAMP/htdocs/fabraco/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php	/^    protected function sendFailedLoginResponse(Request $request)$/;"	function	line:135
+username	/Applications/MAMP/htdocs/fabraco/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php	/^    public function username()$/;"	function	line:147
+logout	/Applications/MAMP/htdocs/fabraco/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php	/^    public function logout(Request $request)$/;"	function	line:158
+loggedOut	/Applications/MAMP/htdocs/fabraco/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php	/^    protected function loggedOut(Request $request)$/;"	function	line:173
+guard	/Applications/MAMP/htdocs/fabraco/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php	/^    protected function guard()$/;"	function	line:183
+VerificationController	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/VerificationController.php	/^class VerificationController extends Controller$/;"	class	line:8
+redirectTo	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/VerificationController.php	/^    protected $redirectTo = '\/';$/;"	variable	line:28
+redirectTo	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/VerificationController.php	/^    protected $redirectTo = '\/';$/;"	variable	line:28
+__construct	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/Auth/VerificationController.php	/^    public function __construct()$/;"	function	line:35
+HomeController	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/HomeController.php	/^class HomeController extends Controller$/;"	class	line:7
+__construct	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/HomeController.php	/^    \/\/ public function __construct()$/;"	function	line:14
+check	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/HomeController.php	/^    public function check() {$/;"	function	line:24
+index	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/HomeController.php	/^    public function index()$/;"	function	line:39
+User	/Applications/MAMP/htdocs/fabraco/app/User.php	/^class User extends Authenticatable {$/;"	class	line:9
+with	/Applications/MAMP/htdocs/fabraco/app/User.php	/^    public $with = [$/;"	variable	line:12
+with	/Applications/MAMP/htdocs/fabraco/app/User.php	/^    public $with = [$/;"	variable	line:12
+fillable	/Applications/MAMP/htdocs/fabraco/app/User.php	/^    protected $fillable = [$/;"	variable	line:21
+fillable	/Applications/MAMP/htdocs/fabraco/app/User.php	/^    protected $fillable = [$/;"	variable	line:21
+hidden	/Applications/MAMP/htdocs/fabraco/app/User.php	/^    protected $hidden = [$/;"	variable	line:34
+hidden	/Applications/MAMP/htdocs/fabraco/app/User.php	/^    protected $hidden = [$/;"	variable	line:34
+profile	/Applications/MAMP/htdocs/fabraco/app/User.php	/^    public function profile() {$/;"	function	line:43

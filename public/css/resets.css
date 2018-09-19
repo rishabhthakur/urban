@@ -1,0 +1,17 @@
+.classynav ul li.megamenu-item > a::after,
+.classynav > ul > li.cn-dropdown-item.has-down > .dd-arrow, .classynav > ul > li.megamenu-item > .dd-arrow {
+    display: none;
+}
+
+.breakpoint-on .classynav > ul > li > a {
+    background-color: transparent !important;
+    border-bottom: none;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.nav-brand img {
+    height: 20px;
+    margin-bottom: 7px;
+}

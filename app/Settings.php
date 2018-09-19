@@ -1,0 +1,26 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Settings extends Model {
+
+    protected $fillable = [
+        'status',
+        'site_name',
+        'tagline',
+        'copyright',
+        'author',
+        'email',
+        'description',
+        'drole',
+        'membrship',
+        'privacy',
+        'legal'
+    ];
+
+    public function drole() {
+        return $this->hasOne('App\Role');
+    }
+}
