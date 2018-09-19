@@ -177,7 +177,9 @@
                         <div class="single_widget_area d-flex mb-30">
                             <!-- Logo -->
                             <div class="footer-logo mr-50">
-                                <a href="#"><img src="img/core-img/logo2.png" alt=""></a>
+                                <a href="#">
+                                    <img class="footer-img" src="{!! asset('img/logo-white.png') !!}" alt="">
+                                </a>
                             </div>
                             <!-- Footer Menu -->
                             <div class="footer_menu">
@@ -235,9 +237,9 @@
 
                 <div class="row mt-5">
                     <div class="col-md-12 text-center">
-                        <p>
+                        <p class="copyright">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright 2018 All rights reserved
+                            Copyright 2018 <span class="text-white"><strong>{{ config('app.name') }}</strong></span>. All rights reserved
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>

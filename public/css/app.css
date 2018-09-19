@@ -12235,7 +12235,7 @@ img {
 
 .footer_area .single_widget_area .footer_menu ul li a {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #8898aa;
   display: block;
   font-weight: 500;
   font-family: "Poppins", sans-serif;
@@ -12266,7 +12266,7 @@ img {
 .footer_area .single_widget_area .footer_widget_menu li a {
   display: block;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #8898aa;
   display: block;
   font-weight: 400;
   margin-bottom: 10px;
@@ -12299,8 +12299,8 @@ img {
 .footer_area .single_widget_area .subscribtion_form form input {
   width: 100%;
   border: none;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
-  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 2px solid #8898aa;
+  color: #8898aa;
   font-size: 12px;
   height: 35px;
   background-color: transparent;
@@ -12316,7 +12316,7 @@ img {
   height: 35px;
   border: none;
   background-color: transparent;
-  color: rgba(255, 255, 255, 0.6);
+  color: #8898aa;
   position: absolute;
   top: 0;
   right: 0;
@@ -12331,6 +12331,11 @@ img {
   font-size: 16px;
 }
 
+.copyright {
+  color: #8898aa;
+  margin-top: 80px;
+}
+
 /* :: 12.0 Breadcumb Area CSS */
 
 .breadcumb_area {
@@ -12341,7 +12346,7 @@ img {
 }
 
 .breadcumb_area:after {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #8898aa;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -13245,6 +13250,10 @@ img {
 
 .contact-area .contact-info .contact-address p:last-child a:hover {
   color: #5e72e4;
+}
+
+.footer-img {
+  height: 20px;
 }
 
 /* ##### The End ##### */
