@@ -5,6 +5,7 @@
 //
 
 .input-group {
+  height: 42px;
   position: relative;
   display: flex;
   flex-wrap: wrap; // For form validation feedback
@@ -14,6 +15,7 @@
   > .form-control,
   > .custom-select,
   > .custom-file {
+    height: 42px;
     position: relative; // For focus state's z-index
     flex: 1 1 auto;
     // Add width 1% and flex-basis auto to ensure that button will not wrap out
@@ -25,6 +27,7 @@
     + .custom-select,
     + .custom-file {
       margin-left: -$input-border-width;
+      height: 42px;
     }
   }
 

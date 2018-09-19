@@ -2412,7 +2412,7 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
-  height: calc(2.25rem + 2px);
+  height: 42px;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
@@ -2961,17 +2961,17 @@ textarea.form-control {
 }
 
 .btn {
-  display: inline-block;
-  min-width: 10.625rem;
-  height: 3.125rem;
+  min-width: 170px;
+  height: 50px;
   border: none;
-  border-radius: 0;
-  padding: 0 2.5rem;
+  border-radius: 100px;
+  padding: 0 40px;
   text-transform: uppercase;
   font-size: 12px;
-  line-height: 3.125rem;
-  background-color: #5e72e4;
-  color: #fff !important;
+  line-height: 50px;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  font-weight: 400;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -2979,19 +2979,10 @@ textarea.form-control {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  letter-spacing: 0.09375rem;
-  font-weight: 600;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-}
-
-.btn:hover,
-.btn:focus {
-  outline: 0;
-  -webkit-box-shadow: none;
-          box-shadow: none;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -3004,6 +2995,13 @@ textarea.form-control {
 .btn:hover,
 .btn:focus {
   text-decoration: none;
+}
+
+.btn:focus,
+.btn.focus {
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(94, 114, 228, 0.25);
+          box-shadow: 0 0 0 0.2rem rgba(94, 114, 228, 0.25);
 }
 
 .btn.disabled,
@@ -4117,9 +4115,6 @@ input[type="button"].btn-block {
 
 .input-group {
   height: 42px;
-  border: 1px solid #ebebeb;
-  background-color: transparent;
-  border-radius: 0;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4135,6 +4130,7 @@ input[type="button"].btn-block {
 .input-group > .form-control,
 .input-group > .custom-select,
 .input-group > .custom-file {
+  height: 42px;
   position: relative;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
@@ -4153,6 +4149,7 @@ input[type="button"].btn-block {
 .input-group > .custom-file + .custom-select,
 .input-group > .custom-file + .custom-file {
   margin-left: -1px;
+  height: 42px;
 }
 
 .input-group > .form-control:focus,
@@ -4422,7 +4419,7 @@ input[type="button"].btn-block {
 .custom-select {
   display: inline-block;
   width: 100%;
-  height: calc(2.25rem + 2px);
+  height: 42px;
   padding: 0.375rem 1.75rem 0.375rem 0.75rem;
   line-height: 1.5;
   color: #525f7f;
@@ -4482,7 +4479,7 @@ input[type="button"].btn-block {
   position: relative;
   display: inline-block;
   width: 100%;
-  height: calc(2.25rem + 2px);
+  height: 42px;
   margin-bottom: 0;
 }
 
@@ -4490,7 +4487,7 @@ input[type="button"].btn-block {
   position: relative;
   z-index: 2;
   width: 100%;
-  height: calc(2.25rem + 2px);
+  height: 42px;
   margin: 0;
   opacity: 0;
 }
@@ -4519,7 +4516,7 @@ input[type="button"].btn-block {
   right: 0;
   left: 0;
   z-index: 1;
-  height: calc(2.25rem + 2px);
+  height: 42px;
   padding: 0.375rem 0.75rem;
   line-height: 1.5;
   color: #525f7f;
@@ -7217,23 +7214,23 @@ button.bg-dark:focus {
 }
 
 .border {
-  border: 1px solid #f6f9fc !important;
+  border: 1px solid #e9ecef !important;
 }
 
 .border-top {
-  border-top: 1px solid #f6f9fc !important;
+  border-top: 1px solid #e9ecef !important;
 }
 
 .border-right {
-  border-right: 1px solid #f6f9fc !important;
+  border-right: 1px solid #e9ecef !important;
 }
 
 .border-bottom {
-  border-bottom: 1px solid #f6f9fc !important;
+  border-bottom: 1px solid #e9ecef !important;
 }
 
 .border-left {
-  border-left: 1px solid #f6f9fc !important;
+  border-left: 1px solid #e9ecef !important;
 }
 
 .border-0 {
@@ -10724,7 +10721,6 @@ a {
   text-decoration: none;
   outline: 0 solid transparent;
   color: #000000;
-  font-weight: 600;
   font-size: 12px;
 }
 
@@ -10742,7 +10738,6 @@ a:focus {
   text-decoration: none;
   outline: 0 solid transparent;
   color: #000000;
-  font-weight: 600;
   font-size: 12px;
 }
 
@@ -10980,7 +10975,7 @@ img {
   height: 50px;
   color: #ffffff;
   border: none;
-  border-radius: 0;
+  border-radius: 100px;
   padding: 0 40px;
   text-transform: uppercase;
   font-size: 12px;
@@ -11004,7 +10999,7 @@ img {
   top: 0;
   left: 0;
   width: 100%;
-  border-bottom: 1px solid #f6f9fc;
+  border-bottom: 1px solid #e9ecef;
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms;
 }
@@ -11051,7 +11046,7 @@ img {
 @media only screen and (max-width: 767px) {
   .header_area .classy-navbar {
     height: 40px;
-    border-bottom: 1px solid #f6f9fc;
+    border-bottom: 1px solid #e9ecef;
   }
 }
 
@@ -11092,7 +11087,7 @@ img {
   position: relative;
   z-index: 1;
   height: 85px;
-  border-left: 1px solid #f6f9fc;
+  border-left: 1px solid #e9ecef;
 }
 
 @media only screen and (max-width: 767px) {
@@ -11183,7 +11178,7 @@ img {
   width: 90px;
   display: block;
   text-align: center;
-  border-left: 1px solid #f6f9fc;
+  border-left: 1px solid #e9ecef;
   height: 100%;
   line-height: 80px;
 }
@@ -11296,7 +11291,7 @@ img {
   width: 90px;
   display: block;
   text-align: center;
-  border-left: 1px solid #f6f9fc;
+  border-left: 1px solid #e9ecef;
   height: 85px;
   line-height: 80px;
   background-color: #f6f9fc;
@@ -11959,7 +11954,7 @@ img {
 .pagination .page-item .page-link {
   width: 40px;
   height: 40px;
-  border: 1px solid #f6f9fc;
+  border: 1px solid #e9ecef;
   font-size: 12px;
   font-weight: 600;
   line-height: 38px;
@@ -12182,7 +12177,7 @@ img {
 .single_product_details_area .single_product_desc .nice-select {
   position: relative;
   z-index: 100;
-  border: 1px solid #f6f9fc;
+  border: 1px solid #e9ecef;
   border-radius: 0;
   font-size: 14px;
   font-weight: 500;
@@ -12635,14 +12630,14 @@ img {
 
 .checkout_details_area form .form-control {
   height: 42px;
-  border: 1px solid #f6f9fc;
+  border: 1px solid #e9ecef;
   background-color: transparent;
   border-radius: 0;
 }
 
 .checkout_details_area form .nice-select {
   border-radius: 0;
-  border: 1px solid #f6f9fc;
+  border: 1px solid #e9ecef;
 }
 
 .checkout_details_area form .nice-select .list {
@@ -12678,7 +12673,7 @@ img {
   font-size: 12px;
   text-transform: uppercase;
   padding: 20px 0;
-  border-bottom: 2px solid #f6f9fc;
+  border-bottom: 2px solid #e9ecef;
   font-weight: 600;
 }
 

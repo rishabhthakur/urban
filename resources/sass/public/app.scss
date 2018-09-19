@@ -8,7 +8,7 @@
 @import 'custom/responsive';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import 'bootstrap/bootstrap';
 
 // Vendor css
 @import 'vendor/animate.css';
@@ -62,7 +62,6 @@ a {
     text-decoration: none;
     outline: 0 solid transparent;
     color: $dark-color;
-    font-weight: 600;
     font-size: 12px;
     &:hover,
     &:focus {
@@ -70,7 +69,6 @@ a {
         text-decoration: none;
         outline: 0 solid transparent;
         color: $dark-color;
-        font-weight: 600;
         font-size: 12px;
     }
 }
@@ -296,7 +294,7 @@ img {
     height: 50px;
     color: $white-color;
     border: none;
-    border-radius: 0;
+    border-radius: 100px;
     padding: 0 40px;
     text-transform: uppercase;
     font-size: 12px;
