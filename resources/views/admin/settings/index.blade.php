@@ -58,7 +58,7 @@
                         <div>
                             <label for="membership" data-on-label="Yes" data-off-label="No"></label>
                             <label class="custom-toggle">
-                                <input type="checkbox" value="1"
+                                <input type="checkbox" value="1" name="membership"
                                     @if ($settings->membership)
                                         checked
                                     @endif>
@@ -76,20 +76,23 @@
     <!-- App status -->
     <div class="col-md-5">
         <div class="card">
-            <div class="card-header border-0 bg-primary text-white">
-                Site Information
-            </div>
             <div class="card-body">
-                <form>
+                <h6 class="heading mb-5">Site Information</h6>
+                <form action="{!! route('admin.settings.store.status') !!}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
                     <div class="form-group clearfix">
                         <label>Site Status</label>
                         <p class="text-success">
-                            <span class="badge badge-success">Website operational</span>
+                            @if ($settings->status)
+                                <span class="badge badge-success">Website operational</span>
+                            @else
+                                <span class="badge badge-warning">Website in maintenance mode</span>
+                            @endif
                         </p>
                         <div>
                             <label for="membership" data-on-label="Yes" data-off-label="No"></label>
                             <label class="custom-toggle">
-                                <input type="checkbox" value="1"
+                                <input type="checkbox" value="1" name="status"
                                     @if ($settings->status)
                                         checked
                                     @endif>
@@ -115,7 +118,7 @@
                         <div>
                             <label for="membership" data-on-label="Yes" data-off-label="No"></label>
                             <label class="custom-toggle">
-                                <input type="checkbox" value="1"
+                                <input type="checkbox" value="1" name="privacy"
                                     @if ($settings->privacy)
                                         checked
                                     @endif>
@@ -142,7 +145,7 @@
                         <div>
                             <label for="membership" data-on-label="Yes" data-off-label="No"></label>
                             <label class="custom-toggle">
-                                <input type="checkbox" value="1"
+                                <input type="checkbox" value="1" name="legal"
                                     @if ($settings->legal)
                                         checked
                                     @endif>
@@ -162,7 +165,7 @@
                         <div>
                             <label for="membership" data-on-label="Yes" data-off-label="No"></label>
                             <label class="custom-toggle">
-                                <input id="copyright_check" type="checkbox" value="1"
+                                <input id="copyright_check" type="checkbox" value="1" name="copyright"
                                     @if ($settings->copyright)
                                         checked
                                     @endif>
@@ -174,7 +177,7 @@
                         <label for="">Copyright Text</label>
                         <input type="text" name="copyright_text" class="form-control form-control-alternative" value="copyright @ 2018 Fabraco. All rights reserved.">
                     </div>
-                    <div class="form-group ">
+                    <div class="form-group">
                         <button type="submit" class="btn btn-primary mt-4">Save Changes</button>
                     </div>
                 </form>
@@ -188,6 +191,9 @@
 <script type="text/javascript">
     var copyCheck = document.getElementById('copyright_check');
     var copyCustom = document.getElementById('copyright_custom');
+    if(copyCheck.checked) {
+        copyCustom.style.display = 'block';
+    }
     copyCheck.onclick = function() {
         if(copyCheck.checked) {
             copyCustom.style.display = 'block';

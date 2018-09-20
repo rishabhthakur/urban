@@ -8,9 +8,10 @@
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
 
-// Argon, Admin
+// Argon, Admin, Utilities
 @import 'argon';
 @import 'admin';
+@import 'util';
 
 .navbar-laravel {
   background-color: #fff;

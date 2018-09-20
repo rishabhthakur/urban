@@ -1,8 +1,8 @@
 <template>
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" id="noty" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" role="button" v-on:click="markAsRead" id="noty" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell fa-lg"></i>
-            <sup>
+            <sup v-if="all_nots_count > 0">
                 <span class="badge badge-pill badge-danger bg-danger text-white">{{ all_nots_count }}</span>
             </sup>
         </a>
@@ -50,6 +50,12 @@
                         response.data.forEach((response) => {
                             this.$store.commit('add_notification', response.data)
                         })
+                    });
+            },
+            markAsRead() {
+                axios.get('/api/mark-as-read')
+                    .then((response) => {
+                        console.log(response);
                     });
             }
         },

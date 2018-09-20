@@ -24,6 +24,7 @@
         <div id="content">
             <!-- Navbar -->
             @include('layouts.admin.includes.nav')
+            @include('layouts.admin.includes.notifications')
 
             <!-- Main content area -->
             <main role="main">
@@ -40,7 +41,7 @@
 
         </div>
     </div>
-    @include('layouts.admin.includes.notifications')
+    <!-- Primary JS files -->
     @include('layouts.admin.includes.js')
 </body>
 </html>

@@ -16,8 +16,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('notifications', require('./components/Notificatsions.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('notifications', require('./components/Notificatsions.vue'));
 import { store } from './store'
 
 const app = new Vue({

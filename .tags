@@ -109,3 +109,27 @@ fillable	/Applications/MAMP/htdocs/fabraco/app/User.php	/^    protected $fillabl
 hidden	/Applications/MAMP/htdocs/fabraco/app/User.php	/^    protected $hidden = [$/;"	variable	line:34
 hidden	/Applications/MAMP/htdocs/fabraco/app/User.php	/^    protected $hidden = [$/;"	variable	line:34
 profile	/Applications/MAMP/htdocs/fabraco/app/User.php	/^    public function profile() {$/;"	function	line:43
+SettingsController	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^class SettingsController extends Controller {$/;"	class	line:9
+__construct	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^    public function __construct() {$/;"	function	line:11
+index	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^    public function index() {$/;"	function	line:19
+create	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^    public function create()$/;"	function	line:31
+store	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^    public function store(Request $request) {$/;"	function	line:42
+membership	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^            $membership = 1;$/;"	variable	line:53
+membership	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^            $membership = 0;$/;"	variable	line:55
+settings	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^        $settings = Settings::first();$/;"	variable	line:58
+store_status	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^    public function store_status(Request $request) {$/;"	function	line:77
+settings	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^        $settings = Settings::first();$/;"	variable	line:79
+status	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^            $status = 1;$/;"	variable	line:82
+status	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^            $status = 0;$/;"	variable	line:84
+privacy	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^            $privacy = 1;$/;"	variable	line:88
+privacy	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^            $privacy = 0;$/;"	variable	line:90
+legal	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^            $legal = 1;$/;"	variable	line:94
+legal	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^            $legal = 0;$/;"	variable	line:96
+copyright	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^            $copyright = 1;$/;"	variable	line:100
+copyright	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^            $copyright = 0;$/;"	variable	line:102
+show	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^    public function show(Settings $settings)$/;"	function	line:120
+edit	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^    public function edit(Settings $settings)$/;"	function	line:131
+update	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^    public function update(Request $request, Settings $settings)$/;"	function	line:143
+destroy	/Applications/MAMP/htdocs/fabraco/app/Http/Controllers/SettingsController.php	/^    public function destroy(Settings $settings)$/;"	function	line:154
+copyCheck.onclick	/Applications/MAMP/htdocs/fabraco/resources/views/admin/settings/index.blade.php	/^    copyCheck.onclick = function() {$/;"	jsfunction	line:197
+onclick	/Applications/MAMP/htdocs/fabraco/resources/views/admin/settings/index.blade.php	/^    copyCheck.onclick = function() {$/;"	jsfunction	line:197

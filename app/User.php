@@ -49,6 +49,15 @@ class User extends Authenticatable {
      *
      * @var array
      */
+    public function role() {
+        return $this->belongTo('App\Role', 'user_id');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     public function medias() {
         return $this->hasOne('App\Media', 'user_id');
     }

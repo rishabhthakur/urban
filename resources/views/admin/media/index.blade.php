@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            <div class="bg-white mb-4 py-2 px-3">
+            <div class="bg-white mb-4 py-2 px-3 border">
                 <div class="row">
                     <div class="col">
                         <small>
@@ -19,7 +19,7 @@
                                 <i class="fas fa-th-list"></i>
                             </a>
                             <a href="{!! route('admin.media.create') !!}" class="btn btn-secondary btn-sm shadow-none">
-                                Add New
+                                <i class="fas fa-plus"></i>
                             </a>
                         </div>
                     </div>

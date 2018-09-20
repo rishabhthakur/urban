@@ -45,8 +45,8 @@
 }
 
 #sidebar ul li a:hover {
-    color: #5e72e4;
-    background: #fff;
+    color: $gray-400;
+    background: $gray-900;
 }
 
 #sidebar ul li.active>a,
@@ -69,7 +69,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #5e72e4;
+    background: #000000;
 }
 
 

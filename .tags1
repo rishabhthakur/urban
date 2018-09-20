@@ -4,3 +4,5 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+copyCheck.onclick	/Applications/MAMP/htdocs/fabraco/resources/views/admin/settings/index.blade.php	/^    copyCheck.onclick = function() {$/;"	jsfunction	line:197
+onclick	/Applications/MAMP/htdocs/fabraco/resources/views/admin/settings/index.blade.php	/^    copyCheck.onclick = function() {$/;"	jsfunction	line:197

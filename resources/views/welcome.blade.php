@@ -253,5 +253,5 @@
         <img src="img/core-img/brand6.png" alt="">
     </div>
 </div>
-<!-- ##### Brands Area End ##### -->`
+<!-- ##### Brands Area End ##### -->
 @endsection

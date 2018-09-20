@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Profile;
-// use App\Settings;
+use App\Settings;
 use App\Http\Controllers\Controller;
 use App\Notifications\NewUserRegistration;
 use Illuminate\Support\Facades\Hash;
@@ -70,8 +70,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'slug' => str_slug($data['name'])
-            // 'role_id' => $settings->drole
+            'slug' => str_slug($data['name']),
+            'role_id' => $settings->drole
         ]);
 
         // Will copy foo/test.php to bar/test.php

@@ -111,6 +111,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
                 'uses' => 'SettingsController@store',
                 'as' => 'admin.settings.store'
             ]);
+
+            // Admin media settings
+            Route::post('/store/status', [
+                'uses' => 'SettingsController@store_status',
+                'as' => 'admin.settings.store.status'
+            ]);
         });
     });
 });
