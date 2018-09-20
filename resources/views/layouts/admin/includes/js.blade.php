@@ -7,11 +7,9 @@
         $("#sidebar").mCustomScrollbar({
             theme: "minimal"
         });
-
         $("#notifications").mCustomScrollbar({
             theme: "minimal"
         });
-
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar, #content').toggleClass('active');
             $('.collapse.in').toggleClass('in');

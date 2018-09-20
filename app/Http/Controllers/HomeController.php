@@ -41,4 +41,5 @@ class HomeController extends Controller
         return view('auth.account.index');
     }
 
+
 }

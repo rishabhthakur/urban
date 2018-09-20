@@ -17,9 +17,9 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="view">
-                    <a class="dropdown-item" href="#">Visit Public</a>
-                    <a class="dropdown-item" href="#">Visit Blog</a>
-                    <a class="dropdown-item" href="#">Visit Shop</a>
+                    <a class="dropdown-item" href="{!! route('home') !!}">Visit Public</a>
+                    <a class="dropdown-item" href="{!! route('blog') !!}">Visit Blog</a>
+                    <a class="dropdown-item" href="{!! route('home') !!}">Visit Shop</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

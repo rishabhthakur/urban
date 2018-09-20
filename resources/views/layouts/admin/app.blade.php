@@ -21,7 +21,7 @@
         @include('layouts.admin.includes.sidebar')
 
         <!-- Page Content  -->
-        <div id="content">
+        <div id="content" class="active">
             <!-- Navbar -->
             @include('layouts.admin.includes.nav')
             @include('layouts.admin.includes.notifications')

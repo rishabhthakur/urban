@@ -126,7 +126,7 @@
                             <p class="text-muted">
                                 By clicking <i>create account</i> button you agree to the <a href="#">Privacy Policy</a>
                             </p>
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-dark">
                                 {{ __('Create an account') }}
                             </button>
                         </div>

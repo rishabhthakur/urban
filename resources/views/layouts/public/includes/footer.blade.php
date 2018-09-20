@@ -68,7 +68,7 @@
             <div class="col-md-12 text-center">
                 <p class="copyright">
                     @if (!getSettings()->copyright)
-                        Copyright 2018 <span class="text-white"><strong>{{ __(getSettings()->site_name) }}</strong></span>. All rights reserved
+                        Copyright &copy; 2018 <span class="text-white"><strong>{{ __(getSettings()->site_name) }}</strong></span>. All rights reserved
                     @else
                         {{ getSettings()->copyright_text }}
                     @endif

@@ -17,7 +17,6 @@ Route::get('/maintenance', [
     'as' => 'maintenance'
 ]);
 
-
 // All public routes
 Route::group(['middleware' => 'maintenance'], function() {
 
@@ -26,6 +25,36 @@ Route::group(['middleware' => 'maintenance'], function() {
         'uses' => 'PublicViewsController@index',
         'as' => 'home'
     ]);
+
+    // About page
+    Route::get('/about', [
+        'uses' => 'PublicViewsController@about',
+        'as' => 'about'
+    ]);
+
+    // Blog page
+    Route::get('/blog', [
+        'uses' => 'PublicViewsController@blog',
+        'as' => 'blog'
+    ]);
+
+    // Contact page
+    Route::get('/contact', [
+        'uses' => 'PublicViewsController@contact',
+        'as' => 'contact'
+    ]);
+
+    // Cart page
+    Route::get('/cart', [
+        'uses' => 'PublicViewsController@cart',
+        'as' => 'cart'
+    ]);
+
+    // Cart page
+    Route::get('/checkout', [
+        'uses' => 'PublicViewsController@checkout',
+        'as' => 'checkout'
+    ])->middleware('auth');
 
     // All auth routes
     Auth::routes();

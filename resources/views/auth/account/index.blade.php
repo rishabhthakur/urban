@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- ##### Breadcumb Area Start ##### -->
-<div class="breadcumb_area bg-img" style="background-image: url({!! asset('img/bg-img/breadcumb.jpg') !!})">
+<div class="breadcumb_area">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">

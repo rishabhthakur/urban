@@ -42,12 +42,13 @@
                     <li><span>total:</span> <span>${{ Cart::getTotal() }}</span></li>
                 </ul>
                 <div class="checkout-btn mt-100">
-                    <a href="checkout.html" class="btn essence-btn">check out</a>
+                    <a href="checkout.html" class="btn btn-primary btn-block mb-1">Check Out</a>
+                    <a href="{!! route('cart') !!}" class="btn btn-outline-primary btn-block">View Cart</a>
                 </div>
             @else
                 <h2>No products in the cart</h2>
                 <div class="checkout-btn mt-100">
-                    <a href="checkout.html" class="btn essence-btn">Start Shopping</a>
+                    <a href="checkout.html" class="btn btn-dark btn-block">Start Shopping</a>
                 </div>
             @endif
         </div>

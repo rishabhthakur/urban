@@ -15,7 +15,7 @@
                             By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.
                         </p>
                         @if (getSettings()->membership)
-                            <a href="{!! route('register') !!}" class="btn btn-primary mt-3">Continue</a>
+                            <a href="{!! route('register') !!}" class="btn btn-dark mt-3">Continue</a>
                         @else
                             <span class="text-danger">New registrations are not accepted anymore.</span>
                         @endif
@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="form-group mt-5 mb-0">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-dark">
                                     {{ __('Login') }}
                                 </button>
                             </div>
