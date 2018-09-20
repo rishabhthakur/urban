@@ -8,3 +8,12 @@
 <script src="{!! asset('vendor/public/classy-nav.min.js') !!}"></script>
 <!-- Active js -->
 <script src="{!! asset('vendor/public/active.js') !!}"></script>
+<!-- Custom Scrollbar js -->
+<script type="text/javascript" src="{!! asset('vendor/customScrollbar/jquery.mCustomScrollbar.concat.min.js') !!}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#mobileMenu").mCustomScrollbar({
+            theme: "minimal"
+        });
+    });
+</script>

@@ -14,8 +14,12 @@
     left: 0;
     height: 100vh;
     z-index: 999;
-    color: #fff;
+    color: $gray-600;
+    background-color: rgba(0,0,0,0.01);
     transition: all 0.3s;
+    -webkit-box-shadow: inset -17px 0px 22px -28px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset -17px 0px 22px -28px rgba(0,0,0,0.75);
+    box-shadow: inset -17px 0px 22px -28px rgba(0,0,0,0.75);
 }
 
 #sidebar.active {
@@ -31,7 +35,7 @@
 }
 
 #sidebar ul p {
-    color: #fff;
+    color: $gray-600;
     padding: 10px;
 }
 
@@ -39,7 +43,7 @@
     padding: 1rem 1.3rem;
     font-size: 0.9em;
     display: block;
-    color: #fff;
+    color: $gray-600;
     // text-transform: uppercase;
     // letter-spacing: 1px;
 }
@@ -51,7 +55,7 @@
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
-    color: #fff;
+    color: $blue;
 }
 
 a[data-toggle="collapse"] {
@@ -69,7 +73,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #000000;
+    background: transparent;
 }
 
 

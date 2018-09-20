@@ -17567,9 +17567,12 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   left: 0;
   height: 100vh;
   z-index: 999;
-  color: #fff;
+  color: #8898aa;
+  background-color: rgba(0, 0, 0, 0.01);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  -webkit-box-shadow: inset -17px 0px 22px -28px rgba(0, 0, 0, 0.75);
+  box-shadow: inset -17px 0px 22px -28px rgba(0, 0, 0, 0.75);
 }
 
 #sidebar.active {
@@ -17585,7 +17588,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 
 #sidebar ul p {
-  color: #fff;
+  color: #8898aa;
   padding: 10px;
 }
 
@@ -17593,7 +17596,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   padding: 1rem 1.3rem;
   font-size: 0.9em;
   display: block;
-  color: #fff;
+  color: #8898aa;
 }
 
 #sidebar ul li a:hover {
@@ -17603,7 +17606,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 
 #sidebar ul li.active > a,
 a[aria-expanded="true"] {
-  color: #fff;
+  color: #5e72e4;
 }
 
 a[data-toggle="collapse"] {
@@ -17622,7 +17625,7 @@ a[data-toggle="collapse"] {
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #000000;
+  background: transparent;
 }
 
 /* ---------------------------------------------------

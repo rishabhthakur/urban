@@ -66,7 +66,9 @@
 			<ul class="timeline">
 				<li>
 					<a target="_blank" href="https://www.totoprayogo.com/#">New Web Design</a>
-					<a href="#" class="float-right">21 March, 2014</a>
+					<a href="#" class="float-right">
+                        <span class="badge badge-primary">21 March, 2014</span>
+                    </a>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
 				</li>
 				<li>

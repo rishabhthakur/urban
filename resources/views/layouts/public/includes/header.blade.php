@@ -16,7 +16,7 @@
                 </span>
             </div>
             <!-- Menu -->
-            <div class="classy-menu">
+            <div id="mobileMenu" class="classy-menu">
                 <!-- close btn -->
                 <div class="classycloseIcon">
                     <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>

@@ -1,28 +1,28 @@
-<nav id="sidebar" class="navbar-light bg-black active">
+<nav id="sidebar" class="navbar-light active bg-white">
     <div class="sidebar-header text-center py-5">
         <a class="navbar-brand text-white m-0" href="#">
-            <img src="{!! asset('img/logo-white.png') !!}" style="height: 20px">
+            <img src="{!! asset('img/logo-black.png') !!}" style="height: 20px">
         </a>
     </div>
 
     <ul class="list-unstyled components">
         {{-- <p>Dummy Heading</p> --}}
-        <li>
+        <li @if (Route::currentRouteName() == 'admin') class="active" @endif>
             <a href="{!! route('admin') !!}">
                 <i class="fas fa-tachometer-alt mr-2"></i>
                 Dashboard
             </a>
         </li>
-        <li>
+        <li @if (Route::currentRouteName() == 'admin.media') class="active" @endif>
             <a href="#media" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-image mr-2"></i>
                 Media
             </a>
             <ul class="collapse list-unstyled" id="media">
-                <li>
+                <li @if (Route::currentRouteName() == 'admin.media') class="active" @endif>
                     <a href="{!! route('admin.media') !!}">Library</a>
                 </li>
-                <li>
+                <li @if (Route::currentRouteName() == 'admin.media.create') class="active" @endif>
                     <a href="{!! route('admin.media.create') !!}">Add New</a>
                 </li>
             </ul>
@@ -124,13 +124,13 @@
                 </li>
             </ul>
         </li>
-        <li>
+        <li @if (Route::currentRouteName() == 'admin.settings') class="active" @endif>
             <a href="#settings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-cog mr-2"></i>
                 Settings
             </a>
             <ul class="collapse list-unstyled" id="settings">
-                <li>
+                <li @if (Route::currentRouteName() == 'admin.settings') class="active" @endif>
                     <a href="{!! route('admin.settings') !!}">General</a>
                 </li>
                 <li>
