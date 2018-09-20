@@ -86,6 +86,9 @@ class RegisterController extends Controller
         // Create profile for user
         Profile::create([
           'user_id' => $user->id,
+          'first_name' => $request->first_name,
+          'last_name' => $request->last_name,
+          'phone' => $request->phone,
           'avatar' => 'uploads/avatar/' .strtolower($data['name']). '/user.jpg'
         ]);
 

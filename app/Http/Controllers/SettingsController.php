@@ -75,6 +75,9 @@ class SettingsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store_status(Request $request) {
+        $this->validate($request, [
+            'copyright_text' => 'required'
+        ]);
 
         $settings = Settings::first();
 
@@ -106,6 +109,7 @@ class SettingsController extends Controller {
         $settings->privacy = $privacy;
         $settings->legal = $legal;
         $settings->copyright = $copyright;
+        $settings->copyright_text = $request->copyright_text;
         $settings->save();
 
         return back()->with('success', 'Changes saved.');

@@ -11,6 +11,7 @@ class Settings extends Model {
         'site_name',
         'tagline',
         'copyright',
+        'copyright_text',
         'author',
         'email',
         'description',

@@ -11,30 +11,39 @@
 |
 */
 
-Route::get('/get_unread', function() {
-    return Auth::user()->unreadNotifications;
-});
+// Maintenance view
+Route::get('/maintenance', [
+    'uses' => 'MaintenanceViewController@index',
+    'as' => 'maintenance'
+]);
 
-Route::get('/get_notifications', function() {
-    return Auth::user()->notifications;
-});
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// All public routes
+Route::group(['middleware' => 'maintenance'], function() {
 
-Auth::routes();
+    // Landing page
+    Route::get('/', [
+        'uses' => 'PublicViewsController@index',
+        'as' => 'home'
+    ]);
 
-// Route::get('/check_verified', [
-//     'uses' => 'HomeController@check',
-//     'as' => 'check.verify'
-// ]);
+    // All auth routes
+    Auth::routes();
 
-/* Admin routes */
-Route::group(['middleware' => 'auth'], function() {
+    // Route::get('/check_verified', [
+    //     'uses' => 'HomeController@check',
+    //     'as' => 'check.verify'
+    // ]);
 
-    // Customer accounts
-    Route::get('/home', 'HomeController@index')->name('home');
+    // Member auth routes
+    Route::group(['prefix' => 'account', 'middleware' => 'auth'], function() {
+
+        // Customer accounts
+        Route::get('/', [
+            'uses' => 'HomeController@index',
+            'as' => 'account'
+        ]);
+    });
 });
 
 // Admin auth routes

@@ -28,6 +28,7 @@ class CreateSettingsTable extends Migration
             $table->boolean('membership')->default(1);
 
             $table->boolean('copyright')->default(0);
+            $table->text('copyright_text');
             $table->boolean('privacy')->default(0);
             $table->boolean('legal')->default(0);
             $table->timestamps();

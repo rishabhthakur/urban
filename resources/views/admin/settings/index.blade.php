@@ -175,7 +175,7 @@
                     </div>
                     <div id="copyright_custom" class="form-group">
                         <label for="">Copyright Text</label>
-                        <input type="text" name="copyright_text" class="form-control form-control-alternative" value="copyright @ 2018 Fabraco. All rights reserved.">
+                        <input type="text" name="copyright_text" class="form-control form-control-alternative" value="{{ $settings->copyright_text }}">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary mt-4">Save Changes</button>
@@ -189,18 +189,17 @@
 
 @section('settings-js')
 <script type="text/javascript">
-    var copyCheck = document.getElementById('copyright_check');
-    var copyCustom = document.getElementById('copyright_custom');
-    if(copyCheck.checked) {
-        copyCustom.style.display = 'block';
-    }
-    copyCheck.onclick = function() {
-        if(copyCheck.checked) {
-            copyCustom.style.display = 'block';
-        } else {
-            copyCustom.style.display = 'none';
+    $(function () {
+        if ($("#copyright_check").is(":checked")) {
+            $("#copyright_custom").show();
         }
-    };
-    copyCustom.style.display = 'none';
+        $("#copyright_check").click(function () {
+            if ($(this).is(":checked")) {
+                $("#copyright_custom").slideDown();
+            } else {
+                $("#copyright_custom").slideUp();
+            }
+        });
+    });
 </script>
 @endsection
