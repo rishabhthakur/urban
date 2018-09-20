@@ -27,6 +27,9 @@
         <!-- ##### Footer Area Start ##### -->
         @include('layouts.public.includes.footer')
         <!-- ##### Footer Area End ##### -->
+
+        <!-- Contact modal -->
+        @yield('contact-modal')
     </div>
 
     @include('layouts.public.includes.js')

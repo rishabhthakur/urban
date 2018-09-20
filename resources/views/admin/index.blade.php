@@ -11,7 +11,13 @@
                 The public website appears to be running normally and is now <span class="badge badge-success"><strong>LIVE</strong></span> at this moment.
             </p>
             <p>
-                We recomend that you keep the website status live unless drastic changes, database upgrades and major upgrades have been scheduled. In that case you should head over to the <a href="{!! route('admin.settings') !!}">settings page</a> and switch the <strong>site status</strong> option to off. This will activate <code>Code 503 - Site under maintenance</code> or <strong>maintenance mode</strong>.
+                We recomend that you keep the website status live unless drastic changes, database upgrades and major upgrades have been scheduled. In that case you should head over to the <a href="{!! route('admin.settings') !!}">settings page</a> and switch the <strong>site status</strong> option to off. This will activate <code>code 503 - site under maintenance</code> or <strong>maintenance mode</strong>.
+            </p>
+            <p>
+                We’ve assembled some links to get you started:
+            </p>
+            <p>
+                <a href="#" class="btn btn-primary">Customize Your Site</a>
             </p>
         </div>
         <div class="col-lg-6">
@@ -50,7 +56,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="box">
-                        <h1 class="display-1 text-success">$2000.00</h1>
+                        <h1 class="display-1 text-success">$1297.00</h1>
                         <h6 class="badge badge-primary">Revenue</h6>
                         <p>
                             Cum sociis natoque penatibus et magnis dis parturient.

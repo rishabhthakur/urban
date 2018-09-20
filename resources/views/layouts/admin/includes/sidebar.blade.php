@@ -1,4 +1,4 @@
-<nav id="sidebar" class="navbar-light active bg-white">
+<nav id="sidebar" class="navbar-light active">
     <div class="sidebar-header text-center py-5">
         <a class="navbar-brand text-white m-0" href="#">
             <img src="{!! asset('img/logo-black.png') !!}" style="height: 20px">
@@ -142,7 +142,7 @@
                 <li>
                     <a href="{!! route('admin.settings.media') !!}">Media</a>
                 </li>
-                <li>
+                <li @if (Route::currentRouteName() == 'admin.settings.privacy') class="active" @endif>
                     <a href="{!! route('admin.settings.privacy') !!}">Privacy</a>
                 </li>
             </ul>

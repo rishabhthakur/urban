@@ -11,6 +11,7 @@ class SettingsController extends Controller {
     public function __construct() {
         $this->middleware('admin');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +19,18 @@ class SettingsController extends Controller {
      */
     public function index() {
         return view('admin.settings.index')->with([
+            'settings' => Settings::first(),
+            'roles' => Role::all()
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function privacy() {
+        return view('admin.settings.privacy')->with([
             'settings' => Settings::first(),
             'roles' => Role::all()
         ]);
@@ -112,6 +125,24 @@ class SettingsController extends Controller {
         $settings->copyright_text = $request->copyright_text;
         $settings->save();
 
+        return back()->with('success', 'Changes saved.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Settings  $settings
+     * @return \Illuminate\Http\Response
+     */
+    public function privacy_status(Request $request) {
+        $settings = Settings::first();
+        if(isset($request->privacy)) {
+            $privacy = 1;
+        } else {
+            $privacy = 0;
+        }
+        $settings->privacy = $privacy;
+        $settings->save();
         return back()->with('success', 'Changes saved.');
     }
 

@@ -67,6 +67,15 @@ class User extends Authenticatable {
      *
      * @var array
      */
+    public function activities() {
+        return $this->hasMany('App\Activity', 'user_id');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     public function getCreatedAtAttribute($date) {
         return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->diffForHumans();
     }

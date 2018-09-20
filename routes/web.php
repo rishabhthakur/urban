@@ -111,50 +111,57 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             'as' => 'admin.media.store'
         ]);
 
-        // Admin settings routes
-        Route::group(['prefix' => 'media'], function() {
+    });
 
-            // Admin settings
-            Route::get('/', [
-                'uses' => 'SettingsController@index',
-                'as' => 'admin.settings'
-            ]);
+    // Admin settings routes
+    Route::group(['prefix' => 'settings'], function() {
 
-            // Admin shop settings
-            Route::get('/shop', [
-                'uses' => 'SettingsController@shop',
-                'as' => 'admin.settings.shop'
-            ]);
+        // Admin settings
+        Route::get('/', [
+            'uses' => 'SettingsController@index',
+            'as' => 'admin.settings'
+        ]);
 
-            // Admin discussion settings
-            Route::get('/discussions', [
-                'uses' => 'SettingsController@discussions',
-                'as' => 'admin.settings.discussions'
-            ]);
+        // Admin shop settings
+        Route::get('/shop', [
+            'uses' => 'SettingsController@shop',
+            'as' => 'admin.settings.shop'
+        ]);
 
-            // Admin media settings
-            Route::get('/media', [
-                'uses' => 'SettingsController@media',
-                'as' => 'admin.settings.media'
-            ]);
+        // Admin discussion settings
+        Route::get('/discussions', [
+            'uses' => 'SettingsController@discussions',
+            'as' => 'admin.settings.discussions'
+        ]);
 
-            // Admin media settings
-            Route::get('/privacy', [
-                'uses' => 'SettingsController@privacy',
-                'as' => 'admin.settings.privacy'
-            ]);
+        // Admin media settings
+        Route::get('/media', [
+            'uses' => 'SettingsController@media',
+            'as' => 'admin.settings.media'
+        ]);
 
-            // Admin media settings
-            Route::post('/store', [
-                'uses' => 'SettingsController@store',
-                'as' => 'admin.settings.store'
-            ]);
+        // Admin media settings
+        Route::get('/privacy', [
+            'uses' => 'SettingsController@privacy',
+            'as' => 'admin.settings.privacy'
+        ]);
 
-            // Admin media settings
-            Route::post('/store/status', [
-                'uses' => 'SettingsController@store_status',
-                'as' => 'admin.settings.store.status'
-            ]);
-        });
+        // Admin media settings
+        Route::post('/store', [
+            'uses' => 'SettingsController@store',
+            'as' => 'admin.settings.store'
+        ]);
+
+        // Admin media settings
+        Route::post('/store/status', [
+            'uses' => 'SettingsController@store_status',
+            'as' => 'admin.settings.store.status'
+        ]);
+
+        // Admin media settings
+        Route::post('/store/privacy_status', [
+            'uses' => 'SettingsController@privacy_status',
+            'as' => 'admin.settings.privacy.status'
+        ]);
     });
 });

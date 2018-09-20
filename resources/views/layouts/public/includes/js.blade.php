@@ -11,9 +11,10 @@
 <!-- Custom Scrollbar js -->
 <script type="text/javascript" src="{!! asset('vendor/customScrollbar/jquery.mCustomScrollbar.concat.min.js') !!}"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("#mobileMenu").mCustomScrollbar({
-            theme: "minimal"
-        });
-    });
+    // $(document).ready(function () {
+    //     $("#mobileMenu").mCustomScrollbar({
+    //         theme: "minimal"
+    //     });
+    // });
 </script>
+@yield('map-js')
