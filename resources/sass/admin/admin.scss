@@ -49,8 +49,8 @@
 }
 
 #sidebar ul li a:hover {
-    color: $gray-400;
-    background: $gray-900;
+    color: $gray-600;
+    background: rgba(0,0,0,0.07);
 }
 
 #sidebar ul li.active>a,

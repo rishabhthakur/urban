@@ -35,11 +35,6 @@
                                 @yield('content')
                             </div>
                         </div>
-                        <div class="row mt-4">
-                            <div class="col">
-                                @include('layouts.admin.includes.footer')
-                            </div>
-                        </div>
                     </div>
                 </div>
             </main>

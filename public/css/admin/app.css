@@ -17600,8 +17600,8 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 
 #sidebar ul li a:hover {
-  color: #ced4da;
-  background: #212529;
+  color: #8898aa;
+  background: rgba(0, 0, 0, 0.07);
 }
 
 #sidebar ul li.active > a,

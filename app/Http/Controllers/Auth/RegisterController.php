@@ -38,9 +38,22 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest');
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm() {
+        $settings = Settings::first()->membership;
+        if($settings) {
+            return view('auth.register');
+        } else {
+            return redirect(route('login'));
+        }
     }
 
     /**
