@@ -78,7 +78,6 @@ class ComposerStaticInit687914fb4d48ad8577bd8b54a4b8cda3
         'M' => 
         array (
             'Monolog\\' => 8,
-            'Melihovv\\ShoppingCart\\' => 22,
         ),
         'L' => 
         array (
@@ -109,6 +108,7 @@ class ComposerStaticInit687914fb4d48ad8577bd8b54a4b8cda3
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
             'DeepCopy\\' => 9,
+            'Darryldecode\\' => 13,
         ),
         'C' => 
         array (
@@ -243,10 +243,6 @@ class ComposerStaticInit687914fb4d48ad8577bd8b54a4b8cda3
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
-        'Melihovv\\ShoppingCart\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/melihovv/laravel-shopping-cart/src/ShoppingCart',
-        ),
         'League\\Flysystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
@@ -294,6 +290,10 @@ class ComposerStaticInit687914fb4d48ad8577bd8b54a4b8cda3
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'Darryldecode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode',
         ),
         'Cron\\' => 
         array (
@@ -414,6 +414,20 @@ class ComposerStaticInit687914fb4d48ad8577bd8b54a4b8cda3
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'Darryldecode\\Cart\\Cart' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Cart.php',
+        'Darryldecode\\Cart\\CartCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartCollection.php',
+        'Darryldecode\\Cart\\CartCondition' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartCondition.php',
+        'Darryldecode\\Cart\\CartConditionCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartConditionCollection.php',
+        'Darryldecode\\Cart\\CartServiceProvider' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartServiceProvider.php',
+        'Darryldecode\\Cart\\Exceptions\\InvalidConditionException' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Exceptions/InvalidConditionException.php',
+        'Darryldecode\\Cart\\Exceptions\\InvalidItemException' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Exceptions/InvalidItemException.php',
+        'Darryldecode\\Cart\\Facades\\CartFacade' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Facades/CartFacade.php',
+        'Darryldecode\\Cart\\Helpers\\Helpers' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Helpers/Helpers.php',
+        'Darryldecode\\Cart\\ItemAttributeCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/ItemAttributeCollection.php',
+        'Darryldecode\\Cart\\ItemCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/ItemCollection.php',
+        'Darryldecode\\Cart\\Validators\\CartConditionValidator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/CartConditionValidator.php',
+        'Darryldecode\\Cart\\Validators\\CartItemValidator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/CartItemValidator.php',
+        'Darryldecode\\Cart\\Validators\\Validator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/Validator.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
@@ -2026,16 +2040,6 @@ class ComposerStaticInit687914fb4d48ad8577bd8b54a4b8cda3
         'League\\Flysystem\\Util\\ContentListingFormatter' => __DIR__ . '/..' . '/league/flysystem/src/Util/ContentListingFormatter.php',
         'League\\Flysystem\\Util\\MimeType' => __DIR__ . '/..' . '/league/flysystem/src/Util/MimeType.php',
         'League\\Flysystem\\Util\\StreamHasher' => __DIR__ . '/..' . '/league/flysystem/src/Util/StreamHasher.php',
-        'Melihovv\\ShoppingCart\\CartItem' => __DIR__ . '/..' . '/melihovv/laravel-shopping-cart/src/ShoppingCart/CartItem.php',
-        'Melihovv\\ShoppingCart\\Coupons\\Coupon' => __DIR__ . '/..' . '/melihovv/laravel-shopping-cart/src/ShoppingCart/Coupons/Coupon.php',
-        'Melihovv\\ShoppingCart\\Coupons\\FixedDiscountCoupon' => __DIR__ . '/..' . '/melihovv/laravel-shopping-cart/src/ShoppingCart/Coupons/FixedDiscountCoupon.php',
-        'Melihovv\\ShoppingCart\\Coupons\\PercentDiscountCoupon' => __DIR__ . '/..' . '/melihovv/laravel-shopping-cart/src/ShoppingCart/Coupons/PercentDiscountCoupon.php',
-        'Melihovv\\ShoppingCart\\Facades\\ShoppingCart' => __DIR__ . '/..' . '/melihovv/laravel-shopping-cart/src/ShoppingCart/Facades/ShoppingCart.php',
-        'Melihovv\\ShoppingCart\\Repositories\\ShoppingCartDatabaseRepository' => __DIR__ . '/..' . '/melihovv/laravel-shopping-cart/src/ShoppingCart/Repositories/ShoppingCartDatabaseRepository.php',
-        'Melihovv\\ShoppingCart\\Repositories\\ShoppingCartRedisRepository' => __DIR__ . '/..' . '/melihovv/laravel-shopping-cart/src/ShoppingCart/Repositories/ShoppingCartRedisRepository.php',
-        'Melihovv\\ShoppingCart\\Repositories\\ShoppingCartRepositoryInterface' => __DIR__ . '/..' . '/melihovv/laravel-shopping-cart/src/ShoppingCart/Repositories/ShoppingCartRepositoryInterface.php',
-        'Melihovv\\ShoppingCart\\ServiceProvider' => __DIR__ . '/..' . '/melihovv/laravel-shopping-cart/src/ShoppingCart/ServiceProvider.php',
-        'Melihovv\\ShoppingCart\\ShoppingCart' => __DIR__ . '/..' . '/melihovv/laravel-shopping-cart/src/ShoppingCart/ShoppingCart.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',

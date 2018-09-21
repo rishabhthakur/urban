@@ -2,7 +2,6 @@
 
 namespace Illuminate\Foundation\Auth;
 
-use \App\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
@@ -16,12 +15,9 @@ trait RegistersUsers
      *
      * @return \Illuminate\Http\Response
      */
-    public function showRegistrationForm() {
-        if (Settings::first()->membership) {
-            return view('auth.register');
-        } else {
-            return redirect(route('login'));
-        }
+    public function showRegistrationForm()
+    {
+        return view('auth.register');
     }
 
     /**

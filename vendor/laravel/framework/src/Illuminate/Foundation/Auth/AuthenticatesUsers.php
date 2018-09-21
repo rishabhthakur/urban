@@ -114,16 +114,9 @@ trait AuthenticatesUsers
      * @param  mixed  $user
      * @return mixed
      */
-    protected function authenticated(Request $request, $user) {
-        if (Auth::user()) {
-            if (Auth::user()->role_id <= 3) {
-                return redirect(route('admin'));
-            } else {
-                return $request;
-            }
-        } else {
-            return redirect(route('login'));
-        }
+    protected function authenticated(Request $request, $user)
+    {
+        //
     }
 
     /**
