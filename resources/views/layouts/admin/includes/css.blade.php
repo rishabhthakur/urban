@@ -6,4 +6,5 @@
 
 <link href="{{ asset('css/admin/dropzone.css') }}" rel="stylesheet">
 <link href="{{ asset('css/admin/app.css') }}" rel="stylesheet">
+<link href="{{ asset('css/admin/resets.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="{!! asset('vendor/customScrollbar/jquery.mCustomScrollbar.min.css') !!}">

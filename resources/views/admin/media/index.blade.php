@@ -11,14 +11,14 @@
                         </small>
                     </div>
                     <div class="col">
-                        <div class="btn-group mb-0 d-flex justify-content-end">
-                            <a href="{!! route('admin.media', ['view' => 'grid']) !!}" class="btn btn-secondary btn-sm @if (request()->view == 'grid') active @endif shadow-none">
+                        <div class="mb-0 d-flex justify-content-end">
+                            <a href="{!! route('admin.media', ['view' => 'grid']) !!}" class="btn btn-link btn-sm @if (request()->view == 'grid') active @endif shadow-none">
                                 <i class="fas fa-th-large"></i>
                             </a>
-                            <a href="{!! route('admin.media', ['view' => 'list']) !!}" class="btn btn-secondary btn-sm @if (request()->view == 'list') active @endif shadow-none">
+                            <a href="{!! route('admin.media', ['view' => 'list']) !!}" class="btn btn-link btn-sm @if (request()->view == 'list') active @endif shadow-none">
                                 <i class="fas fa-th-list"></i>
                             </a>
-                            <a href="{!! route('admin.media.create') !!}" class="btn btn-secondary btn-sm shadow-none">
+                            <a href="{!! route('admin.media.create') !!}" class="btn btn-link btn-sm shadow-none">
                                 <i class="fas fa-plus"></i>
                             </a>
                         </div>

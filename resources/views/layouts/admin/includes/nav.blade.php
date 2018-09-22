@@ -27,7 +27,9 @@
                     <i class="fas fa-bell fa-lg"></i>
                     @if (count(getNotifications()) > 0)
                         <sup>
-                            <span class="badge badge-pill badge-danger bg-danger text-white">0</span>
+                            <span class="badge badge-pill badge-danger bg-danger text-white">
+                                {{ count(getNotifications()) }}
+                            </span>
                         </sup>
                     @endif
                 </a>
@@ -39,13 +41,28 @@
                     <div id="notifications" class="list-group list-group-flush">
                         @forelse (getNotifications() as $not)
                             <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div>
+                                    <strong>{{ $not->data['name'] }}</strong> {{ $not->data['message'] }}
+                                </div>
+                                @switch($not->type)
+                                    @case("App\Notifications\NewUserRegistration")
+                                        <span class="text-primary">
+                                            <small>New customer registration.</small>
+                                        </span>
+                                        @break
+                                    @case("App\Notifications\CustomerPurchase")
+                                        <span class="text-primary">
+                                            <small>New order placed.</small>
+                                        </span>
+                                        @break
+                                    @default
+                                        <span class="text-primary">
+                                            <small>System report.</small>
+                                        </span>
+                                @endswitch
                                 <div class="d-flex w-100 justify-content-between">
                                     <small>{{ $not->created_at->diffForHumans() }}</small>
                                 </div>
-                                <div class="mb-1">
-                                    <strong>{{ $not['name'] }}</strong> {{ $not['message'] }}
-                                </div>
-                                <small>Donec id elit non mi porta.</small>
                             </a>
                         @empty
                             <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">

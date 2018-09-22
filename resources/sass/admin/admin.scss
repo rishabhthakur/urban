@@ -15,7 +15,7 @@
     height: 100vh;
     z-index: 999;
     color: $gray-600;
-    background-color: rgba(0,0,0,0.01);
+    background-color: #283044;
     transition: all 0.3s;
     -webkit-box-shadow: inset -17px 0px 22px -28px rgba(0,0,0,0.75);
     -moz-box-shadow: inset -17px 0px 22px -28px rgba(0,0,0,0.75);
@@ -55,7 +55,7 @@
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
-    color: $blue;
+    color: $white;
 }
 
 a[data-toggle="collapse"] {

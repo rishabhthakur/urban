@@ -50,8 +50,6 @@ class LoginController extends Controller
         if (Auth::user()) {
             if(Auth::user()->role_id <= 3) {
                 return redirect(route('admin'));
-            } else {
-                return $request;
             }
         } else {
             return redirect(route('login'));

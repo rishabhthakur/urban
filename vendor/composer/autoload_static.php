@@ -405,6 +405,7 @@ class ComposerStaticInit687914fb4d48ad8577bd8b54a4b8cda3
         'App\\Scategory' => __DIR__ . '/../..' . '/app/Scategory.php',
         'App\\Settings' => __DIR__ . '/../..' . '/app/Settings.php',
         'App\\Stag' => __DIR__ . '/../..' . '/app/Stag.php',
+        'App\\Traits\\SKUGenerator' => __DIR__ . '/../..' . '/app/Traits/SKUGenerator.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',

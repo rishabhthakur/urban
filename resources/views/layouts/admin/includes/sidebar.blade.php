@@ -1,7 +1,7 @@
-<nav id="sidebar" class="navbar-light active">
+<nav id="sidebar" class="navbar-light">
     <div class="sidebar-header text-center py-5">
         <a class="navbar-brand text-white m-0" href="#">
-            <img src="{!! asset('img/logo-black.png') !!}" style="height: 20px">
+            <img src="{!! asset('img/logo-white.png') !!}" style="height: 20px">
         </a>
     </div>
 
@@ -13,7 +13,14 @@
                 Dashboard
             </a>
         </li>
-        <li @if (Route::currentRouteName() == 'admin.media') class="active" @endif>
+        <li
+            @if (
+                Route::currentRouteName() == 'admin.media' ||
+                Route::currentRouteName() == 'admin.media.create'
+                )
+                 class="active"
+            @endif
+        >
             <a href="#media" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-image mr-2"></i>
                 Media
@@ -47,17 +54,24 @@
                 </li>
             </ul>
         </li>
-        <li>
+        <li
+            @if (
+                Route::currentRouteName() == 'admin.products' ||
+                Route::currentRouteName() == 'admin.products.create'
+                )
+                 class="active"
+            @endif
+        >
             <a href="#products" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-box mr-2"></i>
                 Products
             </a>
             <ul class="collapse list-unstyled" id="products">
-                <li>
-                    <a href="#">All Products</a>
+                <li @if (Route::currentRouteName() == 'admin.products') class="active" @endif>
+                    <a href="{!! route('admin.products') !!}">All Products</a>
                 </li>
-                <li>
-                    <a href="#">Add New</a>
+                <li @if (Route::currentRouteName() == 'admin.products.create') class="active" @endif>
+                    <a href="{!! route('admin.products.create') !!}">Add New</a>
                 </li>
                 <li>
                     <a href="#">Categories</a>

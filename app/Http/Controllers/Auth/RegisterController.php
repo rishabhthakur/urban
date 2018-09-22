@@ -10,6 +10,8 @@ use App\Notifications\NewUserRegistration;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -34,12 +36,20 @@ class RegisterController extends Controller
     protected $redirectTo = '/';
 
     /**
+     * Retrive default app settings.
+     *
+     * @var string
+     */
+    protected $settings;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function __construct() {
         $this->middleware('guest');
+        $this->settings = Settings::first();
     }
 
     /**
@@ -48,8 +58,7 @@ class RegisterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showRegistrationForm() {
-        $settings = Settings::first()->membership;
-        if($settings) {
+        if($this->settings->membership) {
             return view('auth.register');
         } else {
             return redirect(route('login'));
@@ -84,7 +93,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'slug' => str_slug($data['name']),
-            'role_id' => $settings->drole
+            'role_id' => $this->settings->drole
         ]);
 
         // Will copy foo/test.php to bar/test.php
@@ -99,9 +108,9 @@ class RegisterController extends Controller
         // Create profile for user
         Profile::create([
           'user_id' => $user->id,
-          'first_name' => $request->first_name,
-          'last_name' => $request->last_name,
-          'phone' => $request->phone,
+          'first_name' => $data['first_name'],
+          'last_name' => $data['last_name'],
+          'phone' => $data['phone'],
           'avatar' => 'uploads/avatar/' .strtolower($data['name']). '/user.jpg'
         ]);
 
@@ -109,5 +118,20 @@ class RegisterController extends Controller
 
         // Return results
         return $user;
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user) {
+        if(!Auth::user()->email_verified_at) {
+            return view('auth.verify');
+        } else {
+            return $request;
+        }
     }
 }

@@ -11,6 +11,15 @@
 |
 */
 
+// All auth routes
+Auth::routes(['verify' => true]);
+
+// Admin auth routes
+Route::get('/admin/login', [
+    'uses' => 'AdminController@login',
+    'as' => 'admin.login'
+]);
+
 // Maintenance view
 Route::get('/maintenance', [
     'uses' => 'MaintenanceViewController@index',
@@ -19,10 +28,6 @@ Route::get('/maintenance', [
 
 // All public routes
 Route::group(['middleware' => 'maintenance'], function() {
-
-    // Route::get('/', function() {
-    //     return Cart::getContent();
-    // });
 
     // Landing page
     Route::get('/', [
@@ -60,16 +65,8 @@ Route::group(['middleware' => 'maintenance'], function() {
         'as' => 'checkout'
     ])->middleware('auth');
 
-    // All auth routes
-    Auth::routes();
-
-    // Route::get('/check_verified', [
-    //     'uses' => 'HomeController@check',
-    //     'as' => 'check.verify'
-    // ]);
-
     // Member auth routes
-    Route::group(['prefix' => 'account', 'middleware' => 'auth'], function() {
+    Route::group(['prefix' => 'account', 'middleware' => 'verified'], function() {
 
         // Customer accounts
         Route::get('/', [
@@ -78,12 +75,6 @@ Route::group(['middleware' => 'maintenance'], function() {
         ]);
     });
 });
-
-// Admin auth routes
-Route::get('/admin/login', [
-    'uses' => 'AdminController@login',
-    'as' => 'admin.login'
-]);
 
 /* Admin routes */
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
@@ -101,6 +92,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::get('/', [
             'uses' => 'ProductController@index',
             'as' => 'admin.products'
+        ]);
+
+        // Admin add new products
+        Route::get('/create', [
+            'uses' => 'ProductController@create',
+            'as' => 'admin.products.create'
         ]);
     });
 

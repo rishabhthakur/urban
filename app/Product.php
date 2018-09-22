@@ -4,10 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\SKUGenerator;
 // use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Product extends Model {
+    
     use SoftDeletes;
+    use SKUGenerator;
     // use SearchableTrait;
 
     // protected $searchable = [
@@ -39,6 +42,7 @@ class Product extends Model {
         'sale_price',
         'short_description',
         'description',
+        'sku',
         'slug',
         'brand_id',
         'quantity',

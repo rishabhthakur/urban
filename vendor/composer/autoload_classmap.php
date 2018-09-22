@@ -58,6 +58,7 @@ return array(
     'App\\Scategory' => $baseDir . '/app/Scategory.php',
     'App\\Settings' => $baseDir . '/app/Settings.php',
     'App\\Stag' => $baseDir . '/app/Stag.php',
+    'App\\Traits\\SKUGenerator' => $baseDir . '/app/Traits/SKUGenerator.php',
     'App\\User' => $baseDir . '/app/User.php',
     'BeyondCode\\DumpServer\\DumpServerCommand' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
     'BeyondCode\\DumpServer\\DumpServerServiceProvider' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',

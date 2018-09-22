@@ -2,6 +2,8 @@
 <script src="{{ asset('vendor/dropzone/dropzone.js') }}"></script>
 <script src="{{ asset('js/admin/app.js') }}"></script>
 <script type="text/javascript" src="{!! asset('vendor/customScrollbar/jquery.mCustomScrollbar.concat.min.js') !!}"></script>
+<script src="{{ asset('vendor/tinymce/jquery.tinymce.min.js') }}"></script>
+<script src="{{ asset('vendor/tinymce/tinymce.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#sidebar").mCustomScrollbar({
@@ -18,3 +20,4 @@
     });
 </script>
 @yield('settings-js')
+@yield('new-product-js')

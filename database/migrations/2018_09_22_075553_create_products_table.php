@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration {
             $table->mediumText('short_description')->nullable();
             $table->text('description');
             $table->string('slug');
+            $table->string('sku')->nullable();
             $table->integer('brand_id')->nullable();
             $table->integer('quantity')->nullable();
             $table->boolean('stock_status');
