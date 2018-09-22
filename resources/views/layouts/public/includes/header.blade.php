@@ -57,7 +57,7 @@
             <!-- Cart Area -->
             <div class="cart-area">
                 <a href="#" id="essenceCartBtn">
-                    <img src="{!! asset('img/core-img/bag.svg') !!}" alt=""> <span>{{ Cart::count() }}</span>
+                    <img src="{!! asset('img/core-img/bag.svg') !!}" alt=""> <span>{{ count(Cart::getContent()) }}</span>
                 </a>
             </div>
         </div>

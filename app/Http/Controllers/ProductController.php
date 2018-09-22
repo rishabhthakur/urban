@@ -20,7 +20,7 @@ class ProductController extends Controller {
      */
     public function index()
     {
-        //
+        return view('admin.products.index');
     }
 
     /**
@@ -86,17 +86,42 @@ class ProductController extends Controller {
             'height' => $request->height
         ]);
 
-        if(isset($request->images)) {
-            $medias = $request->images;
+        // Add media function
+        $this->addMedia($request->images, $products->id);
+
+        // Product Tags, Categories and Sizes Register into Database
+        $product->categories()->attach($request->categories);
+        $product->tags()->attach($request->tags);
+        // $product->genders()->attach($genders);
+        // if(isset($request->sizes)) {
+        //     $product->sizes()->attach($request->sizes);
+        // }
+
+        $this->logActivity($product->name);
+
+        return redirect(route('admin.products'))->with([
+            'success' => 'New product added.'
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    private function addMedia($media_input, $product_id) {
+        if(isset($media_input)) {
+            $medias = $media_input;
             foreach ($medias as $media) {
 
-                $dir = FileSystem::where('dir_name', 'products')->first();
+                $dir = FileSystem::where('name', 'products')->first();
 
                 // Product Image Re-location and Re-naming
                 $media_new_name = time().$media->getClientOriginalName();
                 $media->move('uploads/products', $media_new_name);
-                $murl = 'uploads/'. $dir->dir_name . '/' . $media_new_name;
-                $mpath = public_path('uploads/'. $dir->dir_name) . '/' . $media_new_name;
+                $murl = 'uploads/'. $dir->name . '/' . $media_new_name;
+                $mpath = public_path('uploads/'. $dir->name) . '/' . $media_new_name;
 
                 // Enter Media Data to Database
                 $prmedia = Media::create([
@@ -113,47 +138,19 @@ class ProductController extends Controller {
                 // Enter Data into MediaProduct Pivot Table
                 MediaProduct::create([
                     'media_id' => $prmedia->id,
-                    'product_id' => $product->id,
+                    'product_id' => $product_id,
                 ]);
             }
         } else {
-            $medias = $request->medias;
+            $medias = $media_input;
             foreach ($medias as $media) {
                 // Enter Data into MediaProduct Pivot Table
                 MediaProduct::create([
                     'media_id' => $media,
-                    'product_id' => $product->id,
+                    'product_id' => $product_id,
                 ]);
             }
         }
-
-        // Product Tags, Categories and Sizes Register into Database
-        $product->categories()->attach($request->categories);
-        $product->tags()->attach($request->tags);
-        $product->genders()->attach($genders);
-
-        if(isset($request->sizes)) {
-            $product->sizes()->attach($request->sizes);
-        }
-
-        Activity::create([
-            'user_id' => Auth::Id(),
-            'model' => 'ProductModel',
-            'task' => 'added new product ' . $product->name
-        ]);
-
-        return redirect()->route('admin.products')->with('success', 'New product added.');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
-    {
-        //
     }
 
     /**
@@ -162,9 +159,12 @@ class ProductController extends Controller {
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
-    {
-        //
+    private function logActivity($product_name) {
+        Activity::create([
+            'user_id' => Auth::Id(),
+            'model' => 'ProductModel',
+            'task' => 'added new product ' . $product_name
+        ]);
     }
 
     /**

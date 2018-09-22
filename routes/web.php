@@ -20,6 +20,10 @@ Route::get('/maintenance', [
 // All public routes
 Route::group(['middleware' => 'maintenance'], function() {
 
+    // Route::get('/', function() {
+    //     return Cart::getContent();
+    // });
+
     // Landing page
     Route::get('/', [
         'uses' => 'PublicViewsController@index',

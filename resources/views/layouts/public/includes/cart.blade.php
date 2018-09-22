@@ -4,12 +4,12 @@
 
     <!-- Cart Button -->
     <div class="cart-button">
-        <a href="#" id="rightSideCart"><img src="img/core-img/bag.svg" alt=""> <span>{{ Cart::count() }}</span></a>
+        <a href="#" id="rightSideCart"><img src="img/core-img/bag.svg" alt=""> <span>{{ count(Cart::getContent()) }}</span></a>
     </div>
 
     <div class="cart-content d-flex">
 
-        @if (Cart::count() > 0)
+        @if (count(Cart::getContent()) > 0)
             <!-- Cart List Area -->
             <div class="cart-list">
                 <!-- Single Cart Item -->
@@ -33,12 +33,12 @@
         <!-- Cart Summary -->
         <div class="cart-amount-summary">
 
-            @if (Cart::count() > 0)
+            @if (count(Cart::getContent()) > 0)
                 <h2>Summary</h2>
                 <ul class="summary-table">
                     <li><span>subtotal:</span> <span>${{ Cart::getSubTotal() }}</span></li>
                     <li><span>delivery:</span> <span>Free</span></li>
-                    <li><span>discount:</span> <span>-15%</span></li>
+                    <li><span>disgetContent:</span> <span>-15%</span></li>
                     <li><span>total:</span> <span>${{ Cart::getTotal() }}</span></li>
                 </ul>
                 <div class="checkout-btn mt-100">

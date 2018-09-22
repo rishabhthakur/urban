@@ -4,8 +4,67 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "826f16d78d69c1a9a22f9f4d0838705d",
+    "content-hash": "3d98a48489a36f94884318db07c579a6",
     "packages": [
+        {
+            "name": "darryldecode/cart",
+            "version": "4.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/darryldecode/laravelshoppingcart.git",
+                "reference": "bcb305641cc325a3030dceccfbe97b083dca47d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/darryldecode/laravelshoppingcart/zipball/bcb305641cc325a3030dceccfbe97b083dca47d9",
+                "reference": "bcb305641cc325a3030dceccfbe97b083dca47d9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
+                "illuminate/translation": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
+                "illuminate/validation": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^5.0",
+                "symfony/var-dumper": "2.7.*@dev"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Darryldecode\\Cart\\CartServiceProvider"
+                    ],
+                    "aliases": {
+                        "Cart": "Darryldecode\\Cart\\Facades\\CartFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Darryldecode\\": "src/Darryldecode"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Darryl Fernandez",
+                    "email": "engrdarrylfernandez@gmail.com"
+                }
+            ],
+            "description": "Laravel 5 Shopping cart",
+            "keywords": [
+                "cart",
+                "laravel",
+                "shopping cart"
+            ],
+            "time": "2018-09-09T15:07:33+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -875,65 +934,6 @@
                 "storage"
             ],
             "time": "2018-09-14T15:30:29+00:00"
-        },
-        {
-            "name": "melihovv/laravel-shopping-cart",
-            "version": "5.7.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/melihovv/laravel-shopping-cart.git",
-                "reference": "e51c103ad9936909a3e152646d2bed5dc41fd01a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/melihovv/laravel-shopping-cart/zipball/e51c103ad9936909a3e152646d2bed5dc41fd01a",
-                "reference": "e51c103ad9936909a3e152646d2bed5dc41fd01a",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/container": "~5.5.0|~5.6.0|~5.7.0",
-                "illuminate/database": "~5.5.0|~5.6.0|~5.7.0",
-                "illuminate/redis": "~5.5.0|~5.6.0|~5.7.0",
-                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0",
-                "phpmd/phpmd": "^2.6",
-                "phpunit/phpunit": "~6.0|~7.0",
-                "predis/predis": "^1.1",
-                "sebastian/phpcpd": "^3.0",
-                "squizlabs/php_codesniffer": "^2.7"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Melihovv\\ShoppingCart\\ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Melihovv\\ShoppingCart\\": "src/ShoppingCart"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alexander Melihov",
-                    "email": "amelihovv@ya.ru"
-                }
-            ],
-            "description": "Shopping cart package for laravel",
-            "keywords": [
-                "cart",
-                "laravel",
-                "shopping cart"
-            ],
-            "time": "2018-09-20T20:36:32+00:00"
         },
         {
             "name": "monolog/monolog",
