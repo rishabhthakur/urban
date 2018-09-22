@@ -90,7 +90,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         'as' => 'admin'
     ]);
 
-    // Admin dashboard page
+    // Admin products routes
+    Route::group(['prefix' => 'products'], function() {
+
+        // Admin products list
+        Route::get('/', [
+            'uses' => 'ProductController@index',
+            'as' => 'admin.products'
+        ]);
+    });
+
+    // Admin media routes
     Route::group(['prefix' => 'media'], function() {
 
         // Admin media library page
