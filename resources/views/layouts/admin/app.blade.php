@@ -28,14 +28,8 @@
 
             <!-- Main content area -->
             <main role="main">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <div class="card border-0 bg-transparent">
-                            <div class="card-body">
-                                @yield('content')
-                            </div>
-                        </div>
-                    </div>
+                <div class="container-fluid">
+                    @yield('content')
                 </div>
             </main>
 

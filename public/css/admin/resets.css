@@ -13,3 +13,7 @@
 #description_ifr {
     min-height: 250px !important;
 }
+
+main {
+    overflow: visible !important;
+}

@@ -85,6 +85,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         'as' => 'admin'
     ]);
 
+    // Admin users routes
+    Route::group(['prefix' => 'users'], function() {
+
+        // Admin users list
+        Route::get('/', [
+            'uses' => 'UsersController@index',
+            'as' => 'admin.users'
+        ]);
+
+        // Admin add new users
+        Route::get('/create', [
+            'uses' => 'UsersController@create',
+            'as' => 'admin.users.create'
+        ]);
+    });
+
     // Admin products routes
     Route::group(['prefix' => 'products'], function() {
 

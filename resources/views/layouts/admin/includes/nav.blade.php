@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-transparent p-0 mb-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent p-0 mb-5">
     <button type="button" id="sidebarCollapse" class="btn btn-link text-black">
         <i class="fas fa-bars"></i>
     </button>

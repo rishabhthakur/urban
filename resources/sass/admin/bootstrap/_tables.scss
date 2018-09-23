@@ -11,12 +11,19 @@
   td {
     padding: $table-cell-padding;
     vertical-align: top;
-    border-top: $table-border-width solid $table-border-color;
+  }
+
+  td {
+      border-top: $table-border-width solid $table-border-color;
   }
 
   thead th {
+    background-color: $gray-100;
+    text-transform: uppercase;
+    font-size: 80%;
+    letter-spacing: 2px;
     vertical-align: bottom;
-    border-bottom: (2 * $table-border-width) solid $table-border-color;
+    border-bottom: $table-border-width solid $table-border-color;
   }
 
   tbody + tbody {

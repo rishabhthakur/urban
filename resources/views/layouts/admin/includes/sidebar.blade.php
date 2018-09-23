@@ -1,6 +1,6 @@
 <nav id="sidebar" class="navbar-light">
     <div class="sidebar-header text-center py-5">
-        <a class="navbar-brand text-white m-0" href="#">
+        <a class="navbar-brand text-white m-0" href="{!! route('admin') !!}">
             <img src="{!! asset('img/logo-white.png') !!}" style="height: 20px">
         </a>
     </div>
@@ -110,17 +110,23 @@
                 </li>
             </ul>
         </li>
-        <li>
+        <li
+        @if (
+            Route::currentRouteName() == 'admin.users' ||
+            Route::currentRouteName() == 'admin.users.create'
+            )
+             class="active"
+        @endif>
             <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-users mr-2"></i>
                 Users
             </a>
             <ul class="collapse list-unstyled" id="users">
-                <li>
-                    <a href="#">All Users</a>
+                <li @if (Route::currentRouteName() == 'admin.users') class="active" @endif>
+                    <a href="{!! route('admin.users') !!}">All Users</a>
                 </li>
-                <li>
-                    <a href="#">Add New</a>
+                <li @if (Route::currentRouteName() == 'admin.users.create') class="active" @endif>
+                    <a href="{!! route('admin.users.create') !!}">Add New</a>
                 </li>
             </ul>
         </li>

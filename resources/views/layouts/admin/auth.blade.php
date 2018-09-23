@@ -15,7 +15,7 @@
     <!-- Styles -->
     @include('layouts.admin.includes.css')
 </head>
-<body class="bg-white">
+<body>
     <div id="app">
         <main class="py-4">
             @yield('content')
