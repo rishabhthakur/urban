@@ -57,7 +57,9 @@
         <li
             @if (
                 Route::currentRouteName() == 'admin.products' ||
-                Route::currentRouteName() == 'admin.products.create'
+                Route::currentRouteName() == 'admin.products.create' ||
+                Route::currentRouteName() == 'admin.products.categories' ||
+                Route::currentRouteName() == 'admin.products.tags'
                 )
                  class="active"
             @endif
@@ -73,11 +75,11 @@
                 <li @if (Route::currentRouteName() == 'admin.products.create') class="active" @endif>
                     <a href="{!! route('admin.products.create') !!}">Add New</a>
                 </li>
-                <li>
-                    <a href="#">Categories</a>
+                <li @if (Route::currentRouteName() == 'admin.products.categories') class="active" @endif>
+                    <a href="{!! route('admin.products.categories') !!}">Categories</a>
                 </li>
-                <li>
-                    <a href="#">Tags</a>
+                <li @if (Route::currentRouteName() == 'admin.products.tags') class="active" @endif>
+                    <a href="{!! route('admin.products.tags') !!}">Tags</a>
                 </li>
                 <li>
                     <a href="#">Brands</a>

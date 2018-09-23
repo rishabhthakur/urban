@@ -12,9 +12,13 @@ class ScategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        return view('admin.products.categories.index')->with([
+            'array' => Scategory::orderBy('created_at')->get(),
+            'parent' => true,
+            'array_type' => 'Categories',
+            'route' => 'admin.products.categories.store'
+        ]);
     }
 
     /**
@@ -33,9 +37,54 @@ class ScategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $this->validate($request, [
+            'name' => 'required|string'
+        ]);
+
+        foreach(Scategory::all() as $c) {
+            if($c->name == $request->name) {
+                if($c->parent_id == $request->parent) {
+                    return redirect(route('admin.products.categories'))->with([
+                        'error' => 'A term with the name provided already exists.'
+                    ]);
+                }
+                break;
+            }
+            break;
+        }
+
+        $category = new Scategory;
+
+        $category->name = $request->name;
+
+        if(isset($request->slug)) {
+            $category->slug = $request->slug;
+        } else {
+            $category->slug = str_slug($request->name);
+        }
+
+        if(isset($request->description)) {
+            $category->description = $request->description;
+        } else {
+            $category->description = '–––';
+        }
+
+        if (isset($request->parent)) {
+            $category->parent_id = $request->parent;
+        }
+
+        if (isset($request->image)) {
+            // Category Image Re-location and Re-naming
+            $image = $request->image;
+            $image_new_name = time().$image->getClientOriginalName();
+            $image->move('uploads', $image_new_name);
+            $category->image = 'uploads/' . $image_new_name;
+        }
+
+        $category->save();
+
+        return redirect()->route('admin.products.categories');
     }
 
     /**

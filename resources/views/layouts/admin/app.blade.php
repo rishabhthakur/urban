@@ -19,12 +19,10 @@
     <div id="app" class="d-flex">
         <!-- Sidebar  -->
         @include('layouts.admin.includes.sidebar')
-
         <!-- Page Content  -->
         <div id="content" class="">
             <!-- Navbar -->
             @include('layouts.admin.includes.nav')
-            @include('layouts.admin.includes.notifications')
 
             <!-- Main content area -->
             <main role="main">
@@ -35,6 +33,8 @@
 
         </div>
     </div>
+    <!-- Notification banners -->
+    @include('layouts.admin.includes.notifications')
     <!-- Primary JS files -->
     @include('layouts.admin.includes.js')
 </body>

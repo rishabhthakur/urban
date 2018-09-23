@@ -115,6 +115,36 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             'uses' => 'ProductController@create',
             'as' => 'admin.products.create'
         ]);
+
+        // Admin products categories
+        Route::group(['prefix' => 'categories'], function() {
+
+            // Admin products categories list
+            Route::get('/', [
+                'uses' => 'ScategoryController@index',
+                'as' => 'admin.products.categories'
+            ]);
+
+            Route::post('/store', [
+                'uses' => 'ScategoryController@store',
+                'as' => 'admin.products.categories.store'
+            ]);
+        });
+
+        // Admin products tags
+        Route::group(['prefix' => 'tags'], function() {
+
+            // Admin products tags list
+            Route::get('/', [
+                'uses' => 'StagController@index',
+                'as' => 'admin.products.tags'
+            ]);
+
+            Route::post('/store', [
+                'uses' => 'StagController@store',
+                'as' => 'admin.products.tags.store'
+            ]);
+        });
     });
 
     // Admin media routes

@@ -1,0 +1,28 @@
+/* TinyMCE Styles */
+.mce-panel {
+    border: none !important;
+    background-color: #fff;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 3px rgba(50, 50, 93, 0.15), 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+.mce-panel:focus {
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+#description_ifr {
+    min-height: 250px !important;
+}
+
+main {
+    overflow: visible !important;
+}
+
+// Alert styles
+.alert {
+    position: fixed;
+    min-width: 350px;
+    top: 30px;
+    right: 30px;
+    z-index: 999999999;
+}

@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use App\Stag;
 use Illuminate\Http\Request;
 
-class StagController extends Controller
-{
+class StagController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        return view('admin.products.tags.index')->with([
+            'array' => Stag::orderBy('created_at')->get(),
+            'parent' => false,
+            'array_type' => 'Tags',
+            'route' => 'admin.products.tags.store'
+        ]);
     }
 
     /**

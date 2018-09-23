@@ -381,6 +381,7 @@ class ComposerStaticInit687914fb4d48ad8577bd8b54a4b8cda3
         'App\\Http\\Controllers\\ScategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/ScategoryController.php',
         'App\\Http\\Controllers\\SettingsController' => __DIR__ . '/../..' . '/app/Http/Controllers/SettingsController.php',
         'App\\Http\\Controllers\\StagController' => __DIR__ . '/../..' . '/app/Http/Controllers/StagController.php',
+        'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
