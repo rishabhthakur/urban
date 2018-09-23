@@ -42,16 +42,14 @@ class ScategoryController extends Controller
             'name' => 'required|string'
         ]);
 
-        foreach(Scategory::all() as $c) {
-            if($c->name == $request->name) {
-                if($c->parent_id == $request->parent) {
-                    return redirect(route('admin.products.categories'))->with([
-                        'error' => 'A term with the name provided already exists.'
-                    ]);
-                }
-                break;
-            }
-            break;
+        $existing = Scategory::where('name', $request->name)->first();
+        
+        if($existing) {
+           if ($existing->parent_id == $request->parent) {
+               return redirect(route('admin.products.categories'))->with([
+                 'error' => 'A term with the name provided already exists.'
+               ]);
+           }
         }
 
         $category = new Scategory;
