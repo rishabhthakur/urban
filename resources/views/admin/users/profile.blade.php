@@ -139,7 +139,7 @@
             <div class="card-body">
                 <h6 class="heading mb-3">Recent Activity</h6>
                 <ul class="timeline">
-                    @forelse ($user->activities as $activity)
+                    @forelse ($user->activities->take(7) as $activity)
                         <li>
                             @switch($activity->model)
                                 @case('Product\Product')

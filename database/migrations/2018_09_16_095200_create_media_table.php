@@ -20,9 +20,9 @@ class CreateMediaTable extends Migration
             $table->text('name');
             $table->text('slug');
             $table->text('url');
-            $table->integer('size');
+            $table->text('size');
             $table->text('mime_type');
-            $table->string('dimensions');
+            $table->text('dimensions');
             $table->timestamps();
         });
     }

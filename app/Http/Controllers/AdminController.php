@@ -29,7 +29,7 @@ class AdminController extends Controller {
 
     public function index() {
         return view('admin.index')->with([
-            'activities' => Activity::orderBy('created_at')->take(7)->get()
+            'activities' => Activity::orderBy('created_at', 'DESC')->take(7)->get()
         ]);
     }
 }

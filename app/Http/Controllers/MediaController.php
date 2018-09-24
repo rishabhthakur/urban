@@ -83,7 +83,7 @@ class MediaController extends Controller
 
         Activity::create([
             'user_id' => Auth::id(),
-            'model' => 'MediaModel',
+            'model' => 'Media\Media',
             'task' => 'added new media ' . $prmedia->name
         ]);
 
