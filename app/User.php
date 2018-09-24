@@ -11,7 +11,8 @@ class User extends Authenticatable implements MustVerifyEmail {
     use Notifiable;
 
     public $with = [
-        'profile'
+        'profile',
+        'role'
     ];
 
     /**
@@ -51,7 +52,7 @@ class User extends Authenticatable implements MustVerifyEmail {
      * @var array
      */
     public function role() {
-        return $this->belongsTo('App\Role', 'user_id');
+        return $this->belongsTo('App\Role', 'role_id');
     }
 
     /**

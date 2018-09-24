@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Role;
 
 class UsersController extends Controller {
     /**
@@ -52,12 +53,14 @@ class UsersController extends Controller {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($slug) {
+        return view('admin.users.edit')->with([
+            'user' => User::where('slug', $slug)->first(),
+            'roles' => Role::all()
+        ]);
     }
 
     /**

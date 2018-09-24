@@ -105,6 +105,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             'uses' => 'UsersController@profile',
             'as' => 'admin.users.profile'
         ]);
+
+        // Admin user edit
+        Route::get('/edit/{slug}', [
+            'uses' => 'UsersController@edit',
+            'as' => 'admin.users.edit'
+        ]);
     });
 
     // Admin products routes
