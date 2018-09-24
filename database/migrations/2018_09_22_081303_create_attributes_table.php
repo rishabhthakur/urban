@@ -15,6 +15,11 @@ class CreateAttributesTable extends Migration
     {
         Schema::create('attributes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('color_code')->nullable();
+            $table->integer('parent_id')->nullable();
+            $table->string('name');
+            $table->string('slug');
+            $table->mediumText('description')->nullable();
             $table->timestamps();
         });
     }

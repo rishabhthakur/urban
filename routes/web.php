@@ -99,6 +99,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             'uses' => 'UsersController@create',
             'as' => 'admin.users.create'
         ]);
+
+        // Admin user profile
+        Route::get('/profile/{slug}', [
+            'uses' => 'UsersController@profile',
+            'as' => 'admin.users.profile'
+        ]);
     });
 
     // Admin products routes
@@ -143,6 +149,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             Route::post('/store', [
                 'uses' => 'StagController@store',
                 'as' => 'admin.products.tags.store'
+            ]);
+        });
+
+        // Admin products attributes
+        Route::group(['prefix' => 'attributes'], function() {
+
+            // Admin products attributes list
+            Route::get('/', [
+                'uses' => 'AttributeController@index',
+                'as' => 'admin.products.attributes'
+            ]);
+
+            Route::post('/store', [
+                'uses' => 'AttributeController@store',
+                'as' => 'admin.products.attributes.store'
             ]);
         });
     });

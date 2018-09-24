@@ -6,9 +6,10 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Activity;
 use App\FileSystem;
-// use App\MediaProduct;
-// use App\Scategory;
-// use App\Stag;
+use App\MediaProduct;
+use App\Scategory;
+use App\Attribute;
+use App\Stag;
 use App\Brand;
 use App\Media;
 
@@ -29,7 +30,12 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('admin.products.create');
+        return view('admin.products.create')->with([
+            'categories' => Scategory::all(),
+            'tags' => Stag::all(),
+            'brands' => Brand::all(),
+            'Attributes' => Attribute::all()
+        ]);
     }
 
     /**

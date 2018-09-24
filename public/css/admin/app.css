@@ -17735,16 +17735,16 @@ ul.timeline > li:before {
 /* TinyMCE Styles */
 
 .mce-panel {
-  border: none !important;
+  border-color: #cad1d7 !important;
   background-color: #fff;
   border-radius: 0.25rem;
-  -webkit-box-shadow: 0 1px 3px rgba(50, 50, 93, 0.15), 0 1px 0 rgba(0, 0, 0, 0.02);
-          box-shadow: 0 1px 3px rgba(50, 50, 93, 0.15), 0 1px 0 rgba(0, 0, 0, 0.02);
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 .mce-panel:focus {
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 #description_ifr {

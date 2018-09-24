@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Scategory;
+use App\Activity;
 use Illuminate\Http\Request;
 
-class ScategoryController extends Controller
-{
+class ScategoryController extends Controller {
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +43,7 @@ class ScategoryController extends Controller
         ]);
 
         $existing = Scategory::where('name', $request->name)->first();
-        
+
         if($existing) {
            if ($existing->parent_id == $request->parent) {
                return redirect(route('admin.products.categories'))->with([
@@ -81,6 +81,12 @@ class ScategoryController extends Controller
         }
 
         $category->save();
+
+        // Log event
+        $activity = new Activity;
+        $model = 'Product\Category';
+        $task = 'created new product category ' . $request->name;
+        $activity->registerActivity($model, $task);
 
         return redirect()->route('admin.products.categories');
     }

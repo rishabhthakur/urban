@@ -15,36 +15,36 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="site_name">Site Name</label>
-                        <input type="text" id="site_name" class="form-control form-control-alternative" name="site_name" value="{{ $settings->site_name }}">
+                        <input type="text" id="site_name" class="form-control" name="site_name" value="{{ $settings->site_name }}">
                     </div>
                     <div class="form-group">
                         <label for="tagline">Tagline</label>
-                        <input type="text" id="tagline" class="form-control form-control-alternative" name="tagline" value="{{ $settings->tagline }}">
+                        <input type="text" id="tagline" class="form-control" name="tagline" value="{{ $settings->tagline }}">
                         <span class="text-muted">
                             <small>In a few words, explain what this site is about.</small>
                         </span>
                     </div>
                     <div class="form-group">
                         <label for="author">Site Author</label>
-                        <input type="text" id="author" class="form-control form-control-alternative" name="author" value="{{ $settings->author }}">
+                        <input type="text" id="author" class="form-control" name="author" value="{{ $settings->author }}">
                     </div>
                     <div class="form-group">
                         <label for="description">Site Description</label>
-                        <textarea name="description" class="form-control form-control-alternative" style="height: 150px">{{ $settings->description }}</textarea>
+                        <textarea name="description" class="form-control" style="height: 150px">{{ $settings->description }}</textarea>
                         <span class="text-muted">
                             <small>Site description will be used for SEO purposes and to describe what your site is about in detail to the public.</small>
                         </span>
                     </div>
                     <div class="form-group">
                         <label for="email">Admin Email</label>
-                        <input type="text" id="email" class="form-control form-control-alternative" name="email" value="{{ $settings->email }}">
+                        <input type="text" id="email" class="form-control" name="email" value="{{ $settings->email }}">
                         <span class="text-muted">
                             <small>This address is used for admin purposes. If you change this we will send you an email at your new address to confirm it. The new address will not become active until confirmed.</small>
                         </span>
                     </div>
                     <div class="form-group">
                         <label for="role">New User Default Role</label>
-                        <select class="custom-select form-control-alternative" name="role" id="role">
+                        <select class="custom-select form-control" name="role" id="role">
                             @foreach($roles as $role)
                                 <option @if ($role->id == $settings->drole) selected @endif value="{{ $role->id }}">{{ $role->name }}</option>
                             @endforeach
@@ -175,7 +175,7 @@
                     </div>
                     <div id="copyright_custom" class="form-group">
                         <label for="">Copyright Text</label>
-                        <input type="text" name="copyright_text" class="form-control form-control-alternative" value="{{ $settings->copyright_text }}">
+                        <input type="text" name="copyright_text" class="form-control" value="{{ $settings->copyright_text }}">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary mt-4">Save Changes</button>

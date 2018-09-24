@@ -59,7 +59,8 @@
                 Route::currentRouteName() == 'admin.products' ||
                 Route::currentRouteName() == 'admin.products.create' ||
                 Route::currentRouteName() == 'admin.products.categories' ||
-                Route::currentRouteName() == 'admin.products.tags'
+                Route::currentRouteName() == 'admin.products.tags' ||
+                Route::currentRouteName() == 'admin.products.attributes'
                 )
                  class="active"
             @endif
@@ -84,8 +85,8 @@
                 <li>
                     <a href="#">Brands</a>
                 </li>
-                <li>
-                    <a href="#">Attributes</a>
+                <li @if (Route::currentRouteName() == 'admin.products.attributes') class="active" @endif>
+                    <a href="{!! route('admin.products.attributes') !!}">Attributes</a>
                 </li>
             </ul>
         </li>
@@ -126,6 +127,12 @@
             <ul class="collapse list-unstyled" id="users">
                 <li @if (Route::currentRouteName() == 'admin.users') class="active" @endif>
                     <a href="{!! route('admin.users') !!}">All Users</a>
+                </li>
+                <li @if (Route::currentRouteName() == 'admin.users') class="active" @endif>
+                    <a href="{!! route('admin.users') !!}">Customers</a>
+                </li>
+                <li @if (Route::currentRouteName() == 'admin.users') class="active" @endif>
+                    <a href="{!! route('admin.users') !!}">Staff</a>
                 </li>
                 <li @if (Route::currentRouteName() == 'admin.users.create') class="active" @endif>
                     <a href="{!! route('admin.users.create') !!}">Add New</a>

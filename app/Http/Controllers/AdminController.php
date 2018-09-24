@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class AdminController extends Controller {
 
@@ -26,6 +28,8 @@ class AdminController extends Controller {
 	 */
 
     public function index() {
-        return view('admin.index');
+        return view('admin.index')->with([
+            'activities' => Activity::orderBy('created_at')->take(7)->get()
+        ]);
     }
 }

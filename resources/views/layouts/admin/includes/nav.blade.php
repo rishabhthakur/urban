@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="{!! route('admin.users.profile', ['slug' => Auth::user()->slug]) !!}">Profile</a>
                     <a class="dropdown-item" href="#">Activities</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Help &amp; Support</a>

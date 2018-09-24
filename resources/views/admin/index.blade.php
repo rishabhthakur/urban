@@ -5,10 +5,10 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h1>
+                    <h5 class="mb-4">
                         Welcome to your<br />
                         Dashboard, {{ Auth::user()->name }}!
-                    </h1>
+                    </h5>
                     <p>
                         We’ve assembled some links to get you started:
                     </p>
@@ -193,23 +193,26 @@
                 <div class="card-body">
                     <h4>Recent Activity</h4>
         			<ul class="timeline">
-        				<li>
-        					<a target="_blank" href="https://www.totoprayogo.com/#">New Web Design</a>
-        					<a href="#" class="float-right">
-                                <span class="badge badge-primary">21 March, 2014</span>
-                            </a>
-        					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
-        				</li>
-        				<li>
-        					<a href="#">21 000 Job Seekers</a>
-        					<a href="#" class="float-right">4 March, 2014</a>
-        					<p>Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
-        				</li>
-        				<li>
-        					<a href="#">Awesome Employers</a>
-        					<a href="#" class="float-right">1 April, 2014</a>
-        					<p>Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc vitae, mollis pharetra velit. Sed nec tempor nibh...</p>
-        				</li>
+        				@forelse ($activities as $activity)
+                            <li>
+                                @switch($activity->model)
+                                    @case('Product\Category')
+                                        <strong class="text-primary">New product category added.</strong>
+                                        @break
+                                    @case('User\Login')
+                                        <strong class="text-primary">User loggin.</strong>
+                                        @break
+                                @endswitch
+            					<span class="float-right badge badge-primary">{{ $activity->created_at->format("F j, Y") }}</span>
+            					<p>
+                                    <a href="#"><strong>{{ $activity->user->name }}</strong></a> {{ $activity->task }}
+                                </p>
+            				</li>
+                        @empty
+                            <li>
+                                No recent activity
+                            </li>
+                        @endforelse
         			</ul>
                 </div>
             </div>
