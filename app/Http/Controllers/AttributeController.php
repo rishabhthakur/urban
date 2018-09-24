@@ -19,7 +19,7 @@ class AttributeController extends Controller
             'array' => Attribute::orderBy('created_at')->get(),
             'parent' => true,
             'color' => true,
-            'array_type' => 'Attributes',
+            'array_type' => 'Attribute',
             'route' => 'admin.products.attributes.store'
         ]);
     }

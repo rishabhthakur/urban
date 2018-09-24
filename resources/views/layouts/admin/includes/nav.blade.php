@@ -89,10 +89,10 @@
                     </div>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{!! route('admin.users.profile', ['slug' => Auth::user()->slug]) !!}">Profile</a>
-                    <a class="dropdown-item" href="#">Activities</a>
+                    <a class="dropdown-item" href="{!! route('admin.users.activities', ['slug' => Auth::user()->slug]) !!}">Activities</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Help &amp; Support</a>
-                    <a class="dropdown-item" href="#">Settings &amp; Privacy</a>
+                    <a class="dropdown-item" href="{!! route('admin.users.edit', ['slug' => Auth::user()->slug]) !!}">Settings &amp; Privacy</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">

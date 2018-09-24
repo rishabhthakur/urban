@@ -51,6 +51,24 @@ class UsersController extends Controller {
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function activities($slug) {
+        if (Auth::user()->role_id === 1) {
+            return view('admin.users.activity')->with([
+                'user' => User::where('slug', $slug)->first()
+            ]);
+        } else {
+            return redirect(route('admin'))->with([
+                'error' => 'You do not have the required permission.'
+            ]);
+        }
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  string  $slug

@@ -106,6 +106,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             'as' => 'admin.users.profile'
         ]);
 
+        // Admin user activities - reserved only for Administrators
+        Route::get('/activities/{slug}', [
+            'uses' => 'UsersController@activities',
+            'as' => 'admin.users.activities'
+        ]);
+
         // Admin user edit
         Route::get('/edit/{slug}', [
             'uses' => 'UsersController@edit',

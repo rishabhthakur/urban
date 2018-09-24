@@ -16,6 +16,7 @@ class ScategoryController extends Controller {
         return view('admin.products.categories.index')->with([
             'array' => Scategory::orderBy('created_at')->get(),
             'parent' => true,
+            'color' => false,
             'array_type' => 'Categories',
             'route' => 'admin.products.categories.store'
         ]);

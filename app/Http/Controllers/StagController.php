@@ -15,6 +15,7 @@ class StagController extends Controller {
         return view('admin.products.tags.index')->with([
             'array' => Stag::orderBy('created_at')->get(),
             'parent' => false,
+            'color' => false,
             'array_type' => 'Tags',
             'route' => 'admin.products.tags.store'
         ]);

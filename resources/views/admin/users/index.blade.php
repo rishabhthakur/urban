@@ -4,7 +4,7 @@
 <div class="row mb-4">
     <div class="col-12 text-right">
         <a href="#" class="btn btn-primary btn-sm">
-            <i class="fas fa-user-plus"></i>
+            <i class="fas fa-user-plus mr-1"></i>
             Add New User
         </a>
     </div>
@@ -20,7 +20,7 @@
                         <th scope="col" width="25%">Name</th>
                         <th scope="col" width="25%">Email</th>
                         <th scope="col" width="25%">Role</th>
-                        <th scope="col" width="15%"></th>
+                        <th scope="col" width="20%"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,12 +60,17 @@
                             <td>
                                 <ul class="nav justify-content-center">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">
+                                        <a class="nav-link" href="{!! route('admin.users.profile', ['slug' => $user->slug]) !!}">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">
+                                        <a class="nav-link" href="{!! route('admin.users.activities', ['slug' => $user->slug]) !!}">
+                                            <i class="fas fa-chart-line"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{!! route('admin.users.edit', ['slug' => $user->slug]) !!}">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     </li>
