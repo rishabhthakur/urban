@@ -21,6 +21,12 @@ class Activity extends Model {
         return $this->belongsTo('App\User', 'user_id');
     }
 
+    /**
+     * Registers activity log to database
+     * @param  string $model task performde at
+     * @param  string $task  task performed
+     * @return null
+     */
     public function registerActivity($model, $task) {
         $this->create([
             'user_id' => Auth::id(),

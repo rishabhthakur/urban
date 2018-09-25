@@ -53,10 +53,10 @@
 @endif
 
 @if(session('error') )
-  <div class="alert alert-danger alert-dismissible fade show m-0" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-     <strong>Hold on cheif!</strong> {{ session('error') }}
-  </div>
+    <div class="alert alert-danger alert-dismissible fade show m-0" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Hold on cheif!</strong> {{ session('error') }}
+    </div>
 @endif

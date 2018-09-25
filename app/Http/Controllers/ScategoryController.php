@@ -50,8 +50,11 @@ class ScategoryController extends Controller {
                return redirect(route('admin.products.categories'))->with([
                  'error' => 'A term with the name provided already exists.'
                ]);
+           } else {
+               $parent_slug = str_slug(Scategory::find($request->parent)->name);
            }
-        }
+           $parent_slug = str_slug(Scategory::find($request->parent)->name);
+       }
 
         $category = new Scategory;
 
@@ -61,6 +64,10 @@ class ScategoryController extends Controller {
             $category->slug = $request->slug;
         } else {
             $category->slug = str_slug($request->name);
+        }
+
+        if(isset($parent_slug)) {
+            $category->slug = $category->slug . '-' . $parent_slug;
         }
 
         if(isset($request->description)) {

@@ -92,6 +92,13 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col">
+                                    <label for="mstock">Manage Stock?</label>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="mstock">
+                                        <label class="custom-control-label" for="mstock">Enable stock management at product level</label>
+                                    </div>
+                                </div>
+                                <div id="sqty" class="col">
                                     <label for="quantity">Stock Quantity</label>
                                     <input type="number" id="quantity" min="0" name="quantity" value="{{ old('quantity') }}" class="form-control form-control">
                                     @if ($errors->has('quantity'))
@@ -100,7 +107,7 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="col">
+                                <div id="ssts" class="col">
                                     <label for="stock_status">Stock Status</label>
                                     <select id="stock_status" class="custom-select form-control" name="stock_status" id="stock_status">
                                         <option selected value="1">In stock</option>
@@ -160,10 +167,55 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
-                            <p class="description">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+                            @forelse ($attributes as $attribute)
+                                <div class="border rounded mb-2">
+                                    <div class="p-2 border-bottom">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input attrb-cl" id="attrb{{ $attribute->id }}" value="{{ $attribute->id }}">
+                                            <label class="custom-control-label" for="attrb{{ $attribute->id }}">
+                                                <h6 class="mb-0">{{ $attribute->name }}</h6>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="px-2 py-3 attrbs-container">
+                                        @forelse ($attribute->children as $child)
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                <input type="checkbox" class="custom-control-input" id="chld{{ $child->id }}" value="{{ $child->id }}">
+                                                <label class="custom-control-label" for="chld{{ $child->id }}">
+                                                    <strong>{{ $child->name }}</strong>
+                                                </label>
+                                            </div>
+                                        @empty
+                                            <span class="text-muted">
+                                                No related attributes found.
+                                            </span>
+                                        @endforelse
+                                    </div>
+                                </div>
+                            @empty
+                                <span class="text-muted">
+                                    No attributes found.
+                                </span>
+                            @endforelse
                         </div>
                         <div class="tab-pane fade" id="tabs-icons-text-4" role="tabpanel" aria-labelledby="tabs-icons-text-4-tab">
-                            <p class="description">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+                            <p class="description">
+                                <div class="form-group">
+                                    <label for="purachase_note">Purchase Note (Optional)</label>
+                                    <textarea name="purchase_note" class="form-control" id="purachase_note" placeholder="Purchase Note"></textarea>
+                                    <span class="text-muted form-text">
+                                        <small>
+                                            Enter an optional note to send the customer after purchase.
+                                        </small>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="reviews" value="1">
+                                        <label class="custom-control-label" for="reviews">Enable Reviews</label>
+                                    </div>
+                                </div>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -237,39 +289,55 @@
                 <div class="card-body">
                     <h6 class="heading mb-5">Product Brand</h6>
                     <select id="brand" class="custom-select form-control" name="brand" id="brand">
-                        <option selected value="1">Unbrabded</option>
+                        @forelse ($brands as $brand)
+                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @empty
+                            <option selected>No brands found.</option>
+                        @endforelse
                     </select>
                 </div>
                 <div class="card-footer bg-white border-0">
-                    <a href="#">
+                    <a href="{!! route('admin.products.brands') !!}">
                         <i class="fas fa-plus"></i> Add new brand
                     </a>
                 </div>
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h6 class="heading mb-5">Product Categories</h6>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                        <label class="custom-control-label" for="customCheck1"> Uncategorized</label>
-                    </div>
+                    <h6 class="heading mb-3">Product Categories</h6>
+                    @forelse ($categories as $category)
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="category{{ $category->id }}" value="{{ $category->id }}">
+                            <label class="custom-control-label" for="category{{ $category->id }}"> {{ $category->name }}</label>
+                        </div>
+                    @empty
+                        <span class="text-muted">
+                            No categories found.
+                        </span>
+                    @endforelse
                 </div>
                 <div class="card-footer bg-white border-0">
-                    <a href="#">
+                    <a href="{!! route('admin.products.categories') !!}">
                         <i class="fas fa-plus"></i> Add new category
                     </a>
                 </div>
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h6 class="heading mb-5">Product Tags</h6>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                        <label class="custom-control-label" for="customCheck1"> Default Tag</label>
-                    </div>
+                    <h6 class="heading mb-3">Product Tags</h6>
+                    @forelse ($tags as $tag)
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input" id="category{{ $tag->id }}" value="{{ $tag->id }}">
+                            <label class="custom-control-label" for="category{{ $tag->id }}"> {{ $tag->name }}</label>
+                        </div>
+                    @empty
+                        <span class="text-muted">
+                            No tags found.
+                        </span>
+                    @endforelse
                 </div>
                 <div class="card-footer bg-white border-0">
-                    <a href="#">
+                    <a href="{!! route('admin.products.tags') !!}">
                         <i class="fas fa-plus"></i> Add new tag
                     </a>
                 </div>
@@ -290,6 +358,40 @@
                 theme: 'mobile',
                 plugins: [ 'autosave', 'lists', 'autolink' ]
             }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            // Stock management selector
+            if ($("#mstock").is(":checked")) {
+                $("#ssts").show();
+                $("#sqty").hide();
+            } else {
+                $("#sqty").hide();
+            }
+            $("#mstock").click(function () {
+                if ($(this).is(":checked")) {
+                    $("#sqty").show();
+                    $("#ssts").hide();
+                } else {
+                    $("#sqty").hide();
+                    $("#ssts").show();
+                }
+            });
+            // Product attributes selector
+            if ($(".attrb-cl").is(":checked")) {
+                $(".attrbs-container").show();
+            } else {
+                $(".attrbs-container").hide();
+            }
+            $(".attrb-cl").click(function () {
+                if ($(this).is(":checked")) {
+                    $(".attrbs-container").show();
+                } else {
+                    $(".attrbs-container").hide();
+                }
+            });
         });
     </script>
 @endsection

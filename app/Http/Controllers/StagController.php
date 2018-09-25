@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Stag;
+use App\Activity;
 use Illuminate\Http\Request;
 
 class StagController extends Controller {
@@ -37,9 +38,44 @@ class StagController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $this->validate($request, [
+            'name' => 'required|string'
+        ]);
+
+        $existing = Stag::where('name', $request->name)->first();
+
+        if($existing) {
+            return redirect(route('admin.products.tags'))->with([
+              'error' => 'A term with the name provided already exists.'
+            ]);
+        }
+
+        $brand = new Stag;
+
+        $brand->name = $request->name;
+
+        if(isset($request->slug)) {
+            $brand->slug = $request->slug;
+        } else {
+            $brand->slug = str_slug($request->name);
+        }
+
+        if(isset($request->description)) {
+            $brand->description = $request->description;
+        } else {
+            $brand->description = '–––';
+        }
+
+        $brand->save();
+
+        // Log event
+        $activity = new Activity;
+        $model = 'Product\Tag';
+        $task = 'created new product tag ' . $request->name;
+        $activity->registerActivity($model, $task);
+
+        return redirect()->route('admin.products.tags');
     }
 
     /**

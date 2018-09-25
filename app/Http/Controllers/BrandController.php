@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Brand;
+use App\Activity;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -12,9 +13,14 @@ class BrandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        return view('admin.products.brands.index')->with([
+            'array' => Brand::orderBy('created_at')->get(),
+            'parent' => false,
+            'color' => false,
+            'array_type' => 'Brand',
+            'route' => 'admin.products.brands.store'
+        ]);
     }
 
     /**
@@ -33,9 +39,44 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $this->validate($request, [
+            'name' => 'required|string'
+        ]);
+
+        $existing = Brand::where('name', $request->name)->first();
+
+        if($existing) {
+            return redirect(route('admin.products.brands'))->with([
+              'error' => 'A term with the name provided already exists.'
+            ]);
+        }
+
+        $brand = new Brand;
+
+        $brand->name = $request->name;
+
+        if(isset($request->slug)) {
+            $brand->slug = $request->slug;
+        } else {
+            $brand->slug = str_slug($request->name);
+        }
+
+        if(isset($request->description)) {
+            $brand->description = $request->description;
+        } else {
+            $brand->description = '–––';
+        }
+
+        $brand->save();
+
+        // Log event
+        $activity = new Activity;
+        $model = 'Product\Brand';
+        $task = 'created new product brand ' . $request->name;
+        $activity->registerActivity($model, $task);
+
+        return redirect()->route('admin.products.brands');
     }
 
     /**

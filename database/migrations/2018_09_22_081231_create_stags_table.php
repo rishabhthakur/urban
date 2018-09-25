@@ -15,9 +15,9 @@ class CreateStagsTable extends Migration
     {
         Schema::create('stags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('slug');
-            $table->text('description')->nullable();
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

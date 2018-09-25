@@ -15,7 +15,6 @@ class AdminController extends Controller {
  	 * @param type
  	 * @return void
 	 */
-
     public function login() {
         return view('admin.auth.login');
     }
@@ -26,7 +25,6 @@ class AdminController extends Controller {
  	 * @param type
  	 * @return void
 	 */
-
     public function index() {
         return view('admin.index')->with([
             'activities' => Activity::orderBy('created_at', 'DESC')->take(7)->get()

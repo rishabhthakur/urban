@@ -34,7 +34,7 @@ class ProductController extends Controller {
             'categories' => Scategory::all(),
             'tags' => Stag::all(),
             'brands' => Brand::all(),
-            'Attributes' => Attribute::all()
+            'attributes' => Attribute::where('parent_id', null)->get()
         ]);
     }
 
