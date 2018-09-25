@@ -8,7 +8,7 @@ use App\Traits\SKUGenerator;
 // use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Product extends Model {
-    
+
     use SoftDeletes;
     use SKUGenerator;
     // use SearchableTrait;
@@ -45,6 +45,7 @@ class Product extends Model {
         'sku',
         'slug',
         'brand_id',
+        'manage_stock',
         'quantity',
         'stock_status',
         'weight',

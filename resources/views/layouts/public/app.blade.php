@@ -13,10 +13,16 @@
 
     <title>{{ __(getSettings()->site_name) . ' | ' . __(getSettings()->tagline) }}</title>
 
+    <!-- Stipe JS -->
+    <script src="https://js.stripe.com/v3/"></script>
+
     @include('layouts.public.includes.css')
 </head>
 <body>
     <div id="app">
+        <!-- Notifications -->
+        @include('layouts.public.includes.notifications')
+
         <!-- ##### Header Area Start ##### -->
         @include('layouts.public.includes.header')
         <!-- ##### Header Area End ##### -->

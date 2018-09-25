@@ -24,11 +24,11 @@ class Maintenance
     	 * @return void
          */
         $mode = Settings::first()->status;
-        
+
         if($mode) {
             return $next($request);
         } else {
-            return redirect(route('maintenance'));
+            return redirect(route('errors.503'));
         }
     }
 }

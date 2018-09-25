@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration {
             $table->integer('brand_id')->nullable();
             $table->integer('quantity')->nullable();
             $table->boolean('stock_status');
+            $table->boolean('manage_stock');
             $table->float('weight')->nullable();
             $table->float('length')->nullable();
             $table->float('width')->nullable();

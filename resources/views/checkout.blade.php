@@ -21,66 +21,95 @@
             <div class="row">
 
                 <div class="col-12 col-md-6">
-                    <div class="checkout_details_area mt-50 clearfix">
+                    <div class="checkout_details_area clearfix">
 
-                        <div class="cart-page-heading mb-30">
-                            <h5>Billing Address</h5>
-                        </div>
-
-                        <form action="#" method="post">
+                        <form action="#" method="post" enctype="multipart/form-data" id="payment-form">
+                            {{ csrf_field() }}
                             <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="first_name">First Name <span>*</span></label>
-                                    <input type="text" class="form-control" id="first_name" value="" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="last_name">Last Name <span>*</span></label>
-                                    <input type="text" class="form-control" id="last_name" value="" required>
-                                </div>
                                 <div class="col-12 mb-3">
-                                    <label for="company">Company Name</label>
-                                    <input type="text" class="form-control" id="company" value="">
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <label for="country">Country <span>*</span></label>
-                                    <select class="w-100" id="country">
-                                        <option value="usa">United States</option>
-                                        <option value="uk">United Kingdom</option>
-                                        <option value="ger">Germany</option>
-                                        <option value="fra">France</option>
-                                        <option value="ind">India</option>
-                                        <option value="aus">Australia</option>
-                                        <option value="bra">Brazil</option>
-                                        <option value="cana">Canada</option>
-                                    </select>
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <label for="street_address">Address <span>*</span></label>
-                                    <input type="text" class="form-control mb-3" id="street_address" value="">
-                                    <input type="text" class="form-control" id="street_address2" value="">
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <label for="postcode">Postcode <span>*</span></label>
-                                    <input type="text" class="form-control" id="postcode" value="">
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <label for="city">Town/City <span>*</span></label>
-                                    <input type="text" class="form-control" id="city" value="">
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <label for="state">Province <span>*</span></label>
-                                    <input type="text" class="form-control" id="state" value="">
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <label for="phone_number">Phone No <span>*</span></label>
-                                    <input type="number" class="form-control" id="phone_number" min="0" value="">
-                                </div>
-                                <div class="col-12 mb-4">
-                                    <label for="email_address">Email Address <span>*</span></label>
-                                    <input type="email" class="form-control" id="email_address" value="">
+                                    <h5 class="mb-4">Your Personal Details</h5>
                                 </div>
 
+                                <div class="col-12 mb-3">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="first_name">First Name <span>*</span></label>
+                                            <input type="text" class="form-control" id="first_name" value="{{ Auth::user()->profile->first_name }}" name="first_name" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="last_name">Last Name <span>*</span></label>
+                                            <input type="text" class="form-control" id="last_name" value="{{ Auth::user()->profile->last_name }}" name="last_name" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="email">Email Address <span>*</span></label>
+                                    <input type="email" class="form-control" name="email" id="email" value="{{ Auth::user()->email }}" placeholder="Email Address" readonly>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <label for="company">Company Name</label>
+                                            <input type="text" class="form-control" id="company" value="" name="company" placeholder="Company Name">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="phone">Telephone <span>*</span></label>
+                                            <input type="number" class="form-control" id="phone" name="phone" min="0" value="{{ Auth::user()->profile->phone }}" placeholder="Telephone">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <h5 class="mb-4">Billing Address</h5>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <label for="address">Address <span>*</span></label>
+                                    <input type="text" class="form-control mb-3" id="address1" name="address1" value="" placeholder="Street Address, P.O. box">
+                                    <input type="text" class="form-control" id="address2" name="address2" value="" placeholder="Apartment, suite, unit, building, floor, etc,">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="postcode">Postcode <span>*</span></label>
+                                            <input type="text" class="form-control" id="postcode" name="postcode" value="">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="city">Town/City <span>*</span></label>
+                                            <input type="text" class="form-control" id="city" name="city" value="">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="state">Province <span>*</span></label>
+                                            <input type="text" class="form-control" id="state" name="state" value="">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="country">Country <span>*</span></label>
+                                            <select class="w-100" id="country" name="country">
+                                                <option value="usa">United States</option>
+                                                <option value="uk">United Kingdom</option>
+                                                <option value="ger">Germany</option>
+                                                <option value="fra">France</option>
+                                                <option value="ind">India</option>
+                                                <option value="aus">Australia</option>
+                                                <option value="bra">Brazil</option>
+                                                <option value="cana">Canada</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mt-5">
+                                    <h6>Address Accuracy</h6>
+                                    <p>
+                                        Make sure you get your stuff! If the address is not entered correctly, your package may be returned as undeliverable. You would then have to place a new order. Save time and avoid frustration by entering the address information in the appropriate boxes and double-checking for typos and other errors.
+                                    </p>
+                                </div>
+
+                                {{-- <div class="col-12">
                                     <div class="custom-control custom-checkbox d-block mb-2">
                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
                                         <label class="custom-control-label" for="customCheck1">Terms and conitions</label>
@@ -93,7 +122,7 @@
                                         <input type="checkbox" class="custom-control-input" id="customCheck3">
                                         <label class="custom-control-label" for="customCheck3">Subscribe to our newsletter</label>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </form>
                     </div>
@@ -107,71 +136,121 @@
                             <p>The Details</p>
                         </div>
 
-                        <ul class="order-details-form mb-4">
+                        <ul class="order-details-form mb-5">
                             <li><span>Product</span> <span>Total</span></li>
-                            <li><span>Cocktail Yellow dress</span> <span>$59.90</span></li>
-                            <li><span>Subtotal</span> <span>$59.90</span></li>
+                            @forelse (Cart::getContent() as $item)
+                                <li><span>{{ $item->name }}</span> <span>${{ $item->price }}</span></li>
+                            @empty
+                                <li><span>No items in cart</span></li>
+
+                            @endforelse
+                            <li><span>Subtotal</span> <span>${{ Cart::getSubTotal() }}</span></li>
                             <li><span>Shipping</span> <span>Free</span></li>
-                            <li><span>Total</span> <span>$59.90</span></li>
+                            <li><span>Total</span> <span>${{ Cart::getTotal() }}</span></li>
                         </ul>
 
-                        <div id="accordion" role="tablist" class="mb-4">
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingOne">
-                                    <h6 class="mb-0">
-                                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><i class="fa fa-circle-o mr-3"></i>Paypal</a>
-                                    </h6>
+                        <div class="mb-4 mt-5">
+                            <h5 class="mb-4">Pay with stripe</h5>
+                            <p class="text-muted">
+                                Pay with your credit card via Stripe. TEST MODE ENABLED. In test mode, you can use the card number 4242424242424242 with any CVC and a valid expiration date or check the Testing Stripe documentation for more card numbers.
+                            </p>
+                            <div class="mt-3">
+                                <div class="form-group">
+                                    <label for="name_on_card">Name on Card</label>
+                                    <input type="text" name="name_on_card" id="name_on_card" class="form-control" placeholder="Name on Card">
                                 </div>
 
-                                <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integ er bibendum sodales arcu id te mpus. Ut consectetur lacus.</p>
+                                <div class="form-group">
+                                    <label for="card-element">
+                                        Credit or Debit Card
+                                    </label>
+                                    <div id="card-element">
+                                        <!-- A Stripe Element will be inserted here. -->
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingTwo">
-                                    <h6 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="fa fa-circle-o mr-3"></i>cash on delievery</a>
-                                    </h6>
-                                </div>
-                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quis in veritatis officia inventore, tempore provident dignissimos.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingThree">
-                                    <h6 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i class="fa fa-circle-o mr-3"></i>credit card</a>
-                                    </h6>
-                                </div>
-                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo sint repudiandae suscipit ab soluta delectus voluptate, vero vitae</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingFour">
-                                    <h6 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour"><i class="fa fa-circle-o mr-3"></i>direct bank transfer</a>
-                                    </h6>
-                                </div>
-                                <div id="collapseFour" class="collapse show" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est cum autem eveniet saepe fugit, impedit magni.</p>
-                                    </div>
-                                </div>
+
+                                <!-- Used to display form errors. -->
+                                <div id="card-errors" role="alert"></div>
                             </div>
                         </div>
 
-                        <a href="#" class="btn essence-btn">Place Order</a>
+                        <div class="text-muted mb-4">
+                            <small>
+                                Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.
+                            </small>
+                        </div>
+
+                        <a href="#" class="btn btn-primary btn-block">Place Order</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- ##### Checkout Area End ##### -->
+@endsection
+
+@section('stripe-js')
+  <!-- Stripe JS -->
+  <script type="text/javascript">
+    // Create a Stripe client.
+    var stripe = Stripe('pk_test_FWx9UXw0Vz85nFoGptGxcad4');
+    // Create an instance of Elements.
+    var elements = stripe.elements();
+    // Custom styling can be passed to options when creating an Element.
+    // (Note that this demo uses a wider set of styles than the guide below.)
+    var style = {
+    base: {
+      color: '#495057',
+      lineHeight: '18px',
+      fontFamily: '"Poppins", sans-serif',
+      fontSize: '16px',
+    },
+    invalid: {
+      color: '#fa755a',
+      iconColor: '#fa755a'
+    }
+    };
+    // Create an instance of the card Element.
+    var card = elements.create('card', {
+      hidePostalCode: true,
+      style: style
+    });
+    // Add an instance of the card Element into the `card-element` <div>.
+    card.mount('#card-element');
+    // Handle real-time validation errors from the card Element.
+    card.addEventListener('change', function(event) {
+    var displayError = document.getElementById('card-errors');
+    if (event.error) {
+      displayError.textContent = event.error.message;
+    } else {
+      displayError.textContent = '';
+    }
+    });
+    // Handle form submission.
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      stripe.createToken(card).then(function(result) {
+        if (result.error) {
+          // Inform the user if there was an error.
+          var errorElement = document.getElementById('card-errors');
+          errorElement.textContent = result.error.message;
+        } else {
+          // Send the token to your server.
+          stripeTokenHandler(result.token);
+        }
+      });
+    });
+    function stripeTokenHandler(token) {
+      // Insert the token ID into the form so it gets submitted to the server
+      var form = document.getElementById('payment-form');
+      var hiddenInput = document.createElement('input');
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', 'stripeToken');
+      hiddenInput.setAttribute('value', token.id);
+      form.appendChild(hiddenInput);
+      // Submit the form
+      form.submit();
+    }
+  </script>
 @endsection

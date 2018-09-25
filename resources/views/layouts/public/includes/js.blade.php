@@ -17,4 +17,12 @@
     //     });
     // });
 </script>
+<script type="text/javascript">
+    window.setTimeout(function() {
+        $(".alert").fadeTo(0, 0).hide(500, function(){
+            $(this).remove();
+        });
+    }, 4000);
+</script>
 @yield('map-js')
+@yield('stripe-js')

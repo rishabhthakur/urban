@@ -12631,14 +12631,14 @@ img {
 
 .checkout_details_area form .form-control {
   height: 42px;
-  border: 1px solid #e9ecef;
+  border: 1px solid #ced4da;
   background-color: transparent;
   border-radius: 0;
 }
 
 .checkout_details_area form .nice-select {
   border-radius: 0;
-  border: 1px solid #e9ecef;
+  border: 1px solid #ced4da;
 }
 
 .checkout_details_area form .nice-select .list {
@@ -13270,5 +13270,47 @@ img {
 
 .breakpoint-on .classy-navbar .classy-menu {
   overflow-y: hidden;
+}
+
+/* Hard Resets */
+
+label {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.classynav ul li.megamenu-item > a::after,
+.classynav > ul > li.cn-dropdown-item.has-down > .dd-arrow,
+.classynav > ul > li.megamenu-item > .dd-arrow {
+  display: none;
+}
+
+.breakpoint-on .classynav > ul > li > a {
+  background-color: transparent !important;
+  border-bottom: none;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.nav-brand img {
+  height: 20px;
+  margin-bottom: 7px;
+}
+
+.alert {
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+  min-width: 350px;
+  z-index: 9999999999999999;
+}
+
+.alert-white {
+  background-color: #fff !important;
+  color: #8898aa;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.45);
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.45);
 }
 

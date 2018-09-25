@@ -40,6 +40,24 @@ class LoginController extends Controller
     }
 
     /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm() {
+        session()->put('previousUrl', url()->previous());
+        return view('auth.login');
+    }
+
+    /**
+     * Redirects to previous URL after login.
+     * @return string $url
+     */
+    public function redirectTo() {
+        return str_replace(url('/'), '', session()->get('previousUrl', '/'));
+    }
+
+    /**
      * The user has been authenticated.
      *
      * @param  \Illuminate\Http\Request  $request
