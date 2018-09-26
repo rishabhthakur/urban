@@ -41,23 +41,34 @@
                     <div id="notifications" class="list-group list-group-flush">
                         @forelse (getNotifications() as $not)
                             <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                <div>
-                                    <strong>{{ $not->data['name'] }}</strong> {{ $not->data['message'] }}
-                                </div>
                                 @switch($not->type)
+                                    @case("App\Notifications\ProductStatus")
+                                        <div>
+                                            {{ $not->data['message'] }}
+                                        </div>
+                                        <span class="text-primary">
+                                            <small>No items in shop.</small>
+                                        </span>
+                                        @break
                                     @case("App\Notifications\NewUserRegistration")
+                                        <div>
+                                            <strong>{{ $not->data['name'] }}</strong> {{ $not->data['message'] }}
+                                        </div>
                                         <span class="text-primary">
                                             <small>New customer registration.</small>
                                         </span>
                                         @break
                                     @case("App\Notifications\CustomerPurchase")
+                                        <div>
+                                            <strong>{{ $not->data['name'] }}</strong> {{ $not->data['message'] }}
+                                        </div>
                                         <span class="text-primary">
                                             <small>New order placed.</small>
                                         </span>
                                         @break
                                     @default
                                         <span class="text-primary">
-                                            <small>System report.</small>
+                                            <small>{{ $not->data['name'] }}</small>
                                         </span>
                                 @endswitch
                                 <div class="d-flex w-100 justify-content-between">

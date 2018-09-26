@@ -15,6 +15,9 @@
 @import 'vendor/magnific-popup.css';
 @import 'vendor/nice-select.css';
 
+// Custom utilities
+@import 'util';
+
 
 .navbar-laravel {
   background-color: #fff;
@@ -1618,6 +1621,9 @@ img {
         padding: 20px 0;
         border-bottom: 2px solid $border-color;
         font-weight: 600;
+            &:last-child {
+                border-bottom: none;
+            }
     }
     .card-header h6 a {
         display: block;

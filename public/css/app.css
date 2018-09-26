@@ -2972,7 +2972,7 @@ textarea.form-control {
   line-height: 50px;
   letter-spacing: 1.5px;
   display: inline-block;
-  font-weight: 400;
+  font-weight: 600;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -3660,14 +3660,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-link {
-  font-weight: 400;
+  font-weight: 600;
   color: #5e72e4;
   background-color: transparent;
 }
 
 .btn-link:hover {
   color: #233dd2;
-  text-decoration: underline;
+  text-decoration: none;
   background-color: transparent;
   border-color: transparent;
 }
@@ -10671,6 +10671,14 @@ a.text-dark:focus {
   }
 }
 
+.h-100vh {
+  height: 100vh !important;
+}
+
+.mt--85 {
+  margin-top: -85px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -12676,6 +12684,10 @@ img {
   padding: 20px 0;
   border-bottom: 2px solid #e9ecef;
   font-weight: 600;
+}
+
+.order-details-confirmation .order-details-form li:last-child {
+  border-bottom: none;
 }
 
 .order-details-confirmation .card-header h6 a {

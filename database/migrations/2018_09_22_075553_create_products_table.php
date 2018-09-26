@@ -18,12 +18,11 @@ class CreateProductsTable extends Migration {
             $table->bigInteger('regular_price');
             $table->mediumText('short_description')->nullable();
             $table->text('description');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('sku')->nullable();
             $table->integer('brand_id')->nullable();
             $table->integer('quantity')->nullable();
             $table->boolean('stock_status');
-            $table->boolean('manage_stock');
             $table->float('weight')->nullable();
             $table->float('length')->nullable();
             $table->float('width')->nullable();

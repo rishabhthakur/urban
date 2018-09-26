@@ -15,7 +15,7 @@ class MaintenanceViewController extends Controller {
 	 */
 	public function index() {
         if(!Settings::first()->status) {
-            return view('splash.maintenance');
+            return view('errors.503');
         } else {
             return redirect(route('home'));
         }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMediasProductTable extends Migration
+class CreateMediaProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMediasProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('medias_product', function (Blueprint $table) {
+        Schema::create('media_product', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('media_id')->unsigned()->nullable();
             $table->foreign('media_id')->references('id')->on('media')

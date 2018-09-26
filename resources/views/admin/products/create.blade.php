@@ -1,7 +1,8 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<form class="d-inline" action="index.html" method="post">
+<form class="d-inline" action="{!! route('admin.products.store') !!}" method="post" enctype="multipart/form-data">
+    {{ csrf_field() }}
     <div class="row">
         <div class="col-md-8">
             <div class="card">
@@ -16,7 +17,7 @@
                             </span>
                         @endif
                     </div>
-                    <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} row mb-4">
+                    <div class="form-group{{ $errors->has('regular_price') ? ' has-danger' : '' }} row mb-4">
                         <div class="col">
                             <label for="regular_price">Regular Price</label>
                             <input type="text" name="regular_price" id="regular_price" class="form-control form-control" placeholder="Regular Price" value="{{ old('regular_price') }}" required>
@@ -167,21 +168,22 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
+                            <div class="bg-danger p-3 text-white rounded mb-3">
+                                Product attributes function disabled.
+                            </div>
+                            <p class="text-muted">
+                                Attribute must be selected in order for child attributes to be registered.
+                            </p>
                             @forelse ($attributes as $attribute)
                                 <div class="border rounded mb-2">
                                     <div class="p-2 border-bottom">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input attrb-cl" id="attrb{{ $attribute->id }}" value="{{ $attribute->id }}">
-                                            <label class="custom-control-label" for="attrb{{ $attribute->id }}">
-                                                <h6 class="mb-0">{{ $attribute->name }}</h6>
-                                            </label>
-                                        </div>
+                                        <h6 class="mb-0 text-uppercase">{{ $attribute->name }}</h6>
                                     </div>
                                     <div class="px-2 py-3 attrbs-container">
                                         @forelse ($attribute->children as $child)
                                             <div class="custom-control custom-checkbox custom-control-inline">
-                                                <input type="checkbox" class="custom-control-input" id="chld{{ $child->id }}" value="{{ $child->id }}">
-                                                <label class="custom-control-label" for="chld{{ $child->id }}">
+                                                <input type="checkbox" class="custom-control-input" name="attrb[]" id="attrb{{ $child->id }}" value="{{ $child->name }}" disabled>
+                                                <label class="custom-control-label" for="attrb{{ $child->id }}">
                                                     <strong>{{ $child->name }}</strong>
                                                 </label>
                                             </div>
@@ -273,16 +275,58 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h6 class="heading mb-5">Product Image</h6>
-                    <div class="input-group mb-3">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                        </div>
+                    <h6 class="heading">Product Image</h6>
+                    <div class="mb-3">
+                        <a href="#" data-toggle="modal" data-target="#productImageModal">
+                            Set product image
+                        </a>
                     </div>
                     <span class="text-muted form-text">
                         <small>Add product image or set multiple images for product gallery.</small>
                     </span>
+                </div>
+            </div>
+            <!-- Media modal -->
+            <div class="modal fade" id="productImageModal" tabindex="-1" role="dialog" aria-labelledby="productImageModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="productImageModalLabel">Product Image</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @if (count($medias) > 0)
+                                <select multiple="multiple" class="image-picker show-html" id="product-image" name="medias[]">
+                                    @foreach ($medias as $media)
+                                        <option data-img-src="{{ asset($media->url) }}" value="{{ $media->id }}">{{ $media->name }}</option>
+                                    @endforeach
+                                </select>
+                                <hr>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="images" multiple="multiple" name="images[]">
+                                    <label class="custom-file-label" for="images">Choose files</label>
+                                </div>
+                                <span class="text-muted form-text">
+                                    <small>Upload new? You can upload multiple files at the same time.</small>
+                                </span>
+                            @else
+                                <p>
+                                    No media items found.
+                                </p>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="images" multiple="multiple" name="images[]">
+                                    <label class="custom-file-label" for="images">Choose files</label>
+                                </div>
+                                <span class="text-muted form-text">Upload new? You can upload multiple files at the same time.</span>
+                            @endif
+                        </div>
+                        <div class="modal-footer">
+                            {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="card">
@@ -307,7 +351,7 @@
                     <h6 class="heading mb-3">Product Categories</h6>
                     @forelse ($categories as $category)
                         <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" id="category{{ $category->id }}" value="{{ $category->id }}">
+                            <input type="checkbox" class="custom-control-input" name="categories[]" id="category{{ $category->id }}" value="{{ $category->id }}">
                             <label class="custom-control-label" for="category{{ $category->id }}"> {{ $category->name }}</label>
                         </div>
                     @empty
@@ -327,8 +371,8 @@
                     <h6 class="heading mb-3">Product Tags</h6>
                     @forelse ($tags as $tag)
                         <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" id="category{{ $tag->id }}" value="{{ $tag->id }}">
-                            <label class="custom-control-label" for="category{{ $tag->id }}"> {{ $tag->name }}</label>
+                            <input type="checkbox" class="custom-control-input" id="tag{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
+                            <label class="custom-control-label" for="tag{{ $tag->id }}"> {{ $tag->name }}</label>
                         </div>
                     @empty
                         <span class="text-muted">
@@ -380,18 +424,9 @@
                 }
             });
             // Product attributes selector
-            if ($(".attrb-cl").is(":checked")) {
-                $(".attrbs-container").show();
-            } else {
-                $(".attrbs-container").hide();
-            }
-            $(".attrb-cl").click(function () {
-                if ($(this).is(":checked")) {
-                    $(".attrbs-container").show();
-                } else {
-                    $(".attrbs-container").hide();
-                }
-            });
+
+            // Image picker initialization
+            $("#product-image").imagepicker();
         });
     </script>
 @endsection

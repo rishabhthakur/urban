@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo;
 
     /**
      * Create a new controller instance.
@@ -54,7 +54,11 @@ class LoginController extends Controller
      * @return string $url
      */
     public function redirectTo() {
-        return str_replace(url('/'), '', session()->get('previousUrl', '/'));
+        // dd(session()->get('previousUrl'));
+        if(session()->has('previousUrl')) {
+            $this->redirectTo =  str_replace(url('/'), '', session()->get('previousUrl'));
+        }
+        return $this->redirectTo ?? '/';
     }
 
     /**
@@ -65,12 +69,8 @@ class LoginController extends Controller
      * @return mixed
      */
     protected function authenticated(Request $request, $user) {
-        if (Auth::user()) {
-            if(Auth::user()->role_id <= 3) {
-                return redirect(route('admin'));
-            }
-        } else {
-            return redirect(route('login'));
+        if(Auth::user()->role_id <= 3) {
+            return redirect(route('admin'));
         }
     }
 }

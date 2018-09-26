@@ -2,13 +2,13 @@
 
 @section('splash')
     <h1 class="display-1">
-        404
+        500
     </h1>
     <h3>
-        Page not found
+        Internal server error
     </h3>
     <p>
-        We can't seem to find the page you're looking for.
+        Our website is currently undergoing scheduled maintenance. We Should be back shortly. Thank you for your patience.
     </p>
     <p>
         <a href="{!! route('home') !!}" class="btn btn-primary">Go back</a>

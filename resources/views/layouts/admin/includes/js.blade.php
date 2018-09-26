@@ -4,6 +4,7 @@
 <script type="text/javascript" src="{!! asset('vendor/customScrollbar/jquery.mCustomScrollbar.concat.min.js') !!}"></script>
 <script src="{{ asset('vendor/tinymce/jquery.tinymce.min.js') }}"></script>
 <script src="{{ asset('vendor/tinymce/tinymce.min.js') }}"></script>
+<script src="{{ asset('vendor/image-picker/image-picker.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#sidebar").mCustomScrollbar({

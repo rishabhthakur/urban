@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Activity;
 use App\FileSystem;
+use App\Media;
 use App\MediaProduct;
 use App\Scategory;
 use App\Attribute;
 use App\Stag;
 use App\Brand;
-use App\Media;
 
 class ProductController extends Controller {
     /**
@@ -19,9 +20,10 @@ class ProductController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('admin.products.index');
+    public function index() {
+        return view('admin.products.index')->with([
+            'products' => Product::orderBy('created_at', 'DESC')->get()
+        ]);
     }
 
     /**
@@ -31,6 +33,7 @@ class ProductController extends Controller {
      */
     public function create() {
         return view('admin.products.create')->with([
+            'medias' => Media::all(),
             'categories' => Scategory::all(),
             'tags' => Stag::all(),
             'brands' => Brand::all(),
@@ -46,34 +49,30 @@ class ProductController extends Controller {
      */
     public function store(Request $request) {
         $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|string',
             'description' => 'required',
             'regular_price' => 'required',
             'brand' => 'required',
             'categories' => 'required',
-            'tags' => 'required',
-            'quantity' => 'required'
+            'tags' => 'required'
         ]);
 
         // Check for Slug
-        if(isset($request->slug)) {
-            $slug = $request->slug;
-        } else {
-            $slug = str_slug($request->name);
-        }
-
-        // Check for Gender
-        if(isset($request->genders)) {
-            $genders = $request->genders;
-        } else {
-            $genders = 3;
-        }
+        // if(isset($request->slug)) {
+        //     $slug = $request->slug;
+        // } else {
+        //     $slug = str_slug($request->name);
+        // }
 
         // Set Stock Status
-        if($request->quantity == 0) {
-            $stock_status = false;
-        } else {
+        if (isset($request->stock_status)) {
             $stock_status = true;
+        } else {
+            if($request->quantity == 0) {
+                $stock_status = false;
+            } else {
+                $stock_status = true;
+            }
         }
 
         $product = Product::create([
@@ -82,7 +81,7 @@ class ProductController extends Controller {
             'sale_price' => $request->sale_price,
             'short_description' => $request->short_description,
             'description' => $request->description,
-            'slug' => $slug,
+            'slug' => str_slug($request->name . str_random(7)),
             'brand_id' => $request->brand,
             'quantity' => $request->quantity,
             'stock_status' => $stock_status,
@@ -93,7 +92,12 @@ class ProductController extends Controller {
         ]);
 
         // Add media function
-        $this->addMedia($request->images, $products->id);
+        if (isset($request->medias)) {
+            $this->addMedia($request->medias, $product->id);
+        } elseif ($request->images) {
+            $this->addImages($request->images, $product->id);
+        }
+
 
         // Product Tags, Categories and Sizes Register into Database
         $product->categories()->attach($request->categories);
@@ -116,46 +120,47 @@ class ProductController extends Controller {
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
+    private function addImages($media_input, $product_id) {
+        $medias = $media_input;
+        foreach ($medias as $media) {
+
+            $dir = FileSystem::where('name', 'products')->first();
+
+            // Product Image Re-location and Re-naming
+            $media_new_name = time().$media->getClientOriginalName();
+            $media->move('uploads/products', $media_new_name);
+            $murl = 'uploads/'. $dir->name . '/' . $media_new_name;
+            $mpath = public_path('uploads/'. $dir->name) . '/' . $media_new_name;
+
+            // Enter Media Data to Database
+            $prmedia = Media::create([
+                'name' => $media_new_name,
+                'user_id' => Auth::id(),
+                'dir_id' => $dir->id,
+                'name' => $media_new_name,
+                'slug' => $murl,
+                'url' => $murl,
+                'size' => number_format(filesize($mpath) * .0009765625),
+                'mime_type' => $media->getClientMimeType(),
+                'dimensions' => getimagesize($murl)[0] . ' x ' . getimagesize($murl)[1],
+            ]);
+
+            // Enter Data into MediaProduct Pivot Table
+            MediaProduct::create([
+                'media_id' => $prmedia->id,
+                'product_id' => $product_id,
+            ]);
+        }
+    }
+
     private function addMedia($media_input, $product_id) {
-        if(isset($media_input)) {
-            $medias = $media_input;
-            foreach ($medias as $media) {
-
-                $dir = FileSystem::where('name', 'products')->first();
-
-                // Product Image Re-location and Re-naming
-                $media_new_name = time().$media->getClientOriginalName();
-                $media->move('uploads/products', $media_new_name);
-                $murl = 'uploads/'. $dir->name . '/' . $media_new_name;
-                $mpath = public_path('uploads/'. $dir->name) . '/' . $media_new_name;
-
-                // Enter Media Data to Database
-                $prmedia = Media::create([
-                    'name' => $media_new_name,
-                    'dir_id' => $dir->id,
-                    'name' => $media_new_name,
-                    'slug' => $murl,
-                    'url' => $murl,
-                    'size' => number_format(filesize($mpath) * .0009765625),
-                    'mime_type' => $media->getClientMimeType(),
-                    'dimensions' => getimagesize($murl)[0] . ' x ' . getimagesize($murl)[1],
-                ]);
-
-                // Enter Data into MediaProduct Pivot Table
-                MediaProduct::create([
-                    'media_id' => $prmedia->id,
-                    'product_id' => $product_id,
-                ]);
-            }
-        } else {
-            $medias = $media_input;
-            foreach ($medias as $media) {
-                // Enter Data into MediaProduct Pivot Table
-                MediaProduct::create([
-                    'media_id' => $media,
-                    'product_id' => $product_id,
-                ]);
-            }
+        $medias = $media_input;
+        foreach ($medias as $media) {
+            // Enter Data into MediaProduct Pivot Table
+            MediaProduct::create([
+                'media_id' => $media,
+                'product_id' => $product_id,
+            ]);
         }
     }
 
@@ -177,12 +182,76 @@ class ProductController extends Controller {
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Product  $slug
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
-    {
-        //
+    public function update(Request $request, $slug) {
+        $this->validate($request, [
+            'name' => 'required|string',
+            'description' => 'required',
+            'regular_price' => 'required',
+            'brand' => 'required',
+            'categories' => 'required',
+            'tags' => 'required'
+        ]);
+
+        $product = Product::where('slug', $slug);
+
+        // Check for Slug
+        // if(isset($request->slug)) {
+        //     $slug = $request->slug;
+        // } else {
+        //     $slug = str_slug($request->name);
+        // }
+
+        // Set Stock Status
+        if (isset($request->stock_status)) {
+            $stock_status = true;
+        } else {
+            if($request->quantity == 0) {
+                $stock_status = false;
+            } else {
+                $stock_status = true;
+            }
+        }
+
+        $product = Product::create([
+            'name' => $request->name,
+            'regular_price' => $request->regular_price,
+            'sale_price' => $request->sale_price,
+            'short_description' => $request->short_description,
+            'description' => $request->description,
+            'slug' => str_slug($request->name . str_random(7)),
+            'brand_id' => $request->brand,
+            'quantity' => $request->quantity,
+            'stock_status' => $stock_status,
+            'weight' => $request->weight,
+            'length' => $request->length,
+            'width' => $request->width,
+            'height' => $request->height
+        ]);
+
+        // Add media function
+        if (isset($request->medias)) {
+            $this->addMedia($request->medias, $product->id);
+        } elseif ($request->images) {
+            $this->addImages($request->images, $product->id);
+        }
+
+
+        // Product Tags, Categories and Sizes Register into Database
+        $product->categories()->attach($request->categories);
+        $product->tags()->attach($request->tags);
+        // $product->genders()->attach($genders);
+        // if(isset($request->sizes)) {
+        //     $product->sizes()->attach($request->sizes);
+        // }
+
+        $this->logActivity($product->name);
+
+        return redirect(route('admin.products'))->with([
+            'success' => 'New product added.'
+        ]);
     }
 
     /**

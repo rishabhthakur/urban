@@ -17692,6 +17692,14 @@ ul ul a {
   color: #000000 !important;
 }
 
+.bg-warning-light {
+  background-color: #feefcf !important;
+}
+
+.border-warning {
+  border-left: 15px solid #fb6340;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -17761,5 +17769,10 @@ main {
   top: 30px;
   right: 30px;
   z-index: 999999999;
+}
+
+.image_picker_image {
+  width: 100px !important;
+  height: auto;
 }
 

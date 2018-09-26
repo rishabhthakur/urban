@@ -45,7 +45,6 @@ class Product extends Model {
         'sku',
         'slug',
         'brand_id',
-        'manage_stock',
         'quantity',
         'stock_status',
         'weight',

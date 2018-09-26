@@ -13,8 +13,7 @@ class PublicViewsController extends Controller {
     }
 
     public function index() {
-        return view('errors.503');
-        // return view('welcome');
+        return view('welcome');
     }
 
     public function about() {
@@ -42,16 +41,12 @@ class PublicViewsController extends Controller {
     }
 
     public function checkout() {
-        if (Auth::check()) {
-            if (!count(Cart::getContent()) < 0) {
-                return view('checkout');
-            } else {
-                return back()->with([
-                    'error' => 'Your cart is empty'
-                ]);
-            }
+        if (count(Cart::getContent()) != 0) {
+            return view('checkout');
         } else {
-            redirect(route('login'));
+            return redirect(route('cart'))->with([
+                'error' => 'Your cart is empty'
+            ]);
         }
     }
 }

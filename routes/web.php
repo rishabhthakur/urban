@@ -59,7 +59,7 @@ Route::group(['middleware' => 'maintenance'], function() {
 
         // Customer accounts
         Route::get('/', [
-            'uses' => 'HomeController@index',
+            'uses' => 'ProfileController@index',
             'as' => 'account'
         ]);
     });
@@ -127,6 +127,24 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::get('/create', [
             'uses' => 'ProductController@create',
             'as' => 'admin.products.create'
+        ]);
+
+        // Admin add new products
+        Route::post('/store', [
+            'uses' => 'ProductController@store',
+            'as' => 'admin.products.store'
+        ]);
+
+        // Admin edit products
+        Route::get('/edit', [
+            'uses' => 'ProductController@edit',
+            'as' => 'admin.products.edit'
+        ]);
+
+        // Admin edit products
+        Route::post('/update', [
+            'uses' => 'ProductController@update',
+            'as' => 'admin.products.update'
         ]);
 
         // Admin products categories

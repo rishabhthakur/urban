@@ -28,7 +28,7 @@ class Maintenance
         if($mode) {
             return $next($request);
         } else {
-            return redirect(route('errors.503'));
+            return redirect(route('maintenance'));
         }
     }
 }

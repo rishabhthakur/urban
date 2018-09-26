@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Product;
+use App\Scategory;
+use App\Stag;
+use App\Brand;
+use App\Attribute;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,8 +32,13 @@ class AdminController extends Controller {
  	 * @return void
 	 */
     public function index() {
+        $this->productsStatus();
         return view('admin.index')->with([
             'activities' => Activity::orderBy('created_at', 'DESC')->take(7)->get()
         ]);
+    }
+
+    protected function productsStatus() {
+        //
     }
 }
