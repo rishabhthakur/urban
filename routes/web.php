@@ -9,7 +9,6 @@ Route::get('/admin/login', [
     'as' => 'admin.login'
 ]);
 
-
 /**
  * All public routes
  * @var null
@@ -105,6 +104,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::get('/', [
             'uses' => 'UsersController@index',
             'as' => 'admin.users'
+        ]);
+
+        // Admin users customers list
+        Route::get('/customers', [
+            'uses' => 'UsersController@customers',
+            'as' => 'admin.users.customers'
         ]);
 
         // Admin add new users

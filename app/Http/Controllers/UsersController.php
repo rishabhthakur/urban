@@ -20,6 +20,19 @@ class UsersController extends Controller {
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function customers() {
+        return view('admin.users.customers')->with([
+            'users' => User::where('role_id', 4)
+                            ->orderBy('created_at')
+                            ->get()
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

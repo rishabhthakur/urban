@@ -96,19 +96,28 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col">
-                                    <h1>190</h1>
-                                    <a href="#">
+                                    <h1>
+                                        @if ($products->all())
+                                            {{ count($products->all()) }}
+                                        @endif
+                                    </h1>
+                                    <a href="{!! route('admin.products') !!}">
                                         Products
                                     </a>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
-                                        <span class="badge badge-danger">
-                                            <i class="fas fa-exclamation-circle mr-1"></i> <strong>50</strong> Out of stock
-                                        </span>
-                                        <span class="badge badge-warning">
-                                            <i class="fas fa-exclamation-circle mr-1"></i> <strong>50</strong> Low in stock
-                                        </span>
+                                        @if ($products->getOutOfStock() && count($products->getOutOfStock()) > 0)
+                                            <span class="badge badge-danger">
+                                                <i class="fas fa-exclamation-circle mr-1"></i> <strong>{{ count($products->getOutOfStock()) }}</strong> Out of stock
+                                            </span>
+                                        @endif
+                                        @if ($products->getLowStock() && count($products->getLowStock()) > 0)
+                                            <span class="badge badge-warning">
+                                                <i class="fas fa-exclamation-circle mr-1"></i> <strong>{{ count($products->getLowStock()) }}</strong> Low in stock
+                                            </span>
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>

@@ -18,14 +18,13 @@ class PublicViewsController extends Controller {
     use Searchable;
 
     public function __construct() {
-        $this->middleware('maintenance');
+        //
     }
 
     public function index() {
-        // Cart::clear();
-        // dd(Cart::getContent());
+        $products = new Product;
         return view('welcome')->with([
-            'latest' => Product::where('popular', true)->latest()->take(7)->get()
+            'latest' => $products::where('popular', true)->latest()->take(7)->get()
         ]);
     }
 

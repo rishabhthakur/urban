@@ -92,4 +92,24 @@ class Product extends Model {
     public function medias() {
         return $this->belongsToMany('App\Media');
     }
+
+    public function getLowStock() {
+        foreach ($this->all() as $product) {
+            if($product->quantity < 2) {
+                return $lowStock = [
+                    'name' => $product->name
+                ];
+            }
+        }
+    }
+
+    public function getOutOfStock() {
+        foreach ($this->all() as $product) {
+            if($product->quantity == 0) {
+                return $outStock = [
+                    'name' => $product->name
+                ];
+            }
+        }
+    }
 }

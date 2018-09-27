@@ -32,9 +32,10 @@ class AdminController extends Controller {
  	 * @return void
 	 */
     public function index() {
+        $products = new Product;
         return view('admin.index')->with([
-            'activities' => Activity::orderBy('created_at', 'DESC')->take(7)->get()
+            'activities' => Activity::orderBy('created_at', 'DESC')->take(7)->get(),
+            'products' => $products
         ]);
     }
-
 }

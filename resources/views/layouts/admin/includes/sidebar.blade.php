@@ -129,8 +129,8 @@
                 <li @if (Route::currentRouteName() == 'admin.users') class="active" @endif>
                     <a href="{!! route('admin.users') !!}">All Users</a>
                 </li>
-                <li @if (Route::currentRouteName() == 'admin.users') class="active" @endif>
-                    <a href="{!! route('admin.users') !!}">Customers</a>
+                <li @if (Route::currentRouteName() == 'admin.users.customers') class="active" @endif>
+                    <a href="{!! route('admin.users.customers') !!}">Customers</a>
                 </li>
                 <li @if (Route::currentRouteName() == 'admin.users') class="active" @endif>
                     <a href="{!! route('admin.users') !!}">Staff</a>
