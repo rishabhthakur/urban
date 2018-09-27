@@ -118,6 +118,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             'as' => 'admin.users.create'
         ]);
 
+        // Admin add new users to database
+        Route::post('/store', [
+            'uses' => 'UsersController@store',
+            'as' => 'admin.users.store'
+        ]);
+
         // Admin user profile
         Route::get('/profile/{slug}', [
             'uses' => 'UsersController@profile',

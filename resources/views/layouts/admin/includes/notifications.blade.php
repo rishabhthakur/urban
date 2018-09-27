@@ -6,23 +6,21 @@
 </div> --}}
 
 @if(count($errors) > 0)
-  <div class="alert alert-danger alert-dismissible fade show m-0" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    <div class="mb-1">
-      <strong>Hold on cheif!</strong>
+    <div class="alert alert-danger alert-dismissible fade show m-0" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="mb-1">
+            <strong>Hold on cheif!</strong>
+        </div>
+        <ul class="list-unstyled mb-0">
+            @foreach($errors->all() as $error)
+                <li>
+                    {{ $error }}
+                </li>
+            @endforeach
+        </ul>
     </div>
-    <ul class="list-unstyled mb-0">
-      @foreach($errors->all() as $error)
-        <li>
-          <p class="m-0">
-            {{ $error }}
-          </p>
-        </li>
-      @endforeach
-    </ul>
-  </div>
 @endif
 
 @if(session('success') )

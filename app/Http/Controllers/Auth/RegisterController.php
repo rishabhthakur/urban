@@ -128,10 +128,10 @@ class RegisterController extends Controller
      * @return mixed
      */
     protected function registered(Request $request, $user) {
-        if(!Auth::user()->email_verified_at) {
-            return view('auth.verify');
-        } else {
-            return $request;
+        if(isset($request->fromAdmin)) {
+            if($request->fromAdmin) {
+                return redirect(route('admin.users.create'));
+            }
         }
     }
 }

@@ -9,6 +9,7 @@
                 <div class="card-body">
                     <h6 class="heading mb-5">Add New Product</h6>
                     <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                        <label for="name">Product Name</label>
                         <input type="text" name="name" id="name" class="form-control form-control" placeholder="Product Name" value="{{ old('name') }}" required>
 
                         @if ($errors->has('name'))

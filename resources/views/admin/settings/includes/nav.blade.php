@@ -12,7 +12,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link mb-sm-3 mb-md-0" href="#">
+        <a class="nav-link mb-sm-3 mb-md-0 @if (Route::currentRouteName() == 'admin.settings.discussions') active @endif" href="{!! route('admin.settings.discussions') !!}">
             <i class="fas fa-comments mr-1"></i>
             Discussion
         </a>

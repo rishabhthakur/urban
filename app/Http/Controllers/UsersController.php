@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Role;
+use App\Profile;
 
 class UsersController extends Controller {
+
+    private $user;
+
+    public function __construct() {
+        $this->users = new User;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +24,7 @@ class UsersController extends Controller {
      */
     public function index() {
         return view('admin.users.index')->with([
-            'users' => User::orderBy('created_at')->get()
+            'users' => $this->users->orderBy('created_at')->get()
         ]);
     }
 
@@ -26,7 +35,7 @@ class UsersController extends Controller {
      */
     public function customers() {
         return view('admin.users.customers')->with([
-            'users' => User::where('role_id', 4)
+            'users' => $this->users->where('role_id', 4)
                             ->orderBy('created_at')
                             ->get()
         ]);
@@ -38,7 +47,9 @@ class UsersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('admin.users.create');
+        return view('admin.users.create')->with([
+            'roles' => Role::all()
+        ]);
     }
 
     /**
@@ -48,7 +59,43 @@ class UsersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
+            'role' => 'required'
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'slug' => str_slug($request->name),
+            'role_id' => $request->role
+        ]);
+
+        // Will copy foo/test.php to bar/test.php
+        // overwritting it if necessary
+        if (!is_dir(public_path('uploads/avatar/'.strtolower($request->name)))) {
+            mkdir(public_path('uploads/avatar/'.strtolower($request->name)));
+        }
+        $strg = storage_path('app/public/avatars/user.jpg');
+        $publc = public_path('uploads/avatar/' .strtolower($request->name). '/user.jpg');
+        copy($strg, $publc);
+
+        // Create profile for user
+        Profile::create([
+            'user_id' => $user->id,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'job' => $request->job,
+            'location' => $request->location,
+            'avatar' => 'uploads/avatar/' .strtolower($request->name). '/user.jpg'
+        ]);
+
+        return back()->with([
+            'success' => 'New user created'
+        ]);
     }
 
     /**
@@ -59,7 +106,7 @@ class UsersController extends Controller {
      */
     public function profile($slug) {
         return view('admin.users.profile')->with([
-            'user' => User::where('slug', $slug)->first()
+            'user' => $this->users->where('slug', $slug)->first()
         ]);
     }
 
@@ -72,7 +119,7 @@ class UsersController extends Controller {
     public function activities($slug) {
         if (Auth::user()->role_id === 1) {
             return view('admin.users.activity')->with([
-                'user' => User::where('slug', $slug)->first()
+                'user' => $this->users->where('slug', $slug)->first()
             ]);
         } else {
             return redirect(route('admin'))->with([
@@ -89,7 +136,7 @@ class UsersController extends Controller {
      */
     public function edit($slug) {
         return view('admin.users.edit')->with([
-            'user' => User::where('slug', $slug)->first(),
+            'user' => $this->users->where('slug', $slug)->first(),
             'roles' => Role::all()
         ]);
     }

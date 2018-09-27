@@ -8,10 +8,13 @@ use Illuminate\Http\Request;
 
 class SettingsController extends Controller {
 
+    protected $settings;
     private $down;
+
 
     public function __construct() {
         $this->middleware('admin');
+        $this->settings = Settings::first();
         $this->down = storage_path('framework/down');
     }
 
@@ -22,8 +25,19 @@ class SettingsController extends Controller {
      */
     public function index() {
         return view('admin.settings.index')->with([
-            'settings' => Settings::first(),
+            'settings' => $this->settings,
             'roles' => Role::all()
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function discussions() {
+        return view('admin.settings.discussions')->with([
+            'settings' => $this->settings
         ]);
     }
 
@@ -34,7 +48,7 @@ class SettingsController extends Controller {
      */
     public function privacy() {
         return view('admin.settings.privacy')->with([
-            'settings' => Settings::first(),
+            'settings' => $this->settings,
             'roles' => Role::all()
         ]);
     }
@@ -71,7 +85,7 @@ class SettingsController extends Controller {
             $membership = 0;
         }
 
-        $settings = Settings::first();
+        $settings = $this->settings;
         $settings->site_name = $request->site_name;
         $settings->tagline = $request->tagline;
         $settings->description = $request->description;
@@ -95,7 +109,7 @@ class SettingsController extends Controller {
             'copyright_text' => 'required'
         ]);
 
-        $settings = Settings::first();
+        $settings = $this->settings;
 
         if(isset($request->status)) {
             $status = 1;
@@ -147,7 +161,7 @@ class SettingsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function privacy_status(Request $request) {
-        $settings = Settings::first();
+        $settings = $this->settings;
         if(isset($request->privacy)) {
             $privacy = 1;
         } else {
