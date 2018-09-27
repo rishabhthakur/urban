@@ -24,6 +24,18 @@ Route::group(['middleware' => 'maintenance'], function() {
         'as' => 'home'
     ]);
 
+    // Shop page
+    Route::get('/shop', [
+        'uses' => 'PublicViewsController@shop',
+        'as' => 'shop'
+    ]);
+
+    // Single product page
+    Route::get('/product/{slug}', [
+        'uses' => 'PublicViewsController@product',
+        'as' => 'product'
+    ]);
+
     // About page
     Route::get('/about', [
         'uses' => 'PublicViewsController@about',
@@ -42,13 +54,23 @@ Route::group(['middleware' => 'maintenance'], function() {
         'as' => 'contact'
     ]);
 
-    // Cart page
-    Route::get('/cart', [
-        'uses' => 'PublicViewsController@cart',
-        'as' => 'cart'
-    ]);
+    // Cart route group
+    Route::group(['prefix' => 'cart'], function() {
 
-    // Cart page
+        // Cart page
+        Route::get('/', [
+            'uses' => 'PublicViewsController@cart',
+            'as' => 'cart'
+        ]);
+
+        // Cart page
+        Route::post('/add/{id}', [
+            'uses' => 'CartController@store',
+            'as' => 'cart.add'
+        ]);
+    });
+
+    // Checkout page
     Route::get('/checkout', [
         'uses' => 'PublicViewsController@checkout',
         'as' => 'checkout'

@@ -32,13 +32,9 @@ class AdminController extends Controller {
  	 * @return void
 	 */
     public function index() {
-        $this->productsStatus();
         return view('admin.index')->with([
             'activities' => Activity::orderBy('created_at', 'DESC')->take(7)->get()
         ]);
     }
 
-    protected function productsStatus() {
-        //
-    }
 }

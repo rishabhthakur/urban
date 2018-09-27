@@ -30,8 +30,8 @@ class CartController extends Controller {
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function store(Request $request, $slug) {
-        $product = Product::where('slug', $slug)->first();
+    public function store(Request $request, $id) {
+        $product = Product::find($id);
 
         if($product->sale_price) {
             $price = $product->sale_price;
@@ -39,19 +39,32 @@ class CartController extends Controller {
             $price = $product->regular_price;
         }
 
+        // if(isset($request->qty)) {
+        //     $quantity = $request->qty;
+        // } else {
+        //     $quantity = 1;
+        // }
+
         $cartItem = Cart::add([
             'id' => $product->id,
             'name' => $product->name,
-            'image' => $product->image,
-            'qty' => $request->qty,
             'price' => $price,
-            'attributes' => [
-                'size' => $request->size,
-                'color' => $request->color
-            ]
+            'quantity' => 1
         ]);
 
-        Cart::associate($cartItem->rowId, 'App\Product');
+        // add single condition on a cart bases
+        $condition = new \Darryldecode\Cart\CartCondition(array(
+            'name' => 'VAT 12.5%',
+            'type' => 'tax',
+            'target' => 'subtotal', // this condition will be applied to cart's subtotal when getSubTotal() is called.
+            'value' => '12.5%',
+            'attributes' => array( // attributes field is optional
+                'description' => 'Value added tax',
+                'more_data' => 'more data here'
+            )
+        ));
+
+        // Cart::associate($cartItem->sessionKeyCartItems, 'App\Product');
         // dd($cartItem);
         return redirect()->back()->with('success', 'Item added to cart.');
     }
