@@ -19,6 +19,8 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
+                            <input type="hidden" name="admin" value="1">
+
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">

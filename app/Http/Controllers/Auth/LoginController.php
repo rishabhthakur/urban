@@ -69,8 +69,10 @@ class LoginController extends Controller
      * @return mixed
      */
     protected function authenticated(Request $request, $user) {
-        if(Auth::user()->role_id <= 3) {
-            return redirect(route('admin'));
+        if(isset($request->admin)) {
+            if($user->role_id <= 3) {
+                return redirect(route('admin'));
+            }
         }
     }
 }
