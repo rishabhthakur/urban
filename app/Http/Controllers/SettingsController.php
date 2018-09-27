@@ -8,8 +8,11 @@ use Illuminate\Http\Request;
 
 class SettingsController extends Controller {
 
+    private $down;
+
     public function __construct() {
         $this->middleware('admin');
+        $this->down = storage_path('framework/down');
     }
 
     /**
@@ -124,6 +127,15 @@ class SettingsController extends Controller {
         $settings->copyright = $copyright;
         $settings->copyright_text = $request->copyright_text;
         $settings->save();
+
+        if(!$status) {
+            touch($this->down);
+            // return view('errors.503');
+        } else {
+            if(file_exists($this->down)) {
+                unlink($this->down);
+            }
+        }
 
         return back()->with('success', 'Changes saved.');
     }

@@ -9,82 +9,78 @@ Route::get('/admin/login', [
     'as' => 'admin.login'
 ]);
 
-// Maintenance view
-Route::get('/maintenance', [
-    'uses' => 'MaintenanceViewController@index',
-    'as' => 'maintenance'
+
+/**
+ * All public routes
+ * @var null
+ */
+
+// Landing page
+Route::get('/', [
+    'uses' => 'PublicViewsController@index',
+    'as' => 'home'
 ]);
 
-// All public routes
-Route::group(['middleware' => 'maintenance'], function() {
+// Shop page
+Route::get('/shop', [
+    'uses' => 'PublicViewsController@shop',
+    'as' => 'shop'
+]);
 
-    // Landing page
+// Single product page
+Route::get('/product/{slug}', [
+    'uses' => 'PublicViewsController@product',
+    'as' => 'product'
+]);
+
+// About page
+Route::get('/about', [
+    'uses' => 'PublicViewsController@about',
+    'as' => 'about'
+]);
+
+// Blog page
+Route::get('/blog', [
+    'uses' => 'PublicViewsController@blog',
+    'as' => 'blog'
+]);
+
+// Contact page
+Route::get('/contact', [
+    'uses' => 'PublicViewsController@contact',
+    'as' => 'contact'
+]);
+
+// Cart route group
+Route::group(['prefix' => 'cart'], function() {
+
+    // Cart page
     Route::get('/', [
-        'uses' => 'PublicViewsController@index',
-        'as' => 'home'
+        'uses' => 'PublicViewsController@cart',
+        'as' => 'cart'
     ]);
 
-    // Shop page
-    Route::get('/shop', [
-        'uses' => 'PublicViewsController@shop',
-        'as' => 'shop'
+    // Cart page
+    Route::post('/add/{id}', [
+        'uses' => 'CartController@store',
+        'as' => 'cart.add'
     ]);
+});
 
-    // Single product page
-    Route::get('/product/{slug}', [
-        'uses' => 'PublicViewsController@product',
-        'as' => 'product'
+// Checkout page
+Route::get('/checkout', [
+    'uses' => 'PublicViewsController@checkout',
+    'as' => 'checkout'
+])->middleware('auth');
+
+// Member auth routes
+Route::group(['prefix' => 'account', 'middleware' => 'verified'], function() {
+
+    // Customer accounts
+    Route::get('/', [
+        'uses' => 'ProfileController@index',
+        'as' => 'account'
     ]);
-
-    // About page
-    Route::get('/about', [
-        'uses' => 'PublicViewsController@about',
-        'as' => 'about'
-    ]);
-
-    // Blog page
-    Route::get('/blog', [
-        'uses' => 'PublicViewsController@blog',
-        'as' => 'blog'
-    ]);
-
-    // Contact page
-    Route::get('/contact', [
-        'uses' => 'PublicViewsController@contact',
-        'as' => 'contact'
-    ]);
-
-    // Cart route group
-    Route::group(['prefix' => 'cart'], function() {
-
-        // Cart page
-        Route::get('/', [
-            'uses' => 'PublicViewsController@cart',
-            'as' => 'cart'
-        ]);
-
-        // Cart page
-        Route::post('/add/{id}', [
-            'uses' => 'CartController@store',
-            'as' => 'cart.add'
-        ]);
-    });
-
-    // Checkout page
-    Route::get('/checkout', [
-        'uses' => 'PublicViewsController@checkout',
-        'as' => 'checkout'
-    ])->middleware('auth');
-
-    // Member auth routes
-    Route::group(['prefix' => 'account', 'middleware' => 'verified'], function() {
-
-        // Customer accounts
-        Route::get('/', [
-            'uses' => 'ProfileController@index',
-            'as' => 'account'
-        ]);
-    });
 });
 
 /* Admin routes */
