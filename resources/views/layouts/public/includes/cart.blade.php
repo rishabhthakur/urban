@@ -4,7 +4,7 @@
 
     <!-- Cart Button -->
     <div class="cart-button">
-        <a href="#" id="rightSideCart"><img src="img/core-img/bag.svg" alt=""> <span>{{ count(Cart::getContent()) }}</span></a>
+        <a href="#" id="rightSideCart"><i class="fas fa-shopping-bag"></i> <span>{{ count(Cart::getContent()) }}</span></a>
     </div>
 
     <div class="cart-content d-flex">

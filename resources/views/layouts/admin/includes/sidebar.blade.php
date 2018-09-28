@@ -34,6 +34,20 @@
                 </li>
             </ul>
         </li>
+        <li @if (Route::currentRouteName() == 'admin.messages') class="active" @endif>
+            <a href="{!! route('admin.messages') !!}" class="clearfix">
+                <i class="fas fa-envelope mr-2"></i>
+                Messages @if (count(getUnreadMessages()) > 0)
+                     <span class="badge badge-pill badge-danger bg-danger text-white float-right">{{ __(count(getUnreadMessages())) }}</span>
+                @endif
+            </a>
+        </li>
+        <li @if (Route::currentRouteName() == 'admin') class="active" @endif>
+            <a href="{!! route('admin') !!}">
+                <i class="fas fa-newspaper mr-2"></i>
+                Newsletter
+            </a>
+        </li>
         <li>
             <a href="#sales" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-shopping-cart mr-2"></i>
@@ -117,6 +131,8 @@
         <li
         @if (
             Route::currentRouteName() == 'admin.users' ||
+            Route::currentRouteName() == 'admin.users.customers' ||
+            Route::currentRouteName() == 'admin.users.staff' ||
             Route::currentRouteName() == 'admin.users.create'
             )
              class="active"
@@ -132,8 +148,8 @@
                 <li @if (Route::currentRouteName() == 'admin.users.customers') class="active" @endif>
                     <a href="{!! route('admin.users.customers') !!}">Customers</a>
                 </li>
-                <li @if (Route::currentRouteName() == 'admin.users') class="active" @endif>
-                    <a href="{!! route('admin.users') !!}">Staff</a>
+                <li @if (Route::currentRouteName() == 'admin.users.staff') class="active" @endif>
+                    <a href="{!! route('admin.users.staff') !!}">Staff</a>
                 </li>
                 <li @if (Route::currentRouteName() == 'admin.users.create') class="active" @endif>
                     <a href="{!! route('admin.users.create') !!}">Add New</a>
@@ -147,14 +163,22 @@
             </a>
             <ul class="collapse list-unstyled" id="customize">
                 <li>
-                    <a href="#">Theme</a>
+                    <a href="#">General</a>
                 </li>
                 <li>
                     <a href="#">Pages</a>
                 </li>
             </ul>
         </li>
-        <li @if (Route::currentRouteName() == 'admin.settings') class="active" @endif>
+        <li @if (
+                Route::currentRouteName() == 'admin.settings' ||
+                Route::currentRouteName() == 'admin.settings.shop' ||
+                Route::currentRouteName() == 'admin.settings.discussion' ||
+                Route::currentRouteName() == 'admin.settings.media' ||
+                Route::currentRouteName() == 'admin.settings.privacy'
+                )
+                class="active"
+            @endif>
             <a href="#settings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-cog mr-2"></i>
                 Settings
@@ -163,13 +187,13 @@
                 <li @if (Route::currentRouteName() == 'admin.settings') class="active" @endif>
                     <a href="{!! route('admin.settings') !!}">General</a>
                 </li>
-                <li>
+                <li @if (Route::currentRouteName() == 'admin.settings.shop') class="active" @endif>
                     <a href="{!! route('admin.settings.shop') !!}">Shop</a>
                 </li>
-                <li>
-                    <a href="{!! route('admin.settings.discussions') !!}">Discussion</a>
+                <li @if (Route::currentRouteName() == 'admin.settings.discussion') class="active" @endif>
+                    <a href="{!! route('admin.settings.discussion') !!}">Discussion</a>
                 </li>
-                <li>
+                <li @if (Route::currentRouteName() == 'admin.settings.media') class="active" @endif>
                     <a href="{!! route('admin.settings.media') !!}">Media</a>
                 </li>
                 <li @if (Route::currentRouteName() == 'admin.settings.privacy') class="active" @endif>

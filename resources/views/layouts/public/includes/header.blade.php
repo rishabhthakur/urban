@@ -47,17 +47,31 @@
             @auth
                 <!-- Favourite Area -->
                 <div class="favourite-area">
-                    <a href="#"><img src="{!! asset('img/core-img/heart.svg') !!}" alt=""></a>
+                    <a href="#">
+                        <i class="fas fa-heart"></i>
+                    </a>
                 </div>
             @endauth
-            <!-- User Login Info -->
-            <div class="user-login-info">
-                <a href="{!! route('account') !!}"><img src="{!! asset('img/core-img/user.svg') !!}" alt=""></a>
-            </div>
+            @guest
+                <!-- User Login Info -->
+                <div class="user-login-info">
+                    <a href="{!! route('account') !!}"><img src="{!! asset('img/core-img/user.svg') !!}" alt=""></a>
+                </div>
+            @else
+                <!-- User Login Info -->
+                <div class="user-login-info">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-power-off"></i>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            @endguest
             <!-- Cart Area -->
             <div class="cart-area">
                 <a href="#" id="essenceCartBtn">
-                    <img src="{!! asset('img/core-img/bag.svg') !!}" alt=""> <span>{{ count(Cart::getContent()) }}</span>
+                    <i class="fas fa-shopping-bag"></i> <span>{{ count(Cart::getContent()) }}</span>
                 </a>
             </div>
         </div>

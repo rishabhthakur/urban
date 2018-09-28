@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h6 class="heading mb-3">Add New User</h6>
+                <h6 class="heading mb-5">Add New User</h6>
                 <form action="{{ route('admin.users.store') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="hidden" name="fromAdmin" value="1">

@@ -36,8 +36,23 @@ class UsersController extends Controller {
     public function customers() {
         return view('admin.users.customers')->with([
             'users' => $this->users->where('role_id', 4)
-                            ->orderBy('created_at')
-                            ->get()
+                                   ->orderBy('created_at')
+                                   ->get()
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function staff() {
+        return view('admin.users.staff')->with([
+            'users' => $this->users->where('role_id', 1)
+                                   ->where('role_id', 2)
+                                   ->where('role_id', 3)
+                                   ->orderBy('created_at')
+                                   ->get()
         ]);
     }
 
@@ -66,7 +81,7 @@ class UsersController extends Controller {
             'role' => 'required'
         ]);
 
-        $user = User::create([
+        $user = $this->users->create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),

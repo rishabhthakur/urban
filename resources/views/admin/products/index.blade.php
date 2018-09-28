@@ -69,7 +69,7 @@
                             <td class="text-center">
                                 @if ($product->quantity)
                                     <span class="badge @if($product->quantity < 2) badge-danger @else badge-success @endif">
-                                        stock {{ $product->quantity }}
+                                        {{ $product->quantity }} PCS
                                     </span>
                                 @else
                                     @if ($product->stock_status)
@@ -114,10 +114,8 @@
                         </tr>
                     @empty
                         <tr>
-                            <td>
-                                No products found.
-                            </td>
                             <td></td>
+                            <td>No products found.</td>
                             <td></td>
                             <td></td>
                             <td></td>

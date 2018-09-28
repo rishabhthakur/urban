@@ -125,16 +125,18 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col">
-                                    <h1>89</h1>
+                                    <h1>{{ count($users->where('role_id', 4)->get()) }}</h1>
                                     <a href="#">
                                         Customers
                                     </a>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
-                                        <span class="badge badge-warning">
-                                            <i class="fas fa-exclamation-circle mr-1"></i> <strong>5</strong> Unverified
-                                        </span>
+                                        @if (count($users->where('role_id', 4)->where('email_verified_at', null)->get()) > 0)
+                                            <span class="badge badge-warning">
+                                                <i class="fas fa-exclamation-circle mr-1"></i> <strong>{{ count($users->where('role_id', 4)->where('email_verified_at', null)->get()) }}</strong> Unverified
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -203,39 +205,9 @@
                     <h4>Recent Activity</h4>
         			<ul class="timeline">
         				@forelse ($activities as $activity)
-                            <li>
-                                @switch($activity->model)
-                                    @case('Product\Product')
-                                        <strong class="text-primary">New product added.</strong>
-                                        @break
-                                    @case('Product\Category')
-                                        <strong class="text-primary">New product category added.</strong>
-                                        @break
-                                    @case('Product\Tag')
-                                        <strong class="text-primary">New product tag added.</strong>
-                                        @break
-                                    @case('Product\Attribute')
-                                        <strong class="text-primary">New product attribute added.</strong>
-                                        @break
-                                    @case('Product\Brand')
-                                        <strong class="text-primary">New product brand added.</strong>
-                                        @break
-                                    @case('Media\Media')
-                                        <strong class="text-primary">New media item added.</strong>
-                                        @break
-                                    @case('User\Login')
-                                        <strong class="text-primary">User loggin.</strong>
-                                        @break
-                                @endswitch
-            					<span class="float-right badge badge-primary">{{ $activity->created_at->format("F j, Y") }}</span>
-            					<p>
-                                    <a href="#"><strong>{{ $activity->user->name }}</strong></a> {{ $activity->task }}
-                                </p>
-            				</li>
+                            @include('admin.includes.activity')
                         @empty
-                            <li>
-                                No recent activity
-                            </li>
+                            No recent activity
                         @endforelse
         			</ul>
                 </div>

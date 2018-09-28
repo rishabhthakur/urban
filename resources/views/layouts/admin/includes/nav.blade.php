@@ -58,6 +58,14 @@
                                             <small>New customer registration.</small>
                                         </span>
                                         @break
+                                    @case("App\Notifications\NewMessage")
+                                        <div>
+                                            {{ $not->data['message'] }}
+                                        </div>
+                                        <span class="text-primary">
+                                            <small>New message.</small>
+                                        </span>
+                                        @break
                                     @case("App\Notifications\CustomerPurchase")
                                         <div>
                                             <strong>{{ $not->data['name'] }}</strong> {{ $not->data['message'] }}

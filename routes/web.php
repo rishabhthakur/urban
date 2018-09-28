@@ -50,6 +50,12 @@ Route::get('/contact', [
     'as' => 'contact'
 ]);
 
+// Message store controller
+Route::post('/contact/store', [
+    'uses' => 'MessageController@store',
+    'as' => 'contact.store'
+]);
+
 // Cart route group
 Route::group(['prefix' => 'cart'], function() {
 
@@ -110,6 +116,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::get('/customers', [
             'uses' => 'UsersController@customers',
             'as' => 'admin.users.customers'
+        ]);
+
+        // Admin users staff list
+        Route::get('/staff', [
+            'uses' => 'UsersController@staff',
+            'as' => 'admin.users.staff'
         ]);
 
         // Admin add new users
@@ -260,6 +272,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
     });
 
+    // Admin messages routes
+    Route::group(['prefix' => 'messages'], function() {
+
+        // Admin messages list
+        Route::get('/', [
+            'uses' => 'MessageController@index',
+            'as' => 'admin.messages'
+        ]);
+    });
+
+    // Admin newsletter routes
+    Route::group(['prefix' => 'newsletter'], function() {
+
+
+    });
+
     // Admin settings routes
     Route::group(['prefix' => 'settings'], function() {
 
@@ -276,9 +304,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         ]);
 
         // Admin discussion settings
-        Route::get('/discussions', [
-            'uses' => 'SettingsController@discussions',
-            'as' => 'admin.settings.discussions'
+        Route::get('/discussion', [
+            'uses' => 'SettingsController@discussion',
+            'as' => 'admin.settings.discussion'
         ]);
 
         // Admin media settings

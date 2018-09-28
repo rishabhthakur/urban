@@ -15,4 +15,17 @@
     </div>
     <!-- ##### Breadcumb Area End ##### -->
 
+    <!-- ##### Blog Wrapper Area Start ##### -->
+    <section class="blog-wrapper section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <!-- Single Blog Area -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Blog Wrapper Area End ##### -->
+
 @endsection

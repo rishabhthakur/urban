@@ -35,17 +35,61 @@
                 </button>
                 <h5>Send Us A Message </h5>
                 <div class="my-5"></div>
-                <form class="mt-3" action="index.html" method="post">
-                    <div class="form-group">
-                        <label for="">Email Address</label>
-                        <input type="text" name="" class="form-control" placeholder="Email Address">
+                <form class="mt-3" action="{!! route('contact.store') !!}" method="post">
+                    {{ csrf_field() }}
+                    <div class="form-group row">
+                        <div class="col">
+                            <label for="first_name">First Name <span class="text-danger">*</span></label>
+                            <input id="first_name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" @if (Auth::check()) value="{{ Auth::user()->profile->first_name }}" @else value="{{ old('first_name') }}" @endif placeholder="First Name" required>
+
+                            @if ($errors->has('first_name'))
+                                <span class="text-danger form-text" role="alert">
+                                    <strong>{{ $errors->first('first_name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="col">
+                            <label for="last_name">Last Name <span class="text-danger">*</span></label>
+                            <input id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" @if (Auth::check()) value="{{ Auth::user()->profile->last_name }}" @else value="{{ old('last_name') }}" @endif placeholder="Last Name" required>
+
+                            @if ($errors->has('last_name'))
+                                <span class="text-danger form-text" role="alert">
+                                    <strong>{{ $errors->first('last_name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="">How can we help you?</label>
-                        <textarea name="name" class="form-control" placeholder="Explain to us in a few words."></textarea>
+                        <label for="email">Email Address <span class="text-danger">*</span></label>
+                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" @if (Auth::check()) value="{{ Auth::user()->email }}" @else value="{{ old('email') }}" @endif placeholder="Email address" required>
+
+                        @if ($errors->has('email'))
+                            <span class="text-danger form-text" role="alert">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject" value="{{ old('subject') }}" placeholder="Subject" required>
+
+                        @if ($errors->has('subject'))
+                            <span class="text-danger form-text" role="alert">
+                                <strong>{{ $errors->first('subject') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="message">How can we help you? <span class="text-danger">*</span></label>
+                        <textarea name="message" class="form-control" placeholder="What would you like to talk about?" style="height: 150px">{{ old('message') }}</textarea>
+                        @if ($errors->has('message'))
+                            <span class="text-danger form-text" role="alert">
+                                <strong>{{ $errors->first('message') }}</strong>
+                            </span>
+                        @endif
                     </div>
                     <div class="form-group mt-5 mb-0">
-                        <button type="button" class="btn btn-dark btn-block">Submit</button>
+                        <button type="submit" class="btn btn-dark btn-block">Submit</button>
                     </div>
                 </form>
             </div>

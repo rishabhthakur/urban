@@ -723,3 +723,42 @@ a	/Applications/MAMP/htdocs/fabraco/resources/sass/public/app.scss	/^           
 .footer-img	/Applications/MAMP/htdocs/fabraco/resources/sass/public/app.scss	/^.footer-img {$/;"	function	line:2023
 .section	/Applications/MAMP/htdocs/fabraco/resources/sass/public/app.scss	/^.section  {$/;"	function	line:2028
 .section-padded-80	/Applications/MAMP/htdocs/fabraco/resources/sass/public/app.scss	/^.section-padded-80 {$/;"	function	line:2032
+Message	/Users/thavarshan/DevHub/web/urban/app/Message.php	/^class Message extends Model {$/;"	class	line:7
+fillable	/Users/thavarshan/DevHub/web/urban/app/Message.php	/^    protected $fillable = [$/;"	variable	line:13
+fillable	/Users/thavarshan/DevHub/web/urban/app/Message.php	/^    protected $fillable = [$/;"	variable	line:13
+user	/Users/thavarshan/DevHub/web/urban/app/Message.php	/^    public function user() {$/;"	function	line:26
+.classynav ul li.megamenu-item > a::after	/Users/thavarshan/DevHub/web/urban/resources/sass/public/resets.scss	/^.classynav ul li.megamenu-item > a::after,$/;"	function	line:1
+.classynav > ul > li.cn-dropdown-item.has-down > .dd-arrow, .classynav > ul > li.megamenu-item > .dd-arrow	/Users/thavarshan/DevHub/web/urban/resources/sass/public/resets.scss	/^.classynav > ul > li.cn-dropdown-item.has-down > .dd-arrow, .classynav > ul > li.megamenu-item > .dd-arrow {$/;"	function	line:2
+.breakpoint-on .classynav > ul > li > a	/Users/thavarshan/DevHub/web/urban/resources/sass/public/resets.scss	/^.breakpoint-on .classynav > ul > li > a {$/;"	function	line:6
+.nav-brand img	/Users/thavarshan/DevHub/web/urban/resources/sass/public/resets.scss	/^.nav-brand img {$/;"	function	line:14
+.alert	/Users/thavarshan/DevHub/web/urban/resources/sass/public/resets.scss	/^.alert {$/;"	function	line:19
+.alert-white	/Users/thavarshan/DevHub/web/urban/resources/sass/public/resets.scss	/^.alert-white {$/;"	function	line:27
+.classy-nav-container a:focus, .classy-nav-container a:hover	/Users/thavarshan/DevHub/web/urban/resources/sass/public/resets.scss	/^ .classy-nav-container a:focus, .classy-nav-container a:hover {$/;"	function	line:35
+NewMessage	/Users/thavarshan/DevHub/web/urban/app/Notifications/NewMessage.php	/^class NewMessage extends Notification {$/;"	class	line:11
+user	/Users/thavarshan/DevHub/web/urban/app/Notifications/NewMessage.php	/^    public $user;$/;"	variable	line:13
+__construct	/Users/thavarshan/DevHub/web/urban/app/Notifications/NewMessage.php	/^    public function __construct($user) {$/;"	function	line:20
+user	/Users/thavarshan/DevHub/web/urban/app/Notifications/NewMessage.php	/^        $this->user = $user;$/;"	variable	line:21
+via	/Users/thavarshan/DevHub/web/urban/app/Notifications/NewMessage.php	/^    public function via($notifiable)$/;"	function	line:30
+toMail	/Users/thavarshan/DevHub/web/urban/app/Notifications/NewMessage.php	/^    public function toMail($notifiable)$/;"	function	line:41
+toArray	/Users/thavarshan/DevHub/web/urban/app/Notifications/NewMessage.php	/^    public function toArray($notifiable)$/;"	function	line:55
+AdminController	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/AdminController.php	/^class AdminController extends Controller {$/;"	class	line:16
+login	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/AdminController.php	/^    public function login() {$/;"	function	line:24
+index	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/AdminController.php	/^    public function index() {$/;"	function	line:34
+getNotifications	/Users/thavarshan/DevHub/web/urban/app/Boot/boot.php	/^function getNotifications() {$/;"	function	line:5
+getUnreadMessages	/Users/thavarshan/DevHub/web/urban/app/Boot/boot.php	/^function getUnreadMessages() {$/;"	function	line:9
+getSettings	/Users/thavarshan/DevHub/web/urban/app/Boot/boot.php	/^function getSettings() {$/;"	function	line:13
+MessageController	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^class MessageController extends Controller {$/;"	class	line:10
+messages	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^    protected $messages;$/;"	variable	line:12
+__construct	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^    public function __construct() {$/;"	function	line:14
+messages	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^        $this->messages = new Message;$/;"	variable	line:15
+index	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^    public function index() {$/;"	function	line:23
+create	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^    public function create()$/;"	function	line:36
+store	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^    public function store(Request $request) {$/;"	function	line:47
+id	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^            $id = Auth::id();$/;"	variable	line:56
+id	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^            $id = null;$/;"	variable	line:58
+message	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^        $message = $this->messages->create([$/;"	variable	line:61
+user	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^        $user = ucwords($message->first_name);$/;"	variable	line:70
+show	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^    public function show(Message $message)$/;"	function	line:85
+edit	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^    public function edit(Message $message)$/;"	function	line:96
+update	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^    public function update(Request $request, Message $message)$/;"	function	line:108
+destroy	/Users/thavarshan/DevHub/web/urban/app/Http/Controllers/MessageController.php	/^    public function destroy(Message $message)$/;"	function	line:119

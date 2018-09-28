@@ -74,6 +74,14 @@ class User extends Authenticatable implements MustVerifyEmail {
     }
 
     /**
+     * [user description]
+     * @return [type] [description]
+     */
+    public function messages() {
+        $this->hasMany('App\Message', 'user_id');
+    }
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array

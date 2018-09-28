@@ -1,1 +1,1 @@
-@include('admin.includes.template')
+@include('admin.products.includes.layout')
