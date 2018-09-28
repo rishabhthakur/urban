@@ -63,6 +63,11 @@
             @else
                 <!-- User Login Info -->
                 <div class="user-login-info">
+                    <a href="{{ route('account') }}">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+                <div class="user-login-info">
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fas fa-power-off"></i>
                     </a>
@@ -74,7 +79,7 @@
             <!-- Cart Area -->
             <div class="cart-area">
                 <a href="#" id="essenceCartBtn">
-                    <i class="fas fa-shopping-bag"></i> <span>{{ count(Cart::getContent()) }}</span>
+                    <i class="fas fa-shopping-cart"></i> <span>{{ count(Cart::getContent()) }}</span>
                 </a>
             </div>
         </div>

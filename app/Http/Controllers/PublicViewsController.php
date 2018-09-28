@@ -98,16 +98,16 @@ class PublicViewsController extends Controller {
         return view('terms');
     }
 
-    public function bag() {
-        return view('bag');
+    public function cart() {
+        return view('cart');
     }
 
     public function checkout() {
         if (count(Cart::getContent()) != 0) {
             return view('checkout');
         } else {
-            return redirect(route('bag'))->with([
-                'error' => 'Your shopping bag is empty'
+            return redirect(route('cart'))->with([
+                'error' => 'Your shopping cart is empty'
             ]);
         }
     }

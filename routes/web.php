@@ -56,19 +56,19 @@ Route::post('/contact/store', [
     'as' => 'contact.store'
 ]);
 
-// Shopping bag route group
-Route::group(['prefix' => 'bag'], function() {
+// Shopping cart route group
+Route::group(['prefix' => 'cart'], function() {
 
-    // Shopping bag page
+    // Shopping cart page
     Route::get('/', [
-        'uses' => 'PublicViewsController@bag',
-        'as' => 'bag'
+        'uses' => 'PublicViewsController@cart',
+        'as' => 'cart'
     ]);
 
-    // Shopping bag page
+    // Shopping cart page
     Route::post('/add/{id}', [
-        'uses' => 'BagController@store',
-        'as' => 'bag.add'
+        'uses' => 'cartController@store',
+        'as' => 'cart.add'
     ]);
 });
 
@@ -77,6 +77,12 @@ Route::get('/checkout', [
     'uses' => 'PublicViewsController@checkout',
     'as' => 'checkout'
 ])->middleware('auth');
+
+// Newsletter subscription
+Route::post('/subscribe', [
+    'uses' => 'NewsletterController@store',
+    'as' => 'subscribe'
+]);
 
 // Member auth routes
 Route::group(['prefix' => 'account', 'middleware' => 'verified'], function() {

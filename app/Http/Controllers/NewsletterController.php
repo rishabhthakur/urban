@@ -2,19 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Newsletter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class NewsletterController extends Controller
-{
+class NewsletterController extends Controller {
+    private $newsletter;
+
+    public function __construct() {
+        $this->newsletter = new Newsletter;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        return view('admin.newsletter.index')->with([
+            'subscribers' => $this->newsletter->orderBy('created_at', 'DESC')
+                                              ->get()
+        ]);
     }
 
     /**
@@ -33,9 +41,38 @@ class NewsletterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $this->validate($request, [
+            'email' => 'required|email'
+        ]);
+
+        if($this->newsletter->where('email', $request->email)->first()) {
+            return back()->with([
+                'info' => 'You have already subscribed to our newsletter.'
+            ]);
+        } else {
+            $email = $request->email;
+            if(Auth::check()) {
+                if($this->newsletter->where('user_id', Auth::id())->first()) {
+                    return back()->with([
+                        'info' => 'You have already subscribed to our newsletter.'
+                    ]);
+                }
+                $user_id = Auth::id();
+                $user = User::find(Auth::id());
+                $user->subscription = 1;
+                $user->save();
+            }
+        }
+
+        $this->newsletter->create([
+            'user_id' => $user_id,
+            'email' => $email
+        ]);
+
+        return back()->with([
+            'success'=> 'Thank you for subscribing.'
+        ]);
     }
 
     /**

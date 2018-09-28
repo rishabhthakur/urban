@@ -4,7 +4,7 @@
 
     <!-- Cart Button -->
     <div class="cart-button">
-        <a href="#" id="rightSideCart"><i class="fas fa-shopping-bag"></i> <span>{{ count(Cart::getContent()) }}</span></a>
+        <a href="#" id="rightSideCart"><i class="fas fa-shopping-cart"></i> <span>{{ count(Cart::getContent()) }}</span></a>
     </div>
 
     <div class="cart-content d-flex">
@@ -50,7 +50,7 @@
             @else
                 <h2 class="mb-3">
                     No products<br>
-                    in your shopping bag
+                    in your shopping cart
                 </h2>
                 <p>
                     Make sure to sign up for a new account or sign in to your account

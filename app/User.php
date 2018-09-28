@@ -26,6 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail {
         'password',
         'role_id',
         'admin',
+        'subscription',
         'slug'
     ];
 
@@ -80,6 +81,30 @@ class User extends Authenticatable implements MustVerifyEmail {
      */
     public function messages() {
         $this->hasMany('App\Message', 'user_id');
+    }
+
+    /**
+     * [products description]
+     * @return [type] [description]
+     */
+    public function products() {
+        $this->hasMany('App\Product');
+    }
+
+    /**
+     * [orders description]
+     * @return [type] [description]
+     */
+    public function orders() {
+        $this->hasMany('App\Order');
+    }
+
+    /**
+     * [subscription description]
+     * @return [type] [description]
+     */
+    public function subscription() {
+        $this->hasOne('App\Newsletter');
     }
 
     /**

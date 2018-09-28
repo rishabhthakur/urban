@@ -43,8 +43,9 @@
                         <h6>Subscribe</h6>
                     </div>
                     <div class="subscribtion_form">
-                        <form action="#" method="post">
-                            <input type="email" name="mail" class="mail" placeholder="Your email here">
+                        <form action="{!! route('subscribe') !!}" method="post">
+                            {{ csrf_field() }}
+                            <input type="email" name="email" class="mail" placeholder="Your email here">
                             <button type="submit" class="submit"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
                         </form>
                     </div>

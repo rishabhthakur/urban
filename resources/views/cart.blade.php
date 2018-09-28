@@ -7,8 +7,8 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="page-title text-center my-5">
-                        <h2>Shopping Bag</h2>
-                        <p class="text-muted">You have {{ count(Cart::getContent()) }} items in your shopping bag</p>
+                        <h2>Shopping Cart</h2>
+                        <p class="text-muted">You have {{ count(Cart::getContent()) }} items in your shopping cart</p>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                                     </tbody>
                                 </table>
                             @else
-                                <h4>Your shopping bag is empty</h4>
+                                <h4>Your shopping cart is empty</h4>
                                 <p>
                                     Make sure to sign up for a new account or sign in to your account<br />
                                     before you proceed to the checkout page.
