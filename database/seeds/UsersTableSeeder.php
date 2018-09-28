@@ -18,7 +18,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'tjthavarshan@gmail.com',
             'password' => bcrypt('alpha26'),
             'slug' => str_slug('thavarshan'),
-            'role_id' => 1
+            'role_id' => 1,
+            'admin' => 1
         ]);
 
         if (!is_dir(public_path('uploads/avatar/'.strtolower($user->name)))) {

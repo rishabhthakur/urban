@@ -56,19 +56,19 @@ Route::post('/contact/store', [
     'as' => 'contact.store'
 ]);
 
-// Cart route group
-Route::group(['prefix' => 'cart'], function() {
+// Shopping bag route group
+Route::group(['prefix' => 'bag'], function() {
 
-    // Cart page
+    // Shopping bag page
     Route::get('/', [
-        'uses' => 'PublicViewsController@cart',
-        'as' => 'cart'
+        'uses' => 'PublicViewsController@bag',
+        'as' => 'bag'
     ]);
 
-    // Cart page
+    // Shopping bag page
     Route::post('/add/{id}', [
-        'uses' => 'CartController@store',
-        'as' => 'cart.add'
+        'uses' => 'BagController@store',
+        'as' => 'bag.add'
     ]);
 });
 

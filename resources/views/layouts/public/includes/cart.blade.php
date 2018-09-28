@@ -48,7 +48,14 @@
                     <a href="{!! route('cart') !!}" class="btn btn-outline-primary btn-block">View Cart</a>
                 </div>
             @else
-                <h2>No products in the cart</h2>
+                <h2 class="mb-3">
+                    No products<br>
+                    in your shopping bag
+                </h2>
+                <p>
+                    Make sure to sign up for a new account or sign in to your account
+                    before you proceed to the checkout page.
+                </p>
                 <div class="checkout-btn mt-100">
                     <a href="{!! route('shop') !!}" class="btn btn-dark btn-block">Start Shopping</a>
                 </div>

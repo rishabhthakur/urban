@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use Cart;
 
-class CartController extends Controller {
+class BagController extends Controller {
 
     /**
     * Display a listing of the resource.

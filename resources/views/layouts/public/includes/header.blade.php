@@ -1,4 +1,3 @@
-
 <header class="header_area">
     <div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
         <!-- Classy Menu -->
@@ -41,7 +40,9 @@
             <div class="search-area">
                 <form action="#" method="post">
                     <input type="search" name="search" id="headerSearch" placeholder="Type for search">
-                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <button type="submit">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
                 </form>
             </div>
             @auth
@@ -55,7 +56,9 @@
             @guest
                 <!-- User Login Info -->
                 <div class="user-login-info">
-                    <a href="{!! route('account') !!}"><img src="{!! asset('img/core-img/user.svg') !!}" alt=""></a>
+                    <a href="{!! route('account') !!}">
+                        <i class="fas fa-user"></i>
+                    </a>
                 </div>
             @else
                 <!-- User Login Info -->
