@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-body">
                 <h6 class="heading mb-5">Add New {{ __($array_type) }}</h6>
-                <form action="{!! route($route) !!}" method="post">
+                <form action="{{ $route }}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                         <label for="name">Name</label>
@@ -134,9 +134,9 @@
                     </div>
                     <hr>
                 @empty
-                    <p>
+                    <div>
                         No {{ __($array_type) }} found.
-                    </p>
+                    </div>
                 @endforelse
                 @if ($array_type == 'Categories')
                     <p class="text-muted">

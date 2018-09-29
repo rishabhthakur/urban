@@ -18,7 +18,7 @@ class StagController extends Controller {
             'parent' => false,
             'color' => false,
             'array_type' => 'Tags',
-            'route' => 'admin.products.tags.store'
+            'route' => route('admin.products.tags.store')
         ]);
     }
 

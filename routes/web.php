@@ -252,6 +252,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
                 'uses' => 'AttributeController@store',
                 'as' => 'admin.products.attributes.store'
             ]);
+
+            // Admin products attributes data list
+            Route::get('/data/{id}', [
+                'uses' => 'AttributeController@data',
+                'as' => 'admin.products.attributes.data'
+            ]);
+
+            Route::post('/data/store/{id}', [
+                'uses' => 'AttributeController@data_store',
+                'as' => 'admin.products.attributes.data.store'
+            ]);
         });
     });
 

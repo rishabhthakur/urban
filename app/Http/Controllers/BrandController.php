@@ -19,7 +19,7 @@ class BrandController extends Controller
             'parent' => false,
             'color' => false,
             'array_type' => 'Brand',
-            'route' => 'admin.products.brands.store'
+            'route' => route('admin.products.brands.store')
         ]);
     }
 

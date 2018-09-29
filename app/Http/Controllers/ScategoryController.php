@@ -18,7 +18,7 @@ class ScategoryController extends Controller {
             'parent' => true,
             'color' => false,
             'array_type' => 'Categories',
-            'route' => 'admin.products.categories.store'
+            'route' => route('admin.products.categories.store')
         ]);
     }
 
