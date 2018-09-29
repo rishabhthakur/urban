@@ -7,20 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Attribute extends Model {
 
     protected $fillable = [
-        'name',
-        'slug',
-        'description',
-        'image',
-        'parent_id',
-        'color_code'
+        'name'
     ];
 
-    public function parent() {
-        return $this->belongsTo('App\Attribute', 'parent_id');
-    }
-
-    public function children() {
-        return $this->hasMany('App\Attribute', 'parent_id');
+    public function data() {
+        return $this->hasMany('App\Adata', 'attrb_id');
     }
 
     public function products() {
