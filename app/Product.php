@@ -50,7 +50,9 @@ class Product extends Model {
         'weight',
         'length',
         'width',
-        'height'
+        'height',
+        'purchase_note',
+        'reviews'
     ];
 
     public function categories() {

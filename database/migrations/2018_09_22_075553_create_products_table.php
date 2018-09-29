@@ -27,8 +27,10 @@ class CreateProductsTable extends Migration {
             $table->float('length')->nullable();
             $table->float('width')->nullable();
             $table->float('height')->nullable();
+            $table->text('purchase_note')->nullable();
             $table->boolean('featured')->default(0);
             $table->boolean('popular')->default(0);
+            $table->boolean('reviews')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

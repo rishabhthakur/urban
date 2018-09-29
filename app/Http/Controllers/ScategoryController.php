@@ -108,9 +108,9 @@ class ScategoryController extends Controller {
 
         if($existing) {
            if ($existing->parent_id == $request->parent) {
-               return redirect(route('admin.products.categories'))->with([
-                 'error' => 'A term with the name provided already exists.'
-               ]);
+               return response()->json([
+                   'message' => 'A term with the name provided already exists.'
+               ], 422);
            } else {
                $parent_slug = str_slug(Scategory::find($request->parent)->name);
            }

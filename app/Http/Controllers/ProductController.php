@@ -75,6 +75,12 @@ class ProductController extends Controller {
             }
         }
 
+        if(isset($request->reviews)) {
+            $reviews = 1;
+        } else {
+            $reviews = 0;
+        }
+
         $product = Product::create([
             'name' => $request->name,
             'regular_price' => $request->regular_price,
@@ -88,7 +94,9 @@ class ProductController extends Controller {
             'weight' => $request->weight,
             'length' => $request->length,
             'width' => $request->width,
-            'height' => $request->height
+            'height' => $request->height,
+            'purchase_note' => $request->purchase_note,
+            'reviews' => $reviews
         ]);
 
         // Add media function

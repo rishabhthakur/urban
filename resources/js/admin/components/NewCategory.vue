@@ -23,8 +23,13 @@
             <span class="text-muted" v-else>
                 No categories found.
             </span>
+            <div v-if="errors.length > 0" class="mt-3">
+                <div class="error" v-for="error in errors">
+                    <small class="text-danger">{{ error.message }}</small>
+                </div>
+            </div>
         </div>
-        <div class="card-footer">
+        <div class="card-footer border-0 bg-white">
             <a href="#" v-on:click.prevent="visibility()">
                 <i class="fas fa-plus"></i> Add new category
             </a>
@@ -52,6 +57,7 @@
 export default {
     data() {
         return  {
+            errors: [],
             visible: false,
             edit: false,
             list: [],
@@ -85,6 +91,7 @@ export default {
                 });
         },
         createCategory: function() {
+            this.errors = [];
             // console.log('Creating category...');
             let self = this;
             let params =Object.assign({}, self.category);
@@ -95,8 +102,10 @@ export default {
                     self.edit = false;
                     self.fetchCategoryList();
                 })
-                .catch(function(error){
-                    console.log(error);
+                .catch(error => {
+                    if(error.response.status == 422) {
+                        this.errors.push(error.response.data);
+                    }
                 });
         }
     }

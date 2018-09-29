@@ -214,7 +214,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="reviews" value="1">
+                                        <input type="checkbox" class="custom-control-input" id="reviews" name="reviews" value="1" checked>
                                         <label class="custom-control-label" for="reviews">Enable Reviews</label>
                                     </div>
                                 </div>
@@ -347,29 +347,10 @@
                     </a>
                 </div>
             </div>
-
+            <!-- New Category -->
             <vue-newcategory></vue-newcategory>
-
-            <div class="card">
-                <div class="card-body">
-                    <h6 class="heading mb-3">Product Tags</h6>
-                    @forelse ($tags as $tag)
-                        <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" id="tag{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
-                            <label class="custom-control-label" for="tag{{ $tag->id }}"> {{ $tag->name }}</label>
-                        </div>
-                    @empty
-                        <span class="text-muted">
-                            No tags found.
-                        </span>
-                    @endforelse
-                </div>
-                <div class="card-footer bg-white border-0">
-                    <a href="{!! route('admin.products.tags') !!}">
-                        <i class="fas fa-plus"></i> Add new tag
-                    </a>
-                </div>
-            </div>
+            <!-- New Tag -->
+            <vue-newtag></vue-newtag>
         </div>
     </div>
 </form>
