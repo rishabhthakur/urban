@@ -112,6 +112,15 @@ class User extends Authenticatable implements MustVerifyEmail {
      *
      * @var array
      */
+    public function getNameAttribute($name) {
+        return ucwords($name);
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     public function getCreatedAtAttribute($date) {
         return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->diffForHumans();
     }

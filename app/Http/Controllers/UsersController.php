@@ -23,8 +23,28 @@ class UsersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
+        $col = $this->users->latest();
+
+        switch (request()->sort) {
+            case 'customers':
+                $list = $col->where('role_id', 4)->get();
+                break;
+            case 'editors':
+                $list = $col->where('role_id', 3)->get();
+                break;
+            case 'moderators':
+                $list = $col->where('role_id', 2)->get();
+                break;
+            case 'administrators':
+                $list = $col->where('role_id', 1)->get();
+                break;
+            default:
+                $list = $col->get();
+                break;
+        }
+
         return view('admin.users.index')->with([
-            'users' => $this->users->orderBy('created_at')->get()
+            'users' => $list
         ]);
     }
 
@@ -105,7 +125,7 @@ class UsersController extends Controller {
             'last_name' => $request->last_name,
             'job' => $request->job,
             'location' => $request->location,
-            'avatar' => 'uploads/avatar/' .strtolower($request->name). '/user.jpg'
+            'avatar' => 'user.jpg'
         ]);
 
         return back()->with([
@@ -160,12 +180,37 @@ class UsersController extends Controller {
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $slug) {
+        $this->validate($request, [
+            'avatar' => 'image|mimes:jpeg,jpg,png'
+        ]);
+
+        $user = User::where('slug', $slug)->first();
+
+        if($request->hasFile('avatar')) {
+            // Set filename to var avatar
+            $avatar = $request->avatar;
+            // Generate new name for avatar file
+            $avatar_new_name = time().$avatar->getClientOriginalName();
+            // Move file to to uploads/avatar/username folder
+            $avatar->move(public_path('uploads/avatar/' . strtolower($user->name)), $avatar_new_name);
+            // Register avatar name to user profile database
+            $user->profile->avatar = $avatar_new_name;
+        }
+
+        $user->profile->first_name = $request->first_name;
+        $user->profile->last_name = $request->last_name;
+        $user->profile->job = $request->job;
+        $user->profile->location = $request->location;
+        $user->profile->bio = $request->bio;
+        $user->profile->save();
+
+        return back()->with([
+            'success' => 'Profile updated.'
+        ]);
     }
 
     /**

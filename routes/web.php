@@ -118,18 +118,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             'as' => 'admin.users'
         ]);
 
-        // Admin users customers list
-        Route::get('/customers', [
-            'uses' => 'UsersController@customers',
-            'as' => 'admin.users.customers'
-        ]);
-
-        // Admin users staff list
-        Route::get('/staff', [
-            'uses' => 'UsersController@staff',
-            'as' => 'admin.users.staff'
-        ]);
-
         // Admin add new users
         Route::get('/create', [
             'uses' => 'UsersController@create',
@@ -146,6 +134,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::get('/profile/{slug}', [
             'uses' => 'UsersController@profile',
             'as' => 'admin.users.profile'
+        ]);
+
+        // Admin user profile
+        Route::post('/update/{slug}', [
+            'uses' => 'UsersController@update',
+            'as' => 'admin.users.update'
         ]);
 
         // Admin user activities - reserved only for Administrators

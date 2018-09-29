@@ -38,7 +38,7 @@
 
                         <p>
                             <small><strong>Location:</strong></small><br />
-                            <span>{{ $user->location }}</span>
+                            <span>{{ $user->profile->location }}</span>
                         </p>
 
                         <p>

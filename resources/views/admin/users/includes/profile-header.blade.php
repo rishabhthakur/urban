@@ -7,7 +7,7 @@
                     <div class="col-sm-8">
                         <div class="media">
                             <span class="float-left m-2 mr-4 text-center">
-                                <img src="{!! asset($user->profile->avatar) !!}" style="height: 130px;" alt="" class="rounded-circle img-thumbnail">
+                                <img src="{{ $user->profile->avatar }}" style="height: 130px;" alt="" class="rounded-circle img-thumbnail">
                             </span>
                             <div class="media-body">
 

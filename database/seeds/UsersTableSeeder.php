@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
 
         App\Profile::create([
             'user_id' => $user->id,
-            'avatar' => 'uploads/avatar/thavarshan/user.jpg',
+            'avatar' => 'user.jpg',
             'first_name' => 'Thavarshan',
             'last_name' => 'Thayananthajothy',
             'bio' => 'Any fool can use a computer. Many do.'

@@ -29,7 +29,30 @@ class Profile extends Model {
         return $this->belongsTo('App\User', 'user_id');
     }
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function getFirstNameAttribute($first_name) {
+        return ucwords($first_name);
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function getLastNameAttribute($last_name) {
+        return ucwords($last_name);
+    }
+
+    /**
+     * attach URL to user profile file
+     * @param  string
+     * @return string URL to user profile file
+     */
     public function getAvatarAttribute($avatar) {
-        return asset($avatar);
+        return asset('uploads/avatar/' . strtolower($this->user->name) . '/' . $avatar);
     }
 }

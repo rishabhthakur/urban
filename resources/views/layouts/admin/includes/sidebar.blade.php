@@ -131,8 +131,6 @@
         <li
         @if (
             Route::currentRouteName() == 'admin.users' ||
-            Route::currentRouteName() == 'admin.users.customers' ||
-            Route::currentRouteName() == 'admin.users.staff' ||
             Route::currentRouteName() == 'admin.users.create'
             )
              class="active"
@@ -144,12 +142,6 @@
             <ul class="collapse list-unstyled" id="users">
                 <li @if (Route::currentRouteName() == 'admin.users') class="active" @endif>
                     <a href="{!! route('admin.users') !!}">All Users</a>
-                </li>
-                <li @if (Route::currentRouteName() == 'admin.users.customers') class="active" @endif>
-                    <a href="{!! route('admin.users.customers') !!}">Customers</a>
-                </li>
-                <li @if (Route::currentRouteName() == 'admin.users.staff') class="active" @endif>
-                    <a href="{!! route('admin.users.staff') !!}">Staff</a>
                 </li>
                 <li @if (Route::currentRouteName() == 'admin.users.create') class="active" @endif>
                     <a href="{!! route('admin.users.create') !!}">Add New</a>

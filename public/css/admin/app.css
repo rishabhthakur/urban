@@ -2916,8 +2916,6 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #5e72e4;
   border-color: #5e72e4;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-primary:hover {
@@ -2958,8 +2956,6 @@ fieldset:disabled a.btn {
   color: #212529;
   background-color: #f4f5f7;
   border-color: #f4f5f7;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-secondary:hover {
@@ -3000,8 +2996,6 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #2dce89;
   border-color: #2dce89;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-success:hover {
@@ -3042,8 +3036,6 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #11cdef;
   border-color: #11cdef;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-info:hover {
@@ -3084,8 +3076,6 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #fb6340;
   border-color: #fb6340;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-warning:hover {
@@ -3126,8 +3116,6 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #f5365c;
   border-color: #f5365c;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-danger:hover {
@@ -3168,8 +3156,6 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #adb5bd;
   border-color: #adb5bd;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-light:hover {
@@ -3210,8 +3196,6 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #212529;
   border-color: #212529;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-dark:hover {
@@ -3252,8 +3236,6 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #172b4d;
   border-color: #172b4d;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-default:hover {
@@ -3294,8 +3276,6 @@ fieldset:disabled a.btn {
   color: #212529;
   background-color: #fff;
   border-color: #fff;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-white:hover {
@@ -3336,8 +3316,6 @@ fieldset:disabled a.btn {
   color: #212529;
   background-color: #fff;
   border-color: #fff;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-neutral:hover {
@@ -3378,8 +3356,6 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: black;
   border-color: black;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-darker:hover {
@@ -13602,8 +13578,6 @@ a.btn-icon-only {
   color: #fff;
   background-color: #3b5999;
   border-color: #3b5999;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-facebook:hover {
@@ -13644,8 +13618,6 @@ a.btn-icon-only {
   color: #fff;
   background-color: #1da1f2;
   border-color: #1da1f2;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-twitter:hover {
@@ -13686,8 +13658,6 @@ a.btn-icon-only {
   color: #fff;
   background-color: #dd4b39;
   border-color: #dd4b39;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-google-plus:hover {
@@ -13728,8 +13698,6 @@ a.btn-icon-only {
   color: #fff;
   background-color: #e4405f;
   border-color: #e4405f;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-instagram:hover {
@@ -13770,8 +13738,6 @@ a.btn-icon-only {
   color: #fff;
   background-color: #bd081c;
   border-color: #bd081c;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-pinterest:hover {
@@ -13812,8 +13778,6 @@ a.btn-icon-only {
   color: #fff;
   background-color: #cd201f;
   border-color: #cd201f;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-youtube:hover {
@@ -13854,8 +13818,6 @@ a.btn-icon-only {
   color: #fff;
   background-color: #3aaf85;
   border-color: #3aaf85;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-slack:hover {
@@ -13896,8 +13858,6 @@ a.btn-icon-only {
   color: #fff;
   background-color: #ea4c89;
   border-color: #ea4c89;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-dribbble:hover {
@@ -13938,8 +13898,6 @@ a.btn-icon-only {
   color: #fff;
   background-color: #222222;
   border-color: #222222;
-  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-github:hover {
