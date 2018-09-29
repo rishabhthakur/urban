@@ -99,6 +99,38 @@ class ScategoryController extends Controller {
         return redirect()->route('admin.products.categories');
     }
 
+    public function vue_store(Request $request) {
+        $this->validate($request, [
+            'name' => 'required|string'
+        ]);
+
+        $existing = Scategory::where('name', $request->name)->first();
+
+        if($existing) {
+           if ($existing->parent_id == $request->parent) {
+               return redirect(route('admin.products.categories'))->with([
+                 'error' => 'A term with the name provided already exists.'
+               ]);
+           } else {
+               $parent_slug = str_slug(Scategory::find($request->parent)->name);
+           }
+           $parent_slug = str_slug(Scategory::find($request->parent)->name);
+       }
+
+        $category = new Scategory;
+        $category->name = $request->name;
+        if (isset($request->parent)) {
+            $category->parent_id = $request->parent;
+        }
+        $category->slug = str_slug($request->name);
+
+        $category->save();
+
+        return response()->json([
+            'message' => 'OK'
+        ], 200);
+    }
+
     /**
      * Display the specified resource.
      *

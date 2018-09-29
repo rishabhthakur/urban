@@ -347,22 +347,9 @@
                     </a>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <h6 class="heading mb-3">Product Categories</h6>
-                    @forelse ($categories as $category)
-                        <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" name="categories[]" id="category{{ $category->id }}" value="{{ $category->id }}">
-                            <label class="custom-control-label" for="category{{ $category->id }}"> {{ $category->name }}</label>
-                        </div>
-                    @empty
-                        <span class="text-muted">
-                            No categories found.
-                        </span>
-                    @endforelse
-                </div>
-                <vue-newcategory></vue-newcategory>
-            </div>
+
+            <vue-newcategory></vue-newcategory>
+
             <div class="card">
                 <div class="card-body">
                     <h6 class="heading mb-3">Product Tags</h6>

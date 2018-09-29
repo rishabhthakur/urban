@@ -29,7 +29,7 @@
       </p>
 
       <!-- Form -->
-      <form class="cart-form clearfix" action="{{ route('bag.add', ['id' => $product->id]) }}" method="POST">
+      <form class="cart-form clearfix" action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
         @csrf
         <!-- Select Box -->
         {{-- @if(count($product->sizes) > 0)

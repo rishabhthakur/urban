@@ -5,7 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Scategory extends Model {
-    
+
+    public $with = [
+        'children'
+    ];
+
     protected $fillable = [
         'name',
         'slug',
