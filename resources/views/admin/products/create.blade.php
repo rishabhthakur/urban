@@ -361,11 +361,7 @@
                         </span>
                     @endforelse
                 </div>
-                <div class="card-footer bg-white border-0">
-                    <a href="{!! route('admin.products.categories') !!}">
-                        <i class="fas fa-plus"></i> Add new category
-                    </a>
-                </div>
+                <vue-newcategory></vue-newcategory>
             </div>
             <div class="card">
                 <div class="card-body">

@@ -291,7 +291,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     // Admin newsletter routes
     Route::group(['prefix' => 'newsletter'], function() {
 
-
+        // Admin newsletter subscriber list
+        Route::get('/', [
+            'uses' => 'NewsletterController@index',
+            'as' => 'admin.newsletter'
+        ]);
     });
 
     // Admin settings routes

@@ -35,8 +35,8 @@ class SettingsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function discussions() {
-        return view('admin.settings.discussions')->with([
+    public function discussion() {
+        return view('admin.settings.discussion')->with([
             'settings' => $this->settings
         ]);
     }
