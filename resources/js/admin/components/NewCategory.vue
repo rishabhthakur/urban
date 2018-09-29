@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label>Category Parent (Optional)</label>
                     <select class="custom-select" v-model="category.parent">
-                        <option selected>No parent</option>
+                        <option selected value="0">No parent</option>
                         <option v-for="category in list" :value="category.id">{{ category.name }}</option>
                     </select>
                 </div>

@@ -152,7 +152,11 @@
                             <div class="dropdown mb-3">
                                 <a class="text-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="badge">
-                                        <i class="fas fa-circle text-success mr-1"></i> Website active
+                                        @if ($settings->first()->status == 1)
+                                            <i class="fas fa-circle text-success mr-1"></i> Website active
+                                        @else
+                                            <i class="fas fa-circle text-warning mr-1"></i> Website in maintenance mode
+                                        @endif
                                     </span>
                                 </a>
 
@@ -160,7 +164,11 @@
                                     <div class="dropdown-item-text">
                                         <p class="text-muted mb-0">
                                             <small>
-                                                We recomend that you keep the website status live unless drastic changes, database upgrades and major upgrades have been scheduled. In that case you should head over to the <a href="{!! route('admin.settings') !!}">settings page</a> and switch the <strong>site status</strong> option to off. This will activate <code>code 503 - site under maintenance</code> or <strong>maintenance mode</strong>.
+                                                @if ($settings->first()->status)
+                                                    We recomend that you keep the website status live unless drastic changes, database upgrades and major upgrades have been scheduled. In that case you should head over to the <a href="{!! route('admin.settings') !!}">settings page</a> and switch the <strong>site status</strong> option to off. This will activate <code>code 503 - site under maintenance</code> or <strong>maintenance mode</strong>.
+                                                @else
+                                                    The sooner the site is back the better.
+                                                @endif
                                             </small>
                                         </p>
                                     </div>
@@ -169,24 +177,36 @@
                             <label>Website privacy policy</label>
                             <div class="mb-3">
                                 <span class="badge">
-                                    <i class="fas fa-circle text-success mr-1"></i> Page set
+                                    @if ($settings->first()->privacy)
+                                        <i class="fas fa-circle text-success mr-1"></i> Page set
+                                    @else
+                                        <i class="fas fa-circle text-danger mr-1"></i> Page not set
+                                    @endif
                                 </span>
                             </div>
                             <label>Website legal information</label>
                             <div class="mb-3">
                                 <span class="badge">
-                                    <i class="fas fa-circle text-success mr-1"></i> Page set
+                                    @if ($settings->first()->legal)
+                                        <i class="fas fa-circle text-success mr-1"></i> Page set
+                                    @else
+                                        <i class="fas fa-circle text-danger mr-1"></i> Page not set
+                                    @endif
                                 </span>
                             </div>
                             <label>Site membership</label>
                             <div class="mb-3">
                                 <span class="badge">
-                                    <i class="fas fa-circle text-success mr-1"></i> Anyone can register
+                                    @if ($settings->first()->membership)
+                                        <i class="fas fa-circle text-success mr-1"></i> Anyone can register
+                                    @else
+                                        <i class="fas fa-circle text-warning mr-1"></i> No one can register
+                                    @endif
                                 </span>
                             </div>
-                            <div class="text-center">
+                            <div class="mt-5">
                                 <small>
-                                    <a href="{!! route('admin.settings') !!}">
+                                    <a href="{!! route('admin.settings') !!}" class="btn btn-outline-primary btn-sm">
                                         <i class="fas fa-cog"></i>
                                         Settings
                                     </a>
