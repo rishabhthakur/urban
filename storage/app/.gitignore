@@ -1,3 +1,6 @@
 *
 !public/
+!public/avatar
+!img/
+!img/logo/
 !.gitignore
