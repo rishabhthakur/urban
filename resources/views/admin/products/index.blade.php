@@ -7,7 +7,7 @@
             <strong>Showing total of {{ count($products) }}</strong>
         </div>
         <div class="float-right text-right">
-            <a href="{!! route('admin.products.create') !!}" class="btn btn-primary btn-sm">
+            <a href="{!! route('admin.products.create') !!}" class="btn btn-primary">
                 <i class="fas fa-user-plus mr-1"></i>
                 Add New Products
             </a>

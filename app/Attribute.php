@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attribute extends Model {
 
+    public $with = [
+        'data'
+    ];
+
     protected $fillable = [
         'name',
         'slug'
@@ -16,6 +20,6 @@ class Attribute extends Model {
     }
 
     public function products() {
-        return $this->belongsToMany('App\Product');
+        return $this->hasMany('App\Product');
     }
 }

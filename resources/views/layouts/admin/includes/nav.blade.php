@@ -1,4 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent p-0 mb-5">
+    @if (Route::currentRouteName() != 'admin')
+        <a href="{!! URL::previous() !!}" class="btn btn-link text-black">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    @endif
     <button type="button" id="sidebarCollapse" class="btn btn-link text-black">
         <i class="fas fa-bars"></i>
     </button>

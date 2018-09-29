@@ -4,13 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Traits\SKUGenerator;
 // use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Product extends Model {
 
     use SoftDeletes;
-    use SKUGenerator;
     // use SearchableTrait;
 
     // protected $searchable = [
@@ -31,6 +29,15 @@ class Product extends Model {
     //         'brands' => ['products.brand_id','brands.id'],
     //     ],
     // ];
+
+    public $with = [
+        'categories',
+        'tags',
+        'reviews',
+        'brand',
+        'attributes',
+        'medias'
+    ];
 
     protected $dates = [
         'deteled_at'
@@ -73,12 +80,8 @@ class Product extends Model {
         return $this->belongsTo('App\Brand');
     }
 
-    public function sizes() {
-        return $this->belongsToMany('App\Size');
-    }
-
-    public function colors() {
-        return $this->belongsToMany('App\Color');
+    public function attributes() {
+        return $this->belongsToMany('App\Attribute');
     }
 
     public function wishlists() {
