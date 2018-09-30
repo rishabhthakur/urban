@@ -31,12 +31,7 @@ class Product extends Model {
     // ];
 
     public $with = [
-        'categories',
-        'tags',
-        'reviews',
-        'brand',
-        'attributes',
-        'medias'
+        //
     ];
 
     protected $dates = [
@@ -78,6 +73,10 @@ class Product extends Model {
 
     public function brand() {
         return $this->belongsTo('App\Brand');
+    }
+
+    public function adata() {
+        return $this->belongsToMany('App\Adata');
     }
 
     public function attributes() {

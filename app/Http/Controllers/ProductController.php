@@ -6,11 +6,14 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Activity;
+use App\Review;
 use App\FileSystem;
 use App\Media;
 use App\MediaProduct;
+use App\AttributeAdataProduct;
 use App\Scategory;
 use App\Attribute;
+use App\Adata;
 use App\Stag;
 use App\Brand;
 
@@ -21,6 +24,7 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
+        // return Product::orderBy('created_at', 'DESC')->get();
         return view('admin.products.index')->with([
             'products' => Product::orderBy('created_at', 'DESC')->get()
         ]);
@@ -37,7 +41,7 @@ class ProductController extends Controller {
             'categories' => Scategory::all(),
             'tags' => Stag::all(),
             'brands' => Brand::all(),
-            'attributes' => Attribute::where('parent_id', null)->get()
+            'attributes' => Attribute::all()
         ]);
     }
 
@@ -102,10 +106,15 @@ class ProductController extends Controller {
         // Product Tags, Categories and Sizes Register into Database
         $product->categories()->attach($request->categories);
         $product->tags()->attach($request->tags);
-        // $product->genders()->attach($genders);
-        // if(isset($request->sizes)) {
-        //     $product->sizes()->attach($request->sizes);
-        // }
+
+        // Product Attributes
+        if(isset($request->data)) {
+            foreach($request->data as $data) {
+                $attrb_id = Adata::find($data)->attrb_id;
+                $product->adata()->attach($data);
+                $product->attributes()->attach($attrb_id);
+            }
+        }
 
         $this->logActivity($product->name);
 

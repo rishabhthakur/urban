@@ -137,9 +137,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         ]);
 
         // Admin user profile
-        Route::post('/update/{slug}', [
+        Route::post('/update/account/{slug}', [
+            'uses' => 'UsersController@update_account',
+            'as' => 'admin.users.update.account'
+        ]);
+
+        // Admin user profile
+        Route::post('/update/profile/{slug}', [
             'uses' => 'UsersController@update',
-            'as' => 'admin.users.update'
+            'as' => 'admin.users.update.profile'
         ]);
 
         // Admin user activities - reserved only for Administrators

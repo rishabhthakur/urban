@@ -7,9 +7,9 @@
     <!-- Single Product Thumb -->
     <div class="single_product_thumb clearfix">
       <div class="product_thumbnail_slides owl-carousel">
-        @foreach ($product->medias as $media)
+        {{-- @foreach ($product->medias as $media)
           <img src="{{ asset($media->url) }}" alt="{{ $product->name }}">
-        @endforeach
+        @endforeach --}}
       </div>
     </div>
 
@@ -29,24 +29,24 @@
       </p>
 
       <!-- Form -->
-      <form class="cart-form clearfix" action="{{ route('bag.add', ['id' => $product->id]) }}" method="POST">
+      <form class="cart-form clearfix" action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
         @csrf
         <!-- Select Box -->
-        {{-- @if(count($product->sizes) > 0)
+        @if(count($product->attributes) > 0)
           <div class="select-box d-flex mt-50 mb-30">
             <select name="size" id="productSize" class="mr-5" required>
-              @foreach ($product->sizes as $size)
-                <option value="{{ $size->size }}">Size: {{ $size->size }}</option>
+              @foreach ($product->attributes as $attribute)
+                <option value="value">{{ $attribute->name }}: {{ $attribute->name }}</option>
               @endforeach
             </select>
-            <select name="select" id="productColor">
+            {{-- <select name="select" id="productColor">
               <option value="value">Color: Black</option>
               <option value="value">Color: White</option>
               <option value="value">Color: Red</option>
               <option value="value">Color: Purple</option>
-            </select>
+            </select> --}}
           </div>
-        @endif --}}
+        @endif
         <!-- Cart & Favourite Box -->
         <div class="cart-fav-box d-flex align-items-center mt-50 mb-30">
         <!-- Cart -->

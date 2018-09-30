@@ -22,9 +22,18 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="view">
-                    <a class="dropdown-item" href="{!! route('home') !!}">Visit Public</a>
-                    <a class="dropdown-item" href="{!! route('blog') !!}">Visit Blog</a>
-                    <a class="dropdown-item" href="{!! route('home') !!}">Visit Shop</a>
+                    <a class="dropdown-item" href="{!! route('home') !!}">
+                        <i class="fas fa-home"></i>
+                        Visit Public
+                    </a>
+                    <a class="dropdown-item" href="{!! route('blog') !!}">
+                        <i class="fab fa-blogger-b"></i>
+                        Visit Blog
+                    </a>
+                    <a class="dropdown-item" href="{!! route('home') !!}">
+                        <i class="fas fa-store"></i>
+                        Visit Shop
+                    </a>
                 </div>
             </li>
             <li class="nav-item dropdown">

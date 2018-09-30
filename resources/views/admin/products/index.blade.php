@@ -8,8 +8,7 @@
         </div>
         <div class="float-right text-right">
             <a href="{!! route('admin.products.create') !!}" class="btn btn-primary">
-                <i class="fas fa-user-plus mr-1"></i>
-                Add New Products
+                <i class="fas fa-cart-plus"></i>
             </a>
         </div>
     </div>
@@ -68,7 +67,7 @@
                             </td>
                             <td class="text-center">
                                 @if ($product->quantity)
-                                    <span class="badge @if($product->quantity < 2) badge-danger @else badge-success @endif">
+                                    <span class="badge @if($product->quantity < 2) badge-danger @else badge-primary @endif">
                                         {{ $product->quantity }} PCS
                                     </span>
                                 @else
@@ -95,7 +94,7 @@
                             </td>
                             <td width="10%">
                                 @foreach ($product->categories as $category)
-                                    <span class="text-primary"> {{ $category->name }},</span>
+                                    <span class="badge text-primary"> {{ $category->name }}</span>
                                 @endforeach
                             </td>
                             <td width="10%">

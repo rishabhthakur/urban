@@ -176,6 +176,19 @@ class UsersController extends Controller {
         ]);
     }
 
+    public function update_account(Request $request, $slug) {
+        $user = User::where('slug', $slug)->first();
+        // User account
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role_id = $request->role;
+        $user->save();
+
+        return back()->with([
+            'success' => 'Profile updated.'
+        ]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -201,6 +214,7 @@ class UsersController extends Controller {
             $user->profile->avatar = $avatar_new_name;
         }
 
+        // User profile
         $user->profile->first_name = $request->first_name;
         $user->profile->last_name = $request->last_name;
         $user->profile->job = $request->job;
@@ -211,6 +225,10 @@ class UsersController extends Controller {
         return back()->with([
             'success' => 'Profile updated.'
         ]);
+    }
+
+    public function saveAvatar($avatar) {
+        // code...
     }
 
     /**

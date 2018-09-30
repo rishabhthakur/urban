@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h6 class="heading mb-3">Profile</h6>
-                    <form action="{!! route('admin.users.update', ['slug' => $user->slug]) !!}" method="post" enctype="multipart/form-data">
+                    <form action="{!! route('admin.users.update.profile', ['slug' => $user->slug]) !!}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="form-group col">
@@ -84,7 +84,9 @@
             <div class="card">
                 <div class="card-body">
                     <h6 class="heading mb-3">Account</h6>
-                    <form class="" action="index.html" method="post">
+                    <form action="{!! route('admin.users.update.account', ['slug' => $user->slug]) !!}" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="account" value="1">
                         <div class="form-group">
                             <label for="name">Username</label>
                             <input type="text" name="name" id="name" class="form-control" placeholder="Username" value="{{ $user->name }}">

@@ -17,4 +17,8 @@ class Adata extends Model {
     public function attribute() {
         return $this->belongsTo('App\Attribute', 'attrb_id');
     }
+
+    public function products() {
+        return $this->belongsToMany('App\Product');
+    }
 }

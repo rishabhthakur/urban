@@ -56,7 +56,7 @@
                             <br />
                             <span>
                                 <small>
-                                    <strong>Slug:</strong> attribute-slug
+                                    <strong>Slug:</strong> {{ $element->slug }}
                                 </small>
                             </span>
                         </div>
