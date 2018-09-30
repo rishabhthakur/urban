@@ -17,10 +17,11 @@ window.Vue = require('vue');
  */
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
-// Vue.component('notifications', require('./components/Notificatsions.vue'));
-import { store } from './store'
+Vue.component('vue-newcategory', require('./components/NewCategory.vue'));
+Vue.component('vue-newtag', require('./components/NewTag.vue'));
+// import { store } from './store'
 
 const app = new Vue({
-    el: '#app',
-    store
+    el: '#app'
+    // store
 });

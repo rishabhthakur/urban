@@ -43,7 +43,7 @@
             </a>
         </li>
         <li @if (Route::currentRouteName() == 'admin.newsletter') class="active" @endif>
-            <a href="#">
+            <a href="{!! route('admin.newsletter') !!}">
                 <i class="fas fa-newspaper mr-2"></i>
                 Newsletter
             </a>

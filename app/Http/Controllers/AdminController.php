@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Settings;
 use App\Product;
 use App\Scategory;
 use App\Stag;
@@ -35,7 +36,8 @@ class AdminController extends Controller {
         return view('admin.index')->with([
             'activities' => Activity::orderBy('created_at', 'DESC')->take(7)->get(),
             'products' => new Product,
-            'users' => new User
+            'users' => new User,
+            'settings' => new Settings
         ]);
     }
 }

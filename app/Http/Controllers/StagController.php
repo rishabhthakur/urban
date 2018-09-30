@@ -79,6 +79,36 @@ class StagController extends Controller {
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function vue_store(Request $request) {
+        $this->validate($request, [
+            'name' => 'required|string'
+        ]);
+
+        $existing = Stag::where('name', $request->name)->first();
+
+        if($existing) {
+            return response()->json([
+                'message' => 'A term with the name provided already exists.'
+            ], 422);
+        }
+
+        $tag = new Stag;
+        $tag->name = $request->name;
+        $tag->slug = str_slug($request->name);
+        $tag->description = '–––';
+        $tag->save();
+
+        return response()->json([
+            'message' => 'OK'
+        ], 200);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\Stag  $stag
