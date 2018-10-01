@@ -49,7 +49,7 @@
             <div class="nav-wrapper pt-0">
                 <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true">
+                        <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true">
                             <i class="fas fa-clipboard mr-1"></i>
                             Inventory
                         </a>
@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false">
+                        <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false">
                             <i class="fas fa-asterisk mr-1"></i>
                             Attributes
                         </a>
@@ -77,7 +77,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
+                        <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
                             <div class="form-group row">
                                 <div class="col">
                                     <label for="sku">SKU</label>
@@ -168,7 +168,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade show active" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
+                        <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
                             @forelse ($attributes as $attribute)
                                 <div class="border rounded mb-2">
                                     <div class="attribute-title border-bottom p-2">
@@ -243,36 +243,41 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="heading mb-5">Publish</h6>
-                    <div class="status">
-                        <label>Status</label>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" checked id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1"> Live</label>
+                    <h6 class="heading mb-3">Publish</h6>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="status">
+                                <label>Status</label>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" checked id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1"> Live</label>
+                                </div>
+                                <span class="text-muted form-text">
+                                    <small>Uncheck cancel</small>
+                                </span>
+                            </div>
                         </div>
-                        <span class="text-muted form-text">
-                            <small>Uncheck cancel</small>
-                        </span>
-                        <hr>
-                        <label>Visibilty</label>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" checked id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1"> Public</label>
+                        <div class="col-6">
+                            <label>Visibilty</label>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" checked id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1"> Public</label>
+                            </div>
+                            <span class="text-muted form-text">
+                                <small>Uncheck to hide product</small>
+                            </span>
                         </div>
-                        <span class="text-muted form-text">
-                            <small>Uncheck to hide product</small>
-                        </span>
-                        <hr>
-                        <label>Published</label>
-                        <div>
-                            <label class="text-primary"> {{ date("F j, Y") }}</label>
-                        </div>
-                        <span class="text-muted form-text">
-                            <small>immediately</small>
-                        </span>
-                        <div class="text-right mt-4 clearfix">
-                            <button type="submit" class="btn btn-primary">Publish</button>
-                        </div>
+                    </div>
+                    <hr>
+                    <label>Published</label>
+                    <div>
+                        <label class="text-primary"> {{ date("F j, Y") }}</label>
+                    </div>
+                    <span class="text-muted form-text">
+                        <small>immediately</small>
+                    </span>
+                    <div class="text-right mt-4 clearfix">
+                        <button type="submit" class="btn btn-primary">Publish</button>
                     </div>
                 </div>
             </div>
@@ -332,23 +337,8 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <h6 class="heading mb-5">Product Brand</h6>
-                    <select id="brand" class="custom-select form-control" name="brand" id="brand">
-                        @forelse ($brands as $brand)
-                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                        @empty
-                            <option selected>No brands found.</option>
-                        @endforelse
-                    </select>
-                </div>
-                <div class="card-footer bg-white border-0">
-                    <a href="{!! route('admin.products.brands') !!}">
-                        <i class="fas fa-plus"></i> Add new brand
-                    </a>
-                </div>
-            </div>
+            <!-- New Brand -->
+            <vue-newbrand></vue-newbrand>
             <!-- New Category -->
             <vue-newcategory></vue-newcategory>
             <!-- New Tag -->

@@ -108,6 +108,18 @@ trait AuthenticatesUsers
     }
 
     /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        //
+    }
+
+    /**
      * Get the failed login response instance.
      *
      * @param  \Illuminate\Http\Request  $request

@@ -5,8 +5,8 @@
             <div class="mb-1" v-if="list.length > 0">
                 <div class="parent" v-for="category in list">
                     <div class="custom-control custom-checkbox mb-1">
-                        <input type="checkbox" class="custom-control-input" name="categories[]" :id="category.id" :value="category.id">
-                        <label class="custom-control-label" :for="category.id">
+                        <input type="checkbox" class="custom-control-input" name="categories[]" :id="category.slug" :value="category.id">
+                        <label class="custom-control-label" :for="category.slug">
                             <strong> {{ category.name }}</strong>
                          </label>
                     </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group">
                     <label>Category Parent (Optional)</label>
-                    <select class="custom-select" v-model="category.parent">
+                    <select class="custom-select form-control" v-model="category.parent">
                         <option selected value="0">No parent</option>
                         <option v-for="category in list" :value="category.id">{{ category.name }}</option>
                     </select>

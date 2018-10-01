@@ -39,6 +39,10 @@ class Product extends Model {
     ];
 
     protected $fillable = [
+        'id',
+        'p_id',
+        'status',
+        'user_id',
         'name',
         'regular_price',
         'sale_price',

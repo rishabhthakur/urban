@@ -17,6 +17,7 @@ window.Vue = require('vue');
  */
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('vue-newbrand', require('./components/NewBrand.vue'));
 Vue.component('vue-newcategory', require('./components/NewCategory.vue'));
 Vue.component('vue-newtag', require('./components/NewTag.vue'));
 // import { store } from './store'

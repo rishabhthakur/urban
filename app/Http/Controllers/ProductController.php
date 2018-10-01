@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 use App\Activity;
 use App\Review;
@@ -61,6 +62,12 @@ class ProductController extends Controller {
             'tags' => 'required'
         ]);
 
+        if ($request->regular_price <= $request->sale_price) {
+            return back()->with([
+                'error' => 'Regular price must be less than sale price.'
+            ]);
+        }
+
         // Check for Slug
         // if(isset($request->slug)) {
         //     $slug = $request->slug;
@@ -85,7 +92,16 @@ class ProductController extends Controller {
             $reviews = 0;
         }
 
+        if (isset($request->status)) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+
         $product = Product::create([
+            'p_id' => str_random(7) . time(),
+            'status' => $status,
+            'user_id' => Auth::id(),
             'name' => $request->name,
             'regular_price' => $request->regular_price,
             'sale_price' => $request->sale_price,

@@ -80,6 +80,37 @@ class BrandController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function vue_store(Request $request) {
+        $this->validate($request, [
+            'name' => 'required|string'
+        ]);
+
+        $existing = Brand::where('name', $request->name)->first();
+
+        if($existing) {
+            return redirect(route('admin.products.brands'))->with([
+              'error' => 'A term with the name provided already exists.'
+            ]);
+        }
+
+        $brand = new Brand;
+        $brand->name = $request->name;
+        $brand->slug = str_slug($request->name);
+        $brand->description = '–––';
+
+        $brand->save();
+
+        return response()->json([
+            'message' => 'OK'
+        ], 200);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\Brand  $brand

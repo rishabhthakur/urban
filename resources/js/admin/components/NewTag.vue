@@ -4,8 +4,8 @@
             <h6 class="heading mb-3">Product Tags</h6>
             <div class="tegs" v-if="list.length > 0">
                 <div class="custom-control custom-checkbox mb-1"  v-for="tag in list">
-                    <input type="checkbox" class="custom-control-input" :id="tag.id" :value="tag.id" name="tags[]">
-                    <label class="custom-control-label" :for="tag.id"> {{ tag.name }}</label>
+                    <input type="checkbox" class="custom-control-input" :id="tag.slug" :value="tag.id" name="tags[]">
+                    <label class="custom-control-label" :for="tag.slug"> {{ tag.name }}</label>
                 </div>
             </div>
             <span class="text-muted" v-else>

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 
 use App\Stag;
+use App\Brand;
 use App\Scategory;
 
 /*
@@ -24,6 +25,16 @@ Route::get('/mark-as-read', function() {
     Auth::user()->unreadNotifications->markAsRead();
     return response()->json(200);
 })->middleware('api');
+
+
+Route::middleware('api')->post('/brand/store', [
+    'uses' => 'BrandController@vue_store',
+    'as' => 'brand.vue.store'
+]);
+
+Route::middleware('api')->get('/brand', function() {
+    return Brand::orderBy('created_at', 'ASC')->get();
+});
 
 
 Route::middleware('api')->post('/category/store', [
