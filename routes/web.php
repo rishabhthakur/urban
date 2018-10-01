@@ -266,6 +266,70 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         });
     });
 
+    // Admin posts routes
+    Route::group(['prefix' => 'posts'], function() {
+
+        // Admin posts list
+        Route::get('/', [
+            'uses' => 'PostController@index',
+            'as' => 'admin.posts'
+        ]);
+
+        // Admin add new posts
+        Route::get('/create', [
+            'uses' => 'PostController@create',
+            'as' => 'admin.posts.create'
+        ]);
+
+        // Admin add new posts
+        Route::post('/store', [
+            'uses' => 'PostController@store',
+            'as' => 'admin.posts.store'
+        ]);
+
+        // Admin edit posts
+        Route::get('/edit', [
+            'uses' => 'PostController@edit',
+            'as' => 'admin.posts.edit'
+        ]);
+
+        // Admin edit posts
+        Route::post('/update', [
+            'uses' => 'PostController@update',
+            'as' => 'admin.posts.update'
+        ]);
+
+        // Admin posts categories
+        Route::group(['prefix' => 'categories'], function() {
+
+            // Admin posts categories list
+            Route::get('/', [
+                'uses' => 'PcategoryController@index',
+                'as' => 'admin.posts.categories'
+            ]);
+
+            Route::post('/store', [
+                'uses' => 'PcategoryController@store',
+                'as' => 'admin.posts.categories.store'
+            ]);
+        });
+
+        // Admin posts tags
+        Route::group(['prefix' => 'tags'], function() {
+
+            // Admin posts tags list
+            Route::get('/', [
+                'uses' => 'PtagController@index',
+                'as' => 'admin.posts.tags'
+            ]);
+
+            Route::post('/store', [
+                'uses' => 'StagController@store',
+                'as' => 'admin.posts.tags.store'
+            ]);
+        });
+    });
+
     // Admin media routes
     Route::group(['prefix' => 'media'], function() {
 

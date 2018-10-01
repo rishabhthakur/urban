@@ -245,37 +245,44 @@
                 <div class="card-body">
                     <h6 class="heading mb-3">Publish</h6>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col mb-3">
                             <div class="status">
                                 <label>Status</label>
-                                <div class="custom-control custom-checkbox">
+                                <div class="custom-control custom-checkbox mb-3">
                                     <input type="checkbox" class="custom-control-input" checked id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1"> Live</label>
+                                    <label class="custom-control-label" for="customCheck1"> <strong>Publish</strong></label>
                                 </div>
-                                <span class="text-muted form-text">
-                                    <small>Uncheck cancel</small>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1"> <strong>Draft</strong></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-3">
+                            <label>Visibilty</label>
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input type="checkbox" class="custom-control-input" checked id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1"> <strong>Public</strong></label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1"> <strong>Private</strong></label>
+                            </div>
+                        </div>
+                        <div class="col mb-3">
+                            <label>Wiil be published</label>
+                            <div>
+                                <small>
+                                    <strong>immediately</strong>
+                                </small>
+                            </div>
+                            <div>
+                                <span class="badge badge-primary">
+                                    {{ date("F j, Y") }}
                                 </span>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <label>Visibilty</label>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" checked id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1"> Public</label>
-                            </div>
-                            <span class="text-muted form-text">
-                                <small>Uncheck to hide product</small>
-                            </span>
-                        </div>
                     </div>
-                    <hr>
-                    <label>Published</label>
-                    <div>
-                        <label class="text-primary"> {{ date("F j, Y") }}</label>
-                    </div>
-                    <span class="text-muted form-text">
-                        <small>immediately</small>
-                    </span>
                     <div class="text-right mt-4 clearfix">
                         <button type="submit" class="btn btn-primary">Publish</button>
                     </div>

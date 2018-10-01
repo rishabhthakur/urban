@@ -105,23 +105,31 @@
                 </li>
             </ul>
         </li>
-        <li>
-            <a href="#blog" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <li
+        @if (
+            Route::currentRouteName() == 'admin.posts' ||
+            Route::currentRouteName() == 'admin.posts.create' ||
+            Route::currentRouteName() == 'admin.posts.categories' ||
+            Route::currentRouteName() == 'admin.posts.tags'
+            )
+             class="active"
+        @endif>
+            <a href="#posts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-comment-alt mr-2"></i>
-                Blog
+                Posts
             </a>
-            <ul class="collapse list-unstyled" id="blog">
-                <li>
-                    <a href="#">All Posts</a>
+            <ul class="collapse list-unstyled" id="posts">
+                <li @if (Route::currentRouteName() == 'admin.posts') class="active" @endif>
+                    <a href="{!! route('admin.posts') !!}">All Posts</a>
                 </li>
-                <li>
-                    <a href="#">Add New</a>
+                <li @if (Route::currentRouteName() == 'admin.posts.create') class="active" @endif>
+                    <a href="{!! route('admin.posts.create') !!}">Add New</a>
                 </li>
-                <li>
-                    <a href="#">Categories</a>
+                <li @if (Route::currentRouteName() == 'admin.posts.categories') class="active" @endif>
+                    <a href="{!! route('admin.posts.categories') !!}">Categories</a>
                 </li>
-                <li>
-                    <a href="#">Tags</a>
+                <li @if (Route::currentRouteName() == 'admin.posts.tags') class="active" @endif>
+                    <a href="{!! route('admin.posts.tags') !!}">Tags</a>
                 </li>
                 <li>
                     <a href="#">Comments</a>
