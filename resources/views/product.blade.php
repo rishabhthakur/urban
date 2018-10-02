@@ -39,7 +39,7 @@
                     @foreach ($product->attributes as $attribute)
                         <select name="{{ $attribute->name }}" id="productAttrb{{ $attribute->id }}" class="mr-5" required>
                             @foreach ($product->adata as $data)
-                                @if ($attribute->id == $data->id)
+                                @if ($attribute->id == $data->attribute->id)
                                     <option value="{{ $data->name }}">{{ $data->attribute->name }}: {{ $data->name }}</option>
                                 @endif
                             @endforeach

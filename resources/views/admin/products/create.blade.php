@@ -173,8 +173,8 @@
                                 <div class="border rounded mb-2">
                                     <div class="attribute-title border-bottom p-2">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" name="attributes[]" id="{{ $attribute->id }}" value="{{ $attribute->id }}">
-                                            <label class="custom-control-label" for="{{ $attribute->id }}">
+                                            <input type="checkbox" class="custom-control-input" name="attrbs[]" id="{{ $attribute->slug }}" value="{{ $attribute->id }}">
+                                            <label class="custom-control-label" for="{{ $attribute->slug }}">
                                                 <strong>{{ $attribute->name }}</strong>
                                             </label>
                                         </div>
@@ -182,8 +182,8 @@
                                     <div class="attributes p-3">
                                         @forelse ($attribute->data as $data)
                                             <div class="custom-control custom-checkbox custom-control-inline">
-                                                <input type="checkbox" class="custom-control-input" name="data[]" id="{{ $data->id }}" value="{{ $data->id }}">
-                                                <label class="custom-control-label" for="{{ $data->id }}">
+                                                <input type="checkbox" class="custom-control-input" name="data[]" id="{{ $data->slug }}" value="{{ $data->id }}">
+                                                <label class="custom-control-label" for="{{ $data->slug }}">
                                                     {{ $data->name }}
                                                 </label>
                                             </div>

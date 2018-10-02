@@ -69,6 +69,14 @@ class Product extends Model {
         return $this->belongsToMany('Urban\Stag');
     }
 
+    public function adata() {
+        return $this->belongsToMany('Urban\Adata');
+    }
+
+    public function attributes() {
+        return $this->belongsToMany('Urban\Attribute');
+    }
+
     public function reviews() {
         return $this->hasMany('Urban\Review');
     }
@@ -79,14 +87,6 @@ class Product extends Model {
 
     public function brand() {
         return $this->belongsTo('Urban\Brand');
-    }
-
-    public function adata() {
-        return $this->belongsToMany('Urban\Adata');
-    }
-
-    public function attributes() {
-        return $this->belongsToMany('Urban\Attribute');
     }
 
     public function wishlists() {

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Urban\AttributeAdataProduct;
 use Illuminate\Http\Request;
 use Urban\MediaProduct;
+use Urban\AttributeProduct;
 use Urban\FileSystem;
 use Urban\Attribute;
 use Urban\Scategory;
@@ -91,7 +92,7 @@ class ProductController extends Controller {
         }
 
         $product = Product::create([
-            'p_id' => str_random(7) . time(),
+            'p_id' => str_random(4),
             'status' => $status,
             'user_id' => Auth::id(),
             'name' => $request->name,
@@ -122,11 +123,12 @@ class ProductController extends Controller {
         // Product Tags, Categories and Attributes Register into Database
         $product->categories()->attach($request->categories);
         $product->tags()->attach($request->tags);
+
         // Product Attributes
-        if (isset($request->data)) {
+        if (isset($request->attributes)) {
             $product->attributes()->attach($request->attributes);
             if(isset($request->data)) {
-                $product->adata()->attach($data);
+                $product->adata()->attach($request->data);
             }
         }
 
