@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Customize::class, function (Faker $faker) {
+$factory->define(Urban\Customize::class, function (Faker $faker) {
     return [
         //
     ];

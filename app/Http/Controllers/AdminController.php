@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\Activity;
-use App\Settings;
-use App\Product;
-use App\Scategory;
-use App\Stag;
-use App\Brand;
-use App\Attribute;
-use App\User;
+use Urban\Activity;
+use Urban\Settings;
+use Urban\Product;
+use Urban\Scategory;
+use Urban\Stag;
+use Urban\Brand;
+use Urban\Attribute;
+use Urban\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;

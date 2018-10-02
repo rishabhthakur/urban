@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +15,6 @@ class Review extends Model {
     ];
 
     public function product() {
-        return $this->belongsTo('App\Product');
+        return $this->belongsTo('Urban\Product');
     }
 }

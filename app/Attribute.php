@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,10 +16,10 @@ class Attribute extends Model {
     ];
 
     public function data() {
-        return $this->hasMany('App\Adata', 'attrb_id');
+        return $this->hasMany('Urban\Adata', 'attrb_id');
     }
 
     public function products() {
-        return $this->belongsToMany('App\Product');
+        return $this->belongsToMany('Urban\Product');
     }
 }

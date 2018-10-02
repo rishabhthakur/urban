@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Newsletter::class, function (Faker $faker) {
+$factory->define(Urban\Newsletter::class, function (Faker $faker) {
     return [
         //
     ];

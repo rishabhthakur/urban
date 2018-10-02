@@ -1,6 +1,6 @@
 <?php
 
-use App\Brand;
+use Urban\Brand;
 use Illuminate\Database\Seeder;
 
 class BrandsTableSeeder extends Seeder

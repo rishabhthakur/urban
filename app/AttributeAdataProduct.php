@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +15,6 @@ class AttributeAdataProduct extends Model {
     ];
 
     public function product() {
-        return $this->belongsToMany('App\Product');
+        return $this->belongsToMany('Urban\Product');
     }
 }

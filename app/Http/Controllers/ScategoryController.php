@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\Scategory;
-use App\Activity;
+use Urban\Scategory;
+use Urban\Activity;
 use Illuminate\Http\Request;
 
 class ScategoryController extends Controller {
@@ -134,7 +134,7 @@ class ScategoryController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  \App\Scategory  $scategory
+     * @param  \Urban\Scategory  $scategory
      * @return \Illuminate\Http\Response
      */
     public function show(Scategory $scategory)
@@ -145,7 +145,7 @@ class ScategoryController extends Controller {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Scategory  $scategory
+     * @param  \Urban\Scategory  $scategory
      * @return \Illuminate\Http\Response
      */
     public function edit(Scategory $scategory)
@@ -157,7 +157,7 @@ class ScategoryController extends Controller {
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Scategory  $scategory
+     * @param  \Urban\Scategory  $scategory
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Scategory $scategory)
@@ -168,7 +168,7 @@ class ScategoryController extends Controller {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Scategory  $scategory
+     * @param  \Urban\Scategory  $scategory
      * @return \Illuminate\Http\Response
      */
     public function destroy(Scategory $scategory)

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\Brand;
-use App\Activity;
+use Urban\Brand;
+use Urban\Activity;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -113,7 +113,7 @@ class BrandController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Brand  $brand
+     * @param  \Urban\Brand  $brand
      * @return \Illuminate\Http\Response
      */
     public function show(Brand $brand)
@@ -124,7 +124,7 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Brand  $brand
+     * @param  \Urban\Brand  $brand
      * @return \Illuminate\Http\Response
      */
     public function edit(Brand $brand)
@@ -136,7 +136,7 @@ class BrandController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Brand  $brand
+     * @param  \Urban\Brand  $brand
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Brand $brand)
@@ -147,7 +147,7 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Brand  $brand
+     * @param  \Urban\Brand  $brand
      * @return \Illuminate\Http\Response
      */
     public function destroy(Brand $brand)

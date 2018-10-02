@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Product;
-use Illuminate\Http\Request;
+namespace Urban\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use App\Activity;
-use App\Review;
-use App\FileSystem;
-use App\Media;
-use App\MediaProduct;
-use App\AttributeAdataProduct;
-use App\Scategory;
-use App\Attribute;
-use App\Adata;
-use App\Stag;
-use App\Brand;
+use Urban\AttributeAdataProduct;
+use Illuminate\Http\Request;
+use Urban\MediaProduct;
+use Urban\FileSystem;
+use Urban\Attribute;
+use Urban\Scategory;
+use Urban\Activity;
+use Urban\Product;
+use Urban\Review;
+use Urban\Media;
+use Urban\Adata;
+use Urban\Brand;
+use Urban\Stag;
 
 class ProductController extends Controller {
     /**
@@ -67,13 +66,6 @@ class ProductController extends Controller {
                 'error' => 'Regular price must be less than sale price.'
             ]);
         }
-
-        // Check for Slug
-        // if(isset($request->slug)) {
-        //     $slug = $request->slug;
-        // } else {
-        //     $slug = str_slug($request->name);
-        // }
 
         // Set Stock Status
         if (isset($request->stock_status)) {
@@ -127,16 +119,14 @@ class ProductController extends Controller {
         }
 
 
-        // Product Tags, Categories and Sizes Register into Database
+        // Product Tags, Categories and Attributes Register into Database
         $product->categories()->attach($request->categories);
         $product->tags()->attach($request->tags);
-
         // Product Attributes
-        if(isset($request->data)) {
-            foreach($request->data as $data) {
-                $attrb_id = Adata::find($data)->attrb_id;
+        if (isset($request->data)) {
+            $product->attributes()->attach($request->attributes);
+            if(isset($request->data)) {
                 $product->adata()->attach($data);
-                $product->attributes()->attach($attrb_id);
             }
         }
 
@@ -150,7 +140,7 @@ class ProductController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \Urban\Product  $product
      * @return \Illuminate\Http\Response
      */
     private function addImages($media_input, $product_id) {
@@ -200,7 +190,7 @@ class ProductController extends Controller {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \Urban\Product  $product
      * @return \Illuminate\Http\Response
      */
     private function logActivity($product_name) {
@@ -215,7 +205,7 @@ class ProductController extends Controller {
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $slug
+     * @param  \Urban\Product  $slug
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $slug) {
@@ -290,7 +280,7 @@ class ProductController extends Controller {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \Urban\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)

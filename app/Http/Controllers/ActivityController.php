@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\Activity;
+use Urban\Activity;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -41,7 +41,7 @@ class ActivityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Activity  $activity
+     * @param  \Urban\Activity  $activity
      * @return \Illuminate\Http\Response
      */
     public function show(Activity $activity)
@@ -52,7 +52,7 @@ class ActivityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Activity  $activity
+     * @param  \Urban\Activity  $activity
      * @return \Illuminate\Http\Response
      */
     public function edit(Activity $activity)
@@ -64,7 +64,7 @@ class ActivityController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Activity  $activity
+     * @param  \Urban\Activity  $activity
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Activity $activity)
@@ -75,7 +75,7 @@ class ActivityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Activity  $activity
+     * @param  \Urban\Activity  $activity
      * @return \Illuminate\Http\Response
      */
     public function destroy(Activity $activity)

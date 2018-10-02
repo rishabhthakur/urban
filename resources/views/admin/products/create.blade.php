@@ -172,7 +172,12 @@
                             @forelse ($attributes as $attribute)
                                 <div class="border rounded mb-2">
                                     <div class="attribute-title border-bottom p-2">
-                                        <strong>{{ $attribute->name }}</strong>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" name="attributes[]" id="{{ $attribute->id }}" value="{{ $attribute->id }}">
+                                            <label class="custom-control-label" for="{{ $attribute->id }}">
+                                                <strong>{{ $attribute->name }}</strong>
+                                            </label>
+                                        </div>
                                     </div>
                                     <div class="attributes p-3">
                                         @forelse ($attribute->data as $data)

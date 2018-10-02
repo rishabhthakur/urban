@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,6 +22,6 @@ class Settings extends Model {
     ];
 
     public function drole() {
-        return $this->hasOne('App\Role');
+        return $this->hasOne('Urban\Role');
     }
 }

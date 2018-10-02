@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Urban\Http\Controllers\Auth;
 
-use App\User;
-use App\Profile;
-use App\Settings;
-use App\Http\Controllers\Controller;
-use App\Notifications\NewUserRegistration;
+use Urban\User;
+use Urban\Profile;
+use Urban\Settings;
+use Urban\Http\Controllers\Controller;
+use Urban\Notifications\NewUserRegistration;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -84,7 +84,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \Urban\User
      */
     protected function create(array $data) {
 
@@ -114,7 +114,7 @@ class RegisterController extends Controller
           'avatar' => 'uploads/avatar/' .strtolower($data['name']). '/user.jpg'
         ]);
 
-        User::find(1)->notify(new \App\Notifications\NewUserRegistration($user));
+        User::find(1)->notify(new \Urban\Notifications\NewUserRegistration($user));
 
         // Return results
         return $user;

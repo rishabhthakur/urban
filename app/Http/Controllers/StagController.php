@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\Stag;
-use App\Activity;
+use Urban\Stag;
+use Urban\Activity;
 use Illuminate\Http\Request;
 
 class StagController extends Controller {
@@ -111,7 +111,7 @@ class StagController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  \App\Stag  $stag
+     * @param  \Urban\Stag  $stag
      * @return \Illuminate\Http\Response
      */
     public function show(Stag $stag)
@@ -122,7 +122,7 @@ class StagController extends Controller {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Stag  $stag
+     * @param  \Urban\Stag  $stag
      * @return \Illuminate\Http\Response
      */
     public function edit(Stag $stag)
@@ -134,7 +134,7 @@ class StagController extends Controller {
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Stag  $stag
+     * @param  \Urban\Stag  $stag
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Stag $stag)
@@ -145,7 +145,7 @@ class StagController extends Controller {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Stag  $stag
+     * @param  \Urban\Stag  $stag
      * @return \Illuminate\Http\Response
      */
     public function destroy(Stag $stag)

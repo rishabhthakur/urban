@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\User;
-use App\Message;
+use Urban\User;
+use Urban\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +21,7 @@ class MessageController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        Auth::user()->unreadNotifications->where('type', 'App\Notifications\NewMessage')->markAsRead();
+        Auth::user()->unreadNotifications->where('type', 'Urban\Notifications\NewMessage')->markAsRead();
         return view('admin.messages.index')->with([
             'messages' => $this->messages->orderBy('created_at', 'DESC')
                                          ->get()
@@ -69,7 +69,7 @@ class MessageController extends Controller {
 
         $user = ucwords($message->first_name);
 
-        User::find(1)->notify(new \App\Notifications\NewMessage($user));
+        User::find(1)->notify(new \Urban\Notifications\NewMessage($user));
 
         return redirect(route('contact'))->with([
             'success' => 'Thanks for the message. We\'ll get back to you as soon as possible.'
@@ -79,7 +79,7 @@ class MessageController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  \App\Message  $message
+     * @param  \Urban\Message  $message
      * @return \Illuminate\Http\Response
      */
     public function show(Message $message)
@@ -90,7 +90,7 @@ class MessageController extends Controller {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Message  $message
+     * @param  \Urban\Message  $message
      * @return \Illuminate\Http\Response
      */
     public function edit(Message $message)
@@ -102,7 +102,7 @@ class MessageController extends Controller {
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Message  $message
+     * @param  \Urban\Message  $message
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Message $message)
@@ -113,7 +113,7 @@ class MessageController extends Controller {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Message  $message
+     * @param  \Urban\Message  $message
      * @return \Illuminate\Http\Response
      */
     public function destroy(Message $message)

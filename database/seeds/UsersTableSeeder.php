@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Profile;
-use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,7 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run() {
 
-        $user = App\User::create([
+        $user = Urban\User::create([
             'name' => 'Thavarshan',
             'email' => 'tjthavarshan@gmail.com',
             'password' => bcrypt('alpha26'),
@@ -31,7 +29,7 @@ class UsersTableSeeder extends Seeder
         $publc = public_path('uploads/avatar/' .strtolower($user->name). '/user.jpg');
         copy($strg, $publc);
 
-        App\Profile::create([
+        Urban\Profile::create([
             'user_id' => $user->id,
             'avatar' => 'user.jpg',
             'first_name' => 'Thavarshan',

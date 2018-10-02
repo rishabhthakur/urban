@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,18 +23,18 @@ class Media extends Model {
     ];
 
     public function user() {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('Urban\User');
     }
 
     public function products() {
-        return $this->belongsToMany('App\Product');
+        return $this->belongsToMany('Urban\Product');
     }
 
     public function posts() {
-        return $this->bolongsToMany('App\Post');
+        return $this->bolongsToMany('Urban\Post');
     }
 
     public function directory() {
-        return $this->belongsTo('App\FileSystem', 'dir_id');
+        return $this->belongsTo('Urban\FileSystem', 'dir_id');
     }
 }

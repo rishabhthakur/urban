@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Notifications\NewUserRegistration;
+use Urban\User;
+use Urban\Notifications\NewUserRegistration;
 use Illuminate\Support\Facades\Notification;
 
 class NotificationController extends Controller {

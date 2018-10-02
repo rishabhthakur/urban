@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Order::class, function (Faker $faker) {
+$factory->define(Urban\Order::class, function (Faker $faker) {
     return [
         //
     ];

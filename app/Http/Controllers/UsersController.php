@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\User;
-use App\Role;
-use App\Profile;
+use Urban\User;
+use Urban\Role;
+use Urban\Profile;
 
 class UsersController extends Controller {
 

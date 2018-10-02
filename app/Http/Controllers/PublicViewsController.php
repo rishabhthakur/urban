@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
 use Cart;
-use App\Stag;
-use App\Brand;
-use App\Product;
-use App\Scategory;
-use App\Activity;
-use App\Settings;
+use Urban\Stag;
+use Urban\Brand;
+use Urban\Product;
+use Urban\Scategory;
+use Urban\Activity;
+use Urban\Settings;
 use Illuminate\Http\Request;
 use Laravel\Scout\Searchable;
 use Illuminate\Support\Facades\Auth;

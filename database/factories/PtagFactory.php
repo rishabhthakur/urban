@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Ptag::class, function (Faker $faker) {
+$factory->define(Urban\Ptag::class, function (Faker $faker) {
     return [
         //
     ];

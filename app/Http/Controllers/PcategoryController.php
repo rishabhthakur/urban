@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\Pcategory;
+use Urban\Pcategory;
 use Illuminate\Http\Request;
 
 class PcategoryController extends Controller
@@ -41,7 +41,7 @@ class PcategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Pcategory  $pcategory
+     * @param  \Urban\Pcategory  $pcategory
      * @return \Illuminate\Http\Response
      */
     public function show(Pcategory $pcategory)
@@ -52,7 +52,7 @@ class PcategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Pcategory  $pcategory
+     * @param  \Urban\Pcategory  $pcategory
      * @return \Illuminate\Http\Response
      */
     public function edit(Pcategory $pcategory)
@@ -64,7 +64,7 @@ class PcategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pcategory  $pcategory
+     * @param  \Urban\Pcategory  $pcategory
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Pcategory $pcategory)
@@ -75,7 +75,7 @@ class PcategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pcategory  $pcategory
+     * @param  \Urban\Pcategory  $pcategory
      * @return \Illuminate\Http\Response
      */
     public function destroy(Pcategory $pcategory)

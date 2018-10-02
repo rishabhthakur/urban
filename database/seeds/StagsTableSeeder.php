@@ -1,6 +1,6 @@
 <?php
 
-use App\Stag;
+use Urban\Stag;
 use Illuminate\Database\Seeder;
 
 class StagsTableSeeder extends Seeder

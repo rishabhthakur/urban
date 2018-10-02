@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\Post;
-use App\Ptag;
-use App\Pcategory;
+use Urban\Post;
+use Urban\Ptag;
+use Urban\Pcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Activity;
+use Urban\Activity;
 
 class PostController extends Controller
 {
@@ -50,7 +50,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \Urban\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function show(Post $post)
@@ -61,7 +61,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \Urban\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
@@ -73,7 +73,7 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
+     * @param  \Urban\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Post $post)
@@ -84,7 +84,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $post
+     * @param  \Urban\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function destroy(Post $post)
@@ -95,7 +95,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \Urban\Product  $product
      * @return \Illuminate\Http\Response
      */
     private function logActivity($post_name) {

@@ -16,17 +16,17 @@ class FileSystemsTableSeeder extends Seeder
             // Make Uploads Directory
             mkdir(public_path('uploads'));
         }
-        
+
         // Make Products Directory
         if(!is_dir(public_path('uploads/products'))) {
             mkdir(public_path('uploads/products'));
         }
-        
+
         // Make Posts Directory
         if(!is_dir(public_path('uploads/posts'))) {
             mkdir(public_path('uploads/posts'));
         }
-        
+
         // Make Avatar Directory
         if(!is_dir(public_path('uploads/avatar'))) {
             mkdir(public_path('uploads/avatar'));
@@ -53,7 +53,7 @@ class FileSystemsTableSeeder extends Seeder
         ];
 
         foreach($dirs as $dir){
-            App\FileSystem::create($dir);
+            Urban\FileSystem::create($dir);
         }
 
     }

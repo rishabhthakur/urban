@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Pcategory::class, function (Faker $faker) {
+$factory->define(Urban\Pcategory::class, function (Faker $faker) {
     return [
         //
     ];

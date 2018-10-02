@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -62,43 +62,43 @@ class Product extends Model {
     ];
 
     public function categories() {
-        return $this->belongsToMany('App\Scategory');
+        return $this->belongsToMany('Urban\Scategory');
     }
 
     public function tags() {
-        return $this->belongsToMany('App\Stag');
+        return $this->belongsToMany('Urban\Stag');
     }
 
     public function reviews() {
-        return $this->hasMany('App\Review');
+        return $this->hasMany('Urban\Review');
     }
 
     public function user() {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('Urban\User');
     }
 
     public function brand() {
-        return $this->belongsTo('App\Brand');
+        return $this->belongsTo('Urban\Brand');
     }
 
     public function adata() {
-        return $this->belongsToMany('App\Adata');
+        return $this->belongsToMany('Urban\Adata');
     }
 
     public function attributes() {
-        return $this->belongsToMany('App\Attribute');
+        return $this->belongsToMany('Urban\Attribute');
     }
 
     public function wishlists() {
-        return $this->belongsToMany('App\Wishlist');
+        return $this->belongsToMany('Urban\Wishlist');
     }
 
     public function orders() {
-        return $this->belongsToMany('App\Order');
+        return $this->belongsToMany('Urban\Order');
     }
 
     public function medias() {
-        return $this->belongsToMany('App\Media');
+        return $this->belongsToMany('Urban\Media');
     }
 
     public function getLowStock() {

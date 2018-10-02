@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\Media;
-use App\FileSystem;
-use App\Activity;
-use App\MediaProduct;
-use App\Product;
+use Urban\Media;
+use Urban\FileSystem;
+use Urban\Activity;
+use Urban\MediaProduct;
+use Urban\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
@@ -95,7 +95,7 @@ class MediaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Media  $media
+     * @param  \Urban\Media  $media
      * @return \Illuminate\Http\Response
      */
     public function show(Media $media)
@@ -106,7 +106,7 @@ class MediaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Media  $media
+     * @param  \Urban\Media  $media
      * @return \Illuminate\Http\Response
      */
     public function edit(Media $media)
@@ -118,7 +118,7 @@ class MediaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Media  $media
+     * @param  \Urban\Media  $media
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Media $media)
@@ -129,7 +129,7 @@ class MediaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Media  $media
+     * @param  \Urban\Media  $media
      * @return \Illuminate\Http\Response
      */
     public function destroy(Media $media)

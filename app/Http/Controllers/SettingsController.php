@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\Settings;
-use App\Role;
+use Urban\Settings;
+use Urban\Role;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller {
@@ -101,7 +101,7 @@ class SettingsController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  \App\Settings  $settings
+     * @param  \Urban\Settings  $settings
      * @return \Illuminate\Http\Response
      */
     public function store_status(Request $request) {
@@ -157,7 +157,7 @@ class SettingsController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  \App\Settings  $settings
+     * @param  \Urban\Settings  $settings
      * @return \Illuminate\Http\Response
      */
     public function privacy_status(Request $request) {
@@ -175,7 +175,7 @@ class SettingsController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  \App\Settings  $settings
+     * @param  \Urban\Settings  $settings
      * @return \Illuminate\Http\Response
      */
     public function show(Settings $settings)
@@ -186,7 +186,7 @@ class SettingsController extends Controller {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Settings  $settings
+     * @param  \Urban\Settings  $settings
      * @return \Illuminate\Http\Response
      */
     public function edit(Settings $settings)
@@ -198,7 +198,7 @@ class SettingsController extends Controller {
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Settings  $settings
+     * @param  \Urban\Settings  $settings
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Settings $settings)
@@ -209,7 +209,7 @@ class SettingsController extends Controller {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Settings  $settings
+     * @param  \Urban\Settings  $settings
      * @return \Illuminate\Http\Response
      */
     public function destroy(Settings $settings)

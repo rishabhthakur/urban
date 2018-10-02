@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,6 +16,6 @@ class Newsletter extends Model {
      * @return [type] [description]
      */
     public function user() {
-        $this->belongsTo('App\User');
+        $this->belongsTo('Urban\User');
     }
 }

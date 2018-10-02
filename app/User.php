@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Urban;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -45,7 +45,7 @@ class User extends Authenticatable implements MustVerifyEmail {
      * @var array
      */
     public function profile() {
-        return $this->hasOne('App\Profile', 'user_id');
+        return $this->hasOne('Urban\Profile', 'user_id');
     }
 
     /**
@@ -54,7 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail {
      * @var array
      */
     public function role() {
-        return $this->belongsTo('App\Role', 'role_id');
+        return $this->belongsTo('Urban\Role', 'role_id');
     }
 
     /**
@@ -63,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail {
      * @var array
      */
     public function medias() {
-        return $this->hasOne('App\Media', 'user_id');
+        return $this->hasOne('Urban\Media', 'user_id');
     }
 
     /**
@@ -72,7 +72,7 @@ class User extends Authenticatable implements MustVerifyEmail {
      * @var array
      */
     public function activities() {
-        return $this->hasMany('App\Activity', 'user_id');
+        return $this->hasMany('Urban\Activity', 'user_id');
     }
 
     /**
@@ -80,7 +80,7 @@ class User extends Authenticatable implements MustVerifyEmail {
      * @return [type] [description]
      */
     public function messages() {
-        $this->hasMany('App\Message', 'user_id');
+        $this->hasMany('Urban\Message', 'user_id');
     }
 
     /**
@@ -88,7 +88,7 @@ class User extends Authenticatable implements MustVerifyEmail {
      * @return [type] [description]
      */
     public function products() {
-        $this->hasMany('App\Product');
+        $this->hasMany('Urban\Product');
     }
 
     /**
@@ -96,7 +96,7 @@ class User extends Authenticatable implements MustVerifyEmail {
      * @return [type] [description]
      */
     public function orders() {
-        $this->hasMany('App\Order');
+        $this->hasMany('Urban\Order');
     }
 
     /**
@@ -104,7 +104,7 @@ class User extends Authenticatable implements MustVerifyEmail {
      * @return [type] [description]
      */
     public function subscription() {
-        $this->hasOne('App\Newsletter');
+        $this->hasOne('Urban\Newsletter');
     }
 
     /**

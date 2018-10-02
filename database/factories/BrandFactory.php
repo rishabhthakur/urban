@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Brand::class, function (Faker $faker) {
+$factory->define(Urban\Brand::class, function (Faker $faker) {
     return [
         //
     ];

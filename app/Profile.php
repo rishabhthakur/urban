@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,7 +26,7 @@ class Profile extends Model {
      * @var array
      */
     public function user() {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('Urban\User', 'user_id');
     }
 
     /**

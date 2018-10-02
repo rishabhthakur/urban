@@ -1,6 +1,6 @@
 <?php
 
-use App\Scategory;
+use Urban\Scategory;
 use Illuminate\Database\Seeder;
 
 class ScategoriesTableSeeder extends Seeder

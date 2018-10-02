@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,10 +15,10 @@ class Adata extends Model {
     ];
 
     public function attribute() {
-        return $this->belongsTo('App\Attribute', 'attrb_id');
+        return $this->belongsTo('Urban\Attribute', 'attrb_id');
     }
 
     public function products() {
-        return $this->belongsToMany('App\Product');
+        return $this->belongsToMany('Urban\Product');
     }
 }

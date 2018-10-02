@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Traits;
+namespace Urban\Traits;
 
-use App\Product;
+use Urban\Product;
 
 trait SKUGenerator {
 

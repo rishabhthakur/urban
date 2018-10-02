@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\Ptag;
+use Urban\Ptag;
 use Illuminate\Http\Request;
 
 class PtagController extends Controller
@@ -41,7 +41,7 @@ class PtagController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Ptag  $ptag
+     * @param  \Urban\Ptag  $ptag
      * @return \Illuminate\Http\Response
      */
     public function show(Ptag $ptag)
@@ -52,7 +52,7 @@ class PtagController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Ptag  $ptag
+     * @param  \Urban\Ptag  $ptag
      * @return \Illuminate\Http\Response
      */
     public function edit(Ptag $ptag)
@@ -64,7 +64,7 @@ class PtagController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Ptag  $ptag
+     * @param  \Urban\Ptag  $ptag
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Ptag $ptag)
@@ -75,7 +75,7 @@ class PtagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Ptag  $ptag
+     * @param  \Urban\Ptag  $ptag
      * @return \Illuminate\Http\Response
      */
     public function destroy(Ptag $ptag)

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +13,6 @@ class Stag extends Model {
     ];
 
     public function products() {
-        return $this->belongsToMany('App\Product');
+        return $this->belongsToMany('Urban\Product');
     }
 }

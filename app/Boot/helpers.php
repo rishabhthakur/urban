@@ -1,6 +1,6 @@
 <?php
 
-use App\Product;
+use Urban\Product;
 
 /*
  * Still to be worked on

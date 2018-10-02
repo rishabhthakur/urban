@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\FileSystem;
+use Urban\FileSystem;
 use Illuminate\Http\Request;
 
 class FileSystemController extends Controller
@@ -41,7 +41,7 @@ class FileSystemController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\FileSystem  $fileSystem
+     * @param  \Urban\FileSystem  $fileSystem
      * @return \Illuminate\Http\Response
      */
     public function show(FileSystem $fileSystem)
@@ -52,7 +52,7 @@ class FileSystemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\FileSystem  $fileSystem
+     * @param  \Urban\FileSystem  $fileSystem
      * @return \Illuminate\Http\Response
      */
     public function edit(FileSystem $fileSystem)
@@ -64,7 +64,7 @@ class FileSystemController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\FileSystem  $fileSystem
+     * @param  \Urban\FileSystem  $fileSystem
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, FileSystem $fileSystem)
@@ -75,7 +75,7 @@ class FileSystemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\FileSystem  $fileSystem
+     * @param  \Urban\FileSystem  $fileSystem
      * @return \Illuminate\Http\Response
      */
     public function destroy(FileSystem $fileSystem)

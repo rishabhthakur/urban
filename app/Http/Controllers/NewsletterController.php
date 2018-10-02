@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\User;
-use App\Newsletter;
+use Urban\User;
+use Urban\Newsletter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -78,7 +78,7 @@ class NewsletterController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  \App\Newsletter  $newsletter
+     * @param  \Urban\Newsletter  $newsletter
      * @return \Illuminate\Http\Response
      */
     public function show(Newsletter $newsletter)
@@ -89,7 +89,7 @@ class NewsletterController extends Controller {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Newsletter  $newsletter
+     * @param  \Urban\Newsletter  $newsletter
      * @return \Illuminate\Http\Response
      */
     public function edit(Newsletter $newsletter)
@@ -101,7 +101,7 @@ class NewsletterController extends Controller {
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Newsletter  $newsletter
+     * @param  \Urban\Newsletter  $newsletter
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Newsletter $newsletter)
@@ -112,7 +112,7 @@ class NewsletterController extends Controller {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Newsletter  $newsletter
+     * @param  \Urban\Newsletter  $newsletter
      * @return \Illuminate\Http\Response
      */
     public function destroy(Newsletter $newsletter)

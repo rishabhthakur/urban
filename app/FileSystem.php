@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,6 +16,6 @@ class FileSystem extends Model {
     ];
 
     public function medias() {
-        return $this->hasMany('App\Media', 'dir_id');
+        return $this->hasMany('Urban\Media', 'dir_id');
     }
 }

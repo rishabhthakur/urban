@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\Adata;
-use App\Attribute;
-use App\Activity;
+use Urban\Adata;
+use Urban\Attribute;
+use Urban\Activity;
 use Illuminate\Http\Request;
 
 class AttributeController extends Controller
@@ -134,7 +134,7 @@ class AttributeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Attribute  $attribute
+     * @param  \Urban\Attribute  $attribute
      * @return \Illuminate\Http\Response
      */
     public function edit(Attribute $attribute)
@@ -146,7 +146,7 @@ class AttributeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Attribute  $attribute
+     * @param  \Urban\Attribute  $attribute
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Attribute $attribute)
@@ -157,7 +157,7 @@ class AttributeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Attribute  $attribute
+     * @param  \Urban\Attribute  $attribute
      * @return \Illuminate\Http\Response
      */
     public function destroy(Attribute $attribute)

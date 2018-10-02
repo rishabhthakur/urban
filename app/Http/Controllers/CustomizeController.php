@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
-use App\Customize;
+use Urban\Customize;
 use Illuminate\Http\Request;
 
 class CustomizeController extends Controller
@@ -41,7 +41,7 @@ class CustomizeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Customize  $customize
+     * @param  \Urban\Customize  $customize
      * @return \Illuminate\Http\Response
      */
     public function show(Customize $customize)
@@ -52,7 +52,7 @@ class CustomizeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Customize  $customize
+     * @param  \Urban\Customize  $customize
      * @return \Illuminate\Http\Response
      */
     public function edit(Customize $customize)
@@ -64,7 +64,7 @@ class CustomizeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Customize  $customize
+     * @param  \Urban\Customize  $customize
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Customize $customize)
@@ -75,7 +75,7 @@ class CustomizeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Customize  $customize
+     * @param  \Urban\Customize  $customize
      * @return \Illuminate\Http\Response
      */
     public function destroy(Customize $customize)

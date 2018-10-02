@@ -1,8 +1,8 @@
 <?php
-namespace App\Http\Controllers;
+namespace Urban\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use Urban\Product;
 use Cart;
 
 class CartController extends Controller {
@@ -64,7 +64,7 @@ class CartController extends Controller {
             )
         ));
 
-        // Cart::associate($cartItem->sessionKeyCartItems, 'App\Product');
+        // Cart::associate($cartItem->sessionKeyCartItems, 'Urban\Product');
         // dd($cartItem);
         return redirect()->back()->with('success', 'Item added to cart.');
     }
@@ -87,7 +87,7 @@ class CartController extends Controller {
     //     'size' => 'M'
     //   ]);
     //
-    //   Cart::associate($cartItem->rowId, 'App\product');
+    //   Cart::associate($cartItem->rowId, 'Urban\product');
     //
     //   return redirect()->back();
     // }

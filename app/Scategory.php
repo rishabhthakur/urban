@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,14 +19,14 @@ class Scategory extends Model {
     ];
 
     public function parent() {
-        return $this->belongsTo('App\Scategory', 'parent_id');
+        return $this->belongsTo('Urban\Scategory', 'parent_id');
     }
 
     public function children() {
-        return $this->hasMany('App\Scategory', 'parent_id');
+        return $this->hasMany('Urban\Scategory', 'parent_id');
     }
 
     public function products() {
-        return $this->belongsToMany('App\Product');
+        return $this->belongsToMany('Urban\Product');
     }
 }
