@@ -153,7 +153,7 @@ class ProductController extends Controller {
 
             // Product Image Re-location and Re-naming
             $media_new_name = time().$media->getClientOriginalName();
-            $media->move('uploads/products', $media_new_name);
+            $media->move('uploads/'. $dir->name, $media_new_name);
             $murl = 'uploads/'. $dir->name . '/' . $media_new_name;
             $mpath = public_path('uploads/'. $dir->name) . '/' . $media_new_name;
 

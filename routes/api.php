@@ -6,6 +6,9 @@ use Urban\Stag;
 use Urban\Scategory;
 use Urban\Brand;
 
+use Urban\Ptag;
+use Urban\Pcategory;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -34,16 +37,17 @@ Route::middleware('api')->get('/brand', function() {
     return Brand::orderBy('created_at', 'ASC')->get();
 });
 
+
 /**
  * Products Categories API
  * Used for create new category vue omponent in add new product page
  */
-Route::middleware('api')->post('/category/store', [
+Route::middleware('api')->post('/scategory/store', [
     'uses' => 'ScategoryController@vue_store',
-    'as' => 'category.vue.store'
+    'as' => 'scategory.vue.store'
 ]);
 
-Route::middleware('api')->get('/category', function() {
+Route::middleware('api')->get('/scategory', function() {
     return Scategory::where('parent_id', 0)->orderBy('created_at', 'ASC')->get();
 });
 
@@ -51,11 +55,38 @@ Route::middleware('api')->get('/category', function() {
  * Products Tags API
  * Used for create new tag vue omponent in add new product page
  */
-Route::middleware('api')->post('/tag/store', [
+Route::middleware('api')->post('/stag/store', [
     'uses' => 'StagController@vue_store',
-    'as' => 'tag.vue.store'
+    'as' => 'stag.vue.store'
 ]);
 
-Route::middleware('api')->get('/tag', function() {
+Route::middleware('api')->get('/stag', function() {
     return Stag::orderBy('created_at', 'ASC')->get();
+});
+
+
+/**
+ * Posts Categories API
+ * Used for create new category vue omponent in add new post page
+ */
+Route::middleware('api')->post('/pcategory/store', [
+    'uses' => 'PcategoryController@vue_store',
+    'as' => 'pcategory.vue.store'
+]);
+
+Route::middleware('api')->get('/pcategory', function() {
+    return Pcategory::where('parent_id', 0)->orderBy('created_at', 'ASC')->get();
+});
+
+/**
+ * Posts Tags API
+ * Used for create new tag vue omponent in add new post page
+ */
+Route::middleware('api')->post('/ptag/store', [
+    'uses' => 'PtagController@vue_store',
+    'as' => 'ptag.vue.store'
+]);
+
+Route::middleware('api')->get('/ptag', function() {
+    return Ptag::orderBy('created_at', 'ASC')->get();
 });

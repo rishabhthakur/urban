@@ -21,4 +21,5 @@
     });
 </script>
 @yield('settings-js')
+@yield('new-post-js')
 @yield('new-product-js')

@@ -62,7 +62,7 @@ export default {
         },
         fetchTagList: function() {
             // console.log('Fetching tags...');
-            axios.get('http://urb.an/api/tag')
+            axios.get('http://urb.an/api/ptag')
                 .then((response) => {
                     // console.log(response.data);
                     this.list = response.data;
@@ -76,7 +76,7 @@ export default {
             // console.log('Creating tag...');
             let self = this;
             let params = Object.assign({}, self.tag);
-            axios.post('http://urb.an/api/tag/store', params)
+            axios.post('http://urb.an/api/ptag/store', params)
                 .then(function() {
                     self.tag.name = '';
                     self.edit = false;

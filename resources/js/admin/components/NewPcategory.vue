@@ -81,7 +81,7 @@ export default {
         },
         fetchCategoryList: function() {
             // console.log('Fetching Categorys...');
-            axios.get('http://urb.an/api/category')
+            axios.get('http://urb.an/api/pcategory')
                 .then((response) => {
                     // console.log(response.data);
                     this.list = response.data;
@@ -95,7 +95,7 @@ export default {
             // console.log('Creating category...');
             let self = this;
             let params =Object.assign({}, self.category);
-            axios.post('http://urb.an/api/category/store', params)
+            axios.post('http://urb.an/api/pcategory/store', params)
                 .then(function(){
                     self.category.name = '';
                     self.category.parent = '';

@@ -92,6 +92,14 @@ class User extends Authenticatable implements MustVerifyEmail {
     }
 
     /**
+     * [products description]
+     * @return [type] [description]
+     */
+    public function posts() {
+        $this->hasMany('Urban\Post');
+    }
+
+    /**
      * [orders description]
      * @return [type] [description]
      */

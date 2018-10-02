@@ -17,9 +17,16 @@ window.Vue = require('vue');
  */
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
+
+// For products
 Vue.component('vue-newbrand', require('./components/NewBrand.vue'));
-Vue.component('vue-newcategory', require('./components/NewCategory.vue'));
-Vue.component('vue-newtag', require('./components/NewTag.vue'));
+Vue.component('vue-newscategory', require('./components/NewScategory.vue'));
+Vue.component('vue-newstag', require('./components/NewPtag.vue'));
+
+// For posts
+Vue.component('vue-newpcategory', require('./components/NewPcategory.vue'));
+Vue.component('vue-newptag', require('./components/NewPtag.vue'));
+
 // import { store } from './store'
 
 const app = new Vue({

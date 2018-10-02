@@ -8,6 +8,8 @@ use Urban\Pcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Urban\Activity;
+use Urban\Media;
+use Urban\FileSystem;
 
 class PostController extends Controller
 {
@@ -18,9 +20,7 @@ class PostController extends Controller
      */
     public function index() {
         return view('admin.posts.index')->with([
-            'posts' => Post::orderBy('created_at', 'DESC')->get(),
-            'pcategories' => Pcategory::all(),
-            'ptags' => Ptag::all()
+            'posts' => Post::orderBy('created_at', 'DESC')->get()
         ]);
     }
 
@@ -31,8 +31,7 @@ class PostController extends Controller
      */
     public function create() {
         return view('admin.posts.create')->with([
-            'pcategories' => Pcategory::all(),
-            'ptags' => Ptag::all()
+            'medias' => Media::all()
         ]);
     }
 
@@ -42,9 +41,60 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $this->validate($request, [
+            'title' => 'required|string',
+            'content' => 'required',
+            'categories' => 'required',
+            'tags' => 'required'
+        ]);
+
+        if (isset($request->image)) {
+            $dir = FileSystem::where('name', 'posts')->first();
+
+            // Product Image Re-location and Re-naming
+            $media_new_name = time() . $media->getClientOriginalName();
+            $media->move('uploads/' . $dir->name, $media_new_name);
+            $murl = 'uploads/' . $dir->name . '/' . $media_new_name;
+            $mpath = public_path('uploads/' . $dir->name) . '/' . $media_new_name;
+
+            // Enter Media Data to Database
+            $prmedia = Media::create([
+                'name' => $media_new_name,
+                'user_id' => Auth::id(),
+                'dir_id' => $dir->id,
+                'name' => $media_new_name,
+                'slug' => $murl,
+                'url' => $murl,
+                'size' => number_format(filesize($mpath) * .0009765625),
+                'mime_type' => $media->getClientMimeType(),
+                'dimensions' => getimagesize($murl)[0] . ' x ' . getimagesize($murl)[1],
+            ]);
+
+            $media_id = $prmedia->id;
+
+        } elseif (isset($request->media)) {
+            $media_id = $request->media;
+        }
+
+        $post = Post::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'user_id' => Auth::id(),
+            'status' => $status,
+            'visibility' => $visibility,
+            'media_id' => $media_id
+        ]);
+
+        // Product Tags, Categories and Attributes Register into Database
+        $post->categories()->attach($request->categories);
+        $post->tags()->attach($request->tags);
+
+        $this->logActivity($post->title);
+
+        return redirect(route('admin.posts'))->with([
+            'success' => 'New post added.'
+        ]);
     }
 
     /**

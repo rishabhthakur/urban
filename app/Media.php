@@ -31,7 +31,7 @@ class Media extends Model {
     }
 
     public function posts() {
-        return $this->bolongsToMany('Urban\Post');
+        return $this->belongsTo('Urban\Post');
     }
 
     public function directory() {

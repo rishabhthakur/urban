@@ -32,39 +32,6 @@
                             <small>The “slug” is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.</small>
                         </span>
                     </div>
-                    @if ($parent)
-                        <div class="form-group{{ $errors->has('slug') ? ' has-danger' : '' }}">
-                            <label for="parent">Parent</label>
-                            <select class="custom-select form-control" name="parent">
-                                <option selected value="">None</option>
-                                @foreach ($array as $element)
-                                    <option value="{{ $element->id }}">{{ $element->name }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('slug'))
-                                <span class="text-danger form-text" role="alert">
-                                    <small><strong>{{ $errors->first('slug') }}</strong></small>
-                                </span>
-                            @endif
-                            <span class="text-muted form-text">
-                                <small>Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have children categories for Bebop and Big Band. Totally optional.</small>
-                            </span>
-                        </div>
-                    @endif
-                    @if ($color)
-                        <div class="form-group{{ $errors->has('color_code') ? ' has-danger' : '' }}">
-                            <label for="color_code">HTML Color Code</label>
-                            <input type="text" name="color_code" id="color_code" class="form-control" value="" placeholder="HTML Color Code">
-                            @if ($errors->has('color_code'))
-                                <span class="text-danger form-text" role="alert">
-                                    <small><strong>{{ $errors->first('color_code') }}</strong></small>
-                                </span>
-                            @endif
-                            <span class="text-muted form-text">
-                                <small>The “HTML Color Code” is a child attribute applied for Colors. Look up the color of the product and paste the HTML format in the input. It should look something like this: #000000</small>
-                            </span>
-                        </div>
-                    @endif
                     <div class="form-group{{ $errors->has('description') ? ' has-danger' : '' }}">
                         <label for="description">Description</label>
                         <textarea name="description" id="description" class="form-control" placeholder="Description"></textarea>
@@ -93,15 +60,6 @@
                             <span>
                                 <strong>{{ $element->name }}</strong>
                             </span><br />
-                            @if ($parent)
-                                @if ($element->parent)
-                                    <span>
-                                        <small>
-                                            <strong>Parent:</strong> {{ $element->parent->name }}
-                                        </small>
-                                    </span><br />
-                                @endif
-                            @endif
                             <span>
                                 <small>
                                     <strong>Slug:</strong> {{ $element->slug }}
