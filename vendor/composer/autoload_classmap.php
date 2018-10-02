@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AdminTableSeeder' => $baseDir . '/database/seeds/AdminTableSeeder.php',
+    'AttributesTableSeeder' => $baseDir . '/database/seeds/AttributesTableSeeder.php',
     'BeyondCode\\DumpServer\\DumpServerCommand' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
     'BeyondCode\\DumpServer\\DumpServerServiceProvider' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
     'BeyondCode\\DumpServer\\Dumper' => $vendorDir . '/beyondcode/laravel-dump-server/src/Dumper.php',
@@ -41,6 +42,7 @@ return array(
     'Darryldecode\\Cart\\Validators\\CartConditionValidator' => $vendorDir . '/darryldecode/cart/src/Darryldecode/Cart/Validators/CartConditionValidator.php',
     'Darryldecode\\Cart\\Validators\\CartItemValidator' => $vendorDir . '/darryldecode/cart/src/Darryldecode/Cart/Validators/CartItemValidator.php',
     'Darryldecode\\Cart\\Validators\\Validator' => $vendorDir . '/darryldecode/cart/src/Darryldecode/Cart/Validators/Validator.php',
+    'DataTableSeeder' => $baseDir . '/database/seeds/DataTableSeeder.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'DeepCopy\\DeepCopy' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
     'DeepCopy\\Exception\\CloneException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
