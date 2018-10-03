@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="card">
         <div class="card-body">
-            <h6 class="heading mb-3">Product Categories</h6>
+            <h6 class="heading mb-3">Categories</h6>
             <div class="mb-1" v-if="list.length > 0">
                 <div class="parent" v-for="category in list">
                     <div class="custom-control custom-checkbox mb-1">
@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label>Category Parent (Optional)</label>
                     <select class="custom-select form-control" v-model="category.parent">
-                        <option selected value="0">No parent</option>
+                        <option value="0">No parent</option>
                         <option v-for="category in list" :value="category.id">{{ category.name }}</option>
                     </select>
                 </div>
@@ -55,6 +55,9 @@
 
 <script>
 export default {
+    props: [
+        'to'
+    ],
     data() {
         return  {
             errors: [],
@@ -62,6 +65,7 @@ export default {
             edit: false,
             list: [],
             category: {
+                belongs_to: this.to,
                 name: '',
                 parent: ''
             }
@@ -81,7 +85,7 @@ export default {
         },
         fetchCategoryList: function() {
             // console.log('Fetching Categorys...');
-            axios.get('http://urb.an/api/pcategory')
+            axios.get('http://urb.an/api/category/' + this.to)
                 .then((response) => {
                     // console.log(response.data);
                     this.list = response.data;
@@ -94,8 +98,8 @@ export default {
             this.errors = [];
             // console.log('Creating category...');
             let self = this;
-            let params =Object.assign({}, self.category);
-            axios.post('http://urb.an/api/pcategory/store', params)
+            let params = Object.assign({}, self.category);
+            axios.post('http://urb.an/api/category/store', params)
                 .then(function(){
                     self.category.name = '';
                     self.category.parent = '';

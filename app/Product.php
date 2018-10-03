@@ -61,7 +61,7 @@ class Product extends Model {
     ];
 
     public function categories() {
-        return $this->belongsToMany('Urban\Scategory');
+        return $this->belongsToMany('Urban\Category');
     }
 
     public function tags() {

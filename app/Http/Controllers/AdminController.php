@@ -5,7 +5,7 @@ namespace Urban\Http\Controllers;
 use Urban\Activity;
 use Urban\Settings;
 use Urban\Product;
-use Urban\Scategory;
+use Urban\Category;
 use Urban\Stag;
 use Urban\Brand;
 use Urban\Attribute;

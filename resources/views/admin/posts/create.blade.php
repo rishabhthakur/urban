@@ -77,25 +77,25 @@
                 <div class="card-body">
                     <h6 class="heading">Featured Image</h6>
                     <div class="mb-3">
-                        <a href="#" data-toggle="modal" data-target="#productImageModal">
+                        <a href="#" data-toggle="modal" data-target="#PostImageModal">
                             Set featured image
                         </a>
                     </div>
                 </div>
             </div>
             <!-- Media modal -->
-            <div class="modal fade" id="productImageModal" tabindex="-1" role="dialog" aria-labelledby="productImageModalLabel" aria-hidden="true">
+            <div class="modal fade" id="PostImageModal" tabindex="-1" role="dialog" aria-labelledby="PostImageModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="productImageModalLabel">Featured Image</h5>
+                            <h5 class="modal-title" id="PostImageModalLabel">Featured Image</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             @if (count($medias) > 0)
-                                <select class="image-picker show-html" id="product-image" name="medias[]">
+                                <select class="image-picker show-html" id="Post-image" name="medias[]">
                                     @foreach ($medias as $media)
                                         <option data-img-src="{{ asset($media->url) }}" value="{{ $media->id }}">{{ $media->name }}</option>
                                     @endforeach
@@ -123,7 +123,7 @@
                 </div>
             </div>
             <!-- New Category -->
-            <vue-newpcategory></vue-newpcategory>
+            <vue-newcategory to="{{ __('post') }}"></vue-newcategory>
             <!-- New Tag -->
             <vue-newptag></vue-newptag>
         </div>

@@ -109,6 +109,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         'as' => 'admin.log'
     ]);
 
+    // Admin categories routes
+    Route::group(['prefix' => 'categories'], function() {
+
+        // Admin categories store to database
+        Route::post('/store', [
+            'uses' => 'CategoryController@store',
+            'as' => 'admin.categories.store'
+        ]);
+    });
+
     // Admin users routes
     Route::group(['prefix' => 'users'], function() {
 
@@ -198,14 +208,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::group(['prefix' => 'categories'], function() {
 
             // Admin products categories list
-            Route::get('/', [
-                'uses' => 'ScategoryController@index',
+            Route::get('/{from}', [
+                'uses' => 'CategoryController@index',
                 'as' => 'admin.products.categories'
-            ]);
-
-            Route::post('/store', [
-                'uses' => 'ScategoryController@store',
-                'as' => 'admin.products.categories.store'
             ]);
         });
 
@@ -281,12 +286,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             'as' => 'admin.posts.create'
         ]);
 
-        // Admin add new posts
-        Route::post('/store', [
-            'uses' => 'PostController@store',
-            'as' => 'admin.posts.store'
-        ]);
-
         // Admin edit posts
         Route::get('/edit', [
             'uses' => 'PostController@edit',
@@ -303,14 +302,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::group(['prefix' => 'categories'], function() {
 
             // Admin posts categories list
-            Route::get('/', [
-                'uses' => 'PcategoryController@index',
+            Route::get('/{from}', [
+                'uses' => 'CategoryController@index',
                 'as' => 'admin.posts.categories'
-            ]);
-
-            Route::post('/store', [
-                'uses' => 'PcategoryController@store',
-                'as' => 'admin.posts.categories.store'
             ]);
         });
 

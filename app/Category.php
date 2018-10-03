@@ -4,7 +4,7 @@ namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Scategory extends Model {
+class Category extends Model {
 
     public $with = [
         'children'
@@ -15,18 +15,23 @@ class Scategory extends Model {
         'slug',
         'description',
         'image',
-        'parent_id'
+        'parent_id',
+        'belongs_to'
     ];
 
     public function parent() {
-        return $this->belongsTo('Urban\Scategory', 'parent_id');
+        return $this->belongsTo('Urban\Category', 'parent_id');
     }
 
     public function children() {
-        return $this->hasMany('Urban\Scategory', 'parent_id');
+        return $this->hasMany('Urban\Category', 'parent_id');
     }
 
     public function products() {
         return $this->belongsToMany('Urban\Product');
+    }
+
+    public function posts() {
+        return $this->belongsToMany('Urban\Post');
     }
 }

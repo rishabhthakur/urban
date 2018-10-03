@@ -3,11 +3,9 @@
 use Illuminate\Http\Request;
 
 use Urban\Stag;
-use Urban\Scategory;
+use Urban\Category;
 use Urban\Brand;
-
 use Urban\Ptag;
-use Urban\Pcategory;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,13 +40,13 @@ Route::middleware('api')->get('/brand', function() {
  * Products Categories API
  * Used for create new category vue omponent in add new product page
  */
-Route::middleware('api')->post('/scategory/store', [
-    'uses' => 'ScategoryController@vue_store',
-    'as' => 'scategory.vue.store'
+Route::middleware('api')->post('/category/store', [
+    'uses' => 'CategoryController@vue_store',
+    'as' => 'category.vue.store'
 ]);
 
-Route::middleware('api')->get('/scategory', function() {
-    return Scategory::where('parent_id', 0)->orderBy('created_at', 'ASC')->get();
+Route::middleware('api')->get('/category/product', function() {
+    return Category::where('belongs_to', 'product')->where('parent_id', 0)->orderBy('created_at', 'ASC')->get();
 });
 
 /**
@@ -69,13 +67,13 @@ Route::middleware('api')->get('/stag', function() {
  * Posts Categories API
  * Used for create new category vue omponent in add new post page
  */
-Route::middleware('api')->post('/pcategory/store', [
-    'uses' => 'PcategoryController@vue_store',
-    'as' => 'pcategory.vue.store'
+Route::middleware('api')->post('/category/store', [
+    'uses' => 'CategoryController@vue_store',
+    'as' => 'category.vue.store'
 ]);
 
-Route::middleware('api')->get('/pcategory', function() {
-    return Pcategory::orderBy('created_at', 'ASC')->get();
+Route::middleware('api')->get('/category/post', function() {
+    return Category::where('belongs_to', 'post')->where('parent_id', 0)->orderBy('created_at', 'ASC')->get();
 });
 
 /**

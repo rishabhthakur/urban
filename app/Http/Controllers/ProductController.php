@@ -9,7 +9,7 @@ use Urban\MediaProduct;
 use Urban\AttributeProduct;
 use Urban\FileSystem;
 use Urban\Attribute;
-use Urban\Scategory;
+use Urban\Category;
 use Urban\Activity;
 use Urban\Product;
 use Urban\Review;
@@ -37,9 +37,10 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
+
         return view('admin.products.create')->with([
             'medias' => Media::all(),
-            'categories' => Scategory::all(),
+            'categories' => Category::where('belongs_to', 'product')->get(),
             'tags' => Stag::all(),
             'brands' => Brand::all(),
             'attributes' => Attribute::all()

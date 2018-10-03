@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePcategoryPostTable extends Migration
+class CreateCategoryPostTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePcategoryPostTable extends Migration
      */
     public function up()
     {
-        Schema::create('pcategory_post', function (Blueprint $table) {
+        Schema::create('category_post', function (Blueprint $table) {
             $table->integer('post_id');
-            $table->integer('pcategory_id');
-            $table->primary(['post_id', 'pcategory_id']);
+            $table->integer('category_id');
+            $table->primary(['post_id', 'category_id']);
         });
     }
 
@@ -27,6 +27,6 @@ class CreatePcategoryPostTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pcategory_post');
+        Schema::dropIfExists('category_post');
     }
 }

@@ -352,7 +352,7 @@
             <!-- New Brand -->
             <vue-newbrand></vue-newbrand>
             <!-- New Category -->
-            <vue-newscategory></vue-newscategory>
+            <vue-newcategory to="{{ __('product') }}"></vue-newcategory>
             <!-- New Tag -->
             <vue-newstag></vue-newstag>
         </div>

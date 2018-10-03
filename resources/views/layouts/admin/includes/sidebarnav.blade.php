@@ -83,7 +83,7 @@
             <a href="{!! route('admin.products.create') !!}">Add New</a>
         </li>
         <li @if (Route::currentRouteName() == 'admin.products.categories') class="active" @endif>
-            <a href="{!! route('admin.products.categories') !!}">Categories</a>
+            <a href="{!! route('admin.products.categories', ['from' => 'product']) !!}">Categories</a>
         </li>
         <li @if (Route::currentRouteName() == 'admin.products.tags') class="active" @endif>
             <a href="{!! route('admin.products.tags') !!}">Tags</a>
@@ -117,7 +117,7 @@
             <a href="{!! route('admin.posts.create') !!}">Add New</a>
         </li>
         <li @if (Route::currentRouteName() == 'admin.posts.categories') class="active" @endif>
-            <a href="{!! route('admin.posts.categories') !!}">Categories</a>
+            <a href="{!! route('admin.posts.categories', ['from' => 'post']) !!}">Categories</a>
         </li>
         <li @if (Route::currentRouteName() == 'admin.posts.tags') class="active" @endif>
             <a href="{!! route('admin.posts.tags') !!}">Tags</a>
