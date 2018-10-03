@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<form class="" action="index.html" method="post">
+<form class="d-inline" action="index.html" method="post">
     <div class="row">
         <div class="col-md-8">
             <div class="card">
@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="form-group">
-                        <textarea name="content" class="form-control" id="content">{{ old('content') }}</textarea>
+                        <textarea name="content" class="form-control" id="post_content">{{ old('content') }}</textarea>
                     </div>
                 </div>
             </div>
@@ -134,8 +134,7 @@
 @section('new-post-js')
     <script>
         tinymce.init({
-            selector: '#content',
-            body_class: 'form-control',
+            selector: '#post_content',
             themes: "modern",
             menubar: false,
             mobile: {

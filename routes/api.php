@@ -75,7 +75,7 @@ Route::middleware('api')->post('/pcategory/store', [
 ]);
 
 Route::middleware('api')->get('/pcategory', function() {
-    return Pcategory::where('parent_id', 0)->orderBy('created_at', 'ASC')->get();
+    return Pcategory::orderBy('created_at', 'ASC')->get();
 });
 
 /**
