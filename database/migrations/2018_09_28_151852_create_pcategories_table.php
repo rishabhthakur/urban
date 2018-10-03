@@ -15,6 +15,9 @@ class CreatePcategoriesTable extends Migration
     {
         Schema::create('pcategories', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->mediumText('description')->nullable();
             $table->timestamps();
         });
     }

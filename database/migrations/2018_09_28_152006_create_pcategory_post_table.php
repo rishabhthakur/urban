@@ -14,8 +14,9 @@ class CreatePcategoryPostTable extends Migration
     public function up()
     {
         Schema::create('pcategory_post', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('post_id');
+            $table->integer('pcategory_id');
+            $table->primary(['post_id', 'pcategory_id']);
         });
     }
 
