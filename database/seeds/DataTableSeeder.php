@@ -11,7 +11,7 @@ class DataTableSeeder extends Seeder
      * @return void
      */
     public function run() {
-        DB::table('scategories')->delete();
+        DB::table('adatas')->delete();
 
         $data = [
             [

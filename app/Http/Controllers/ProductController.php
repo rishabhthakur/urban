@@ -16,7 +16,7 @@ use Urban\Review;
 use Urban\Media;
 use Urban\Adata;
 use Urban\Brand;
-use Urban\Stag;
+use Urban\Tag;
 
 class ProductController extends Controller {
     /**
@@ -41,7 +41,7 @@ class ProductController extends Controller {
         return view('admin.products.create')->with([
             'medias' => Media::all(),
             'categories' => Category::where('belongs_to', 'product')->get(),
-            'tags' => Stag::all(),
+            'tags' => Tag::where('belongs_to', 'product')->get(),
             'brands' => Brand::all(),
             'attributes' => Attribute::all()
         ]);

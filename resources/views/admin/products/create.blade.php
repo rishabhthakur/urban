@@ -354,7 +354,7 @@
             <!-- New Category -->
             <vue-newcategory to="{{ __('product') }}"></vue-newcategory>
             <!-- New Tag -->
-            <vue-newstag></vue-newstag>
+            <vue-newtag to="{{ __('product') }}"></vue-newtag>
         </div>
     </div>
 </form>

@@ -4,8 +4,8 @@ namespace Urban;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Stag extends Model {
-    
+class Tag extends Model {
+
     protected $fillable = [
         'name',
         'slug',
@@ -14,5 +14,9 @@ class Stag extends Model {
 
     public function products() {
         return $this->belongsToMany('Urban\Product');
+    }
+
+    public function posts() {
+        return $this->belongsToMany('Urban\Post');
     }
 }

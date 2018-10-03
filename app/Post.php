@@ -29,7 +29,7 @@ class Post extends Model {
     }
 
     public function tags() {
-        return $this->belongsToMany('Urban\Stag');
+        return $this->belongsToMany('Urban\Tag');
     }
 
     public function media() {

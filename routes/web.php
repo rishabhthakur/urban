@@ -119,6 +119,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         ]);
     });
 
+    // Admin tags routes
+    Route::group(['prefix' => 'tags'], function() {
+
+        // Admin tags store to database
+        Route::post('/store', [
+            'uses' => 'TagController@store',
+            'as' => 'admin.tags.store'
+        ]);
+    });
+
     // Admin users routes
     Route::group(['prefix' => 'users'], function() {
 
@@ -218,14 +228,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::group(['prefix' => 'tags'], function() {
 
             // Admin products tags list
-            Route::get('/', [
-                'uses' => 'StagController@index',
+            Route::get('/{from}', [
+                'uses' => 'TagController@index',
                 'as' => 'admin.products.tags'
-            ]);
-
-            Route::post('/store', [
-                'uses' => 'StagController@store',
-                'as' => 'admin.products.tags.store'
             ]);
         });
 
@@ -312,14 +317,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::group(['prefix' => 'tags'], function() {
 
             // Admin posts tags list
-            Route::get('/', [
-                'uses' => 'PtagController@index',
+            Route::get('/{from}', [
+                'uses' => 'TagController@index',
                 'as' => 'admin.posts.tags'
-            ]);
-
-            Route::post('/store', [
-                'uses' => 'StagController@store',
-                'as' => 'admin.posts.tags.store'
             ]);
         });
     });

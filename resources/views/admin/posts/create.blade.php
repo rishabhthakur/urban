@@ -9,7 +9,7 @@
                     <h6 class="heading mb-5">Add New Blog Post</h6>
                     <div class="form-group">
                         <label for="title">Post Title</label>
-                        <input type="text" name="title" id="title" class="form-control" placeholder="Post Title" value="{{ old('title') }}" required>
+                        <input type="text" name="title" id="title" class="form-control mb-5" placeholder="Post Title" value="{{ old('title') }}" required>
 
                         @if ($errors->has('title'))
                             <span class="text-danger form-text" role="alert">
@@ -125,7 +125,7 @@
             <!-- New Category -->
             <vue-newcategory to="{{ __('post') }}"></vue-newcategory>
             <!-- New Tag -->
-            <vue-newptag></vue-newptag>
+            <vue-newtag to="{{ __('post') }}"></vue-newtag>
         </div>
     </div>
 </form>

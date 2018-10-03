@@ -2,23 +2,30 @@
 
 namespace Urban\Http\Controllers;
 
-use Urban\Stag;
-use Urban\Activity;
+use Urban\Tag;
 use Illuminate\Http\Request;
 
-class StagController extends Controller {
+class TagController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        return view('admin.products.tags.index')->with([
-            'array' => Stag::orderBy('created_at')->get(),
+    public function index(Request $request) {
+
+        if ($request->from == 'product') {
+            $belongs_to = 'product';
+        } elseif ($request->from == 'post') {
+            $belongs_to = 'post';
+        }
+
+        return view('admin.tags.index')->with([
+            'array' => Tag::where('belongs_to', $belongs_to)->orderBy('created_at')->get(),
             'parent' => false,
             'color' => false,
             'array_type' => 'Tags',
-            'route' => route('admin.products.tags.store')
+            'route' => route('admin.tags.store')
         ]);
     }
 
@@ -51,23 +58,25 @@ class StagController extends Controller {
             ]);
         }
 
-        $brand = new Stag;
+        $tag = new Stag;
 
-        $brand->name = $request->name;
+        $tag->name = $request->name;
 
         if(isset($request->slug)) {
-            $brand->slug = $request->slug;
+            $tag->slug = $request->slug;
         } else {
-            $brand->slug = str_slug($request->name);
+            $tag->slug = str_slug($request->name);
         }
 
         if(isset($request->description)) {
-            $brand->description = $request->description;
+            $tag->description = $request->description;
         } else {
-            $brand->description = '–––';
+            $tag->description = '–––';
         }
 
-        $brand->save();
+        $tag->belongs_to = $belongs_to;
+
+        $tag->save();
 
         // Log event
         $activity = new Activity;
@@ -101,6 +110,7 @@ class StagController extends Controller {
         $tag->name = $request->name;
         $tag->slug = str_slug($request->name);
         $tag->description = '–––';
+        $tag->belongs_to = $request->belongs_to;
         $tag->save();
 
         return response()->json([
@@ -111,10 +121,10 @@ class StagController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  \Urban\Stag  $stag
+     * @param  \Urban\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Stag $stag)
+    public function show(Tag $tag)
     {
         //
     }
@@ -122,10 +132,10 @@ class StagController extends Controller {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Urban\Stag  $stag
+     * @param  \Urban\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Stag $stag)
+    public function edit(Tag $tag)
     {
         //
     }
@@ -134,10 +144,10 @@ class StagController extends Controller {
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Urban\Stag  $stag
+     * @param  \Urban\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Stag $stag)
+    public function update(Request $request, Tag $tag)
     {
         //
     }
@@ -145,10 +155,10 @@ class StagController extends Controller {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Urban\Stag  $stag
+     * @param  \Urban\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Stag $stag)
+    public function destroy(Tag $tag)
     {
         //
     }

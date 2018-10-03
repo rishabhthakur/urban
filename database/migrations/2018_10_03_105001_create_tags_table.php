@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePcategoriesTable extends Migration
+class CreateTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreatePcategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pcategories', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->mediumText('description')->nullable();
+            $table->string('description')->nullable();
+            $table->string('belongs_to');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreatePcategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pcategories');
+        Schema::dropIfExists('tags');
     }
 }

@@ -3,8 +3,8 @@
 namespace Urban\Http\Controllers;
 
 use Urban\Post;
-use Urban\Ptag;
-use Urban\Pcategory;
+use Urban\Tag;
+use Urban\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Urban\Activity;

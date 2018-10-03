@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="card">
         <div class="card-body">
-            <h6 class="heading mb-3">Product Tags</h6>
+            <h6 class="heading mb-3">Tags</h6>
             <div class="tegs" v-if="list.length > 0">
                 <div class="custom-control custom-checkbox mb-1"  v-for="tag in list">
                     <input type="checkbox" class="custom-control-input" :id="tag.slug" :value="tag.id" name="tags[]">
@@ -36,6 +36,9 @@
 
 <script>
 export default {
+    props: [
+        'to'
+    ],
     data() {
         return  {
             errors: [],
@@ -43,7 +46,8 @@ export default {
             edit: false,
             list: [],
             tag: {
-                name: ''
+                name: '',
+                belongs_to: this.to
             }
         }
     },
@@ -62,7 +66,7 @@ export default {
         },
         fetchTagList: function() {
             // console.log('Fetching tags...');
-            axios.get('http://urb.an/api/ptag')
+            axios.get('http://urb.an/api/tag/' + this.to)
                 .then((response) => {
                     // console.log(response.data);
                     this.list = response.data;
@@ -76,7 +80,7 @@ export default {
             // console.log('Creating tag...');
             let self = this;
             let params = Object.assign({}, self.tag);
-            axios.post('http://urb.an/api/ptag/store', params)
+            axios.post('http://urb.an/api/tag/store', params)
                 .then(function() {
                     self.tag.name = '';
                     self.edit = false;
