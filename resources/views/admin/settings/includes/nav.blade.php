@@ -18,13 +18,13 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link mb-sm-3 mb-md-0" href="#">
+        <a class="nav-link mb-sm-3 mb-md-0 @if (Route::currentRouteName() == 'admin.settings.media') active @endif" href="{!! route('admin.settings.media') !!}">
             <i class="fas fa-image mr-1"></i>
             Media
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link mb-sm-3 mb-md-0 @if (Route::currentRouteName() == 'admin.settings.privacy') active @endif" href="{!! route('admin.settings.privacy') !!}#">
+        <a class="nav-link mb-sm-3 mb-md-0 @if (Route::currentRouteName() == 'admin.settings.privacy') active @endif" href="{!! route('admin.settings.privacy') !!}">
             <i class="fas fa-unlock-alt mr-1"></i>
             Privacy
         </a>

@@ -7,6 +7,7 @@ use Urban\AttributeAdataProduct;
 use Illuminate\Http\Request;
 use Urban\MediaProduct;
 use Urban\AttributeProduct;
+use Urban\Settings;
 use Urban\FileSystem;
 use Urban\Attribute;
 use Urban\Category;
@@ -19,6 +20,12 @@ use Urban\Brand;
 use Urban\Tag;
 
 class ProductController extends Controller {
+    private $settings;
+
+    public function __construct() {
+        $this->settings = Settings::first();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -150,10 +157,14 @@ class ProductController extends Controller {
         $medias = $media_input;
         foreach ($medias as $media) {
 
-            $dir = FileSystem::where('name', 'products')->first();
+            $dir = FileSystem::find($this->settings->product_dir);
 
             // Product Image Re-location and Re-naming
             $media_new_name = time().$media->getClientOriginalName();
+            // Check for Uploads Directory and Make Products Directory
+            if(!is_dir(public_path('uploads/'. $dir->name))) {
+                mkdir(public_path('uploads/'. $dir->name));
+            }
             $media->move('uploads/'. $dir->name, $media_new_name);
             $murl = 'uploads/'. $dir->name . '/' . $media_new_name;
             $mpath = public_path('uploads/'. $dir->name) . '/' . $media_new_name;

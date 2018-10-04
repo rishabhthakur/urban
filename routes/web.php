@@ -339,12 +339,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             'as' => 'admin.media.create'
         ]);
 
-        // Admin media library page
+        // Admin add new media
         Route::post('/store', [
             'uses' => 'MediaController@store',
             'as' => 'admin.media.store'
         ]);
 
+    });
+
+    // Admin directories routes
+    Route::group(['prefix' => 'directories'], function() {
+
+        // Admin add new directory
+        Route::post('/store', [
+            'uses' => 'FileSystemController@store',
+            'as' => 'admin.directories.store'
+        ]);
     });
 
     // Admin messages routes
@@ -392,6 +402,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::get('/media', [
             'uses' => 'SettingsController@media',
             'as' => 'admin.settings.media'
+        ]);
+
+        // Admin media settings
+        Route::post('/media/store', [
+            'uses' => 'SettingsController@media_store',
+            'as' => 'admin.settings.media.store'
         ]);
 
         // Admin media settings

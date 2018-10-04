@@ -18,7 +18,9 @@ class Settings extends Model {
         'drole',
         'membrship',
         'privacy',
-        'legal'
+        'legal',
+        'product_dir',
+        'post_dir'
     ];
 
     public function drole() {

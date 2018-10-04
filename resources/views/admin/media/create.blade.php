@@ -33,13 +33,27 @@
         <div class="card">
             <div class="card-body">
                 <h6 class="heading mb-3">Create New Directory</h6>
-                <form action="#" method="post" enctype="multipart/form-data"><input name="_token" value="jHP3sWeLwIUNKwclNdSszA49ytd06B6NLD6dpkAn" type="hidden">
-                    <div class="form-group"><label for="dir_name">Directory Name</label> <input name="dir_name" id="dir_name" placeholder="Directory Name" class="form-control" type="text">
-                        <div class="form-text"><span class="text-muted"><small>
+                <form action="{!! route('admin.directories.store') !!}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="name">Directory Name</label>
+                        <input name="name" id="name" placeholder="Directory Name" class="form-control" type="text">
+                        @if ($errors->has('name'))
+                            <span class="text-danger form-text" role="alert">
+                                <small><strong>{{ $errors->first('name') }}</strong></small>
+                            </span>
+                        @endif
+                        <div class="form-text">
+                            <span class="text-muted">
+                                <small>
                                     Directory names should be in lower case letters, should not contain spaces, should not contain special characters but can contain numbers.
-                                </small></span></div>
+                                </small>
+                            </span>
+                        </div>
                     </div>
-                    <div class="form-group"><button type="submit" class="btn btn-outline-primary btn-sm">Create New Directory</button></div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-primary btn-sm">Create New Directory</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -49,30 +63,27 @@
             <div class="card-body">
                 <h6 class="heading mb-3">Directtory List</h6>
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-action clearfix">
-                        <div class="float-left pt-2 text-primary">
-                            <i class="fas fa-folder display-2"></i>
-                        </div>
-                        <div class="float-left ml-3 pt-1">
-                            <h4 class="m-0">products</h4>
-                            <p class="m-0"><small><b>0 Items</b><br>
-                                    October 2, 2018 - 7:56 pm
-                                </small></p>
-                        </div>
-                        <div class="float-right"><a href="http://shopaholic.com/admin/directories/destroy/1" class="text-danger"><i class="dripicons-trash"></i></a></div>
-                    </li>
-                    <li class="list-group-item list-group-item-action clearfix">
-                        <div class="float-left pt-2 text-primary">
-                            <i class="fas fa-folder display-2"></i>
-                        </div>
-                        <div class="float-left ml-3 pt-1">
-                            <h4 class="m-0">posts</h4>
-                            <p class="m-0"><small><b>0 Items</b><br>
-                                    October 2, 2018 - 7:56 pm
-                                </small></p>
-                        </div>
-                        <div class="float-right"><a href="http://shopaholic.com/admin/directories/destroy/2" class="text-danger"><i class="dripicons-trash"></i></a></div>
-                    </li>
+                    @foreach ($dirs as $dir)
+                        <li class="list-group-item list-group-item-action clearfix">
+                            <div class="float-left pt-2 text-primary">
+                                <i class="fas fa-folder display-2"></i>
+                            </div>
+                            <div class="float-left ml-3 pt-1">
+                                <h4 class="m-0">{{ $dir->name }}</h4>
+                                <p class="m-0">
+                                    <small>
+                                        <b>{{ count($dir->medias) }} Items</b><br>
+                                        {{ $dir->created_at->format("F j, Y - g:i a") }}
+                                    </small>
+                                </p>
+                            </div>
+                            <div class="float-right">
+                                <a href="#" class="text-danger">
+                                    <i class="fas fa-delete"></i>
+                                </a>
+                            </div>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

@@ -27,6 +27,9 @@ class CreateSettingsTable extends Migration
             $table->integer('drole')->default(4);
             $table->boolean('membership')->default(1);
 
+            $table->integer('product_dir');
+            $table->integer('post_dir');
+
             $table->boolean('copyright')->default(0);
             $table->text('copyright_text');
             $table->boolean('privacy')->default(0);

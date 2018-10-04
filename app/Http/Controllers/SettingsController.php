@@ -4,6 +4,7 @@ namespace Urban\Http\Controllers;
 
 use Urban\Settings;
 use Urban\Role;
+use Urban\FileSystem;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller {
@@ -38,6 +39,36 @@ class SettingsController extends Controller {
     public function discussion() {
         return view('admin.settings.discussion')->with([
             'settings' => $this->settings
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function media() {
+        return view('admin.settings.media')->with([
+            'settings' => $this->settings,
+            'dirs' => FileSystem::all()
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \Urban\Settings  $settings
+     * @return \Illuminate\Http\Response
+     */
+    public function media_store(Request $request) {
+
+        $settings = $this->settings;
+        $settings->product_dir = $request->product_dir;
+        $settings->post_dir = $request->post_dir;
+        $settings->save();
+
+        return back()->with([
+            'success' => 'Changes saved.'
         ]);
     }
 

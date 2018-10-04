@@ -9,11 +9,17 @@ use Urban\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Urban\Activity;
+use Urban\Settings;
 use Urban\Media;
 use Urban\FileSystem;
 
-class PostController extends Controller
-{
+class PostController extends Controller {
+
+    private $settings;
+
+    public function __construct() {
+        $this->settings = Settings::first();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -52,7 +58,7 @@ class PostController extends Controller
         ]);
 
         if (isset($request->image)) {
-            $dir = FileSystem::where('name', 'posts')->first();
+            $dir = FileSystem::find($this->settings->post_dir);
 
             // Product Image Re-location and Re-naming
             $media_new_name = time() . $media->getClientOriginalName();

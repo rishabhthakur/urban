@@ -14,10 +14,15 @@ class SettingsTableSeeder extends Seeder
         Urban\Settings::create([
             'site_name' => 'URBAN',
             'tagline' => 'Beta is Latin for still doesn\'t work',
+            'email' => Urban\User::where('admin', 1)->first()->email,
+
             'author' => Urban\User::where('admin', 1)->first()->name,
             'description' => 'Cum ceteris in veneratione tui montes, nascetur mus. Praeterea iter est quasdam res quas ex communi. Donec sed odio operae, eu vulputate felis rhoncus.',
-            'email' => Urban\User::where('admin', 1)->first()->email,
-            'copyright_text' => 'Copyright © 2018 URBAN. All rights reserved'
+
+            'copyright_text' => 'Copyright © 2018 URBAN. All rights reserved',
+
+            'product_dir' => 1,
+            'post_dir' => 2
         ]);
     }
 }
