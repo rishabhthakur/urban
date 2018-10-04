@@ -3,6 +3,7 @@
 namespace Urban\Http\Controllers;
 
 use Urban\Post;
+use Urban\User;
 use Urban\Tag;
 use Urban\Category;
 use Illuminate\Http\Request;
@@ -31,7 +32,8 @@ class PostController extends Controller
      */
     public function create() {
         return view('admin.posts.create')->with([
-            'medias' => Media::all()
+            'medias' => Media::all(),
+            'users' => User::all()
         ]);
     }
 

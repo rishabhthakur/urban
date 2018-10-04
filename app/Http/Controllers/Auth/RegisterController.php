@@ -114,7 +114,7 @@ class RegisterController extends Controller
           'avatar' => 'uploads/avatar/' .strtolower($data['name']). '/user.jpg'
         ]);
 
-        User::find(1)->notify(new \Urban\Notifications\NewUserRegistration($user));
+        User::where('admin', 1)->first()->notify(new \Urban\Notifications\NewUserRegistration($user));
 
         // Return results
         return $user;

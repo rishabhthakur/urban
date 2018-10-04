@@ -20,19 +20,19 @@
                             <h6>Next step</h6>
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('admin.settings') }}">
                                         <i class="fas fa-edit"></i>
                                         Edit front page
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('admin.posts.create') }}">
                                         <i class="fas fa-edit"></i>
                                         Add blog post
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('home') }}">
                                         <i class="fas fa-eye"></i>
                                         Visit your site
                                     </a>
@@ -43,13 +43,13 @@
                             <h6>More Actions</h6>
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('admin.settings.discussion') }}">
                                         <i class="far fa-comment-alt"></i>
                                         Turn comments on or off
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('admin.settings') }}">
                                         <i class="fas fa-cog"></i>
                                         Site settings
                                     </a>
@@ -126,7 +126,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h1>{{ count($users->where('role_id', 4)->get()) }}</h1>
-                                    <a href="#">
+                                    <a href="{{ route('admin.users', ['sort' => 'customers']) }}">
                                         Customers
                                     </a>
                                 </div>
@@ -222,7 +222,7 @@
         <div class="col-lg-7">
             <div class="card">
                 <div class="card-body">
-                    <h4>Recent Activity</h4>
+                    <h6 class="heading mb-3">Recent Activities</h6>
         			<ul class="timeline">
         				@forelse ($activities as $activity)
                             @include('admin.includes.activity')

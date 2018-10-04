@@ -23,6 +23,53 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <label for="excerpt">Excerpt</label>
+                            <textarea id="excerpt" name="excerpt" class="form-control" placeholder="Excerpt">{{ old('excerpt') }}</textarea>
+
+                            @if ($errors->has('excerpt'))
+                                <span class="text-danger form-text" role="alert">
+                                    <small><strong>{{ $errors->first('excerpt') }}</strong></small>
+                                </span>
+                            @endif
+
+                            <span class="text-muted form-text">
+                                <small>
+                                    Excerpts are optional hand-crafted summaries of your content that can be used in your theme. <a href="#">Learn more about manual excerpts</a>.
+                                </small>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <label for="discussion">Discussion</label>
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input type="checkbox" class="custom-control-input" checked id="discussion" value="1">
+                                <label class="custom-control-label" for="discussion"> <strong>Allow comments</strong></label>
+                            </div>
+                            <hr>
+                            <label for="user_id">Author</label>
+                            <select id="user_id" class="custom-select" name="user_id">
+                                @foreach ($users as $user)
+                                    <option
+                                        @if (Auth::id() == $user->id)
+                                            selected
+                                        @endif
+                                        value="{{ $user->id }}"
+                                        >{{ $user->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-4">
@@ -33,25 +80,25 @@
                         <div class="col mb-3">
                             <div class="status">
                                 <label>Status</label>
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" checked id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1"> <strong>Publish</strong></label>
+                               <div class="custom-control custom-radio mb-3">
+                                    <input type="radio" id="status1" checked name="status" class="custom-control-input">
+                                    <label class="custom-control-label" for="status1"> <strong>Publish</strong></label>
                                 </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1"> <strong>Draft</strong></label>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="status2" name="status" class="custom-control-input">
+                                    <label class="custom-control-label" for="status2"> <strong>Draft</strong></label>
                                 </div>
                             </div>
                         </div>
                         <div class="col mb-3">
                             <label>Visibilty</label>
-                            <div class="custom-control custom-checkbox mb-3">
-                                <input type="checkbox" class="custom-control-input" checked id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1"> <strong>Public</strong></label>
+                            <div class="custom-control custom-radio mb-3">
+                                <input type="radio" id="visibility1" checked name="visibility" class="custom-control-input">
+                                <label class="custom-control-label" for="visibility1"> <strong>Public</strong></label>
                             </div>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1"> <strong>Private</strong></label>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="visibility2" name="visibility" class="custom-control-input">
+                                <label class="custom-control-label" for="visibility2"> <strong>Private</strong></label>
                             </div>
                         </div>
                         <div class="col mb-3">
@@ -76,7 +123,7 @@
             <div class="card">
                 <div class="card-body">
                     <h6 class="heading">Featured Image</h6>
-                    <div class="mb-3">
+                    <div class="featured-img">
                         <a href="#" data-toggle="modal" data-target="#PostImageModal">
                             Set featured image
                         </a>

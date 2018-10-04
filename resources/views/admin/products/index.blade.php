@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>
                     @forelse ($products as $product)
-                        <tr @if ($product->quantity < 2) class="border-warning" @endif>
+                        <tr>
                             <td class="align-middle text-center">
                                 <img src="{{ asset($product->medias->first()->url) }}" alt="{{ $product->name }}" style="width: 100%;">
                             </td>

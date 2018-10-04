@@ -35,4 +35,8 @@ class Post extends Model {
     public function media() {
         return $this->hasOne('Urban\Media');
     }
+
+    public function user() {
+        return $this->belongsTo('Urban\User');
+    }
 }

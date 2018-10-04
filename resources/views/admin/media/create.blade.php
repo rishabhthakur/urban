@@ -32,7 +32,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <h4 class="mb-4 header-title">Create New Directory</h4>
+                <h6 class="heading mb-3">Create New Directory</h6>
                 <form action="#" method="post" enctype="multipart/form-data"><input name="_token" value="jHP3sWeLwIUNKwclNdSszA49ytd06B6NLD6dpkAn" type="hidden">
                     <div class="form-group"><label for="dir_name">Directory Name</label> <input name="dir_name" id="dir_name" placeholder="Directory Name" class="form-control" type="text">
                         <div class="form-text"><span class="text-muted"><small>
@@ -47,10 +47,12 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <h4 class="mb-4 header-title">Directtory List</h4>
+                <h6 class="heading mb-3">Directtory List</h6>
                 <ul class="list-group">
                     <li class="list-group-item list-group-item-action clearfix">
-                        <div class="float-left pt-2 text-primary"><i class="dripicons-folder font-lg"></i></div>
+                        <div class="float-left pt-2 text-primary">
+                            <i class="fas fa-folder display-2"></i>
+                        </div>
                         <div class="float-left ml-3 pt-1">
                             <h4 class="m-0">products</h4>
                             <p class="m-0"><small><b>0 Items</b><br>
@@ -60,7 +62,9 @@
                         <div class="float-right"><a href="http://shopaholic.com/admin/directories/destroy/1" class="text-danger"><i class="dripicons-trash"></i></a></div>
                     </li>
                     <li class="list-group-item list-group-item-action clearfix">
-                        <div class="float-left pt-2 text-primary"><i class="dripicons-folder font-lg"></i></div>
+                        <div class="float-left pt-2 text-primary">
+                            <i class="fas fa-folder display-2"></i>
+                        </div>
                         <div class="float-left ml-3 pt-1">
                             <h4 class="m-0">posts</h4>
                             <p class="m-0"><small><b>0 Items</b><br>

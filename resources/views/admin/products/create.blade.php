@@ -253,25 +253,25 @@
                         <div class="col mb-3">
                             <div class="status">
                                 <label>Status</label>
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" checked id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1"> <strong>Publish</strong></label>
+                               <div class="custom-control custom-radio mb-3">
+                                    <input type="radio" id="status1" checked name="status" class="custom-control-input">
+                                    <label class="custom-control-label" for="status1"> <strong>Publish</strong></label>
                                 </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1"> <strong>Draft</strong></label>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="status2" name="status" class="custom-control-input">
+                                    <label class="custom-control-label" for="status2"> <strong>Draft</strong></label>
                                 </div>
                             </div>
                         </div>
                         <div class="col mb-3">
                             <label>Visibilty</label>
-                            <div class="custom-control custom-checkbox mb-3">
-                                <input type="checkbox" class="custom-control-input" checked id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1"> <strong>Public</strong></label>
+                            <div class="custom-control custom-radio mb-3">
+                                <input type="radio" id="visibility1" checked name="visibility" class="custom-control-input">
+                                <label class="custom-control-label" for="visibility1"> <strong>Public</strong></label>
                             </div>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1"> <strong>Private</strong></label>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="visibility2" name="visibility" class="custom-control-input">
+                                <label class="custom-control-label" for="visibility2"> <strong>Private</strong></label>
                             </div>
                         </div>
                         <div class="col mb-3">

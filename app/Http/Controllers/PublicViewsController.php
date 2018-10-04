@@ -3,10 +3,10 @@
 namespace Urban\Http\Controllers;
 
 use Cart;
-use Urban\Stag;
+use Urban\Tag;
 use Urban\Brand;
 use Urban\Product;
-use Urban\Scategory;
+use Urban\Category;
 use Urban\Activity;
 use Urban\Settings;
 use Illuminate\Http\Request;
@@ -36,7 +36,7 @@ class PublicViewsController extends Controller {
 
         if (request()->category) {
             $products = Product::with('categories')->whereHas('categories', function($query) {
-                $query->where('slug', request()->category);
+                $query->where('belongs_to', 'product')->where('slug', request()->category);
             });
         } else {
             $products = $products;
@@ -67,9 +67,9 @@ class PublicViewsController extends Controller {
 
         return view('shop')->with([
             'products' => $products,
-            'categories' => Scategory::where('parent_id', 0)->get(),
+            'categories' => Category::where('belongs_to', 'product')->where('parent_id', 0)->get(),
             'brands' => Brand::all(),
-            'tags', Stag::all()
+            'tags', Tag::where('belongs_to', 'product')->get()
         ]);
     }
 
