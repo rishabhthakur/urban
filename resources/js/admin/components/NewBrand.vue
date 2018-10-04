@@ -52,7 +52,7 @@ export default {
         },
         fetchBrandList: function() {
             // console.log('Fetching Brands...');
-            axios.get('http://urb.an/api/brand')
+            axios.get('/api/brand')
                 .then((response) => {
                     // console.log(response.data);
                     this.list = response.data;
@@ -66,7 +66,7 @@ export default {
             // console.log('Creating Brand...');
             let self = this;
             let params = Object.assign({}, self.brand);
-            axios.post('http://urb.an/api/brand/store', params)
+            axios.post('/api/brand/store', params)
                 .then(function() {
                     self.brand.name = '';
                     self.edit = false;

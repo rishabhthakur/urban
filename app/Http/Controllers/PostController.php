@@ -58,6 +58,7 @@ class PostController extends Controller {
         ]);
 
         if (isset($request->image)) {
+            $media = $request->image;
             $dir = FileSystem::find($this->settings->post_dir);
 
             // Product Image Re-location and Re-naming
@@ -85,13 +86,40 @@ class PostController extends Controller {
             $media_id = $request->media;
         }
 
+        if (isset($request->status)) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+
+        if (isset($request->visibility)) {
+            $visibility = 1;
+        } else {
+            $visibility = 0;
+        }
+
+        if (isset($request->discussion)) {
+            $discussion = 1;
+        } else {
+            $discussion = 0;
+        }
+
+        if (isset($request->excerpt)) {
+            $excerpt = $request->excerpt;
+        } else {
+            $excerpt = str_limit($request->content, $limit = 100);
+        }
+
         $post = Post::create([
             'title' => $request->title,
             'content' => $request->content,
             'user_id' => Auth::id(),
+            'slug' => str_slug($request->title),
+            'excerpt' => $excerpt,
             'status' => $status,
             'visibility' => $visibility,
-            'media_id' => $media_id
+            'media_id' => $media_id,
+            'discussion' => $discussion
         ]);
 
         // Product Tags, Categories and Attributes Register into Database

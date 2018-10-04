@@ -21,7 +21,13 @@ class Post extends Model {
         'title',
         'content',
         'user_id',
-        'media_id'
+        'media_id',
+        'excerpt',
+        'slug',
+        'user_id',
+        'discussion',
+        'visibility',
+        'status'
     ];
 
     public function categories() {

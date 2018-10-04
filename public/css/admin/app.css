@@ -17717,9 +17717,12 @@ ul.timeline > li:before {
   display: none !important;
 }
 
-#description_ifr,
-#post_content_ifr {
+#description_ifr {
   min-height: 250px !important;
+}
+
+#post_content_ifr {
+  min-height: 500px !important;
 }
 
 main {
@@ -17737,5 +17740,9 @@ main {
 .image_picker_image {
   width: 100px !important;
   height: auto;
+}
+
+.badge-secondary {
+  background-color: #eee;
 }
 

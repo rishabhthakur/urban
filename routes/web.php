@@ -291,6 +291,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             'as' => 'admin.posts.create'
         ]);
 
+        // Admin add new posts
+        Route::post('/store', [
+            'uses' => 'PostController@store',
+            'as' => 'admin.posts.store'
+        ]);
+
         // Admin edit posts
         Route::get('/edit', [
             'uses' => 'PostController@edit',

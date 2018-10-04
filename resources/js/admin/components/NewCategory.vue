@@ -12,8 +12,8 @@
                     </div>
                     <div class="child pl-4 pt-1 pb-1">
                         <div class="custom-control custom-checkbox mb-1" v-for="child in category.children">
-                            <input type="checkbox" class="custom-control-input" name="categories[]" :id="child.id" :value="child.id">
-                            <label class="custom-control-label" :for="child.id">
+                            <input type="checkbox" class="custom-control-input" name="categories[]" :id="child.slug" :value="child.id">
+                            <label class="custom-control-label" :for="child.slug">
                                 {{ child.name }}
                              </label>
                         </div>
@@ -85,7 +85,7 @@ export default {
         },
         fetchCategoryList: function() {
             // console.log('Fetching Categorys...');
-            axios.get('http://urb.an/api/category/' + this.to)
+            axios.get('/api/category/' + this.to)
                 .then((response) => {
                     // console.log(response.data);
                     this.list = response.data;
@@ -99,7 +99,7 @@ export default {
             // console.log('Creating category...');
             let self = this;
             let params = Object.assign({}, self.category);
-            axios.post('http://urb.an/api/category/store', params)
+            axios.post('/api/category/store', params)
                 .then(function(){
                     self.category.name = '';
                     self.category.parent = '';

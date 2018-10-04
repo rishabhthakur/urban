@@ -318,7 +318,7 @@
                         </div>
                         <div class="modal-body">
                             @if (count($medias) > 0)
-                                <select multiple="multiple" class="image-picker show-html" id="product-image" name="medias[]">
+                                <select class="image-picker show-html" id="product-image" name="medias[]">
                                     @foreach ($medias as $media)
                                         <option data-img-src="{{ asset($media->url) }}" value="{{ $media->id }}">{{ $media->name }}</option>
                                     @endforeach

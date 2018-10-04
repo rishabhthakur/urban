@@ -1,7 +1,8 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<form class="d-inline" action="index.html" method="post">
+<form class="d-inline" action="{!! route('admin.posts.store') !!}" method="post" enctype="multipart/form-data">
+    {{ csrf_field() }}
     <div class="row">
         <div class="col-md-8">
             <div class="card">
@@ -142,14 +143,14 @@
                         </div>
                         <div class="modal-body">
                             @if (count($medias) > 0)
-                                <select class="image-picker show-html" id="Post-image" name="medias[]">
+                                <select class="image-picker show-html" id="post-image" name="media">
                                     @foreach ($medias as $media)
                                         <option data-img-src="{{ asset($media->url) }}" value="{{ $media->id }}">{{ $media->name }}</option>
                                     @endforeach
                                 </select>
                                 <hr>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="images" multiple="multiple" name="images[]">
+                                    <input type="file" class="custom-file-input" id="images" multiple="multiple" name="image">
                                     <label class="custom-file-label" for="images">Choose files</label>
                                 </div>
                             @else
@@ -189,5 +190,12 @@
                 plugins: [ 'autosave', 'lists', 'autolink' ]
             }
         });
+    </script>
+@endsection
+
+@section('new-post-js')
+    <script type="text/javascript">
+        // Image picker initialization
+        $("#post-image").imagepicker();
     </script>
 @endsection

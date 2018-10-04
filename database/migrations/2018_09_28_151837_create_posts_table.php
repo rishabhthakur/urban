@@ -21,8 +21,9 @@ class CreatePostsTable extends Migration
             $table->integer('user_id');
             $table->mediumText('excerpt');
             $table->integer('media_id')->nullable();
-            $table->boolean('discussions')->default(1);
-            $table->boolean('draft')->default(0);
+            $table->boolean('discussion')->default(1);
+            $table->boolean('status')->default(1);
+            $table->boolean('visibility')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

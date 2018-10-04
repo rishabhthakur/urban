@@ -4,8 +4,8 @@
             <h6 class="heading mb-3">Tags</h6>
             <div class="tegs" v-if="list.length > 0">
                 <div class="custom-control custom-checkbox mb-1"  v-for="tag in list">
-                    <input type="checkbox" class="custom-control-input" :id="tag.slug" :value="tag.id" name="tags[]">
-                    <label class="custom-control-label" :for="tag.slug"> {{ tag.name }}</label>
+                    <input type="checkbox" class="custom-control-input" :id="tag.slug + tag.id" :value="tag.id" name="tags[]">
+                    <label class="custom-control-label" :for="tag.slug + tag.id"> {{ tag.name }}</label>
                 </div>
             </div>
             <span class="text-muted" v-else>
@@ -66,7 +66,7 @@ export default {
         },
         fetchTagList: function() {
             // console.log('Fetching tags...');
-            axios.get('http://urb.an/api/tag/' + this.to)
+            axios.get('/api/tag/' + this.to)
                 .then((response) => {
                     // console.log(response.data);
                     this.list = response.data;
@@ -80,7 +80,7 @@ export default {
             // console.log('Creating tag...');
             let self = this;
             let params = Object.assign({}, self.tag);
-            axios.post('http://urb.an/api/tag/store', params)
+            axios.post('/api/tag/store', params)
                 .then(function() {
                     self.tag.name = '';
                     self.edit = false;
