@@ -179,7 +179,7 @@
             <!-- New Category -->
             <vue-newcategory to="{{ __('post') }}" @if ($edit) :categories="{{ $post->categories }}" @endif></vue-newcategory>
             <!-- New Tag -->
-            <vue-newtag to="{{ __('post') }}"></vue-newtag>
+            <vue-newtag to="{{ __('post') }}" @if ($edit) :tags="{{ $post->tags }}" @endif></vue-newtag>
         </div>
     </div>
 </form>

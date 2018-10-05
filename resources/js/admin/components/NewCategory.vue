@@ -2,6 +2,16 @@
     <div class="card">
         <div class="card-body">
             <h6 class="heading mb-3">Categories</h6>
+            <div class="py-2 mb-3" v-if="categories">
+                <div>
+                    <small>
+                        <strong>This post is under:</strong>
+                    </small>
+                </div>
+                <span v-for="item in categories">
+                    <span class="badge badge-primary mr-1 mb-1">{{ item.name }}</span>
+                </span>
+            </div>
             <div class="mb-1" v-if="list.length > 0">
                 <div class="parent" v-for="category in list">
                     <div class="custom-control custom-checkbox mb-1">
@@ -56,7 +66,8 @@
 <script>
 export default {
     props: [
-        'to'
+        'to',
+        'categories'
     ],
     data() {
         return  {
