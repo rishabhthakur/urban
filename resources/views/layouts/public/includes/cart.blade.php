@@ -4,7 +4,7 @@
 
     <!-- Cart Button -->
     <div class="cart-button">
-        <a href="#" id="rightSideCart"><i class="fas fa-shopping-cart"></i> <span>{{ count(Cart::getContent()) }}</span></a>
+        <a href="#" id="rightSideCart"><i class="fas fa-times"></i></a>
     </div>
 
     <div class="cart-content d-flex">

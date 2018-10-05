@@ -39,7 +39,7 @@ class Post extends Model {
     }
 
     public function media() {
-        return $this->hasOne('Urban\Media');
+        return $this->belongsTo('Urban\Media');
     }
 
     public function user() {

@@ -3,6 +3,7 @@
 namespace Urban\Http\Controllers;
 
 use Cart;
+use Urban\Post;
 use Urban\Tag;
 use Urban\Brand;
 use Urban\Product;
@@ -84,7 +85,15 @@ class PublicViewsController extends Controller {
     }
 
     public function blog() {
-        return view('blog');
+        return view('blog')->with([
+            'posts' => Post::where('status', 1)
+                            ->where('visibility', 1)
+                            ->get(),
+            'categories' => Category::where('belongs_to', 'post')
+                                    ->get(),
+            'tags' => Tag::where('belongs_to', 'post')
+                                    ->get()
+        ]);
     }
 
     public function contact() {

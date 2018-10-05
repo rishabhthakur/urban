@@ -31,7 +31,7 @@ class Media extends Model {
     }
 
     public function posts() {
-        return $this->belongsTo('Urban\Post');
+        return $this->hasOne('Urban\Post');
     }
 
     public function directory() {
