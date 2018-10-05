@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Urban\Activity;
 use Urban\Settings;
 use Urban\Media;
+use Urban\Dsettings;
 use Urban\FileSystem;
 
 class PostController extends Controller {
@@ -39,7 +40,9 @@ class PostController extends Controller {
     public function create() {
         return view('admin.posts.create')->with([
             'medias' => Media::where('dir_id', Settings::first()->post_dir)->get(),
-            'users' => User::all()
+            'users' => User::all(),
+            'dsettings' => Dsettings::first(),
+            'edit' => false
         ]);
     }
 
@@ -107,7 +110,7 @@ class PostController extends Controller {
         if (isset($request->excerpt)) {
             $excerpt = $request->excerpt;
         } else {
-            $excerpt = str_limit($request->content, $limit = 100);
+            $excerpt = strip_tags(str_limit($request->content, $limit = 100));
         }
 
         $post = Post::create([
@@ -150,9 +153,14 @@ class PostController extends Controller {
      * @param  \Urban\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
-    {
-        //
+    public function edit($id) {
+        return view('admin.posts.edit')->with([
+            'post' => Post::find($id),
+            'dsettings' => Dsettings::first(),
+            'users' => User::all(),
+            'medias' => Media::where('dir_id', Settings::first()->post_dir)->get(),
+            'edit' => true
+        ]);
     }
 
     /**

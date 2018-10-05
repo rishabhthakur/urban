@@ -39,7 +39,7 @@
                                 <div class="content">
                                     <!-- Post Title -->
                                     <div class="post-title">
-                                        <a href="#">{{ $post->title }}</a>
+                                        <a href="{!! route('blog.post', ['slug' => $post->slug]) !!}">{{ $post->title }}</a>
                                     </div>
                                     @if ($post->excerpt)
                                         <p>
@@ -72,7 +72,7 @@
         									</span>
         								</span>
                                     </div>
-                                    <a href="#">Continue reading <i class="fas fa-arrow-right"></i></a>
+                                    <a href="{!! route('blog.post', ['slug' => $post->slug]) !!}">Continue reading <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         @empty

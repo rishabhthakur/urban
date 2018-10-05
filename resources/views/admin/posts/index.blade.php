@@ -36,7 +36,7 @@
                                 <tr>
                                     <td>
                                         <div class="mb-2">
-                                            <a href="#">
+                                            <a target="_blank" href="{!! route('blog.post', ['slug' => $post->slug]) !!}">
                                                 <strong>
                                                     {{ $post->title }}
                                                 </strong>
@@ -47,8 +47,8 @@
                                                 <i class="fas fa-ellipsis-h"></i>
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <a class="dropdown-item" href="#">View</a>
-                                                <a class="dropdown-item" href="#">Edit</a>
+                                                <a class="dropdown-item" href="{!! route('blog.post', ['slug' => $post->slug]) !!}">View</a>
+                                                <a class="dropdown-item" href="{!! route('admin.posts.edit', ['id' => $post->id]) !!}">Edit</a>
                                                 <a class="dropdown-item text-danger" href="#">Trash</a>
                                             </div>
                                         </div>

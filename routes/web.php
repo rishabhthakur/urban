@@ -44,6 +44,17 @@ Route::get('/blog', [
     'as' => 'blog'
 ]);
 
+// Blog post page
+Route::get('/blog/{slug}', [
+    'uses' => 'PublicViewsController@post',
+    'as' => 'blog.post'
+]);
+
+Route::post('/blog/comment/store', [
+    'uses' => 'CommentController@store',
+    'as' => 'blog.comment.store'
+]);
+
 // Contact page
 Route::get('/contact', [
     'uses' => 'PublicViewsController@contact',
@@ -298,7 +309,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         ]);
 
         // Admin edit posts
-        Route::get('/edit', [
+        Route::get('/edit/{id}', [
             'uses' => 'PostController@edit',
             'as' => 'admin.posts.edit'
         ]);

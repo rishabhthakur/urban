@@ -71,7 +71,7 @@ class SettingsController extends Controller {
         $settings->post_dir = $request->post_dir;
         $settings->save();
 
-        return back()->with([
+        return redirect(route('admin.settings.media'))->with([
             'success' => 'Changes saved.'
         ]);
     }
@@ -130,7 +130,7 @@ class SettingsController extends Controller {
         $settings->membership = $membership;
         $settings->save();
 
-        return back()->with('success', 'Changes saved.');
+        return redirect(route('admin.settings'))->with('success', 'Changes saved.');
     }
 
     /**
@@ -186,7 +186,9 @@ class SettingsController extends Controller {
             }
         }
 
-        return back()->with('success', 'Changes saved.');
+        return redirect(route('admin.settings'))->with([
+            'success' => 'Changes saved.'
+        ]);
     }
 
     /**
@@ -204,7 +206,9 @@ class SettingsController extends Controller {
         }
         $settings->privacy = $privacy;
         $settings->save();
-        return back()->with('success', 'Changes saved.');
+        return redirect(route('admin.settings.privacy'))->with([
+            'success' => 'Changes saved.'
+        ]);
     }
 
     /**

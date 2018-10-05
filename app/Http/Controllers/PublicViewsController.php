@@ -3,6 +3,8 @@
 namespace Urban\Http\Controllers;
 
 use Cart;
+
+use Urban\Dsettings;
 use Urban\Post;
 use Urban\Tag;
 use Urban\Brand;
@@ -93,6 +95,13 @@ class PublicViewsController extends Controller {
                                     ->get(),
             'tags' => Tag::where('belongs_to', 'post')
                                     ->get()
+        ]);
+    }
+
+    public function post($slug) {
+        return view('post')->with([
+            'post' => Post::where('slug', $slug)->first(),
+            'dsettings' => Dsettings::first()
         ]);
     }
 

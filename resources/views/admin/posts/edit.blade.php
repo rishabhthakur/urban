@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<form class="d-inline" action="{!! route('admin.posts.store') !!}" method="post" enctype="multipart/form-data">
+<form class="d-inline" action="{!! route('admin.posts.update') !!}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="row">
         <div class="col-md-8">
@@ -10,7 +10,7 @@
                     <h6 class="heading mb-5">Add New Blog Post</h6>
                     <div class="form-group">
                         <label for="title">Post Title</label>
-                        <input type="text" name="title" id="title" class="form-control mb-5" placeholder="Post Title" value="{{ old('title') }}" required>
+                        <input type="text" name="title" id="title" class="form-control mb-5" placeholder="Post Title" value="{{ $post->title }}" required>
 
                         @if ($errors->has('title'))
                             <span class="text-danger form-text" role="alert">
@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="form-group">
-                        <textarea name="content" class="form-control" id="post_content">{{ old('content') }}</textarea>
+                        <textarea name="content" class="form-control" id="post_content">{{ $post->content }}</textarea>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     <div class="card">
                         <div class="card-body">
                             <label for="excerpt">Excerpt</label>
-                            <textarea id="excerpt" name="excerpt" class="form-control" placeholder="Excerpt">{{ old('excerpt') }}</textarea>
+                            <textarea id="excerpt" name="excerpt" class="form-control" placeholder="Excerpt">{{ $post->excerpt }}</textarea>
 
                             @if ($errors->has('excerpt'))
                                 <span class="text-danger form-text" role="alert">
@@ -52,7 +52,7 @@
                             <label for="discussion">Discussion</label>
                             <div class="custom-control custom-checkbox mb-5">
                                 <input type="checkbox" class="custom-control-input"
-                                @if ($dsettings->discussion)
+                                @if ($post->discussion)
                                     checked
                                 @endif
                                 id="discussion" value="1">
@@ -62,7 +62,7 @@
                             <select id="user_id" class="custom-select" name="user_id">
                                 @foreach ($users as $user)
                                     <option
-                                        @if (Auth::id() == $user->id)
+                                        @if ($post->user_id == $user->id)
                                             selected
                                         @endif
                                         value="{{ $user->id }}"
@@ -85,11 +85,11 @@
                             <div class="status">
                                 <label>Status</label>
                                <div class="custom-control custom-radio mb-3">
-                                    <input type="radio" id="status1" checked name="status" class="custom-control-input">
+                                    <input type="radio" id="status1"  @if ($post->status) checked @endif name="status" class="custom-control-input">
                                     <label class="custom-control-label" for="status1"> <strong>Publish</strong></label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="status2" name="status" class="custom-control-input">
+                                    <input type="radio" id="status2" name="status" @if (!$post->status) checked @endif class="custom-control-input">
                                     <label class="custom-control-label" for="status2"> <strong>Draft</strong></label>
                                 </div>
                             </div>
@@ -97,24 +97,27 @@
                         <div class="col mb-3">
                             <label>Visibilty</label>
                             <div class="custom-control custom-radio mb-3">
-                                <input type="radio" id="visibility1" checked name="visibility" class="custom-control-input">
+                                <input type="radio" id="visibility1" @if ($post->visibility) checked @endif name="visibility" class="custom-control-input">
                                 <label class="custom-control-label" for="visibility1"> <strong>Public</strong></label>
                             </div>
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="visibility2" name="visibility" class="custom-control-input">
+                                <input type="radio" id="visibility2" @if (!$post->visibility) checked @endif name="visibility" class="custom-control-input">
                                 <label class="custom-control-label" for="visibility2"> <strong>Private</strong></label>
                             </div>
                         </div>
                         <div class="col mb-3">
-                            <label>Wiil be published</label>
-                            <div>
-                                <small>
-                                    <strong>immediately</strong>
-                                </small>
-                            </div>
+                            <label>Post published</label>
                             <div>
                                 <span class="badge badge-primary">
-                                    {{ date("F j, Y") }}
+                                    {{ $post->created_at->format("F j, Y") }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col mb-3">
+                            <label>Post last updated</label>
+                            <div>
+                                <span class="badge badge-primary">
+                                    {{ $post->updated_at->format("F j, Y") }}
                                 </span>
                             </div>
                         </div>
@@ -174,7 +177,7 @@
                 </div>
             </div>
             <!-- New Category -->
-            <vue-newcategory to="{{ __('post') }}"></vue-newcategory>
+            <vue-newcategory to="{{ __('post') }}" @if ($edit) :categories="{{ $post->categories }}" @endif></vue-newcategory>
             <!-- New Tag -->
             <vue-newtag to="{{ __('post') }}"></vue-newtag>
         </div>

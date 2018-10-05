@@ -72,7 +72,7 @@ class DsettingsController extends Controller {
 
         $this->dsettings->save();
 
-        return back()->with([
+        return redirect(route('admin.settings.discussion'))->with([
             'success' => 'Changes saved.'
         ]);
     }

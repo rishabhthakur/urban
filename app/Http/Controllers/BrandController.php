@@ -15,11 +15,11 @@ class BrandController extends Controller
      */
     public function index() {
         return view('admin.products.brands.index')->with([
-            'array' => Brand::orderBy('created_at')->get(),
-            'parent' => false,
-            'color' => false,
+            'array'      => Brand::orderBy('created_at')->get(),
+            'parent'     => false,
+            'color'      => false,
             'array_type' => 'Brand',
-            'route' => route('admin.products.brands.store')
+            'route'      => route('admin.products.brands.store')
         ]);
     }
 

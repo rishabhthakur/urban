@@ -53,7 +53,7 @@ h6 {
 }
 
 p {
-    color: $text-color;
+    color: #787878;
     font-size: 14px;
     line-height: 2;
     font-weight: 400;
@@ -318,7 +318,6 @@ img {
     top: 0;
     left: 0;
     width: 100%;
-    border-bottom: 1px solid $border-color;
     @include trans-duration(500ms);
     .classy-nav-container {
         @media #{$breakpoint-xs} {
@@ -393,6 +392,7 @@ img {
                 height: 85px;
                 padding: 0 15px 0 60px;
                 font-size: 14px;
+                color: $text-muted;
                 font-weight: 500;
                 @include trans-duration(500ms);
                 @media #{$breakpoint-xs} {
@@ -1786,6 +1786,21 @@ img {
 .single-blog-wrapper {
     position: relative;
     z-index: 1;
+    margin-bottom: 80px;
+    .single-blog-post-thumb {
+        height: 400px;
+        overflow: hidden;
+        position: relative;
+        img {
+            width: 100%;
+            position: absolute;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+    }
     .single-blog-content-wrapper {
         position: relative;
         z-index: 1;
@@ -1918,6 +1933,9 @@ img {
             }
         }
     }
+    .single-blog-commenting-area {
+        margin-bottom: 80px;
+    }
 }
 
 /* :: 16.0 Regular Page Area CSS */
@@ -1938,22 +1956,14 @@ img {
         }
         blockquote {
             margin-bottom: 50px;
-            h6 {
-                font-size: 18px;
-                line-height: 2;
-                @include display-flex(flex);
-                i {
-                    margin-right: 30px;
-                    font-size: 30px;
-                    color: $bg-default;
-                }
-            }
-            span {
-                margin-left: 60px;
-                font-size: 16px;
-                font-weight: 600;
-                color: rgba(0, 0, 0, 0.6);
-            }
+            line-height: 2;
+            @include display-flex(flex);
+            padding: 10px;
+            color: $bg-default;
+            font-size: 16px;
+            font-weight: 600;
+            color: #000000;
+            background-color: #efefef;
         }
     }
 }
