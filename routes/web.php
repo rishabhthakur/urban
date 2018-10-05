@@ -404,6 +404,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             'as' => 'admin.settings.discussion'
         ]);
 
+        // Admin discussion settings
+        Route::post('/discussion/store', [
+            'uses' => 'DsettingsController@update',
+            'as' => 'admin.settings.discussion.store'
+        ]);
+
         // Admin media settings
         Route::get('/media', [
             'uses' => 'SettingsController@media',

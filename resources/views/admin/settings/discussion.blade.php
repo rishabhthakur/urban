@@ -11,7 +11,7 @@
         <div class="card">
             <div class="card-body">
                 <h6 class="heading mb-5">Discussion Settings</h6>
-                <form class="" action="index.html" method="post">
+                <form class="" action="{!! route('admin.settings.discussion.store') !!}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group mb-5 clearfix">
                         <h6>Default article settings</h6>
@@ -24,7 +24,7 @@
                                 <div class="text-right">
                                     <label for="membership" data-on-label="Yes" data-off-label="No"></label>
                                     <label class="custom-toggle">
-                                        <input type="checkbox" value="1">
+                                        <input type="checkbox" value="1" disabled>
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>
@@ -38,7 +38,7 @@
                                 <div class="text-right">
                                     <label for="membership" data-on-label="Yes" data-off-label="No"></label>
                                     <label class="custom-toggle">
-                                        <input type="checkbox" value="1">
+                                        <input type="checkbox" value="1" disabled>
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>
@@ -50,9 +50,12 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="text-right">
-                                    <label for="membership" data-on-label="Yes" data-off-label="No"></label>
+                                    <label for="discussion" data-on-label="Yes" data-off-label="No"></label>
                                     <label class="custom-toggle">
-                                        <input type="checkbox" value="1">
+                                        <input type="checkbox" value="1"
+                                        @if ($dsettings->discussion)
+                                            checked
+                                        @endif name="discussion" id="discussion">
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>
@@ -71,9 +74,11 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="text-right">
-                                    <label for="membership" data-on-label="Yes" data-off-label="No"></label>
+                                    <label for="discussion_full" data-on-label="Yes" data-off-label="No"></label>
                                     <label class="custom-toggle">
-                                        <input type="checkbox" value="1">
+                                        <input type="checkbox" value="1" @if ($dsettings->discussion_full)
+                                            checked
+                                        @endif name="discussion_full" id="discussion_full">
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>
@@ -85,9 +90,11 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="text-right">
-                                    <label for="membership" data-on-label="Yes" data-off-label="No"></label>
+                                    <label for="discussion_auth" data-on-label="Yes" data-off-label="No"></label>
                                     <label class="custom-toggle">
-                                        <input type="checkbox" value="1">
+                                        <input type="checkbox" value="1" @if ($dsettings->discussion_auth)
+                                            checked
+                                        @endif name="discussion_auth" id="discussion_auth">
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>
@@ -101,7 +108,7 @@
                                 <div class="text-right">
                                     <label for="membership" data-on-label="Yes" data-off-label="No"></label>
                                     <label class="custom-toggle">
-                                        <input type="checkbox" value="1">
+                                        <input type="checkbox" value="1" disabled>
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>
@@ -115,7 +122,7 @@
                                 <div class="text-right">
                                     <label for="membership" data-on-label="Yes" data-off-label="No"></label>
                                     <label class="custom-toggle">
-                                        <input type="checkbox" value="1">
+                                        <input type="checkbox" value="1" disabled>
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>
@@ -131,9 +138,12 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="text-right">
-                                    <label for="membership" data-on-label="Yes" data-off-label="No"></label>
+                                    <label for="discussion_email" data-on-label="Yes" data-off-label="No"></label>
                                     <label class="custom-toggle">
-                                        <input type="checkbox" value="1">
+                                        <input type="checkbox" value="1"
+                                        @if ($dsettings->discussion_email)
+                                            checked
+                                        @endif name="discussion_email" id="discussion_email">
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>
@@ -145,9 +155,11 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="text-right">
-                                    <label for="membership" data-on-label="Yes" data-off-label="No"></label>
+                                    <label for="discussion_spam_email" data-on-label="Yes" data-off-label="No"></label>
                                     <label class="custom-toggle">
-                                        <input type="checkbox" value="1">
+                                        <input type="checkbox" value="1" @if ($dsettings->discussion_spam_email)
+                                            checked
+                                        @endif name="discussion_spam_email" id="discussion_spam_email">
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>
@@ -163,9 +175,12 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="text-right">
-                                    <label for="membership" data-on-label="Yes" data-off-label="No"></label>
+                                    <label for="discussion_approve" data-on-label="Yes" data-off-label="No"></label>
                                     <label class="custom-toggle">
-                                        <input type="checkbox" value="1">
+                                        <input type="checkbox" value="1"
+                                        @if ($dsettings->discussion_approve)
+                                            checked
+                                        @endif name="discussion_approve" id="discussion_approve">
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>
@@ -177,9 +192,12 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="text-right">
-                                    <label for="membership" data-on-label="Yes" data-off-label="No"></label>
+                                    <label for="discussion_approve_once" data-on-label="Yes" data-off-label="No"></label>
                                     <label class="custom-toggle">
-                                        <input type="checkbox" value="1">
+                                        <input type="checkbox" value="1"
+                                        @if ($dsettings->discussion_approve_once)
+                                            checked
+                                        @endif name="discussion_approve_once" id="discussion_approve_once">
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>

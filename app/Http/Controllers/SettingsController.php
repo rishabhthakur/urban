@@ -3,6 +3,7 @@
 namespace Urban\Http\Controllers;
 
 use Urban\Settings;
+use Urban\Dsettings;
 use Urban\Role;
 use Urban\FileSystem;
 use Illuminate\Http\Request;
@@ -10,12 +11,14 @@ use Illuminate\Http\Request;
 class SettingsController extends Controller {
 
     protected $settings;
+    protected $dsettings;
     private $down;
 
 
     public function __construct() {
         $this->middleware('admin');
         $this->settings = Settings::first();
+        $this->dsettings = Dsettings::first();
         $this->down = storage_path('framework/down');
     }
 
@@ -38,7 +41,8 @@ class SettingsController extends Controller {
      */
     public function discussion() {
         return view('admin.settings.discussion')->with([
-            'settings' => $this->settings
+            'settings' => $this->settings,
+            'dsettings' => $this->dsettings
         ]);
     }
 

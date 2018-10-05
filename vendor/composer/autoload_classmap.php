@@ -83,6 +83,7 @@ return array(
     'Dotenv\\Exception\\ValidationException' => $vendorDir . '/vlucas/phpdotenv/src/Exception/ValidationException.php',
     'Dotenv\\Loader' => $vendorDir . '/vlucas/phpdotenv/src/Loader.php',
     'Dotenv\\Validator' => $vendorDir . '/vlucas/phpdotenv/src/Validator.php',
+    'DsettingsTableSeeder' => $baseDir . '/database/seeds/DsettingsTableSeeder.php',
     'Egulias\\EmailValidator\\EmailLexer' => $vendorDir . '/egulias/email-validator/EmailValidator/EmailLexer.php',
     'Egulias\\EmailValidator\\EmailParser' => $vendorDir . '/egulias/email-validator/EmailValidator/EmailParser.php',
     'Egulias\\EmailValidator\\EmailValidator' => $vendorDir . '/egulias/email-validator/EmailValidator/EmailValidator.php',
