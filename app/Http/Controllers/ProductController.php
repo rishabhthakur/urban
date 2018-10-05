@@ -46,7 +46,7 @@ class ProductController extends Controller {
     public function create() {
 
         return view('admin.products.create')->with([
-            'medias' => Media::all(),
+            'medias' => Media::where('dir_id', Settings::first()->product_dir)->get(),
             'categories' => Category::where('belongs_to', 'product')->get(),
             'tags' => Tag::where('belongs_to', 'product')->get(),
             'brands' => Brand::all(),

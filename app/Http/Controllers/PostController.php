@@ -38,7 +38,7 @@ class PostController extends Controller {
      */
     public function create() {
         return view('admin.posts.create')->with([
-            'medias' => Media::all(),
+            'medias' => Media::where('dir_id', Settings::first()->post_dir)->get(),
             'users' => User::all()
         ]);
     }
