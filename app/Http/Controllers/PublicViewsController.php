@@ -6,6 +6,7 @@ use Cart;
 
 use Urban\Dsettings;
 use Urban\Post;
+use Urban\User;
 use Urban\Tag;
 use Urban\Brand;
 use Urban\Product;
@@ -70,7 +71,9 @@ class PublicViewsController extends Controller {
 
         return view('shop')->with([
             'products' => $products,
-            'categories' => Category::where('belongs_to', 'product')->where('parent_id', 0)->get(),
+            'categories' => Category::where('belongs_to', 'product')
+                                    ->where('parent_id', 0)
+                                    ->get(),
             'brands' => Brand::all(),
             'tags', Tag::where('belongs_to', 'product')->get()
         ]);
@@ -87,8 +90,33 @@ class PublicViewsController extends Controller {
     }
 
     public function blog() {
+        $posts = Post::latest();
+
+        if (request()->category) {
+            $posts = Post::with('categories')->whereHas('categories', function($query) {
+                $query->where('belongs_to', 'post')->where('slug', request()->category);
+            });
+        } else {
+            $posts = $posts;
+        }
+
+        if (request()->tag) {
+            $posts = Post::with('tags')->whereHas('tags', function($query) {
+                $query->where('belongs_to', 'post')->where('slug', request()->tag);
+            });
+        } else {
+            $posts = $posts;
+        }
+
+        if (request()->author) {
+            $user = User::where('slug', request()->author)->first()->id;
+            $posts = Post::where('user_id', $user);
+        } else {
+            $posts = $posts;
+        }
+
         return view('blog')->with([
-            'posts' => Post::where('status', 1)
+            'posts' => $posts->where('status', 1)
                             ->where('visibility', 1)
                             ->get(),
             'categories' => Category::where('belongs_to', 'post')

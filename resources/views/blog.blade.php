@@ -31,7 +31,7 @@
                                             {{ $post->created_at->format("j") }}
                                         </span>
                                         <span class="m-year">
-                                            {{ $post->created_at->format("F Y") }}
+                                            {{ $post->created_at->format("M Y") }}
                                         </span>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                                         <span class="d-flex pr-4 my-4">
         									<span>
         										<span class="text-muted">By</span>
-                                                <a href="#">
+                                                <a href="{!! route('blog', ['author' => $post->user->slug]) !!}">
                                                     <strong> {{ $post->user->name }}</strong>
                                                 </a>
         										<span class="mx-2 text-muted">|</span>
@@ -62,13 +62,13 @@
 
         									<span>
                                                 @foreach ($post->categories as $category)
-                                                    {{ $category->name . ',' }}
+                                                    <a href="{!! route('blog', ['category' => $category->slug]) !!}">{{ $category->name }}</a>,
                                                 @endforeach
         										<span class="mx-2 text-muted">|</span>
         									</span>
 
         									<span>
-        										8 Comments
+        										{{ count($post->comments) }} Comments
         									</span>
         								</span>
                                     </div>
@@ -91,7 +91,7 @@
                             <ul class="list-group list-group-flush list-group-flush-sidebar">
                                 @foreach ($categories as $category)
                                     <li class="list-group-item px-0">
-                                        <a href="#">{{ $category->name }}</a>
+                                        <a href="{!! route('blog', ['category' => $category->slug]) !!}">{{ $category->name }}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -100,7 +100,7 @@
                         <div class="blog-sidebar-item">
                             <h4 class="mb-4">Tags</h4>
                             @foreach ($tags as $tag)
-                                <a href="#" class="badge badge-blog badge-pill">
+                                <a href="{!! route('blog', ['tag' => $tag->slug]) !!}" class="badge badge-blog badge-pill">
                                     {{ $tag->name }}
                                 </a>
                             @endforeach
