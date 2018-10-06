@@ -1,15 +1,12 @@
-# Urban
+# Urban Laravel Ecommerce Package
 
-Urban is a Laravel based CMS platform specifically designed for Ecommerce purposes. It incorporates an elegantly designed admin and front end. Is fully customizable and easy to use.
-
-It comes preconfigured with shop theme and is ready to be used out of the box.
-
-# Urban Laravel ecommerce package
+Urban is a Laravel based CMS platform specifically designed for Ecommerce purposes.
+It incorporates an elegantly designed admin and front end. Is fully customizable and easy to use.
 
 The repository contains the Urban online shop package for Laravel 5.7*
-integrating the Urban e-commerce library into Laravel. The package provides
-controllers for e.g. faceted filter, product lists and detail views, for
-searching products as well as carts and the checkout process. A full set of
+integrating the Urban e-commerce library into Laravel. It comes preconfigured with shop theme and is ready
+to be used out of the box. The package provides controllers for e.g. faceted filter, product lists and detail views,
+for searching products as well as carts and the checkout process. A full set of
 pages including routing is also available for a quick start.
 
 [![Urban Laravel demo](https://Urban.org/fileadmin/user_upload/laravel-demo.jpg)](http://laravel.demo.Urban.org/)
