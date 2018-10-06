@@ -20,7 +20,7 @@ class CreateCommentsTable extends Migration
             $table->boolean('approved')->default(0);
             $table->string('email')->nullable();
             $table->string('name')->nullable();
-            $table->string('content')->nullable();
+            $table->text('content')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

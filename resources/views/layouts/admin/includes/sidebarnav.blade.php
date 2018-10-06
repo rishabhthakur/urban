@@ -122,8 +122,8 @@
         <li @if (Route::currentRouteName() == 'admin.posts.tags') class="active" @endif>
             <a href="{!! route('admin.posts.tags', ['from' => 'post']) !!}">Tags</a>
         </li>
-        <li>
-            <a href="#">Comments</a>
+        <li @if (Route::currentRouteName() == 'admin.posts.comments') class="active" @endif>
+            <a href="{!! route('admin.posts.comments') !!}">Comments</a>
         </li>
     </ul>
 </li>

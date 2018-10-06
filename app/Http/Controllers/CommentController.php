@@ -11,18 +11,38 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller {
     private $dsettings;
+    private $comments;
 
     public function __construct() {
         $this->dsettings = Dsettings::first();
+        $this->comments = new Comment;
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        $col = $this->comments->latest();
+
+        switch (request()->sort) {
+            case 'pending':
+                $list = $col->where('approved', 0)->get();
+                break;
+            case 'approved':
+                $list = $col->where('approved', 1)->get();
+                break;
+            case 'trash':
+                $list = $col->onlyTrashed()->get();
+                break;
+            default:
+                $list = $col->get();
+                break;
+        }
+
+        return view('admin.posts.comments.index')->with([
+            'comments' => $list
+        ]);
     }
 
     /**

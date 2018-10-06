@@ -340,6 +340,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
                 'as' => 'admin.posts.tags'
             ]);
         });
+
+        // Admin posts comments
+        Route::group(['prefix' => 'comments'], function() {
+
+            // Admin post comments list
+            Route::get('/', [
+                'uses' => 'CommentController@index',
+                'as' => 'admin.posts.comments'
+            ]);
+        });
     });
 
     // Admin media routes
