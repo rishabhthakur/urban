@@ -2,9 +2,11 @@
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
 use Urban\Category;
 use Urban\Brand;
 use Urban\Tag;
+use Urban\User;
 
 
 /*
@@ -20,6 +22,16 @@ use Urban\Tag;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+/**
+ * Mark user notification as read
+ */
+Route::middleware('api')->get('/mark', function() {
+    User::where('admin', 1)->first()->unreadNotifications->markAsRead();
+    return response()->json([
+        'message' => 'Notification marked as read.'
+    ], 200);
 });
 
 /**

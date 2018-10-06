@@ -24,6 +24,16 @@
         });
     });
 </script>
+
+<script type="text/javascript">
+    $('#noty').on('click', function () {
+        axios.get('/api/mark/')
+             .then((response) => {
+                 console.log(response);
+             })
+    });
+</script>
+
 @yield('settings-js')
 @yield('new-post-js')
 @yield('new-product-js')

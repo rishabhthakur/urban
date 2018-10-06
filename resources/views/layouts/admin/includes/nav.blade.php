@@ -36,78 +36,80 @@
                     </a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" id="noty" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-bell fa-lg"></i>
-                    @if (count(getNotifications()) > 0)
-                        <sup>
-                            <span class="badge badge-pill badge-danger bg-danger text-white">
-                                {{ count(getNotifications()) }}
-                            </span>
-                        </sup>
-                    @endif
-                </a>
+            @if (Auth::user()->admin)
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="noty" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-bell fa-lg"></i>
+                        @if (count(getNotifications()) > 0)
+                            <sup>
+                                <span class="badge badge-pill badge-danger bg-danger text-white">
+                                    {{ count(getNotifications()) }}
+                                </span>
+                            </sup>
+                        @endif
+                    </a>
 
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" aria-labelledby="noty">
-                    <div class="py-2 pl-3 border-bottom">
-                        <h6>Notifications</h6>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" aria-labelledby="noty">
+                        <div class="py-2 pl-3 border-bottom">
+                            <h6>Notifications</h6>
+                        </div>
+                        <div id="notifications" class="list-group list-group-flush">
+                            @forelse (getNotifications() as $not)
+                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    @switch($not->type)
+                                        @case("Urban\Notifications\NewPostComment")
+                                            <div>
+                                                {{ $not->data['message'] }}
+                                            </div>
+                                            <span class="text-primary">
+                                                <small>New comment.</small>
+                                            </span>
+                                            @break
+                                        @case("Urban\Notifications\NewUserRegistration")
+                                            <div>
+                                                <strong>{{ $not->data['name'] }}</strong> {{ $not->data['message'] }}
+                                            </div>
+                                            <span class="text-primary">
+                                                <small>New customer registration.</small>
+                                            </span>
+                                            @break
+                                        @case("Urban\Notifications\NewMessage")
+                                            <div>
+                                                {{ $not->data['message'] }}
+                                            </div>
+                                            <span class="text-primary">
+                                                <small>New message.</small>
+                                            </span>
+                                            @break
+                                        @case("Urban\Notifications\CustomerPurchase")
+                                            <div>
+                                                <strong>{{ $not->data['name'] }}</strong> {{ $not->data['message'] }}
+                                            </div>
+                                            <span class="text-primary">
+                                                <small>New order placed.</small>
+                                            </span>
+                                            @break
+                                        @default
+                                            <span class="text-primary">
+                                                <small>{{ $not->data['name'] }}</small>
+                                            </span>
+                                    @endswitch
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <small>{{ $not->created_at->diffForHumans() }}</small>
+                                    </div>
+                                </a>
+                            @empty
+                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <small>No notifications found.</small>
+                                </a>
+                            @endforelse
+                        </div>
+                        <div class="py-2 text-center border-top">
+                            <a href="#">View all</a>
+                        </div>
                     </div>
-                    <div id="notifications" class="list-group list-group-flush">
-                        @forelse (getNotifications() as $not)
-                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                @switch($not->type)
-                                    @case("App\Notifications\ProductStatus")
-                                        <div>
-                                            {{ $not->data['message'] }}
-                                        </div>
-                                        <span class="text-primary">
-                                            <small>No items in shop.</small>
-                                        </span>
-                                        @break
-                                    @case("App\Notifications\NewUserRegistration")
-                                        <div>
-                                            <strong>{{ $not->data['name'] }}</strong> {{ $not->data['message'] }}
-                                        </div>
-                                        <span class="text-primary">
-                                            <small>New customer registration.</small>
-                                        </span>
-                                        @break
-                                    @case("App\Notifications\NewMessage")
-                                        <div>
-                                            {{ $not->data['message'] }}
-                                        </div>
-                                        <span class="text-primary">
-                                            <small>New message.</small>
-                                        </span>
-                                        @break
-                                    @case("App\Notifications\CustomerPurchase")
-                                        <div>
-                                            <strong>{{ $not->data['name'] }}</strong> {{ $not->data['message'] }}
-                                        </div>
-                                        <span class="text-primary">
-                                            <small>New order placed.</small>
-                                        </span>
-                                        @break
-                                    @default
-                                        <span class="text-primary">
-                                            <small>{{ $not->data['name'] }}</small>
-                                        </span>
-                                @endswitch
-                                <div class="d-flex w-100 justify-content-between">
-                                    <small>{{ $not->created_at->diffForHumans() }}</small>
-                                </div>
-                            </a>
-                        @empty
-                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                <small>No notifications found.</small>
-                            </a>
-                        @endforelse
-                    </div>
-                    <div class="py-2 text-center border-top">
-                        <a href="#">View all</a>
-                    </div>
-                </div>
-            </li>
+                </li>
+            @endif
             <li class="nav-item dropdown d-lg-block">
                 <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="{!! Auth::user()->profile->avatar !!}" alt="..." class="rounded-circle" width="32px" height="32px">
