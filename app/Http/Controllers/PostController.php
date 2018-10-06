@@ -17,9 +17,11 @@ use Urban\FileSystem;
 class PostController extends Controller {
 
     private $settings;
+    private $posts;
 
     public function __construct() {
         $this->settings = Settings::first();
+        $this->posts = new Post;
     }
     /**
      * Display a listing of the resource.
@@ -27,8 +29,31 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
+        $col = $this->posts->latest();
+
+        switch (request()->sort) {
+            case 'published':
+                $list = $col->where('status', 1)->get();
+                break;
+            case 'draft':
+                $list = $col->where('status', 0)->get();
+                break;
+            case 'public':
+                $list = $col->where('visibility', 1)->get();
+                break;
+            case 'private':
+                $list = $col->where('visibility', 0)->get();
+                break;
+            case 'trash':
+                $list = $col->onlyTrashed()->get();
+                break;
+            default:
+                $list = $col->get();
+                break;
+        }
+
         return view('admin.posts.index')->with([
-            'posts' => Post::orderBy('created_at', 'DESC')->get()
+            'posts' => $list
         ]);
     }
 

@@ -7,6 +7,38 @@
                 <strong>Showing total of {{ count($posts) }}</strong>
             </div>
             <div class="float-right text-right">
+                <div class="dropdown">
+                    <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @switch(request()->sort)
+                            @case('published')
+                                Published
+                                @break
+                            @case('draft')
+                                Draft
+                                @break
+                            @case('public')
+                                Public
+                                @break
+                            @case('private')
+                                Private
+                                @break
+                            @case('trash')
+                                Trash
+                                @break
+                            @default
+                                All
+                        @endswitch
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item @if (request()->sort == null || request()->sort == 'all') active @endif" href="{!! route('admin.posts', ['sort' => 'all']) !!}">All</a>
+                        <a class="dropdown-item @if (request()->sort == 'published') active @endif" href="{!! route('admin.posts', ['sort' => 'published']) !!}">Published</a>
+                        <a class="dropdown-item @if (request()->sort == 'draft') active @endif" href="{!! route('admin.posts', ['sort' => 'draft']) !!}">Draft</a>
+                        <a class="dropdown-item @if (request()->sort == 'public') active @endif" href="{!! route('admin.posts', ['sort' => 'public']) !!}">Public</a>
+                        <a class="dropdown-item @if (request()->sort == 'private') active @endif" href="{!! route('admin.posts', ['sort' => 'private']) !!}">Private</a>
+                        <a class="dropdown-item @if (request()->sort == 'trash') active @endif" href="{!! route('admin.posts', ['sort' => 'trash']) !!}">Trash</a>
+                    </div>
+                </div>
                 <a href="{!! route('admin.posts.create') !!}" class="btn btn-primary">
                     <i class="fas fa-plus"></i>
                 </a>
