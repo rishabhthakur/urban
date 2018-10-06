@@ -26,7 +26,7 @@
                                 <th scope="col">Categories</th>
                                 <th scope="col">Tags</th>
                                 <th scope="col">
-                                    <i class="fas fa-comments"></i>
+                                    <i class="fas fa-comment"></i>
                                 </th>
                                 <th scope="col" width="15%">Date</th>
                             </tr>
@@ -36,7 +36,7 @@
                                 <tr>
                                     <td>
                                         <div class="mb-2">
-                                            <a target="_blank" href="{!! route('blog.post', ['slug' => $post->slug]) !!}">
+                                            <a href="{!! route('admin.posts.edit', ['id' => $post->id]) !!}">
                                                 <strong>
                                                     {{ $post->title }}
                                                 </strong>
@@ -47,7 +47,7 @@
                                                 <i class="fas fa-ellipsis-h"></i>
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <a class="dropdown-item" href="{!! route('blog.post', ['slug' => $post->slug]) !!}">View</a>
+                                                <a target="_blank" class="dropdown-item" href="{!! route('blog.post', ['slug' => $post->slug]) !!}">View</a>
                                                 <a class="dropdown-item" href="{!! route('admin.posts.edit', ['id' => $post->id]) !!}">Edit</a>
                                                 <a class="dropdown-item text-danger" href="#">Trash</a>
                                             </div>
@@ -69,7 +69,7 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        1 {{-- {{ count($post->comments) }} --}}
+                                        {{ count($post->comments) }}
                                     </td>
                                     <td>
                                         <small>

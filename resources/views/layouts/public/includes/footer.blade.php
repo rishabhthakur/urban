@@ -46,6 +46,11 @@
                         <form action="{!! route('subscribe') !!}" method="post">
                             {{ csrf_field() }}
                             <input type="email" name="email" class="mail" placeholder="Your email here">
+                            @if ($errors->has('email'))
+                                <span class="text-danger form-text" role="alert">
+                                    <small>{{ $errors->first('email') }}</small>
+                                </span>
+                            @endif
                             <button type="submit" class="submit"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
                         </form>
                     </div>

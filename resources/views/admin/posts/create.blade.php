@@ -55,7 +55,7 @@
                                 @if ($dsettings->discussion)
                                     checked
                                 @endif
-                                id="discussion" value="1">
+                                id="discussion" name="discussion" value="1">
                                 <label class="custom-control-label" for="discussion"> <strong>Allow comments</strong></label>
                             </div>
                             <label for="user_id">Author</label>

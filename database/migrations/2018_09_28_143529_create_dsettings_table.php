@@ -20,7 +20,7 @@ class CreateDsettingsTable extends Migration
             $table->boolean('discussion')->default(1);
 
             // Other comment settings
-            $table->boolean('discussion_full')->default(0);
+            $table->boolean('discussion_full')->default(1);
             $table->boolean('discussion_auth')->default(1);
             $table->boolean('auto_close_discussion')->default(1);
 

@@ -12,7 +12,7 @@ class DsettingsTableSeeder extends Seeder
     public function run() {
         Urban\Dsettings::create([
             'discussion' => 1,
-            'discussion_full' => 0,
+            'discussion_full' => 1,
             'discussion_auth' => 1,
             'auto_close_discussion' => 1,
             'discussion_email' => 0,

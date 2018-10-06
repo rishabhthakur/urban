@@ -50,7 +50,8 @@ Route::get('/blog/{slug}', [
     'as' => 'blog.post'
 ]);
 
-Route::post('/blog/comment/store', [
+// Blog post comment store
+Route::post('/blog/comment/store/{id}', [
     'uses' => 'CommentController@store',
     'as' => 'blog.comment.store'
 ]);

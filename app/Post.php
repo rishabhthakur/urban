@@ -42,6 +42,10 @@ class Post extends Model {
         return $this->belongsTo('Urban\Media');
     }
 
+    public function comments() {
+        return $this->hasMany('Urban\Comment');
+    }
+
     public function user() {
         return $this->belongsTo('Urban\User');
     }

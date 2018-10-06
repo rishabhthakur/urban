@@ -28,10 +28,10 @@
                                     <img src="{!! asset($post->media->url) !!}" alt="">
                                     <div class="post-date">
                                         <span class="date">
-                                            22
+                                            {{ $post->created_at->format("j") }}
                                         </span>
                                         <span class="m-year">
-                                            Jan 2018
+                                            {{ $post->created_at->format("F Y") }}
                                         </span>
                                     </div>
                                 </div>
@@ -76,9 +76,9 @@
                                 </div>
                             </div>
                         @empty
-                            <p class="lead">
+                            <div>
                                 No posts found.
-                            </p>
+                            </div>
                         @endforelse
                     </div>
                 </div>
