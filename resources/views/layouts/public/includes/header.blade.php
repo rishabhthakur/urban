@@ -56,7 +56,7 @@
             @guest
                 <!-- User Login Info -->
                 <div class="user-login-info">
-                    <a href="{!! route('account') !!}">
+                    <a href="{!! route('login') !!}">
                         <i class="fas fa-user"></i>
                     </a>
                 </div>

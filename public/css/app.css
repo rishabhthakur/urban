@@ -12908,19 +12908,12 @@ img {
 }
 
 .single-blog-wrapper .single-blog-post-thumb {
-  height: 400px;
+  padding: 140px 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
   overflow: hidden;
-  position: relative;
-}
-
-.single-blog-wrapper .single-blog-post-thumb img {
-  width: 100%;
-  position: absolute;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
 }
 
 .single-blog-wrapper .single-blog-content-wrapper {
