@@ -43,5 +43,6 @@
 </script>
 
 @yield('settings-js')
+@yield('new-message-js')
 @yield('new-post-js')
 @yield('new-product-js')

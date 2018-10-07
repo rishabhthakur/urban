@@ -17723,7 +17723,8 @@ ul.timeline > li:before {
   display: none !important;
 }
 
-#description_ifr {
+#description_ifr,
+#message_ifr {
   min-height: 250px !important;
 }
 

@@ -416,6 +416,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             'uses' => 'MessageController@index',
             'as' => 'admin.messages'
         ]);
+
+        // Admin messages send
+        Route::post('/send', [
+            'uses' => 'MessageController@send',
+            'as' => 'admin.messages.send'
+        ]);
     });
 
     // Admin newsletter routes

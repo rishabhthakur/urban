@@ -4,8 +4,11 @@ namespace Urban\Http\Controllers;
 
 use Urban\User;
 use Urban\Message;
+
+use Urban\Mail\ReplyToMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller {
 
@@ -33,9 +36,17 @@ class MessageController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function send(Request $request) {
+        $this->validate($request, [
+            'message' => 'required'
+        ]);
+        
+        // dd($request->all());
+        Mail::to($request->user_email)->send(new ReplyToMessage($request->all()));
+
+        return redirect(route('admin.messages'))->with([
+            'success' => 'Message has been sent.'
+        ]);
     }
 
     /**

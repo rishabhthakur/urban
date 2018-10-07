@@ -17,7 +17,8 @@ class Profile extends Model {
         'avatar',
         'bio',
         'location',
-        'job'
+        'company',
+        'phone'
     ];
 
     /**

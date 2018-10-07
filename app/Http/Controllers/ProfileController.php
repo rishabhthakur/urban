@@ -45,6 +45,32 @@ class ProfileController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
+    public function update(Request $request, $id) {
+        $this->validate($request, [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required'
+        ]);
+
+        $user = User::find($id);
+        $user->profile->first_name = $request->first_name;
+        $user->profile->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->profile->phone = $request->phone;
+        $user->profile->company = $request->company;
+        $user->profile->save();
+
+        return redirect(route('account.details'))->with([
+            'success' => 'Account details updated.'
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function addresses() {
         return view('auth.account.addresses')->with([
             'bill' => $this->user->addresses->where('type', 'billing')->first(),
@@ -91,18 +117,6 @@ class ProfileController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit(Profile $profile)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Urban\Profile  $profile
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Profile $profile)
     {
         //
     }
