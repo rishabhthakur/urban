@@ -26,4 +26,12 @@ class Message extends Model {
     public function user() {
         $this->belongsTo('Urban\User');
     }
+
+    /**
+     * [user description]
+     * @return [type] [description]
+     */
+    public function replies() {
+        $this->hasMany('Urban\Messagereplies');
+    }
 }

@@ -40,9 +40,14 @@ class MessageController extends Controller {
         $this->validate($request, [
             'message' => 'required'
         ]);
-        
+
         // dd($request->all());
         Mail::to($request->user_email)->send(new ReplyToMessage($request->all()));
+
+        Messagereplies::create([
+            'message' => $request->message,
+            'message_id' => $request->message_id
+        ]);
 
         return redirect(route('admin.messages'))->with([
             'success' => 'Message has been sent.'

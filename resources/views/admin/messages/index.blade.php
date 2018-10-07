@@ -87,6 +87,7 @@
                                                     <input type="hidden" name="user_email" value="{{ $msg->email }}">
                                                     <input type="hidden" name="user_name" value="{{ $msg->first_name }}">
                                                     <input type="hidden" name="subject" value="{{ $msg->subject }}">
+                                                    <input type="hidden" name="meesage_id" value="{{ $msg->id }}">
                                                     <div class="form-group">
                                                         <button type="submit" class="btn btn-primary">Send</button>
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
