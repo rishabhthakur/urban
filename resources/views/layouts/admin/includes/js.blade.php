@@ -34,6 +34,14 @@
     });
 </script>
 
+<script type="text/javascript">
+    $("a").each(function(){
+        if($(this).hasClass("disabled")){
+            $(this).removeAttr("href");
+        }
+    });
+</script>
+
 @yield('settings-js')
 @yield('new-post-js')
 @yield('new-product-js')

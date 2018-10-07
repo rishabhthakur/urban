@@ -122,12 +122,6 @@ class AttributeController extends Controller
 
         $data->save();
 
-        // Log event
-        $activity = new Activity;
-        $model = 'Product\Attribute';
-        $task = 'created new product attribute ' . $request->name;
-        $activity->registerActivity($model, $task);
-
         return back();
     }
 

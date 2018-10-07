@@ -106,12 +106,6 @@ class CategoryController extends Controller
 
         $category->save();
 
-        // Log event
-        // $activity = new Activity;
-        // $model = 'Product\Category';
-        // $task = 'created new product category ' . $request->name;
-        // $activity->registerActivity($model, $task);
-
         return redirect()->route('admin.categories');
     }
 

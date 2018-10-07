@@ -218,10 +218,10 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     private function logActivity($post_name) {
-        Activity::create([
-            'user_id' => Auth::id(),
-            'model' => 'PostModel',
-            'task' => 'added new post ' . $post_name
-        ]);
+        $model = 'Urban\Post';
+        $task = 'added new post ';
+        $item = $post_name;
+        $activity = new Activity;
+        $activity->registerActivity($model, $task, $item);
     }
 }

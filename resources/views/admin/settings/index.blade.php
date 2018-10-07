@@ -158,7 +158,7 @@
                     </div>
                     <hr>
                     <div class="form-group clearfix">
-                        <label>Copyright Information</label>
+                        <label>Custom Copyright Information</label>
                         <p class="text-muted">
                             <small>Use custom website footer copyright Information.</small>
                         </p>

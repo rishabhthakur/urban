@@ -11,7 +11,7 @@
         <div class="card">
             <div class="card-body">
                 <h6 class="heading mb-5">Privacy Settings</h6>
-                <h6>Privacy Policy page</h6>
+                <h6>Privacy Policy Page</h6>
                 <hr>
                 <p>
                     As a website owner, you may need to follow national or international privacy laws. For example, you may need to create and display a Privacy Policy. If you already have a Privacy Policy page, please select it below. If not, please create one.
@@ -33,9 +33,9 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                <h6>Change your Privacy Policy page</h6>
+                <h6>Change Your Privacy Policy Page</h6>
                 <p>
-                    <small><a href="#">Edit</a> or <a href="#">preview</a> your Privacy Policy page content.</small>
+                    <small><a href="#">Edit</a> or <a href="#">preview</a> your Privacy Policy Page content.</small>
                 </p>
                 <div>
                     <form action="{!! route('admin.settings.privacy.status') !!}" method="post" enctype="multipart/form-data">

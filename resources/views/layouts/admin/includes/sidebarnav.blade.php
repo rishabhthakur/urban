@@ -34,13 +34,13 @@
     </a>
 </li>
 <li @if (Route::currentRouteName() == 'admin.newsletter') class="active" @endif>
-    <a href="{!! route('admin.newsletter') !!}">
+    <a class="disabled" href="{!! route('admin.newsletter') !!}">
         <i class="fas fa-newspaper mr-2"></i>
         Newsletter
     </a>
 </li>
 <li>
-    <a href="#sales" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+    <a href="#sales" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle disabled">
         <i class="fas fa-shopping-cart mr-2"></i>
         Sales
     </a>
@@ -148,7 +148,7 @@
     </ul>
 </li>
 <li>
-    <a href="#customize" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+    <a href="#customize" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle disabled">
         <i class="fas fa-palette mr-2"></i>
         Customize
     </a>
@@ -179,7 +179,7 @@
             <a href="{!! route('admin.settings') !!}">General</a>
         </li>
         <li @if (Route::currentRouteName() == 'admin.settings.shop') class="active" @endif>
-            <a href="{!! route('admin.settings.shop') !!}">Shop</a>
+            <a class="disabled" href="{!! route('admin.settings.shop') !!}">Shop</a>
         </li>
         <li @if (Route::currentRouteName() == 'admin.settings.discussion') class="active" @endif>
             <a href="{!! route('admin.settings.discussion') !!}">Discussion</a>

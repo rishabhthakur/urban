@@ -1,31 +1,23 @@
-<li>
+<li class="pb-3">
+    <div class="mb-1">
+        <span class="badge badge-primary">
+            {{ $activity->created_at->format("F j, Y") }}
+        </span>
+    </div>
     @switch($activity->model)
-        @case('Product\Product')
+        @case('Urban\Product')
             <strong class="text-primary">New product added.</strong>
             @break
-        @case('Product\Category')
-            <strong class="text-primary">New product category added.</strong>
-            @break
-        @case('Product\Tag')
-            <strong class="text-primary">New product tag added.</strong>
-            @break
-        @case('Product\Attribute')
-            <strong class="text-primary">New product attribute added.</strong>
-            @break
-        @case('Product\Brand')
-            <strong class="text-primary">New product brand added.</strong>
-            @break
-        @case('Media\Media')
+        @case('Urban\Media')
             <strong class="text-primary">New media item added.</strong>
             @break
-        @case('User\Login')
-            <strong class="text-primary">User loggin.</strong>
+        @case('Urban\Post')
+            <strong class="text-primary">New post added.</strong>
             @break
     @endswitch
-    <span class="float-right badge badge-primary">
-        {{ $activity->created_at->format("F j, Y") }}
-    </span>
-    <p>
-        <a href="#"><strong>{{ $activity->user->name }}</strong></a> {{ $activity->task }}
-    </p>
+    <div class="mb-2">
+        <a href="{!! route('admin.users.profile', ['slug' => $activity->user->slug]) !!}">
+            <strong>{{ $activity->user->name }}</strong>
+        </a> {{ $activity->task }} <strong>{{ $activity->item }}</strong>
+    </div>
 </li>

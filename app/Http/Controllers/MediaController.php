@@ -81,15 +81,25 @@ class MediaController extends Controller
             ]);
         }
 
-        Activity::create([
-            'user_id' => Auth::id(),
-            'model' => 'Media\Media',
-            'task' => 'added new media ' . $prmedia->name
-        ]);
+        $this->logActivity($prmedia->name);
 
         return Response::json([
             'message' => 'Files uploaded.'
         ], 200);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \Urban\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    private function logActivity($media_name) {
+        $model = 'Urban\Media';
+        $task = 'added new media ';
+        $item = $media_name;
+        $activity = new Activity;
+        $activity->registerActivity($model, $task, $item);
     }
 
     /**

@@ -208,11 +208,11 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     private function logActivity($product_name) {
-        Activity::create([
-            'user_id' => Auth::Id(),
-            'model' => 'ProductModel',
-            'task' => 'added new product ' . $product_name
-        ]);
+        $model = 'Urban\Product';
+        $task = 'added new product ';
+        $item = $product_name;
+        $activity = new Activity;
+        $activity->registerActivity($model, $task, $item);
     }
 
     /**

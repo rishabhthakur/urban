@@ -48,6 +48,12 @@
     // letter-spacing: 1px;
 }
 
+#sidebar ul li a.disabled {
+    opacity: 0.4;
+    cursor: not-allowed !important;
+    pointer-events: none;
+}
+
 #sidebar ul li a:hover {
     color: $gray-600;
     background: rgba(0,0,0,0.07);

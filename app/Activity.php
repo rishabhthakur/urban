@@ -14,7 +14,8 @@ class Activity extends Model {
     protected $fillable = [
         'user_id',
         'model',
-        'task'
+        'task',
+        'item'
     ];
 
     public function user() {
@@ -27,11 +28,12 @@ class Activity extends Model {
      * @param  string $task  task performed
      * @return null
      */
-    public function registerActivity($model, $task) {
+    public function registerActivity($model, $task, $item) {
         $this->create([
             'user_id' => Auth::id(),
             'model' => $model,
-            'task' => $task
+            'task' => $task,
+            'item' => $item
         ]);
     }
 }
