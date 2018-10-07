@@ -1,78 +1,38 @@
-@extends('layouts.public.app')
+@extends('auth.account.includes.layout', ['title' => 'Account'])
 
-@section('content')
-<!-- ##### Breadcumb Area Start ##### -->
-<div class="breadcumb_area">
-    <div class="container h-100">
-        <div class="row h-100 align-items-center">
-            <div class="col-12">
-                <div class="page-title text-center">
-                    <h2>Account</h2>
-                </div>
-            </div>
-        </div>
+@section('section')
+    <div class="mb-4">
+        @if (count($user->orders) > 0)
+            <table class="table table-hover table-borderless">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Order #</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($user->orders as $order)
+                        <tr>
+                            <th scope="row">
+                                <a href="#"># {{ $order->no }}</a>
+                            </th>
+                            <td>{{ $order->created_at->formt("F j, Y") }}</td>
+                            <td>{{ $order->bill_total }}</td>
+                            <td>
+                                @if ($order->shipped)
+                                    <span class="badge badge-success">Shipped</span>
+                                @else
+                                    <span class="badge badge-success">Being Processed</span>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            You have no orders yet. <a href="{!! route('shop') !!}">Wanna go shopping</a>?
+        @endif
     </div>
-</div>
-<!-- ##### Breadcumb Area End ##### -->
-
-<section class="section mb-5 pb-5">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-md-6 offset-md-3">
-                <div class="text-center">
-                    <div class="user-img mb-5">
-                        <img src="{{ Auth::user()->profile->avatar }}" alt="{{ Auth::user()->name }}" class="rounded-circle" style="width: 80px">
-                    </div>
-                    <h6>Hello {{ Auth::user()->name }}</h6>
-                    (not {{ Auth::user()->name }}? <a class="text-primary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>).
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                    <p class="mt-3">
-                        From your account dashboard you can view your <a href="#">recent orders</a>, manage your <a href="#">shipping and billing addresses</a> and edit your <a href="#">password and account details</a>.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row mb-4">
-            <div class="col-md-2 mb-4">
-                <ul class="nav flex-column">
-                    @if (Auth::user()->admin)
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{!! route('admin') !!}">Dashboard</a>
-                        </li>
-                    @endif
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{!! route('account') !!}">Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{!! route('password.request') !!}">Addresses</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Privacy Policy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Terms &amp; Conditions</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-md-7 mb-4">
-                <div class="bg-secondary">
-                    &nbsp;
-                </div>
-            </div>
-
-            <div class="col-md-3 mb-4">
-                <div class="bg-secondary">
-                    &nbsp;
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 @endsection

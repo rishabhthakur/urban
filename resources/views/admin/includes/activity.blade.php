@@ -1,7 +1,7 @@
 <li class="pb-3">
     <div class="mb-1">
         <span class="badge badge-primary">
-            {{ $activity->created_at->format("F j, Y") }}
+            {{ $activity->created_at->format("F j, Y - g:i a") }}
         </span>
     </div>
     @switch($activity->model)

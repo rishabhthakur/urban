@@ -35,3 +35,17 @@
  .classy-nav-container a:focus, .classy-nav-container a:hover {
     color: $blue;
 }
+
+table {
+    thead {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding: 0.4rem 0;
+        tr {
+            th {
+                font-weight: normal;
+                font-size: 90%;
+            }
+        }
+    }
+}

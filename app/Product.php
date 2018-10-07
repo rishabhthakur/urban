@@ -81,7 +81,7 @@ class Product extends Model {
     }
 
     public function user() {
-        return $this->belongsTo('Urban\User');
+        return $this->belongsTo('Urban\User', 'user_id');
     }
 
     public function brand() {

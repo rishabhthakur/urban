@@ -24,5 +24,6 @@
         });
     }, 4000);
 </script>
+@yield('address-js')
 @yield('map-js')
 @yield('stripe-js')

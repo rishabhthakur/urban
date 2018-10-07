@@ -25,40 +25,40 @@
                                 <ul class="mb-0 list-inline">
                                     @if ($user->role_id <= 3)
                                         @if ($user->role_id <= 2)
-                                            <li class="list-inline-item mr-3">
+                                            <li class="list-inline-item mr-3 text-center">
                                                 <h5 class="mb-1 text-success">$1840</h5>
                                                 <p class="mb-0">
                                                     <small>Revenue</small>
                                                 </p>
                                             </li>
-                                            <li class="list-inline-item mr-3">
-                                                <h5 class="mb-1">184</h5>
+                                            <li class="list-inline-item mr-3 text-center">
+                                                <h5 class="mb-1">{{ count($user->products) }}</h5>
                                                 <p class="mb-0">
                                                     <small>Products</small>
                                                 </p>
                                             </li>
                                         @endif
-                                        <li class="list-inline-item mr-3">
-                                            <h5 class="mb-1">184</h5>
+                                        <li class="list-inline-item mr-3 text-center">
+                                            <h5 class="mb-1">{{ count($user->posts) }}</h5>
                                             <p class="mb-0">
                                                 <small>Posts</small>
                                             </p>
                                         </li>
                                     @endif
-                                    <li class="list-inline-item">
-                                        <h5 class="mb-1">460</h5>
+                                    <li class="list-inline-item mr-3 text-center">
+                                        <h5 class="mb-1">{{ count($user->comments) }}</h5>
                                         <p class="mb-0">
                                             <small>Comments</small>
                                         </p>
                                     </li>
-                                    <li class="list-inline-item">
-                                        <h5 class="mb-1">460</h5>
+                                    <li class="list-inline-item mr-3 text-center">
+                                        <h5 class="mb-1">{{ count($user->reviews) }}</h5>
                                         <p class="mb-0">
                                             <small>Reviews</small>
                                         </p>
                                     </li>
-                                    <li class="list-inline-item">
-                                        <h5 class="mb-1">60</h5>
+                                    <li class="list-inline-item text-center">
+                                        <h5 class="mb-1">{{ count($user->orders) }}</h5>
                                         <p class="mb-0">
                                             <small>Orders</small>
                                         </p>

@@ -67,22 +67,31 @@
                             @foreach ($posts as $post)
                                 <tr>
                                     <td>
-                                        <div class="mb-2">
+                                        <div>
                                             <a href="{!! route('admin.posts.edit', ['id' => $post->id]) !!}">
-                                                <strong>
-                                                    {{ $post->title }}
-                                                </strong>
+                                                <div class="mb-1">
+                                                    <strong>
+                                                        {{ $post->title }}
+                                                    </strong>
+                                                </div>
+                                                <ul class="nav justify-content-start">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" target="_blank" href="{!! route('blog.post', ['slug' => $post->slug]) !!}">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{!! route('admin.posts.edit', ['id' => $post->id]) !!}">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="#">
+                                                            <i class="far fa-trash-alt"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </a>
-                                        </div>
-                                        <div class="dropdown">
-                                            <a class="text-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-h"></i>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <a target="_blank" class="dropdown-item" href="{!! route('blog.post', ['slug' => $post->slug]) !!}">View</a>
-                                                <a class="dropdown-item" href="{!! route('admin.posts.edit', ['id' => $post->id]) !!}">Edit</a>
-                                                <a class="dropdown-item text-danger" href="#">Trash</a>
-                                            </div>
                                         </div>
                                     </td>
                                     <td>

@@ -104,6 +104,29 @@ Route::group(['prefix' => 'account', 'middleware' => 'verified'], function() {
         'uses' => 'ProfileController@index',
         'as' => 'account'
     ]);
+
+    // Customer accounts
+    Route::get('/details', [
+        'uses' => 'ProfileController@details',
+        'as' => 'account.details'
+    ]);
+
+    Route::post('/update/{id}', [
+        'uses' => 'ProfileController@update',
+        'as' => 'account.update'
+    ]);
+
+    // Customer account addresses
+    Route::get('/addresses', [
+        'uses' => 'ProfileController@addresses',
+        'as' => 'account.addresses'
+    ]);
+
+    // Customer accounts
+    Route::get('/orders', [
+        'uses' => 'ProfileController@orders',
+        'as' => 'account.orders'
+    ]);
 });
 
 /* Admin routes */

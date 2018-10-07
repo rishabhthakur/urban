@@ -80,7 +80,7 @@ class User extends Authenticatable implements MustVerifyEmail {
      * @return [type] [description]
      */
     public function messages() {
-        $this->hasMany('Urban\Message', 'user_id');
+        return $this->hasMany('Urban\Message', 'user_id');
     }
 
     /**
@@ -88,15 +88,15 @@ class User extends Authenticatable implements MustVerifyEmail {
      * @return [type] [description]
      */
     public function products() {
-        $this->hasMany('Urban\Product');
+        return $this->hasMany('Urban\Product', 'user_id');
     }
 
     /**
      * [products description]
      * @return [type] [description]
      */
-    public function posts() {
-        $this->hasMany('Urban\Post');
+    public function reviews() {
+        return $this->hasMany('Urban\Review');
     }
 
     /**
@@ -104,7 +104,23 @@ class User extends Authenticatable implements MustVerifyEmail {
      * @return [type] [description]
      */
     public function orders() {
-        $this->hasMany('Urban\Order');
+        return $this->hasMany('Urban\Order');
+    }
+
+    /**
+     * [products description]
+     * @return [type] [description]
+     */
+    public function posts() {
+        return $this->hasMany('Urban\Post');
+    }
+
+    /**
+     * [products description]
+     * @return [type] [description]
+     */
+    public function comments() {
+        return $this->hasMany('Urban\Comment');
     }
 
     /**
@@ -112,7 +128,15 @@ class User extends Authenticatable implements MustVerifyEmail {
      * @return [type] [description]
      */
     public function subscription() {
-        $this->hasOne('Urban\Newsletter');
+        return $this->hasOne('Urban\Newsletter');
+    }
+
+    /**
+     * [subscription description]
+     * @return [type] [description]
+     */
+    public function addresses() {
+        return $this->hasMany('Urban\Address');
     }
 
     /**
