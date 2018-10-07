@@ -10745,7 +10745,7 @@ a:focus {
   transition: all 500ms ease 0s;
   text-decoration: none;
   outline: 0 solid transparent;
-  color: #000000;
+  color: #5e72e4;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {

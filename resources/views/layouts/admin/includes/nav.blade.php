@@ -30,7 +30,7 @@
                         <i class="fab fa-blogger-b"></i>
                         Visit Blog
                     </a>
-                    <a class="dropdown-item" href="{!! route('home') !!}">
+                    <a class="dropdown-item" href="{!! route('shop') !!}">
                         <i class="fas fa-store"></i>
                         Visit Shop
                     </a>
@@ -54,55 +54,7 @@
                             <h6>Notifications</h6>
                         </div>
                         <div id="notifications" class="list-group list-group-flush">
-                            @forelse (getNotifications() as $not)
-                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    @switch($not->type)
-                                        @case("Urban\Notifications\NewPostComment")
-                                            <div>
-                                                {{ $not->data['message'] }}
-                                            </div>
-                                            <span class="text-primary">
-                                                <small>New comment.</small>
-                                            </span>
-                                            @break
-                                        @case("Urban\Notifications\NewUserRegistration")
-                                            <div>
-                                                <strong>{{ $not->data['name'] }}</strong> {{ $not->data['message'] }}
-                                            </div>
-                                            <span class="text-primary">
-                                                <small>New customer registration.</small>
-                                            </span>
-                                            @break
-                                        @case("Urban\Notifications\NewMessage")
-                                            <div>
-                                                {{ $not->data['message'] }}
-                                            </div>
-                                            <span class="text-primary">
-                                                <small>New message.</small>
-                                            </span>
-                                            @break
-                                        @case("Urban\Notifications\CustomerPurchase")
-                                            <div>
-                                                <strong>{{ $not->data['name'] }}</strong> {{ $not->data['message'] }}
-                                            </div>
-                                            <span class="text-primary">
-                                                <small>New order placed.</small>
-                                            </span>
-                                            @break
-                                        @default
-                                            <span class="text-primary">
-                                                <small>{{ $not->data['name'] }}</small>
-                                            </span>
-                                    @endswitch
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <small>{{ $not->created_at->diffForHumans() }}</small>
-                                    </div>
-                                </a>
-                            @empty
-                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <small>No notifications found.</small>
-                                </a>
-                            @endforelse
+                            @include('layouts.admin.includes.nav-notification')
                         </div>
                         <div class="py-2 text-center border-top">
                             <a href="#">View all</a>
@@ -119,14 +71,14 @@
                     <div class="dropdown-item-text">
                         <div>
                             <small>Signed in as,</small>
-                            <h6>{{ Auth::user()->name }}</h6>
+                            <h6 class="text-primary">{{ Auth::user()->name }}</h6>
                         </div>
                     </div>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{!! route('admin.users.profile', ['slug' => Auth::user()->slug]) !!}">Profile</a>
                     <a class="dropdown-item" href="{!! route('admin.users.activities', ['slug' => Auth::user()->slug]) !!}">Activities</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Help &amp; Support</a>
+                    <a class="dropdown-item disabled" href="#">Help &amp; Support</a>
                     <a class="dropdown-item" href="{!! route('admin.users.edit', ['slug' => Auth::user()->slug]) !!}">Settings &amp; Privacy</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();

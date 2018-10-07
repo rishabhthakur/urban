@@ -15,11 +15,14 @@
 </div>
 <!-- ##### Breadcumb Area End ##### -->
 
-<section class="section section-padded-80">
+<section class="section mb-5 pb-5">
     <div class="container">
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-md-6 offset-md-3">
                 <div class="text-center">
+                    <div class="user-img mb-5">
+                        <img src="{{ Auth::user()->profile->avatar }}" alt="{{ Auth::user()->name }}" class="rounded-circle" style="width: 80px">
+                    </div>
                     <h6>Hello {{ Auth::user()->name }}</h6>
                     (not {{ Auth::user()->name }}? <a class="text-primary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>).
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -28,6 +31,45 @@
                     <p class="mt-3">
                         From your account dashboard you can view your <a href="#">recent orders</a>, manage your <a href="#">shipping and billing addresses</a> and edit your <a href="#">password and account details</a>.
                     </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-2 mb-4">
+                <ul class="nav flex-column">
+                    @if (Auth::user()->admin)
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{!! route('admin') !!}">Dashboard</a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{!! route('account') !!}">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{!! route('password.request') !!}">Addresses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Privacy Policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Terms &amp; Conditions</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-7 mb-4">
+                <div class="bg-secondary">
+                    &nbsp;
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="bg-secondary">
+                    &nbsp;
                 </div>
             </div>
         </div>

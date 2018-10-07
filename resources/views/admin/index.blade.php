@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <h5 class="mb-4">
@@ -16,7 +16,7 @@
                         <a href="#" class="btn btn-primary">Customize Your Site</a>
                     </p>
                     <div class="row mt-5">
-                        <div class="col">
+                        <div class="col-md-6 mb-3">
                             <h6>Next step</h6>
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -39,7 +39,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col">
+                        <div class="col-md-6 mb-3">
                             <h6>More Actions</h6>
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -66,11 +66,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <ul class="list-group list-group-flush bg-transparent">
-                        <li class="list-group-item">
+                <div class="col-lg-5 col-md-12">
+                    <ul class="list-group list-group-flush bg-transparent mb-4">
+                        <li class="list-group-item border-0">
                             <div class="row">
                                 <div class="col">
                                     <h1>120</h1>
@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item border-0">
                             <div class="row">
                                 <div class="col">
                                     <h1>
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item border-0">
                             <div class="row">
                                 <div class="col">
                                     <h1>{{ count($users->where('role_id', 4)->get()) }}</h1>
@@ -143,7 +143,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-6 col-md-12">
+                <div class="col-lg-7 col-md-12">
                     <div class="card">
                         <div class="card-body">
                             <div>

@@ -47,7 +47,7 @@
                                         </small>
                                         <ul class="nav justify-content-start">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">
+                                                <a class="nav-link" target="_blank" href="{!! route('product', ['slug' => $product->slug]) !!}">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </li>

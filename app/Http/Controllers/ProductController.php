@@ -61,6 +61,7 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+
         $this->validate($request, [
             'name' => 'required|string',
             'description' => 'required',
@@ -127,14 +128,15 @@ class ProductController extends Controller {
             $this->addImages($request->images, $product->id);
         }
 
-
-        // Product Tags, Categories and Attributes Register into Database
+        // Product Categories
         $product->categories()->attach($request->categories);
+
+        // Product Tags
         $product->tags()->attach($request->tags);
 
         // Product Attributes
-        if (isset($request->attributes)) {
-            $product->attributes()->attach($request->attributes);
+        if (isset($request->attrbs)) {
+            $product->attributes()->attach($request->attrbs);
             if(isset($request->data)) {
                 $product->adata()->attach($request->data);
             }

@@ -7,7 +7,10 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
+                    {{-- Title --}}
                     <h6 class="heading mb-5">Add New Product</h6>
+
+                    {{-- Product Name --}}
                     <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                         <label for="name">Product Name</label>
                         <input type="text" name="name" id="name" class="form-control" placeholder="Product Name" value="{{ old('name') }}" required>
@@ -18,6 +21,8 @@
                             </span>
                         @endif
                     </div>
+
+                    {{-- Product Reular Price & Sale Price --}}
                     <div class="form-group{{ $errors->has('regular_price') ? ' has-danger' : '' }} row mb-4">
                         <div class="col">
                             <label for="regular_price">Regular Price</label>
@@ -31,7 +36,7 @@
                         </div>
                         <div class="col">
                             <label for="sale_price">Sale Price</label>
-                            <input type="text" name="sale_price" id="sale_price" class="form-control" placeholder="Sale Price" value="{{ old('sale_price') }}" required>
+                            <input type="text" name="sale_price" id="sale_price" class="form-control" placeholder="Sale Price" value="{{ old('sale_price') }}"  >
 
                             @if ($errors->has('sale_price'))
                                 <span class="text-danger form-text" role="alert">
@@ -40,12 +45,16 @@
                             @endif
                         </div>
                     </div>
+
+                    {{-- Product Description --}}
                     <div class="form-group">
                         <label for="description">Product Description</label>
                         <textarea name="description" class="form-control" id="description" placeholder="Product Description">{{ old('description') }}</textarea>
                     </div>
                 </div>
             </div>
+
+            {{-- Product Data Tabs --}}
             <div class="nav-wrapper pt-0">
                 <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
                     <li class="nav-item">
@@ -230,6 +239,8 @@
                     </div>
                 </div>
             </div>
+
+            {{-- Product Short Description --}}
             <div class="card">
                 <div class="card-body">
                     <div class="form-group">
@@ -246,6 +257,8 @@
         </div>
 
         <div class="col-md-4">
+
+            {{-- Product Publishing --}}
             <div class="card">
                 <div class="card-body">
                     <h6 class="heading mb-3">Publish</h6>
@@ -293,6 +306,8 @@
                     </div>
                 </div>
             </div>
+
+            {{-- Product Image --}}
             <div class="card">
                 <div class="card-body">
                     <h6 class="heading">Product Image</h6>
@@ -306,6 +321,7 @@
                     </span>
                 </div>
             </div>
+
             <!-- Media modal -->
             <div class="modal fade" id="productImageModal" tabindex="-1" role="dialog" aria-labelledby="productImageModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
@@ -349,10 +365,13 @@
                     </div>
                 </div>
             </div>
+
             <!-- New Brand -->
             <vue-newbrand></vue-newbrand>
+
             <!-- New Category -->
             <vue-newcategory to="{{ __('product') }}"></vue-newcategory>
+
             <!-- New Tag -->
             <vue-newtag to="{{ __('product') }}"></vue-newtag>
         </div>
