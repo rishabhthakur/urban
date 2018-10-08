@@ -12,19 +12,34 @@
                     <span class="badge badge-dark mr-1 mb-1">{{ item.name }}</span>
                 </span>
             </div> -->
-            <div class="tegs" v-if="list.length > 0">
-                <div class="custom-control custom-checkbox mb-1"  v-for="tag in list">
-                    <input type="checkbox" class="custom-control-input"
-                    v-for="item in tags"
-                    :checked="item.id == tag.id"
-                    :id="tag.slug + tag.id"
-                    :value="tag.id" name="tags[]">
-                    <label class="custom-control-label" :for="tag.slug + tag.id"> {{ tag.name }}</label>
+            <div v-if="mode == 'edit'">
+                <div class="tegs" v-if="list.length > 0">
+                    <div class="custom-control custom-checkbox mb-1"  v-for="tag in list">
+                        <input type="checkbox" class="custom-control-input"
+                        v-for="item in tags"
+                        :checked="item.id == tag.id"
+                        :id="tag.slug + tag.id"
+                        :value="tag.id" name="tags[]">
+                        <label class="custom-control-label" :for="tag.slug + tag.id"> {{ tag.name }}</label>
+                    </div>
                 </div>
+                <span class="text-muted" v-else>
+                    No tags found.
+                </span>
             </div>
-            <span class="text-muted" v-else>
-                No tags found.
-            </span>
+            <div v-else>
+                <div class="tegs" v-if="list.length > 0">
+                    <div class="custom-control custom-checkbox mb-1"  v-for="tag in list">
+                        <input type="checkbox" class="custom-control-input"
+                        :id="tag.slug + tag.id"
+                        :value="tag.id" name="tags[]">
+                        <label class="custom-control-label" :for="tag.slug + tag.id"> {{ tag.name }}</label>
+                    </div>
+                </div>
+                <span class="text-muted" v-else>
+                    No tags found.
+                </span>
+            </div>
             <div v-if="errors.length > 0" class="mt-3">
                 <div class="error" v-for="error in errors">
                     <small class="text-danger">{{ error.message }}</small>
@@ -52,7 +67,8 @@
 export default {
     props: [
         'to',
-        'tags'
+        'tags',
+        'mode'
     ],
     data() {
         return  {

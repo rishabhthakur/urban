@@ -12,36 +12,66 @@
                     <span class="badge badge-primary mr-1 mb-1">{{ item.name }}</span>
                 </span>
             </div> -->
-            <div class="mb-1" v-if="list.length > 0">
-                <div class="parent" v-for="category in list">
-                    <div class="custom-control custom-checkbox mb-1">
-                        <input type="checkbox" class="custom-control-input"
-                        v-for="item in categories"
-                        :checked="item.id == category.id"
-                        name="categories[]"
-                        :id="category.slug"
-                        :value="category.id">
-                        <label class="custom-control-label" :for="category.slug">
-                            <strong> {{ category.name }}</strong>
-                         </label>
-                    </div>
-                    <div class="child pl-4 pt-1 pb-1">
-                        <div class="custom-control custom-checkbox mb-1" v-for="child in category.children">
+            <div v-if="mode == 'edit'">
+                <div class="mb-1" v-if="list.length > 0">
+                    <div class="parent" v-for="category in list">
+                        <div class="custom-control custom-checkbox mb-1">
                             <input type="checkbox" class="custom-control-input"
-                            v-for="item_c in categories"
-                            :checked="item_c.id == child.id"
+                            v-for="item in categories"
+                            :checked="item.id == category.id"
                             name="categories[]"
-                            :id="child.slug" :value="child.id">
-                            <label class="custom-control-label" :for="child.slug">
-                                {{ child.name }}
+                            :id="category.slug"
+                            :value="category.id">
+                            <label class="custom-control-label" :for="category.slug">
+                                <strong> {{ category.name }}</strong>
                              </label>
+                        </div>
+                        <div class="child pl-4 pt-1 pb-1">
+                            <div class="custom-control custom-checkbox mb-1" v-for="child in category.children">
+                                <input type="checkbox" class="custom-control-input"
+                                v-for="item_c in categories"
+                                :checked="item_c.id == child.id"
+                                name="categories[]"
+                                :id="child.slug" :value="child.id">
+                                <label class="custom-control-label" :for="child.slug">
+                                    {{ child.name }}
+                                 </label>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <span class="text-muted" v-else>
+                    No categories found.
+                </span>
             </div>
-            <span class="text-muted" v-else>
-                No categories found.
-            </span>
+            <div v-else>
+                <div class="mb-1" v-if="list.length > 0">
+                    <div class="parent" v-for="category in list">
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" class="custom-control-input"
+                            name="categories[]"
+                            :id="category.slug"
+                            :value="category.id">
+                            <label class="custom-control-label" :for="category.slug">
+                                <strong> {{ category.name }}</strong>
+                             </label>
+                        </div>
+                        <div class="child pl-4 pt-1 pb-1">
+                            <div class="custom-control custom-checkbox mb-1" v-for="child in category.children">
+                                <input type="checkbox" class="custom-control-input"
+                                name="categories[]"
+                                :id="child.slug" :value="child.id">
+                                <label class="custom-control-label" :for="child.slug">
+                                    {{ child.name }}
+                                 </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="text-muted" v-else>
+                    No categories found.
+                </span>
+            </div>
             <div v-if="errors.length > 0" class="mt-3">
                 <div class="error" v-for="error in errors">
                     <small class="text-danger">{{ error.message }}</small>
@@ -76,7 +106,8 @@
 export default {
     props: [
         'to',
-        'categories'
+        'categories',
+        'mode'
     ],
     data() {
         return  {
@@ -92,7 +123,6 @@ export default {
         }
     },
     mounted() {
-        console.log(this.categories.children);
         this.fetchCategoryList();
     },
     methods: {

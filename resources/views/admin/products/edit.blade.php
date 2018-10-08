@@ -390,12 +390,33 @@
             </div>
 
             <!-- New Brand -->
-            <vue-newbrand @if ($edit) :brnd="{{ $product->brand }}" @endif></vue-newbrand>
+            <vue-newbrand
+                @if ($edit)
+                    :brnd="{{ $product->brand }}"
+                @endif
+                mode="edit"
+                >
+            </vue-newbrand>
 
             <!-- New Category -->
-            <vue-newcategory to="{{ __('product') }}" @if ($edit) :categories="{{ $product->categories }}" @endif></vue-newcategory>
+            <vue-newcategory
+                to="{{ __('product') }}"
+                @if ($edit)
+                    :categories="{{ $product->categories }}"
+                @endif
+                mode="edit"
+                >
+            </vue-newcategory>
+
             <!-- New Tag -->
-            <vue-newtag to="{{ __('product') }}" @if ($edit) :tags="{{ $product->tags }}" @endif></vue-newtag>
+            <vue-newtag
+                to="{{ __('product') }}"
+                @if ($edit)
+                    :tags="{{ $product->tags }}"
+                @endif
+                mode="edit"
+                >
+            </vue-newtag>
         </div>
     </div>
 </form>

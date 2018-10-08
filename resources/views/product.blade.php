@@ -7,9 +7,9 @@
     <!-- Single Product Thumb -->
     <div class="single_product_thumb clearfix">
         <div class="product_thumbnail_slides owl-carousel">
-            {{-- @foreach ($product->medias as $media)
+            @foreach ($product->medias as $media)
                 <img src="{{ asset($media->url) }}" alt="{{ $product->name }}">
-            @endforeach --}}
+            @endforeach
         </div>
     </div>
 
@@ -37,10 +37,10 @@
             @if(count($product->attributes) > 0)
                 <div class="select-box d-flex mt-50 mb-30">
                     @foreach ($product->attributes as $attribute)
-                        <select name="{{ $attribute->name }}" id="productAttrb{{ $attribute->id }}" class="mr-5" required>
+                        <select name="attributes[]" id="productAttrb{{ $attribute->id }}" class="mr-5" required>
                             @foreach ($product->adata as $data)
                                 @if ($attribute->id == $data->attribute->id)
-                                    <option value="{{ $data->name }}">{{ $data->attribute->name }}: {{ $data->name }}</option>
+                                    <option value="{{ $data->id }}">{{ $data->attribute->name }}: {{ $data->name }}</option>
                                 @endif
                             @endforeach
                         </select>

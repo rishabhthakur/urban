@@ -16,14 +16,15 @@
                     <!-- Single Cart Item -->
                     <div class="single-cart-item">
                         <a href="#" class="product-image">
-                            <img src="{!! asset(getProduct($item->id)->medias->first()->url) !!}" class="cart-thumb" alt="">
+                            <img src="{!! asset(getProduct($item->id)->medias->first()->url) !!}" class="cart-thumb" alt="" width="100%">
                             <!-- Cart Item Desc -->
                             <div class="cart-item-desc">
                               <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
                                 <span class="badge">{{ __(getProduct($item->id)->brand->name) }}</span>
                                 <h6>{{ $item->name }}</h6>
-                                <p class="size">Size: S</p>
-                                <p class="color">Color: Red</p>
+                                @foreach ($item->attributes as $attrb => $value)
+                                    <p class="color">{{ $attrb }}: {{ $value }}</p>
+                                @endforeach
                                 <p class="price">${{ $item->price }}</p>
                             </div>
                         </a>

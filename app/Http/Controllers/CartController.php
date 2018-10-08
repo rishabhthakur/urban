@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Urban\Product;
 use Cart;
 
+use Urban\Adata;
+
 class CartController extends Controller {
 
     /**
@@ -24,6 +26,15 @@ class CartController extends Controller {
     public function create() {
     }
 
+    public function getData($attributes) {
+        foreach ($attributes as $attribute) {
+            $data = Adata::find($attribute);
+            return $attrbs = [
+                $data->attribute->name => $data->name
+            ];
+        }
+    }
+
     /**
     * Store a newly created resource in storage.
     *
@@ -31,6 +42,7 @@ class CartController extends Controller {
     * @return \Illuminate\Http\Response
     */
     public function store(Request $request, $id) {
+
         $product = Product::find($id);
 
         if($product->sale_price) {
@@ -49,7 +61,9 @@ class CartController extends Controller {
             'id' => $product->id,
             'name' => $product->name,
             'price' => $price,
-            'quantity' => 1
+            'quantity' => 1,
+            'attributes' => $this->getData($request['attributes'])
+
         ]);
 
         // add single condition on a cart bases
@@ -64,8 +78,6 @@ class CartController extends Controller {
             )
         ));
 
-        // Cart::associate($cartItem->sessionKeyCartItems, 'Urban\Product');
-        // dd($cartItem);
         return redirect()->back()->with('success', 'Item added to cart.');
     }
 

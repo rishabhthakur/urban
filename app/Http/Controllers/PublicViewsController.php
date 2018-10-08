@@ -26,6 +26,7 @@ class PublicViewsController extends Controller {
     }
 
     public function index() {
+        dd(Cart::getContent());
         // Cart::clear();
         $products = new Product;
         return view('welcome')->with([
