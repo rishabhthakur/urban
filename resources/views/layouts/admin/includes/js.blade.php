@@ -42,6 +42,7 @@
     });
 </script>
 
+@yield('admin-js')
 @yield('settings-js')
 @yield('new-message-js')
 @yield('new-post-js')

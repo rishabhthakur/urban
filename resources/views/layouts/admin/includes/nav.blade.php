@@ -75,14 +75,27 @@
                         </div>
                     </div>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{!! route('admin.users.profile', ['slug' => Auth::user()->slug]) !!}">Profile</a>
-                    <a class="dropdown-item" href="{!! route('admin.users.activities', ['slug' => Auth::user()->slug]) !!}">Activities</a>
+                    <a class="dropdown-item" href="{!! route('admin.users.profile', ['slug' => Auth::user()->slug]) !!}">
+                        <i class="fas fa-user"></i>
+                        Profile
+                    </a>
+                    <a class="dropdown-item" href="{!! route('admin.users.activities', ['slug' => Auth::user()->slug]) !!}">
+                        <i class="fas fa-signature"></i>
+                        Activities
+                    </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item disabled" href="#">Help &amp; Support</a>
-                    <a class="dropdown-item" href="{!! route('admin.users.edit', ['slug' => Auth::user()->slug]) !!}">Settings &amp; Privacy</a>
+                    <a class="dropdown-item disabled" href="#">
+                        <i class="fas fa-life-ring"></i>
+                        Help &amp; Support
+                    </a>
+                    <a class="dropdown-item" href="{!! route('admin.users.edit', ['slug' => Auth::user()->slug]) !!}">
+                        <i class="fas fa-cog"></i>
+                        Settings &amp; Privacy
+                    </a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
+                         <i class="fas fa-sign-out-alt"></i>
                         {{ __('Log Out') }}
                     </a>
 

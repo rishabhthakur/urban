@@ -60,6 +60,20 @@ class UsersController extends Controller {
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function verify($id) {
+        $user = User::find($id);
+        $user->email_verified_at = \Carbon\Carbon::now();
+        $user->save();
+        return redirect(route('admin.users.profile', ['slug' => $user->slug]))->with([
+            'success' => 'User account verified.'
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

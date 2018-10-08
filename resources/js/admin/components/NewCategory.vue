@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body">
             <h6 class="heading mb-3">Categories</h6>
-            <div class="py-2 mb-3" v-if="categories">
+            <!-- <div class="py-2 mb-3" v-if="categories">
                 <div>
                     <small>
                         <strong>This post is under:</strong>
@@ -11,18 +11,27 @@
                 <span v-for="item in categories">
                     <span class="badge badge-primary mr-1 mb-1">{{ item.name }}</span>
                 </span>
-            </div>
+            </div> -->
             <div class="mb-1" v-if="list.length > 0">
                 <div class="parent" v-for="category in list">
                     <div class="custom-control custom-checkbox mb-1">
-                        <input type="checkbox" class="custom-control-input" name="categories[]" :id="category.slug" :value="category.id">
+                        <input type="checkbox" class="custom-control-input"
+                        v-for="item in categories"
+                        :checked="item.id == category.id"
+                        name="categories[]"
+                        :id="category.slug"
+                        :value="category.id">
                         <label class="custom-control-label" :for="category.slug">
                             <strong> {{ category.name }}</strong>
                          </label>
                     </div>
                     <div class="child pl-4 pt-1 pb-1">
                         <div class="custom-control custom-checkbox mb-1" v-for="child in category.children">
-                            <input type="checkbox" class="custom-control-input" name="categories[]" :id="child.slug" :value="child.id">
+                            <input type="checkbox" class="custom-control-input"
+                            v-for="item_c in categories"
+                            :checked="item_c.id == child.id"
+                            name="categories[]"
+                            :id="child.slug" :value="child.id">
                             <label class="custom-control-label" :for="child.slug">
                                 {{ child.name }}
                              </label>
@@ -83,7 +92,7 @@ export default {
         }
     },
     mounted() {
-        // console.log('Category component...');
+        console.log(this.categories.children);
         this.fetchCategoryList();
     },
     methods: {

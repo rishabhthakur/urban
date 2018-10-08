@@ -69,79 +69,45 @@
         <div class="col-lg-6">
             <div class="row">
                 <div class="col-lg-5 col-md-12">
-                    <ul class="list-group list-group-flush bg-transparent mb-4">
-                        <li class="list-group-item border-0">
+                    <div class="card">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h1>120</h1>
                                     <a href="#">
                                         Orders
                                     </a>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <span class="badge badge-warning">
-                                            <i class="fas fa-exclamation-circle mr-1"></i> Pending
-                                        </span>
-                                        <span class="badge badge-danger">
-                                            <i class="fas fa-times-circle mr-1"></i> Cancelled
-                                        </span>
-                                        <span class="badge badge-success">
-                                            <i class="fas fa-check-circle mr-1"></i> Completed
-                                        </span>
+                                    <h1 class="mb-0">120</h1>
+                                    <div>
+                                        <small>
+                                            21 Orders pending
+                                        </small>
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li class="list-group-item border-0">
-                            <div class="row">
-                                <div class="col">
-                                    <h1>
-                                        @if ($products->all())
-                                            {{ count($products->all()) }}
-                                        @endif
-                                    </h1>
-                                    <a href="{!! route('admin.products') !!}">
-                                        Products
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        @if ($products->getOutOfStock() && count($products->getOutOfStock()) > 0)
-                                            <span class="badge badge-danger">
-                                                <i class="fas fa-exclamation-circle mr-1"></i> <strong>{{ count($products->getOutOfStock()) }}</strong> Out of stock
-                                            </span>
-                                        @endif
-                                        @if ($products->getLowStock() && count($products->getLowStock()) > 0)
-                                            <span class="badge badge-warning">
-                                                <i class="fas fa-exclamation-circle mr-1"></i> <strong>{{ count($products->getLowStock()) }}</strong> Low in stock
-                                            </span>
-                                        @endif
+                        </div>
+                    </div>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0">
+                    <div class="card">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h1>{{ count($users->where('role_id', 4)->get()) }}</h1>
-                                    <a href="{{ route('admin.users', ['sort' => 'customers']) }}">
+                                    <a href="#">
                                         Customers
                                     </a>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        @if (count($users->where('role_id', 4)->where('email_verified_at', null)->get()) > 0)
-                                            <span class="badge badge-warning">
-                                                <i class="fas fa-exclamation-circle mr-1"></i> <strong>{{ count($users->where('role_id', 4)->where('email_verified_at', null)->get()) }}</strong> Unverified
-                                            </span>
+                                    <h1 class="mb-0">
+                                        {{ count($users->where('role_id', 4)->get()) }}
+                                    </h1>
+                                    <div class="text-warning">
+                                        @if (count($users->where('email_verified_at', null)->get()) > 0)
+                                            <small>
+                                                {{ count($users->where('role_id', 4)->where('email_verified_at', null)->get()) }} Unverified
+                                            </small>
                                         @endif
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-7 col-md-12">
                     <div class="card">
@@ -221,8 +187,10 @@
     <div class="row mb-4">
         <div class="col-lg-7">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body pb-0">
                     <h6 class="heading mb-3">Recent Activities</h6>
+                </div>
+                <div id="timeline-card" class="card-body pt-0">
         			<ul class="timeline">
         				@forelse ($activities as $activity)
                             @include('admin.includes.activity')
@@ -234,4 +202,15 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('admin-js')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#timeline-card").mCustomScrollbar({
+                theme: "minimal-dark"
+            });
+        });
+    </script>
 @endsection

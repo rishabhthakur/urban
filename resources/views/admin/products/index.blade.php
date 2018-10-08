@@ -39,7 +39,11 @@
                                         <img src="{{ asset($product->medias->first()->url) }}" alt="{{ $product->name }}" style="width: 100%;">
                                     </td>
                                     <td>
-                                        <h6 class="text-dark">{{ $product->name }}</h6>
+                                        <a href="{!! route('admin.products.edit', ['id' => $product->id]) !!}" class="text-dark">
+                                            <h6>
+                                                <strong>{{ $product->name }}</strong>
+                                            </h6>
+                                        </a>
                                         <small>
                                             <span class="text-muted">{{ $product->brand->name }}</span>
                                             <span class="mx-1">|</span>
@@ -47,7 +51,7 @@
                                         </small>
                                         <ul class="nav justify-content-start">
                                             <li class="nav-item">
-                                                <a class="nav-link" target="_blank" href="{!! route('product', ['slug' => $product->slug]) !!}">
+                                                <a class="nav-link pl-0" target="_blank" href="{!! route('product', ['slug' => $product->slug]) !!}">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </li>
@@ -93,10 +97,12 @@
                                             </div>
                                         @endif
                                     </td>
-                                    <td width="10%">
-                                        @foreach ($product->categories as $category)
-                                            <span class="badge text-primary"> {{ $category->name }}</span>
-                                        @endforeach
+                                    <td width="15%">
+                                        <ul class="categorylist">
+                                            @foreach ($product->categories as $category)
+                                                <li>{{ $category->name }}</li>
+                                            @endforeach
+                                        </ul>
                                     </td>
                                     <td width="10%">
                                         @foreach ($product->tags as $tag)

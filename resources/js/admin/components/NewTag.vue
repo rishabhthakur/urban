@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body">
             <h6 class="heading mb-3">Tags</h6>
-            <div class="py-2 mb-3" v-if="tags">
+            <!-- <div class="py-2 mb-3" v-if="tags">
                 <div>
                     <small>
                         <strong>This post has the tags:</strong>
@@ -11,10 +11,14 @@
                 <span v-for="item in tags">
                     <span class="badge badge-dark mr-1 mb-1">{{ item.name }}</span>
                 </span>
-            </div>
+            </div> -->
             <div class="tegs" v-if="list.length > 0">
                 <div class="custom-control custom-checkbox mb-1"  v-for="tag in list">
-                    <input type="checkbox" class="custom-control-input" :id="tag.slug + tag.id" :value="tag.id" name="tags[]">
+                    <input type="checkbox" class="custom-control-input"
+                    v-for="item in tags"
+                    :checked="item.id == tag.id"
+                    :id="tag.slug + tag.id"
+                    :value="tag.id" name="tags[]">
                     <label class="custom-control-label" :for="tag.slug + tag.id"> {{ tag.name }}</label>
                 </div>
             </div>

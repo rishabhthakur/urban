@@ -33,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/checkout';
+    protected $redirectTo = '/';
 
     /**
      * Retrive default app settings.
@@ -101,8 +101,8 @@ class RegisterController extends Controller
         if (!is_dir(public_path('uploads/avatar/'.strtolower($data['name'])))) {
           mkdir(public_path('uploads/avatar/'.strtolower($data['name'])));
         }
-        $strg = storage_path('app/public/avatars/user.jpg');
-        $publc = public_path('uploads/avatar/' .strtolower($data['name']). '/user.jpg');
+        $strg = storage_path('app/public/avatars/user.png');
+        $publc = public_path('uploads/avatar/' .strtolower($data['name']). '/user.png');
         copy($strg, $publc);
 
         // Create profile for user
@@ -111,7 +111,7 @@ class RegisterController extends Controller
           'first_name' => $data['first_name'],
           'last_name' => $data['last_name'],
           'phone' => $data['phone'],
-          'avatar' => 'uploads/avatar/' .strtolower($data['name']). '/user.jpg'
+          'avatar' => 'user.png'
         ]);
 
         User::where('admin', 1)->first()->notify(new \Urban\Notifications\NewUserRegistration($user));

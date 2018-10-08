@@ -69,14 +69,14 @@
                                     <td>
                                         <div>
                                             <a href="{!! route('admin.posts.edit', ['id' => $post->id]) !!}">
-                                                <div class="mb-1">
+                                                <h6 class="mb-1 text-dark">
                                                     <strong>
                                                         {{ $post->title }}
                                                     </strong>
-                                                </div>
+                                                </h6>
                                                 <ul class="nav justify-content-start">
                                                     <li class="nav-item">
-                                                        <a class="nav-link" target="_blank" href="{!! route('blog.post', ['slug' => $post->slug]) !!}">
+                                                        <a class="nav-link pl-0" target="_blank" href="{!! route('blog.post', ['slug' => $post->slug]) !!}">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
                                                     </li>
@@ -100,9 +100,11 @@
                                         </a>
                                     </td>
                                     <td>
-                                        @foreach ($post->categories as $category)
-                                            <span>{{ $category->name }}</span>
-                                        @endforeach
+                                        <ul class="categorylist">
+                                            @foreach ($post->categories as $category)
+                                                <li>{{ $category->name }}</li>
+                                            @endforeach
+                                        </ul>
                                     </td>
                                     <td>
                                         @foreach ($post->tags as $tag)

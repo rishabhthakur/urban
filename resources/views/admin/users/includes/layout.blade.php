@@ -53,12 +53,27 @@
                                     <i class="fas fa-ellipsis-v"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="{!! route('admin.users.profile', ['slug' => $user->slug]) !!}">Profile</a>
-                                    <a class="dropdown-item" href="{!! route('admin.users.edit', ['slug' => $user->slug]) !!}">Settings</a>
+                                    <a class="dropdown-item" href="{!! route('admin.users.profile', ['slug' => $user->slug]) !!}">
+                                        <i class="fas fa-user"></i>
+                                        Profile
+                                    </a>
+                                    <a class="dropdown-item" href="{!! route('admin.users.edit', ['slug' => $user->slug]) !!}">
+                                        <i class="fas fa-cog"></i>
+                                        Settings
+                                    </a>
                                     @if (Auth::user()->role_id == 1)
-                                        <a class="dropdown-item" href="{!! route('admin.users.activities', ['slug' => $user->slug]) !!}">Activities</a>
-                                        <a class="dropdown-item text-warning" href="#">Suspend</a>
-                                        <a class="dropdown-item text-danger" href="#">Remove</a>
+                                        <a class="dropdown-item" href="{!! route('admin.users.activities', ['slug' => $user->slug]) !!}">
+                                            <i class="fas fa-signature"></i>
+                                            Activities
+                                        </a>
+                                        <a class="dropdown-item text-warning" href="#">
+                                            <i class="fas fa-user-minus"></i>
+                                            Suspend
+                                        </a>
+                                        <a class="dropdown-item text-danger" href="#">
+                                            <i class="fas fa-user-slash"></i>
+                                            Remove
+                                        </a>
                                     @endif
                                 </div>
                             </div>

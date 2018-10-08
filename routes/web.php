@@ -179,6 +179,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
             'as' => 'admin.users.create'
         ]);
 
+        // Admin users list
+        Route::get('/verify/{id}', [
+            'uses' => 'UsersController@verify',
+            'as' => 'admin.users.verify'
+        ]);
+
         // Admin add new users to database
         Route::post('/store', [
             'uses' => 'UsersController@store',
