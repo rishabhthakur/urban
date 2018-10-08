@@ -27,12 +27,12 @@ class CartController extends Controller {
     }
 
     public function getData($attributes) {
+        $attrbs = array();
         foreach ($attributes as $attribute) {
             $data = Adata::find($attribute);
-            return $attrbs = [
-                $data->attribute->name => $data->name
-            ];
+            array_push($attrbs, $data->attribute->name .': '. $data->name);
         }
+        return $attrbs;
     }
 
     /**
@@ -42,7 +42,7 @@ class CartController extends Controller {
     * @return \Illuminate\Http\Response
     */
     public function store(Request $request, $id) {
-
+        // dd($this->getData($request['attributes']));
         $product = Product::find($id);
 
         if($product->sale_price) {
@@ -58,12 +58,12 @@ class CartController extends Controller {
         // }
 
         $cartItem = Cart::add([
-            'id' => $product->id,
+            'id' => uniqid(),
+            'p_id' => $product->id,
             'name' => $product->name,
             'price' => $price,
             'quantity' => 1,
             'attributes' => $this->getData($request['attributes'])
-
         ]);
 
         // add single condition on a cart bases

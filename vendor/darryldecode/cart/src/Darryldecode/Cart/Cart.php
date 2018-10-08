@@ -144,7 +144,7 @@ class Cart
      * @return $this
      * @throws InvalidItemException
      */
-    public function add($id, $name = null, $price = null, $quantity = null, $attributes = array(), $conditions = array())
+    public function add($id, $p_id = null, $name = null, $price = null, $quantity = null, $attributes = array(), $conditions = array())
     {
         // if the first argument is an array,
         // we will need to call add again
@@ -155,6 +155,7 @@ class Cart
                 foreach ($id as $item) {
                     $this->add(
                         $item['id'],
+                        $item['p_id'],
                         $item['name'],
                         $item['price'],
                         $item['quantity'],
@@ -165,6 +166,7 @@ class Cart
             } else {
                 $this->add(
                     $id['id'],
+                    $id['p_id'],
                     $id['name'],
                     $id['price'],
                     $id['quantity'],
@@ -179,6 +181,7 @@ class Cart
         // validate data
         $item = $this->validate(array(
             'id' => $id,
+            'p_id' => $p_id,
             'name' => $name,
             'price' => Helpers::normalizePrice($price),
             'quantity' => $quantity,
@@ -548,8 +551,8 @@ class Cart
         });
 
         return Helpers::formatValue(floatval($sum), $formatted, $this->config);
-    }    
-    
+    }
+
     /**
      * get cart sub total
      * @param bool $formatted

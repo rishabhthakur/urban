@@ -28,8 +28,8 @@
                                 <table class="table table-borderless">
                                     <thead>
                                         <tr>
-                                            <th scope="col"> </th>
                                             <th scope="col">Product</th>
+                                            <th scope="col"></th>
                                             <th scope="col">Price</th>
                                             <th scope="col" class="text-center">Quantity</th>
                                             <th scope="col" class="text-right">Total</th>
@@ -37,40 +37,47 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td width="15%">
-                                                <img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/product/product-square-ian-dooley-347968-unsplash.jpg" width="100%" />
-                                            </td>
-                                            <td class="align-middle">
-                                                <div class="cart-title text-left">
-                                                    <a href="detail.html" class="text-dark h6">
-                                                        <strong>Skull Tee</strong>
+                                        @foreach (Cart::getContent() as $item)
+                                            <tr>
+                                                <td width="15%">
+                                                    <a href="{!! route('product', ['slug' => getProduct($item->p_id)->slug]) !!}">
+                                                        <img src="{!! asset(getProduct($item->p_id)->medias->first()->url) !!}" width="100%" />
                                                     </a>
-                                                    <br>
-                                                    <span class="text-muted">
-                                                        <small>Size: Large</small>
-                                                    </span>
-                                                    <br>
-                                                    <span class="text-muted">
-                                                        <small>Colour: Green</small>
-                                                    </span>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle">
-                                                $124,90
-                                            </td>
-                                            <td class="align-middle" width="4%">
-                                                <input class="form-control" type="number" min="0" value="1" />
-                                            </td>
-                                            <td class="align-middle text-right">
-                                                <strong>$124,90</strong>
-                                            </td>
-                                            <td class="align-middle text-right">
-                                                <a href="#">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <div class="cart-title text-left">
+                                                        <div>
+                                                            <span class="badge text-muted px-0">{{ __(getProduct($item->p_id)->brand->name) }}</span>
+                                                        </div>
+                                                        <a href="{!! route('product', ['slug' => getProduct($item->p_id)->slug]) !!}" class="text-dark h6">
+                                                            <div>
+                                                                <strong>{{ $item->name }}</strong>
+                                                            </div>
+                                                        </a>
+                                                        <br>
+                                                        @foreach ($item->attributes as $attrb)
+                                                            <span class="text-muted">
+                                                                <small>{{ $attrb }}</small>
+                                                            </span><br />
+                                                        @endforeach
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle">
+                                                    ${{ $item->price }}
+                                                </td>
+                                                <td class="align-middle" width="4%">
+                                                    <input class="form-control" type="number" min="0" value="{{ $item->quantity }}" max="{{ __(getProduct($item->p_id)->quantity) }}" />
+                                                </td>
+                                                <td class="align-middle text-right">
+                                                    <strong>${{ $item->price * $item->quantity }}</strong>
+                                                </td>
+                                                <td class="align-middle text-right">
+                                                    <a href="#">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             @else

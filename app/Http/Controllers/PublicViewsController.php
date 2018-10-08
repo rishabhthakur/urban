@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 use Laravel\Scout\Searchable;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Database\Schema\Blueprint;
+
 class PublicViewsController extends Controller {
 
     use Searchable;
