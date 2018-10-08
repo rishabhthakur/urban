@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<form class="d-inline" action="{!! route('admin.products.store') !!}" method="post" enctype="multipart/form-data">
+<form class="d-inline" action="{!! route('admin.products.update', ['id' => $product->id]) !!}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="row">
         <div class="col-md-8">
@@ -13,7 +13,7 @@
                     {{-- Product Name --}}
                     <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                         <label for="name">Product Name</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="Product Name" value="{{ old('name') }}" required>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Product Name" value="{{ $product->name }}" required>
 
                         @if ($errors->has('name'))
                             <span class="text-danger form-text" role="alert">
@@ -26,7 +26,7 @@
                     <div class="form-group{{ $errors->has('regular_price') ? ' has-danger' : '' }} row mb-4">
                         <div class="col">
                             <label for="regular_price">Regular Price</label>
-                            <input type="text" name="regular_price" id="regular_price" class="form-control" placeholder="Regular Price" value="{{ old('regular_price') }}" required>
+                            <input type="text" name="regular_price" id="regular_price" class="form-control" placeholder="Regular Price" value="{{ $product->regular_price }}" required>
 
                             @if ($errors->has('regular_price'))
                                 <span class="text-danger form-text" role="alert">
@@ -36,7 +36,7 @@
                         </div>
                         <div class="col">
                             <label for="sale_price">Sale Price</label>
-                            <input type="text" name="sale_price" id="sale_price" class="form-control" placeholder="Sale Price" value="{{ old('sale_price') }}"  >
+                            <input type="text" name="sale_price" id="sale_price" class="form-control" placeholder="Sale Price" value="{{ $product->sale_price }}"  >
 
                             @if ($errors->has('sale_price'))
                                 <span class="text-danger form-text" role="alert">
@@ -49,7 +49,7 @@
                     {{-- Product Description --}}
                     <div class="form-group">
                         <label for="description">Product Description</label>
-                        <textarea name="description" class="form-control" id="description" placeholder="Product Description">{{ old('description') }}</textarea>
+                        <textarea name="description" class="form-control" id="description" placeholder="Product Description">{{ $product->description }}</textarea>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                             <div class="form-group row">
                                 <div class="col">
                                     <label for="sku">SKU</label>
-                                    <input type="text" id="sku" name="sku" value="{{ old('sku') }}" class="form-control" placeholder="Stock Keeping Unit">
+                                    <input type="text" id="sku" name="sku" value="{{ $product->sku }}" class="form-control" placeholder="Stock Keeping Unit">
                                     <span class="text-muted form-text">
                                         <small>SKU refers to a Stock-keeping unit, a unique identifier for each distinct product and service that can be purchased.</small>
                                     </span>
@@ -111,7 +111,7 @@
                                 </div>
                                 <div id="sqty" class="col">
                                     <label for="quantity">Stock Quantity</label>
-                                    <input type="number" id="quantity" min="0" name="quantity" value="{{ old('quantity') }}" class="form-control">
+                                    <input type="number" id="quantity" min="0" name="quantity" value="{{ $product->quantity }}" class="form-control">
                                     @if ($errors->has('quantity'))
                                         <span class="text-danger form-text" role="alert">
                                             <small><strong>{{ $errors->first('quantity') }}</strong></small>
@@ -121,8 +121,8 @@
                                 <div id="ssts" class="col">
                                     <label for="stock_status">Stock Status</label>
                                     <select id="stock_status" class="custom-select" name="stock_status" id="stock_status">
-                                        <option selected value="1">In stock</option>
-                                        <option value="0">Out of stock</option>
+                                        <option @if ($product->status) selected @endif value="1">In stock</option>
+                                        <option @if (!$product->status) selected @endif value="0">Out of stock</option>
                                     </select>
                                     @if ($errors->has('stock_status'))
                                         <span class="text-danger form-text" role="alert">
@@ -136,7 +136,7 @@
                             <div class="form-group row">
                                 <div class="col">
                                     <label for="weight">Weight (Kg)</label>
-                                    <input type="number" id="weight" name="weight" class="form-control" value="{{ old('weight') }}" min="0" placeholder="Weight (Kg)">
+                                    <input type="number" id="weight" name="weight" class="form-control" value="{{ $product->weight }}" min="0" placeholder="Weight (Kg)">
                                     @if ($errors->has('weight'))
                                         <span class="text-danger form-text" role="alert">
                                             <small><strong>{{ $errors->first('weight') }}</strong></small>
@@ -150,7 +150,7 @@
                                 </div>
                                 <div class="col">
                                     <label for="length">Length</label>
-                                    <input type="number" id="length" name="length" class="form-control" value="{{ old('length') }}" min="0" placeholder="Length">
+                                    <input type="number" id="length" name="length" class="form-control" value="{{ $product->length }}" min="0" placeholder="Length">
                                     @if ($errors->has('length'))
                                         <span class="text-danger form-text" role="alert">
                                             <small><strong>{{ $errors->first('length') }}</strong></small>
@@ -159,7 +159,7 @@
                                 </div>
                                 <div class="col">
                                     <label for="width">Width</label>
-                                    <input type="number" id="width" name="width" class="form-control" value="{{ old('width') }}" min="0" placeholder="Width">
+                                    <input type="number" id="width" name="width" class="form-control" value="{{ $product->width }}" min="0" placeholder="Width">
                                     @if ($errors->has('width'))
                                         <span class="text-danger form-text" role="alert">
                                             <small><strong>{{ $errors->first('width') }}</strong></small>
@@ -168,7 +168,7 @@
                                 </div>
                                 <div class="col">
                                     <label for="height">Height</label>
-                                    <input type="number" id="height" name="height" class="form-control" value="{{ old('height') }}" min="0" placeholder="Height">
+                                    <input type="number" id="height" name="height" class="form-control" value="{{ $product->height }}" min="0" placeholder="Height">
                                     @if ($errors->has('height'))
                                         <span class="text-danger form-text" role="alert">
                                             <small><strong>{{ $errors->first('height') }}</strong></small>
@@ -182,7 +182,12 @@
                                 <div class="border rounded mb-2">
                                     <div class="attribute-title border-bottom p-2">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" name="attrbs[]" id="{{ $attribute->slug }}" value="{{ $attribute->id }}">
+                                            @foreach ($product->attributes as $attrb)
+                                                <input type="checkbox" class="custom-control-input" name="attrbs[]" id="{{ $attribute->slug }}" value="{{ $attribute->id }}"
+                                                @if ($attrb->id == $attribute->id)
+                                                    checked
+                                                @endif>
+                                            @endforeach
                                             <label class="custom-control-label" for="{{ $attribute->slug }}">
                                                 <strong>{{ $attribute->name }}</strong>
                                             </label>
@@ -191,7 +196,12 @@
                                     <div class="attributes p-3">
                                         @forelse ($attribute->data as $data)
                                             <div class="custom-control custom-checkbox custom-control-inline">
-                                                <input type="checkbox" class="custom-control-input" name="data[]" id="{{ $data->slug }}" value="{{ $data->id }}">
+                                                @foreach ($product->adata as $dat)
+                                                    <input type="checkbox" class="custom-control-input" name="data[]" id="{{ $data->slug }}" value="{{ $data->id }}"
+                                                    @if ($dat->id == $data->id)
+                                                        checked
+                                                    @endif>
+                                                @endforeach
                                                 <label class="custom-control-label" for="{{ $data->slug }}">
                                                     {{ $data->name }}
                                                 </label>
@@ -221,7 +231,7 @@
                             <p class="description">
                                 <div class="form-group">
                                     <label for="purachase_note">Purchase Note (Optional)</label>
-                                    <textarea name="purchase_note" class="form-control" id="purachase_note" placeholder="Purchase Note"></textarea>
+                                    <textarea name="purchase_note" class="form-control" id="purachase_note" placeholder="Purchase Note">{{ $product->purchase_note }}</textarea>
                                     <span class="text-muted form-text">
                                         <small>
                                             Enter an optional note to send the customer after purchase.
@@ -230,7 +240,10 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="reviews" name="reviews" value="1" checked>
+                                        <input type="checkbox" class="custom-control-input" id="reviews" name="reviews" value="1"
+                                        @if ($product->reviews)
+                                            checked
+                                        @endif>
                                         <label class="custom-control-label" for="reviews">Enable Reviews</label>
                                     </div>
                                 </div>
@@ -245,7 +258,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="short_description">Product Short Description</label>
-                        <textarea name="short_description" class="form-control" id="short_description" placeholder="Product Short Description" style="height: 200px;">{{ old('short_description') }}</textarea>
+                        <textarea name="short_description" class="form-control" id="short_description" placeholder="Product Short Description" style="height: 200px;">{{ $product->short_description }}</textarea>
                         @if ($errors->has('short_description'))
                             <span class="text-danger form-text" role="alert">
                                 <small><strong>{{ $errors->first('short_description') }}</strong></small>
@@ -336,7 +349,17 @@
                             @if (count($medias) > 0)
                                 <select multiple="multiple" class="image-picker show-html" id="product-image" name="medias[]">
                                     @foreach ($medias as $media)
-                                        <option data-img-src="{{ asset($media->url) }}" value="{{ $media->id }}">{{ $media->name }}</option>
+                                        <option
+                                            data-img-src="{{ asset($media->url) }}"
+                                            value="{{ $media->id }}"
+                                            @foreach ($product->medias as $item)
+                                                @if ($item->id == $media->id)
+                                                    selected
+                                                @endif
+                                            @endforeach
+                                            >
+                                            {{ $media->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 <hr>
@@ -367,13 +390,12 @@
             </div>
 
             <!-- New Brand -->
-            <vue-newbrand></vue-newbrand>
+            <vue-newbrand @if ($edit) :brnd="{{ $product->brand }}" @endif></vue-newbrand>
 
             <!-- New Category -->
-            <vue-newcategory to="{{ __('product') }}"></vue-newcategory>
-
+            <vue-newcategory to="{{ __('product') }}" @if ($edit) :categories="{{ $product->categories }}" @endif></vue-newcategory>
             <!-- New Tag -->
-            <vue-newtag to="{{ __('product') }}"></vue-newtag>
+            <vue-newtag to="{{ __('product') }}" @if ($edit) :tags="{{ $product->tags }}" @endif></vue-newtag>
         </div>
     </div>
 </form>

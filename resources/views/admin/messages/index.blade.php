@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<div class="row">
+<div class="row d-none d-sm-block">
     <div class="col-12">
         <div class="card">
             <div class="row no-gutters">
@@ -105,6 +105,18 @@
                         No messages found.
                     </div>
                 @endif
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center">
+        <div class="card d-block d-sm-none">
+            <div class="card-body">
+                <strong>
+                    Messages area is not compatible with samll screen sizes. Please use a wider screen size to access this area.
+                </strong>
             </div>
         </div>
     </div>

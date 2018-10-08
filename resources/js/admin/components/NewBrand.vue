@@ -3,7 +3,11 @@
         <div class="card-body">
             <h6 class="heading mb-3">Product Brand</h6>
             <select id="brand" class="custom-select form-control" name="brand" v-if="list.length > 0">
-                <option :value="brand.id" v-for="brand in list">{{ brand.name }}</option>
+                <option
+                 :value="brand.id"
+                 v-for="brand in list"
+                 :selected="brand.id == brnd.id"
+                 >{{ brand.name }}</option>
             </select>
             <span class="text-muted" v-else>No brands found.</span>
         </div>
@@ -26,6 +30,9 @@
 
 <script>
 export default {
+    props: [
+        'brnd'
+    ],
     data() {
         return  {
             errors: [],

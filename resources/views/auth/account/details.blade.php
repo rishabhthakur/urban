@@ -1,4 +1,4 @@
-@extends('auth.account.includes.layout', ['title' => 'Account'])
+@extends('auth.account.includes.layout', ['title' => 'Account Details'])
 
 @section('section')
     <div class="mb-4">

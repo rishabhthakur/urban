@@ -149,9 +149,16 @@
                         </div>
                         <div class="modal-body">
                             @if (count($medias) > 0)
-                                <select class="image-picker show-html" id="post-image" name="media">
+                                <select class="image-picker show-html" id="post-image" name="medias[]">
                                     @foreach ($medias as $media)
-                                        <option data-img-src="{{ asset($media->url) }}" value="{{ $media->id }}">{{ $media->name }}</option>
+                                        <option
+                                            data-img-src="{{ asset($media->url) }}"
+                                            value="{{ $media->id }}"
+                                            @if ($post->media->id == $media->id)
+                                                selected
+                                            @endif>
+                                            {{ $media->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 <hr>
@@ -196,11 +203,7 @@
                 plugins: [ 'autosave', 'lists', 'autolink' ]
             }
         });
-    </script>
-@endsection
-
-@section('new-post-js')
-    <script type="text/javascript">
+        
         // Image picker initialization
         $("#post-image").imagepicker();
     </script>

@@ -13,9 +13,9 @@
                     <!-- Footer Menu -->
                     <div class="footer_menu">
                         <ul>
-                            <li><a href="shop.html">Shop</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="{!! route('shop') !!}">Shop</a></li>
+                            <li><a href="{!! route('blog') !!}">Blog</a></li>
+                            <li><a href="{!! route('contact') !!}">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -60,11 +60,21 @@
             <div class="col-12 col-md-6">
                 <div class="single_widget_area">
                     <div class="footer_social_area">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest">
+                            <i class="fa fa-pinterest" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Youtube">
+                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -74,7 +84,7 @@
             <div class="col-md-12 text-center">
                 <p class="copyright">
                     @if (!getSettings()->copyright)
-                        Copyright &copy; 2018 <span class="text-white"><strong>{{ __(getSettings()->site_name) }}</strong></span>. All rights reserved
+                        Copyright &copy; 2018 {{ __(getSettings()->site_name) }}. All rights reserved
                     @else
                         {{ getSettings()->copyright_text }}
                     @endif

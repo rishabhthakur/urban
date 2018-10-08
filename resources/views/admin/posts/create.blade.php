@@ -193,11 +193,7 @@
                 plugins: [ 'autosave', 'lists', 'autolink' ]
             }
         });
-    </script>
-@endsection
 
-@section('new-post-js')
-    <script type="text/javascript">
         // Image picker initialization
         $("#post-image").imagepicker();
     </script>

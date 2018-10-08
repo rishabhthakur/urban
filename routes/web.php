@@ -238,13 +238,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         ]);
 
         // Admin edit products
-        Route::get('/edit', [
+        Route::get('/edit/{id}', [
             'uses' => 'ProductController@edit',
             'as' => 'admin.products.edit'
         ]);
 
         // Admin edit products
-        Route::post('/update', [
+        Route::post('/update/{id}', [
             'uses' => 'ProductController@update',
             'as' => 'admin.products.update'
         ]);
