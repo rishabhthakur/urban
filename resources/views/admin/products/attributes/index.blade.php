@@ -60,7 +60,18 @@
                                 </small>
                             </span>
                         </div>
-                        <div class="col-8 clearfix">
+                        <div class="col">
+                            <ul class="categorylist">
+                                @forelse ($element->data as $data)
+                                    <li>{{ $data->name }}</li>
+                                @empty
+                                    <p>
+                                        No terms found.
+                                    </p>
+                                @endforelse
+                            </ul>
+                        </div>
+                        <div class="col-1 clearfix">
                             <div class="dropdown float-right">
                                 <a class="dropdown-toggle text-dark" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v"></i>

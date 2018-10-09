@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="col-md-2 mb-4">
-                    <div class="bg-secondary">
+                    <div class="">
                         &nbsp;
                     </div>
                 </div>
