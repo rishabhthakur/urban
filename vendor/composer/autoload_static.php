@@ -3932,6 +3932,7 @@ class ComposerStaticInit687914fb4d48ad8577bd8b54a4b8cda3
         'Urban\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'Urban\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'Urban\\Providers\\SaveForLater' => __DIR__ . '/../..' . '/app/Providers/SaveForLater.php',
+        'Urban\\Providers\\Wishlist' => __DIR__ . '/../..' . '/app/Providers/Wishlist.php',
         'Urban\\Review' => __DIR__ . '/../..' . '/app/Review.php',
         'Urban\\Role' => __DIR__ . '/../..' . '/app/Role.php',
         'Urban\\Settings' => __DIR__ . '/../..' . '/app/Settings.php',

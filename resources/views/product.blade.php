@@ -60,7 +60,7 @@
             <!-- Cart & Favourite Box -->
             <div class="cart-fav-box d-flex align-items-center mt-50 mb-30">
                 <!-- Cart -->
-                <button type="submit" class="btn essence-btn"
+                <button name="cart" type="submit" class="btn essence-btn"
                     @if ($product->quantity === 0)
                         disabled
                     @endif
@@ -72,9 +72,9 @@
                     @endif
                 </button>
                 <!-- Favourite -->
-                {{-- <div class="product-favourite ml-4">
-                    <a href="#" class="favme fa fa-heart"></a>
-                </div> --}}
+                <div class="product-favourite ml-4">
+                    <button name="wishlist" type="submit" class="favme fa fa-heart btn btn-link @if ($wishlist) active @endif" formaction="{!! route('wishlist.add', ['id' => $product->id]) !!}" @if ($wishlist) disabled @endif></button>
+                </div>
             </div>
         </form>
     </div>

@@ -48,7 +48,7 @@
             @auth
                 <!-- Favourite Area -->
                 <div class="favourite-area">
-                    <a href="#">
+                    <a href="{!! route('account.wishlist') !!}">
                         <i class="fas fa-heart"></i>
                     </a>
                 </div>

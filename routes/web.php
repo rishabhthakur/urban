@@ -108,6 +108,33 @@ Route::group(['prefix' => 'cart'], function() {
     ]);
 });
 
+// Shopping wishlist route group
+Route::group(['prefix' => 'wishlist'], function() {
+
+    // Shopping wishlist page
+    Route::get('/', [
+        'uses' => 'PublicViewsController@wishlist',
+        'as' => 'wishlist'
+    ]);
+
+    // Shopping wishlist page
+    Route::post('/add/{id}', [
+        'uses' => 'WishListController@store',
+        'as' => 'wishlist.add'
+    ]);
+
+    Route::get('/add_cart/{id}', [
+        'uses' => 'WishListController@addToCart',
+        'as' => 'wishlist.add.cart'
+    ]);
+
+    // Shopping wishlist page
+    Route::get('/remove/{id}', [
+        'uses' => 'WishListController@destroy',
+        'as' => 'wishlist.remove'
+    ]);
+});
+
 // Checkout page
 Route::get('/checkout', [
     'uses' => 'PublicViewsController@checkout',
@@ -144,6 +171,12 @@ Route::group(['prefix' => 'account', 'middleware' => 'verified'], function() {
     Route::get('/addresses', [
         'uses' => 'ProfileController@addresses',
         'as' => 'account.addresses'
+    ]);
+
+    // Customer account wishlist
+    Route::get('/wishlist', [
+        'uses' => 'ProfileController@wishlist',
+        'as' => 'account.wishlist'
     ]);
 
     // Customer accounts

@@ -3576,6 +3576,7 @@ return array(
     'Urban\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'Urban\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'Urban\\Providers\\SaveForLater' => $baseDir . '/app/Providers/SaveForLater.php',
+    'Urban\\Providers\\Wishlist' => $baseDir . '/app/Providers/Wishlist.php',
     'Urban\\Review' => $baseDir . '/app/Review.php',
     'Urban\\Role' => $baseDir . '/app/Role.php',
     'Urban\\Settings' => $baseDir . '/app/Settings.php',

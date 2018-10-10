@@ -3,9 +3,8 @@ namespace Urban\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Urban\Product;
-use Cart;
-
 use Urban\Adata;
+use Cart;
 
 class CartController extends Controller {
 

@@ -53,6 +53,9 @@
                             <a class="nav-link" href="{!! route('account.addresses') !!}">Addresses</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{!! route('account.wishlist') !!}">Wish List</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{!! route('account.orders') !!}">Orders</a>
                         </li>
                         <li class="nav-item">

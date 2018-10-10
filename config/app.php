@@ -150,6 +150,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
         Urban\Providers\SaveForLater::class,
+        Urban\Providers\Wishlist::class,
 
         /*
          * Package Service Providers...

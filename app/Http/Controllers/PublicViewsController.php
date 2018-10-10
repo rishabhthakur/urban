@@ -30,7 +30,7 @@ class PublicViewsController extends Controller {
     }
 
     public function index() {
-        // dd(Cart::getContent());
+        dd(app('wishlist')->session(Auth::id())->getContent());
         Cart::clear();
         $products = new Product;
         return view('welcome')->with([
@@ -85,9 +85,30 @@ class PublicViewsController extends Controller {
         ]);
     }
 
+    public function checkWishlist($id) {
+        $wishlist = app('wishlist')->session(Auth::id());
+        if (!$wishlist->isEmpty()) {
+            $items = $wishlist->getContent();
+            foreach ($items as $item) {
+                if ($item->p_id === $id) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+    }
+
     public function product($slug) {
+        $product = Product::where('slug', $slug)->first();
+        if ($this->checkWishlist($product->id)) {
+            $wishlist = true;
+        } else {
+            $wishlist = false;
+        }
         return view('product')->with([
-            'product' => Product::where('slug', $slug)->first()
+            'product' => $product,
+            'wishlist' => $wishlist
         ]);
     }
 
