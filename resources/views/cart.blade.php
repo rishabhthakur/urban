@@ -93,7 +93,7 @@
                             @endif
                         </div>
                         <div class="mt-5 d-flex justify-content-between flex-column flex-lg-row">
-                            <a href="{!! route('home') !!}" class="btn btn-link text-muted px-0">
+                            <a href="{!! route('shop') !!}" class="btn btn-link text-muted px-0">
                                 <i class="fa fa-chevron-left"></i> Continue Shopping
                             </a>
                             @if (count(Cart::getContent()) != 0)

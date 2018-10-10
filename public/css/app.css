@@ -3931,9 +3931,9 @@ input[type="button"].btn-block {
 
 .dropdown-item.active,
 .dropdown-item:active {
-  color: #fff;
+  color: #5e72e4;
   text-decoration: none;
-  background-color: #5e72e4;
+  background-color: #fff;
 }
 
 .dropdown-item.disabled,
@@ -13376,5 +13376,10 @@ table thead {
 table thead tr th {
   font-weight: normal;
   font-size: 90%;
+}
+
+.dropdown-item {
+  font-size: 14px;
+  padding: 0.5rem 1.5rem;
 }
 

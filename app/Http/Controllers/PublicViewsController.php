@@ -30,8 +30,7 @@ class PublicViewsController extends Controller {
     }
 
     public function index() {
-        dd(app('wishlist')->session(Auth::id())->getContent());
-        Cart::clear();
+        // Cart::clear();
         $products = new Product;
         return view('welcome')->with([
             'latest' => $products::where('popular', true)->latest()->take(7)->get()

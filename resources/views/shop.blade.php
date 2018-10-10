@@ -111,8 +111,8 @@
                                     <!-- Sorting -->
                                     <div class="product-sorting d-flex">
                                         <p>Sort by:</p>
-                                        <div class="nice-select sort" tabindex="0">
-                                            <span class="current">
+                                        <div class="dropdown">
+                                            <a class="text-uppercase dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 @switch(request()->sort)
                                                     @case('newest')
                                                         Newest
@@ -126,29 +126,22 @@
                                                     @default
                                                         Highest Rated
                                                 @endswitch
-                                            </span>
-                                            <ul class="list">
-                                                <li class="option @if (request()->sort == null) selected @endif">
-                                                    <a href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'highest']) !!}">
-                                                        Highest Rated
-                                                    </a>
-                                                </li>
-                                                <li class="option @if (request()->sort == 'newest') selected @endif">
-                                                    <a href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'newest']) !!}">
-                                                        Newest
-                                                    </a>
-                                                </li>
-                                                <li class="option @if (request()->sort == 'high_low') selected @endif">
-                                                    <a href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'high_low']) !!}">
-                                                        Price: $$ - $
-                                                    </a>
-                                                </li>
-                                                <li class="option @if (request()->sort == 'low_high') selected @endif">
-                                                    <a href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'low_high']) !!}">
-                                                        Price: $ - $$
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                            </a>
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <a class="dropdown-item text-uppercase @if (request()->sort == null) active @endif" href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'highest']) !!}">
+                                                    Highest Rated
+                                                </a>
+                                                <a class="dropdown-item text-uppercase @if (request()->sort == null) selected @endif" href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'newest']) !!}">
+                                                    Newest
+                                                </a>
+                                                <a class="dropdown-item text-uppercase @if (request()->sort == null) selected @endif" href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'high_low']) !!}">
+                                                    Price: $$ - $
+                                                </a>
+                                                <a class="dropdown-item text-uppercase @if (request()->sort == null) selected @endif" href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'low_high']) !!}">
+                                                    Price: $ - $$
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
