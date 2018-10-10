@@ -40,4 +40,18 @@ class AdminController extends Controller {
             'settings' => new Settings
         ]);
     }
+
+    /**
+ 	 * Block comment
+ 	 *
+ 	 * @param type
+ 	 * @return void
+	 */
+    public function notifications() {
+        $user = Auth::user();
+        $user->unreadNotifications->markAsRead();
+        return view('admin.notifications')->with([
+            'nots' => $user->notifications
+        ]);
+    }
 }

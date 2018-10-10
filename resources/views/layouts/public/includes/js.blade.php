@@ -26,4 +26,5 @@
 </script>
 @yield('address-js')
 @yield('map-js')
+@yield('cart-js')
 @yield('stripe-js')

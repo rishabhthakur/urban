@@ -82,6 +82,30 @@ Route::group(['prefix' => 'cart'], function() {
         'uses' => 'cartController@store',
         'as' => 'cart.add'
     ]);
+
+    // Shopping cart page
+    Route::get('/remove/{id}', [
+        'uses' => 'cartController@destroy',
+        'as' => 'cart.remove'
+    ]);
+
+    // Shopping cart page
+    Route::get('/save/{id}', [
+        'uses' => 'cartController@save',
+        'as' => 'cart.save'
+    ]);
+
+    // Shopping cart page
+    Route::get('/save/restore/{id}', [
+        'uses' => 'cartController@restore_save',
+        'as' => 'cart.save.restore'
+    ]);
+
+    // Shopping cart page
+    Route::get('/save/reomve/{id}', [
+        'uses' => 'cartController@remove_save',
+        'as' => 'cart.save.remove'
+    ]);
 });
 
 // Checkout page
@@ -142,6 +166,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('/log', [
         'uses' => 'AdminController@log',
         'as' => 'admin.log'
+    ]);
+
+    // Admin notifications
+    Route::get('/notifications', [
+        'uses' => 'AdminController@notifications',
+        'as' => 'admin.notifications'
     ]);
 
     // Admin categories routes

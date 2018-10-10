@@ -9,25 +9,31 @@
 
     <div class="cart-content d-flex">
 
-        @if (count(Cart::getContent()) > 0)
+        @if (!Cart::isEmpty())
             <!-- Cart List Area -->
             <div class="cart-list">
                 @foreach (Cart::getContent() as $item)
                     <!-- Single Cart Item -->
                     <div class="single-cart-item">
-                        <a href="#" class="product-image">
+                        <span class="product-image">
                             <img src="{!! asset(getProduct($item->p_id)->medias->first()->url) !!}" class="cart-thumb" alt="" width="100%">
                             <!-- Cart Item Desc -->
                             <div class="cart-item-desc">
-                              <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
+                                <a href="{!! route('cart.remove', ['id' => $item->id]) !!}" class="product-remove">
+                                    <i class="fa fa-close" aria-hidden="true"></i>
+                                </a>
                                 <span class="badge">{{ __(getProduct($item->p_id)->brand->name) }}</span>
                                 <h6>{{ $item->name }}</h6>
                                 @foreach ($item->attributes as $attrb)
                                     <p class="color">{{ $attrb }}</p>
                                 @endforeach
-                                <p class="price">${{ $item->price }}</p>
+                                <p class="color">${{ $item->price }} <span class="ml-1">x {{ $item->quantity }}</span></p>
+
+                                <p class="price">
+                                    ${{ $item->price }}
+                                </p>
                             </div>
-                        </a>
+                        </span>
                     </div>
                 @endforeach
             </div>

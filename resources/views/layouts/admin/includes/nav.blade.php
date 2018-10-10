@@ -27,7 +27,7 @@
                         Visit Public
                     </a>
                     <a class="dropdown-item" href="{!! route('blog') !!}">
-                        <i class="fab fa-blogger-b"></i>
+                        <i class="fas fa-home"></i>
                         Visit Blog
                     </a>
                     <a class="dropdown-item" href="{!! route('shop') !!}">
@@ -57,7 +57,7 @@
                             @include('layouts.admin.includes.nav-notification')
                         </div>
                         <div class="py-2 text-center border-top">
-                            <a href="#">View all</a>
+                            <a href="{!! route('admin.notifications') !!}">View All</a>
                         </div>
                     </div>
                 </li>
@@ -68,8 +68,9 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-item-text">
+                    <div class="dropdown-item">
                         <div>
+                            <img src="{!! Auth::user()->profile->avatar !!}" alt="..." class="rounded-circle float-left mr-2 mt-1" width="36px" height="36px">
                             <small>Signed in as,</small>
                             <h6 class="text-primary">{{ Auth::user()->name }}</h6>
                         </div>

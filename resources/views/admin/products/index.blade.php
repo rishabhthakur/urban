@@ -24,7 +24,6 @@
                                     <i class="fas fa-image"></i>
                                 </th>
                                 <th scope="col">Product</th>
-                                <th scope="col" class="text-center">SKU</th>
                                 <th scope="col" class="text-center">Stock</th>
                                 <th scope="col" class="text-center">Price</th>
                                 <th scope="col">Categories</th>
@@ -40,14 +39,15 @@
                                     </td>
                                     <td>
                                         <a href="{!! route('admin.products.edit', ['id' => $product->id]) !!}" class="text-dark">
+                                            <span class="text-muted">{{ $product->brand->name }}</span>
                                             <h6>
                                                 <strong>{{ $product->name }}</strong>
                                             </h6>
                                         </a>
                                         <small>
-                                            <span class="text-muted">{{ $product->brand->name }}</span>
+                                            <span class="text-muted">ID: <strong>#{{ $product->p_id }}</strong></span>
                                             <span class="mx-1">|</span>
-                                            <span class="text-muted">ID: {{ $product->id }}</span>
+                                            <span class="text-muted">SKU: <strong>@if ($product->sku) {{ $product->sku }} @else N/A @endif</strong></span>
                                         </small>
                                         <ul class="nav justify-content-start">
                                             <li class="nav-item">
@@ -66,9 +66,6 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                    </td>
-                                    <td class="text-center">
-                                        {{ $product->sku }}
                                     </td>
                                     <td class="text-center">
                                         @if ($product->quantity)
@@ -106,7 +103,7 @@
                                     </td>
                                     <td width="10%">
                                         @foreach ($product->tags as $tag)
-                                            <span class="badge badge-info">{{ $tag->name }}</span>
+                                            <span class="badge badge-secondary">{{ $tag->name }}</span>
                                         @endforeach
                                     </td>
                                     <td>

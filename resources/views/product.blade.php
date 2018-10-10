@@ -6,11 +6,15 @@
 
     <!-- Single Product Thumb -->
     <div class="single_product_thumb clearfix">
-        <div class="product_thumbnail_slides owl-carousel">
-            @foreach ($product->medias as $media)
-                <img src="{{ asset($media->url) }}" alt="{{ $product->name }}">
-            @endforeach
-        </div>
+        @if (count($product->medias) > 1)
+            <div class="product_thumbnail_slides owl-carousel">
+                @foreach ($product->medias as $media)
+                    <img src="{{ asset($media->url) }}" alt="{{ $product->name }}">
+                @endforeach
+            </div>
+        @else
+            <img src="{{ asset($product->medias->first()->url) }}" alt="{{ $product->name }}" width="100%">
+        @endif
     </div>
 
     <!-- Single Product Description -->

@@ -79,7 +79,7 @@
             <!-- Cart Area -->
             <div class="cart-area">
                 <a href="#" id="essenceCartBtn">
-                    <i class="fas fa-shopping-cart"></i> <span>{{ count(Cart::getContent()) }}</span>
+                    <i class="fas fa-shopping-cart"></i> <span>{{ Cart::getTotalQuantity() }}</span>
                 </a>
             </div>
         </div>

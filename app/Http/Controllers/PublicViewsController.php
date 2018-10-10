@@ -5,10 +5,12 @@ namespace Urban\Http\Controllers;
 use Cart;
 
 use Urban\Dsettings;
+use Urban\Attribute;
 use Urban\Post;
 use Urban\User;
 use Urban\Tag;
 use Urban\Brand;
+use Urban\Adata;
 use Urban\Product;
 use Urban\Category;
 use Urban\Activity;
@@ -29,7 +31,7 @@ class PublicViewsController extends Controller {
 
     public function index() {
         // dd(Cart::getContent());
-        // Cart::clear();
+        Cart::clear();
         $products = new Product;
         return view('welcome')->with([
             'latest' => $products::where('popular', true)->latest()->take(7)->get()
@@ -65,7 +67,7 @@ class PublicViewsController extends Controller {
                 $products = $products->orderBy('regular_price')->paginate($pagination);
                 break;
             case 'high_low':
-                $products = $products->orderBy('regular_price', 'desc')->paginate($pagination);
+                $products = $products->orderBy('regular_price', 'DESC')->paginate($pagination);
                 break;
             default:
                 $products = $products->paginate($pagination);
@@ -78,7 +80,8 @@ class PublicViewsController extends Controller {
                                     ->where('parent_id', 0)
                                     ->get(),
             'brands' => Brand::all(),
-            'tags', Tag::where('belongs_to', 'product')->get()
+            'tags', Tag::where('belongs_to', 'product')->get(),
+            'colors' => Adata::where('attrb_id', Attribute::where('name', 'color')->first()->id)->get()
         ]);
     }
 
