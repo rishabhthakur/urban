@@ -14,7 +14,7 @@
     <title>{{ __(getSettings()->site_name) . ' | ' . __(getSettings()->tagline) }}</title>
 
     <!-- Stipe JS -->
-    <script src="https://js.stripe.com/v3/"></script>
+    @yield('stripe-init')
 
     @include('layouts.public.includes.css')
 </head>

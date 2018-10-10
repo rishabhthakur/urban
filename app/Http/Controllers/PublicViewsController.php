@@ -157,7 +157,9 @@ class PublicViewsController extends Controller {
 
     public function checkout() {
         if (count(Cart::getContent()) != 0) {
-            return view('checkout');
+            return view('checkout')->with([
+                'bill' => Auth::user()->addresses->where('type', 'billing')->first(),
+            ]);
         } else {
             return redirect(route('cart'))->with([
                 'error' => 'Your shopping cart is empty'

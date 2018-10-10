@@ -11,18 +11,19 @@
   -webkit-transition: box-shadow 150ms ease;
   transition: box-shadow 150ms ease;
   color: #495057;
+  font-family: "Poppins", sans-serif;
 }
 
 .StripeElement--focus {
   color: #495057;
   background-color: #fff;
-  border-color: #80bdff;
+  border-color: #ced4da;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(94, 114, 228, 0.25);
 }
 
 .StripeElement--invalid {
-  border-color: #fa755a;
+  border-color: #f5365c;
 }
 
 .StripeElement--webkit-autofill {
