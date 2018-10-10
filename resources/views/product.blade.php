@@ -20,9 +20,7 @@
     <!-- Single Product Description -->
     <div class="single_product_desc clearfix">
         <span>{{ $product->brand->name }}</span>
-        <a href="cart.html">
-            <h2>{{ $product->name }}</h2>
-        </a>
+        <h2>{{ $product->name }}</h2>
 
         @if ($product->sale_price)
             <p class="product-price"><span class="old-price">${{ $product->regular_price }}</span> ${{ $product->sale_price }}</p>
@@ -73,7 +71,7 @@
                 </button>
                 <!-- Favourite -->
                 <div class="product-favourite ml-4">
-                    <button name="wishlist" type="submit" class="favme fa fa-heart btn btn-link @if ($wishlist) active @endif" formaction="{!! route('wishlist.add', ['id' => $product->id]) !!}" @if ($wishlist) disabled @endif></button>
+                    <button name="wishlist" type="submit" class="favme fa fa-heart btn btn-link" formaction="{!! route('wishlist.add', ['id' => $product->id]) !!}"></button>
                 </div>
             </div>
         </form>

@@ -63,7 +63,6 @@ class WishListController extends Controller {
         if (!$this->wishlist->isEmpty()) {
             $items = $this->wishlist->getContent();
             foreach ($items as $item) {
-                // dd($item->attributes->toArray(), $this->getData($request['attributes']));
                 if ($item->attributes->toArray() === $this->getData($request['attributes'])) {
                     return redirect()->back()->with([
                         'info' => 'Item already in your Wish list.'

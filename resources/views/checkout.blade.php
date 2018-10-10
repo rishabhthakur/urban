@@ -21,7 +21,7 @@
 
     <!-- ##### Checkout Area Start ##### -->
     <div class="checkout_area section-padding-80">
-        <form class="d-inline" action="#" method="post" enctype="multipart/form-data" id="payment-form">
+        <form class="d-inline" action="{!! route('checkout.pay') !!}" method="post" enctype="multipart/form-data" id="payment-form">
             <div class="container">
             <div class="row">
 

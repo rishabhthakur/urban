@@ -6,14 +6,6 @@
             <div class="table-responsive">
                 @if (count($wishlist) != 0)
                     <table class="table table-borderless">
-                        <thead>
-                            <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col"></th>
-                                <th scope="col" class="text-center">Price</th>
-                                <th> </th>
-                            </tr>
-                        </thead>
                         <tbody>
                             @foreach ($wishlist as $item)
                                 <tr>
@@ -23,7 +15,16 @@
                                         </a>
                                     </td>
                                     <td class="align-middle">
-                                        <div class="cart-title text-left">
+                                        <div class="cart-title text-left clearfix">
+                                            <span class="float-right">
+                                                <a href="{!! route('cart.remove', ['id' => $item->id]) !!}">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                                <div class="my-3"></div>
+                                                <a href="{!! route('wishlist.add.cart', ['id' => $item->id]) !!}">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </a>
+                                            </span>
                                             <div>
                                                 <span class="badge text-muted px-0">{{ __(getProduct($item->p_id)->brand->name) }}</span>
                                             </div>
@@ -32,7 +33,10 @@
                                                     <strong>{{ $item->name }}</strong>
                                                 </div>
                                             </a>
-                                            <br>
+                                            <span class="text-primary">
+                                                <strong>${{ $item->price }}</strong>
+                                            </span>
+                                            <div class="my-2"></div>
                                             @foreach ($item->attributes as $attrb)
                                                 <span class="text-muted">
                                                     <small>{{ $attrb }}</small>
@@ -44,18 +48,6 @@
                                                 </small>
                                             </div>
                                         </div>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <strong>${{ $item->price }}</strong>
-                                    </td>
-                                    <td class="align-middle text-right">
-                                        <a href="{!! route('cart.remove', ['id' => $item->id]) !!}">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                        <br>
-                                        <a href="{!! route('wishlist.add.cart', ['id' => $item->id]) !!}">
-                                            <i class="fa fa-shopping-cart"></i>
-                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

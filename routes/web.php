@@ -135,11 +135,21 @@ Route::group(['prefix' => 'wishlist'], function() {
     ]);
 });
 
-// Checkout page
-Route::get('/checkout', [
-    'uses' => 'PublicViewsController@checkout',
-    'as' => 'checkout'
-])->middleware('auth');
+// Checkout routes
+Route::group(['prefix' => 'checkout', 'middleware' => 'auth'], function() {
+
+    // Checkout page
+    Route::get('/', [
+        'uses' => 'PublicViewsController@checkout',
+        'as' => 'checkout'
+    ]);
+
+    /* Payment processing */
+    Route::post('/pay', [
+        'uses' => 'PaymentController@store',
+        'as' => 'checkout.pay'
+    ]);
+});
 
 // Newsletter subscription
 Route::post('/subscribe', [
@@ -185,6 +195,11 @@ Route::group(['prefix' => 'account', 'middleware' => 'verified'], function() {
         'as' => 'account.orders'
     ]);
 });
+
+Route::get('/thankyou', [
+    'uses' => 'PublicViewsController@thankyou',
+    'as' => 'thankyou'
+]);
 
 /* Admin routes */
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {

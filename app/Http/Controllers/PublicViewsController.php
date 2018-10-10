@@ -186,4 +186,13 @@ class PublicViewsController extends Controller {
             ]);
         }
     }
+
+    public function thankyou(Request $request) {
+        if ($request->confirmed) {
+            Cart::clear();
+            return view('thankyou');
+        } else {
+            return redirect(route('home'));
+        }
+    }
 }
