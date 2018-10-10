@@ -227,7 +227,7 @@
 <!-- ##### New Arrivals Area End ##### -->
 
 <!-- ##### Brands Area Start ##### -->
-<div class="brands-area d-flex align-items-center justify-content-between bg-light">
+<div class="brands-area d-flex align-items-center justify-content-between bg-white">
     <!-- Brand Logo -->
     <div class="single-brands-logo">
         <img src="img/core-img/brand1.png" alt="">

@@ -88,10 +88,6 @@ class Product extends Model {
         return $this->belongsTo('Urban\Brand');
     }
 
-    public function wishlists() {
-        return $this->belongsToMany('Urban\Wishlist');
-    }
-
     public function orders() {
         return $this->belongsToMany('Urban\Order');
     }

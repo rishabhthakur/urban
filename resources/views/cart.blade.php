@@ -8,7 +8,7 @@
                 <div class="col-12">
                     <div class="page-title text-center my-5">
                         <h2>Shopping Cart</h2>
-                        <p class="text-muted">You have {{ count(Cart::getContent()) }} items in your shopping cart</p>
+                        <p class="text-muted">You have {{ Cart::getTotalQuantity() }} items in your shopping cart</p>
                     </div>
                 </div>
             </div>
@@ -22,10 +22,10 @@
             <div class="row">
 
                 <div class="col-12 col-md-7 col-lg-8">
-                    <div class="checkout_details_area clearfix">
+                    <div class="checkout_details_area clearfix pr-5 mb-100">
                         <div class="table-responsive">
                             @if (count(Cart::getContent()) != 0)
-                                <table class="table table-borderless">
+                                <table class="table table-borderless mb-5">
                                     <thead>
                                         <tr>
                                             <th scope="col">Product</th>
@@ -66,13 +66,13 @@
                                                     ${{ $item->price }}
                                                 </td>
                                                 <td class="align-middle" width="4%">
-                                                    <input class="form-control" type="number" min="0" value="{{ $item->quantity }}" max="{{ __(getProduct($item->p_id)->quantity) }}" />
+                                                    <input class="form-control quantity" type="number" name="quantity" min="1" value="{{ $item->quantity }}" max="{{ __(getProduct($item->p_id)->quantity) }}" data-route="{!! route('cart.update', ['id' => $item->id]) !!}"/>
                                                 </td>
                                                 <td class="align-middle text-right">
                                                     <strong>${{ $item->price * $item->quantity }}</strong>
                                                 </td>
                                                 <td class="align-middle text-right">
-                                                    <a href="#">
+                                                    <a href="{!! route('cart.remove', ['id' => $item->id]) !!}">
                                                         <i class="fa fa-times"></i>
                                                     </a>
                                                 </td>
@@ -83,13 +83,13 @@
                             @else
                                 <h4>Your shopping cart is empty</h4>
                                 <p>
-                                    Make sure to sign up for a new account or sign in to your account<br />
+                                    Make sure to <a href="{!! route('register') !!}">sign up</a> for a new account or <a href="{!! route('login') !!}">sign in</a> to your account<br />
                                     before you proceed to the checkout page.
                                 </p>
                             @endif
                         </div>
-                        <div class="my-5 d-flex justify-content-between flex-column flex-lg-row">
-                            <a href="{!! route('home') !!}" class="btn btn-link text-muted">
+                        <div class="mt-5 d-flex justify-content-between flex-column flex-lg-row">
+                            <a href="{!! route('shop') !!}" class="btn btn-link text-muted px-0">
                                 <i class="fa fa-chevron-left"></i> Continue Shopping
                             </a>
                             @if (count(Cart::getContent()) != 0)
@@ -121,4 +121,30 @@
         </div>
     </div>
     <!-- ##### Checkout Area End ##### -->
+@endsection
+
+
+@section('cart-js')
+    <script type="text/javascript">
+        (function() {
+            const classname = document.querySelectorAll('.quantity');
+            Array.from(classname).forEach(function(element) {
+                element.addEventListener('change', function(element) {
+                    const route = this.getAttribute('data-route');
+                    console.log(route);
+                    axios.post(route, {
+                        quantity: this.value
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                        window.location.href = '{{ route('cart') }}';
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        window.location.href = '{{ route('cart') }}';
+                    });
+                });
+            });
+        }());
+    </script>
 @endsection

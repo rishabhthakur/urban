@@ -7,4 +7,3 @@
 <link href="{{ asset('css/import.css') }}" rel="stylesheet">
 <link href="{{ asset('css/stripe.css') }}" rel="stylesheet">
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<link href="{{ asset('css/resets.css') }}" rel="stylesheet">

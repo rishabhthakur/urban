@@ -79,6 +79,17 @@ class ProfileController extends Controller {
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function wishlist() {
+        return view('auth.account.wishlist')->with([
+            'wishlist' => app('wishlist')->session(Auth::id())->getContent()
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

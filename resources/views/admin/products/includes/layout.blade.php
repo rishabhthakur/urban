@@ -5,7 +5,12 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-                <h6 class="heading mb-5">Add New {{ __($array_type) }}</h6>
+                <h6 class="heading">Add New {{ __($array_type) }}</h6>
+                <p class="text-muted mb-5">
+                    <small>
+                        <strong>Note:</strong> Deleting a term will remove it from all products and variations to which it has been assigned. Recreating a term will not automatically assign it back to products.
+                    </small>
+                </p>
                 <form action="{{ $route }}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">

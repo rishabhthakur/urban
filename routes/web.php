@@ -82,13 +82,62 @@ Route::group(['prefix' => 'cart'], function() {
         'uses' => 'cartController@store',
         'as' => 'cart.add'
     ]);
+
+    // Shopping cart page
+    Route::get('/remove/{id}', [
+        'uses' => 'cartController@destroy',
+        'as' => 'cart.remove'
+    ]);
+
+    // Shopping cart page
+    Route::post('/update/{id}', [
+        'uses' => 'cartController@update',
+        'as' => 'cart.update'
+    ]);
 });
 
-// Checkout page
-Route::get('/checkout', [
-    'uses' => 'PublicViewsController@checkout',
-    'as' => 'checkout'
-])->middleware('auth');
+// Shopping wishlist route group
+Route::group(['prefix' => 'wishlist'], function() {
+
+    // Shopping wishlist page
+    Route::get('/', [
+        'uses' => 'PublicViewsController@wishlist',
+        'as' => 'wishlist'
+    ]);
+
+    // Shopping wishlist page
+    Route::post('/add/{id}', [
+        'uses' => 'WishListController@store',
+        'as' => 'wishlist.add'
+    ]);
+
+    Route::get('/add_cart/{id}', [
+        'uses' => 'WishListController@addToCart',
+        'as' => 'wishlist.add.cart'
+    ]);
+
+    // Shopping wishlist page
+    Route::get('/remove/{id}', [
+        'uses' => 'WishListController@destroy',
+        'as' => 'wishlist.remove'
+    ]);
+});
+
+// Checkout routes
+Route::group(['prefix' => 'checkout', 'middleware' => 'auth'], function() {
+
+    // Checkout page
+    Route::get('/', [
+        'uses' => 'PublicViewsController@checkout',
+        'as' => 'checkout'
+    ]);
+
+    /* Payment processing */
+    Route::post('/pay', [
+        'uses' => 'PaymentController@store',
+        'as' => 'checkout.pay'
+    ]);
+});
 
 // Newsletter subscription
 Route::post('/subscribe', [
@@ -122,12 +171,23 @@ Route::group(['prefix' => 'account', 'middleware' => 'verified'], function() {
         'as' => 'account.addresses'
     ]);
 
+    // Customer account wishlist
+    Route::get('/wishlist', [
+        'uses' => 'ProfileController@wishlist',
+        'as' => 'account.wishlist'
+    ]);
+
     // Customer accounts
     Route::get('/orders', [
         'uses' => 'ProfileController@orders',
         'as' => 'account.orders'
     ]);
 });
+
+Route::get('/thankyou', [
+    'uses' => 'PublicViewsController@thankyou',
+    'as' => 'thankyou'
+]);
 
 /* Admin routes */
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
@@ -142,6 +202,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('/log', [
         'uses' => 'AdminController@log',
         'as' => 'admin.log'
+    ]);
+
+    // Admin notifications
+    Route::get('/notifications', [
+        'uses' => 'AdminController@notifications',
+        'as' => 'admin.notifications'
     ]);
 
     // Admin categories routes

@@ -33,7 +33,7 @@
                                     <!-- Single Item -->
                                     @foreach ($categories as $category)
                                       <li>
-                                          <a href="#">{{ $category->name }}</a>
+                                          <a href="{!! route('shop', ['category' => $category->slug]) !!}">{{ $category->name }}</a>
                                           <ul class="sub-menu show" id="category{{ $category->id }}">
                                               @foreach ($category->children as $child)
                                                 <li>
@@ -48,7 +48,7 @@
                         </div>
 
                         <!-- ##### Single Widget ##### -->
-                        {{-- <div class="widget price mb-50">
+                        <div class="widget price mb-50">
                             <!-- Widget Title -->
                             <h6 class="widget-title mb-30">Filter by</h6>
                             <!-- Widget Title 2 -->
@@ -63,27 +63,24 @@
                                     <div class="range-price">Range: $49.00 - $360.00</div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
 
                         <!-- ##### Single Widget ##### -->
-                        {{-- <div class="widget color mb-50">
-                            <!-- Widget Title 2 -->
-                            <p class="widget-title2 mb-30">Color</p>
-                            <div class="widget-desc">
-                                <ul class="d-flex">
-                                    <li><a href="#" class="color1"></a></li>
-                                    <li><a href="#" class="color2"></a></li>
-                                    <li><a href="#" class="color3"></a></li>
-                                    <li><a href="#" class="color4"></a></li>
-                                    <li><a href="#" class="color5"></a></li>
-                                    <li><a href="#" class="color6"></a></li>
-                                    <li><a href="#" class="color7"></a></li>
-                                    <li><a href="#" class="color8"></a></li>
-                                    <li><a href="#" class="color9"></a></li>
-                                    <li><a href="#" class="color10"></a></li>
-                                </ul>
+                        @if (count($colors) > 0)
+                            <div class="widget brands mb-50">
+                                <!-- Widget Title 2 -->
+                                <p class="widget-title2 mb-30">Color</p>
+                                <div class="widget-desc">
+                                    <ul>
+                                        @foreach ($colors as $color)
+                                          <li>
+                                            <a href="#">{{ $color->name }}</a>
+                                          </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
-                        </div> --}}
+                        @endif
 
                         <!-- ##### Single Widget ##### -->
                         <div class="widget brands mb-50">
@@ -114,54 +111,38 @@
                                     <!-- Sorting -->
                                     <div class="product-sorting d-flex">
                                         <p>Sort by:</p>
-                                        <div class="nice-select sort" tabindex="0">
-                                          <span class="current">
-                                            @switch(request()->sort)
-                                              @case('newest')
-                                                Newest
-                                                @break
-                                              @case('high_low')
-                                                Price: $$ - $
-                                                @break
-                                              @case('low_high')
-                                                Price: $ - $$
-                                                @break
-                                              @default
-                                                Highest Rated
-                                            @endswitch
-                                          </span>
-                                          <ul class="list">
-                                            <li class="option @if (request()->sort == null) selected @endif">
-                                              <a href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'highest']) !!}">
-                                                Highest Rated
-                                              </a>
-                                            </li>
-                                            <li class="option @if (request()->sort == 'newest') selected @endif">
-                                              <a href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'newest']) !!}">
-                                                Newest
-                                              </a>
-                                            </li>
-                                            <li class="option @if (request()->sort == 'high_low') selected @endif">
-                                              <a href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'high_low']) !!}">
-                                                Price: $$ - $
-                                              </a>
-                                            </li>
-                                            <li class="option @if (request()->sort == 'low_high') selected @endif">
-                                              <a href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'low_high']) !!}">
-                                                Price: $ - $$
-                                              </a>
-                                            </li>
-                                          </ul>
+                                        <div class="dropdown">
+                                            <a class="text-uppercase dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                @switch(request()->sort)
+                                                    @case('newest')
+                                                        Newest
+                                                        @break
+                                                    @case('high_low')
+                                                        Price: $$ - $
+                                                        @break
+                                                    @case('low_high')
+                                                        Price: $ - $$
+                                                        @break
+                                                    @default
+                                                        Highest Rated
+                                                @endswitch
+                                            </a>
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <a class="dropdown-item text-uppercase @if (request()->sort == null) active @endif" href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'highest']) !!}">
+                                                    Highest Rated
+                                                </a>
+                                                <a class="dropdown-item text-uppercase @if (request()->sort == null) selected @endif" href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'newest']) !!}">
+                                                    Newest
+                                                </a>
+                                                <a class="dropdown-item text-uppercase @if (request()->sort == null) selected @endif" href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'high_low']) !!}">
+                                                    Price: $$ - $
+                                                </a>
+                                                <a class="dropdown-item text-uppercase @if (request()->sort == null) selected @endif" href="{!! route('shop', ['category' => request()->category, 'brand' => request()->brand, 'sort' => 'low_high']) !!}">
+                                                    Price: $ - $$
+                                                </a>
+                                            </div>
                                         </div>
-                                        {{-- <form method="get">
-                                          <select name="select" id="sortByselect" class="sort" data-route="{!! route('shop', ['category' => request()->category, 'sort' => '']) !!}">
-                                            <option value="value">Highest Rated</option>
-                                            <option value="new">Newest</option>
-                                            <option value="high_low">Price: $$ - $</option>
-                                            <option value="low_high">Price: $ - $$</option>
-                                          </select>
-                                          <input type="submit" class="d-none" value="">
-                                        </form> --}}
                                     </div>
                                 </div>
                             </div>

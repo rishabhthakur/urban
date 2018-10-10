@@ -3,11 +3,14 @@ namespace Urban\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Urban\Product;
+use Urban\Adata;
 use Cart;
 
-use Urban\Adata;
+use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller {
+
+    public $duplicate;
 
     /**
     * Display a listing of the resource.
@@ -42,20 +45,27 @@ class CartController extends Controller {
     * @return \Illuminate\Http\Response
     */
     public function store(Request $request, $id) {
-        // dd($this->getData($request['attributes']));
+
         $product = Product::find($id);
+
+        if (!Cart::isEmpty()) {
+            $items = Cart::getContent();
+            foreach ($items as $item) {
+                // dd($item->attributes->toArray(), $this->getData($request['attributes']));
+                if ($item->attributes->toArray() === $this->getData($request['attributes'])) {
+                    $this->quickUpdate($request, $item->id);
+                    return redirect()->back()->with([
+                        'success' => 'Cart updated.'
+                    ]);
+                }
+            }
+        }
 
         if($product->sale_price) {
             $price = $product->sale_price;
         } else {
             $price = $product->regular_price;
         }
-
-        // if(isset($request->qty)) {
-        //     $quantity = $request->qty;
-        // } else {
-        //     $quantity = 1;
-        // }
 
         $cartItem = Cart::add([
             'id' => uniqid(),
@@ -78,49 +88,11 @@ class CartController extends Controller {
             )
         ));
 
-        return redirect()->back()->with('success', 'Item added to cart.');
+        return redirect()->back()->with([
+            'success' => 'Item added to cart.'
+        ]);
     }
 
-    // public function quick_add($id) {
-    //
-    //   $product = Product::find($id);
-    //   if($product->sale_price) {
-    //     $price = $product->sale_price;
-    //   } else {
-    //     $price = $product->regular_price;
-    //   }
-    //
-    //   $cartItem = Cart::add([
-    //     'id' => $product->id,
-    //     'name' => $product->name,
-    //     'image' => $product->image,
-    //     'qty' => 1,
-    //     'price' => $price,
-    //     'size' => 'M'
-    //   ]);
-    //
-    //   Cart::associate($cartItem->rowId, 'Urban\product');
-    //
-    //   return redirect()->back();
-    // }
-    /**
-    * Display the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function show($id) {
-      //
-    }
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function edit($id) {
-      //
-    }
     /**
     * Update the specified resource in storage.
     *
@@ -128,19 +100,48 @@ class CartController extends Controller {
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, $rowId) {
-        Cart::update($rowId, ['qty' => request()->quantity]);
-        session()->flash('success', 'Cart was updated.');
-        return response()->json(['success' => true]);
+    public function quickUpdate(Request $request, $id) {
+        if (isset($request->quantity)) {
+            $quantity = $request->quantity;
+        } else {
+            $quantity = 1;
+        }
+
+        Cart::update($id, array(
+            'quantity' => $quantity,
+        ));
     }
+
+    /**
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+    public function update(Request $request, $id) {
+        Cart::update($id, array(
+            'quantity' => array(
+                'relative' => false,
+                'value' => $request->quantity
+            ),
+        ));
+        session()->flash('success', 'Cart updated.');
+        return response()->json([
+            'success' => true
+        ], 200);
+    }
+
     /**
     * Remove the specified resource from storage.
     *
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function destroy($rowId) {
-        Cart::remove($rowId);
-        return redirect()->back()->with('success', 'Item removed from cart.');
+    public function destroy($id) {
+        Cart::remove($id);
+        return redirect()->back()->with([
+            'success' => 'Item removed from cart.'
+        ]);
     }
 }

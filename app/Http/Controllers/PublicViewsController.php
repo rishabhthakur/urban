@@ -5,10 +5,12 @@ namespace Urban\Http\Controllers;
 use Cart;
 
 use Urban\Dsettings;
+use Urban\Attribute;
 use Urban\Post;
 use Urban\User;
 use Urban\Tag;
 use Urban\Brand;
+use Urban\Adata;
 use Urban\Product;
 use Urban\Category;
 use Urban\Activity;
@@ -28,7 +30,7 @@ class PublicViewsController extends Controller {
     }
 
     public function index() {
-        dd(Cart::getContent());
+        // dd(Cart::getContent());
         // Cart::clear();
         $products = new Product;
         return view('welcome')->with([
@@ -65,7 +67,7 @@ class PublicViewsController extends Controller {
                 $products = $products->orderBy('regular_price')->paginate($pagination);
                 break;
             case 'high_low':
-                $products = $products->orderBy('regular_price', 'desc')->paginate($pagination);
+                $products = $products->orderBy('regular_price', 'DESC')->paginate($pagination);
                 break;
             default:
                 $products = $products->paginate($pagination);
@@ -78,13 +80,39 @@ class PublicViewsController extends Controller {
                                     ->where('parent_id', 0)
                                     ->get(),
             'brands' => Brand::all(),
-            'tags', Tag::where('belongs_to', 'product')->get()
+            'tags', Tag::where('belongs_to', 'product')->get(),
+            'colors' => Adata::where('attrb_id', Attribute::where('name', 'color')->first()->id)->get()
         ]);
     }
 
+    public function checkWishlist($id) {
+        $wishlist = app('wishlist')->session(Auth::id());
+        if (!$wishlist->isEmpty()) {
+            $items = $wishlist->getContent();
+            foreach ($items as $item) {
+                if ($item->p_id === $id) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+    }
+
     public function product($slug) {
+        $product = Product::where('slug', $slug)->first();
+        if (Auth::check()) {
+            if ($this->checkWishlist($product->id)) {
+                $wishlist = true;
+            } else {
+                $wishlist = false;
+            }
+        } else {
+            $wishlist = false;
+        }
         return view('product')->with([
-            'product' => Product::where('slug', $slug)->first()
+            'product' => $product,
+            'wishlist' => $wishlist
         ]);
     }
 
@@ -154,11 +182,22 @@ class PublicViewsController extends Controller {
 
     public function checkout() {
         if (count(Cart::getContent()) != 0) {
-            return view('checkout');
+            return view('checkout')->with([
+                'bill' => Auth::user()->addresses->where('type', 'billing')->first(),
+            ]);
         } else {
             return redirect(route('cart'))->with([
                 'error' => 'Your shopping cart is empty'
             ]);
+        }
+    }
+
+    public function thankyou(Request $request) {
+        if ($request->confirmed) {
+            Cart::clear();
+            return view('thankyou');
+        } else {
+            return redirect(route('home'));
         }
     }
 }

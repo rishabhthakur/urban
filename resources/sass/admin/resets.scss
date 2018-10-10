@@ -44,3 +44,7 @@ main {
 .badge-secondary {
     background-color: #eee;
 }
+
+.list-group-item:first-child {
+    border: none;
+}

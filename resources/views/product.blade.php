@@ -6,19 +6,21 @@
 
     <!-- Single Product Thumb -->
     <div class="single_product_thumb clearfix">
-        <div class="product_thumbnail_slides owl-carousel">
-            @foreach ($product->medias as $media)
-                <img src="{{ asset($media->url) }}" alt="{{ $product->name }}">
-            @endforeach
-        </div>
+        @if (count($product->medias) > 1)
+            <div class="product_thumbnail_slides owl-carousel">
+                @foreach ($product->medias as $media)
+                    <img src="{{ asset($media->url) }}" alt="{{ $product->name }}">
+                @endforeach
+            </div>
+        @else
+            <img src="{{ asset($product->medias->first()->url) }}" alt="{{ $product->name }}" width="100%">
+        @endif
     </div>
 
     <!-- Single Product Description -->
     <div class="single_product_desc clearfix">
         <span>{{ $product->brand->name }}</span>
-        <a href="cart.html">
-            <h2>{{ $product->name }}</h2>
-        </a>
+        <h2>{{ $product->name }}</h2>
 
         @if ($product->sale_price)
             <p class="product-price"><span class="old-price">${{ $product->regular_price }}</span> ${{ $product->sale_price }}</p>
@@ -56,7 +58,7 @@
             <!-- Cart & Favourite Box -->
             <div class="cart-fav-box d-flex align-items-center mt-50 mb-30">
                 <!-- Cart -->
-                <button type="submit" class="btn essence-btn"
+                <button name="cart" type="submit" class="btn essence-btn"
                     @if ($product->quantity === 0)
                         disabled
                     @endif
@@ -67,10 +69,12 @@
                         Add to cart
                     @endif
                 </button>
-                <!-- Favourite -->
-                {{-- <div class="product-favourite ml-4">
-                    <a href="#" class="favme fa fa-heart"></a>
-                </div> --}}
+                @if (Auth::check())
+                    <!-- Favourite -->
+                    <div class="product-favourite ml-4">
+                        <button name="wishlist" type="submit" class="favme fa fa-heart btn btn-link" formaction="{!! route('wishlist.add', ['id' => $product->id]) !!}"></button>
+                    </div>
+                @endif
             </div>
         </form>
     </div>
