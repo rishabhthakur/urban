@@ -30,6 +30,7 @@ class PublicViewsController extends Controller {
     }
 
     public function index() {
+        // dd(Cart::getContent());
         // Cart::clear();
         $products = new Product;
         return view('welcome')->with([
@@ -100,8 +101,12 @@ class PublicViewsController extends Controller {
 
     public function product($slug) {
         $product = Product::where('slug', $slug)->first();
-        if ($this->checkWishlist($product->id)) {
-            $wishlist = true;
+        if (Auth::check()) {
+            if ($this->checkWishlist($product->id)) {
+                $wishlist = true;
+            } else {
+                $wishlist = false;
+            }
         } else {
             $wishlist = false;
         }

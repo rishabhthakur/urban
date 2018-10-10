@@ -25,7 +25,7 @@
                     <div class="checkout_details_area clearfix pr-5 mb-100">
                         <div class="table-responsive">
                             @if (count(Cart::getContent()) != 0)
-                                <table class="table table-borderless">
+                                <table class="table table-borderless mb-5">
                                     <thead>
                                         <tr>
                                             <th scope="col">Product</th>
@@ -66,7 +66,7 @@
                                                     ${{ $item->price }}
                                                 </td>
                                                 <td class="align-middle" width="4%">
-                                                    <input class="form-control" type="number" min="0" value="{{ $item->quantity }}" max="{{ __(getProduct($item->p_id)->quantity) }}" />
+                                                    <input class="form-control quantity" type="number" name="quantity" min="1" value="{{ $item->quantity }}" max="{{ __(getProduct($item->p_id)->quantity) }}" data-route="{!! route('cart.update', ['id' => $item->id]) !!}"/>
                                                 </td>
                                                 <td class="align-middle text-right">
                                                     <strong>${{ $item->price * $item->quantity }}</strong>
@@ -74,10 +74,6 @@
                                                 <td class="align-middle text-right">
                                                     <a href="{!! route('cart.remove', ['id' => $item->id]) !!}">
                                                         <i class="fa fa-times"></i>
-                                                    </a>
-                                                    <br>
-                                                    <a href="{!! route('cart.save', ['id' => $item->id]) !!}">
-                                                        <i class="fa fa-save"></i>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -101,77 +97,6 @@
                                     Proceed to checkout <i class="fa fa-chevron-right"></i>
                                 </a>
                             @endif
-                        </div>
-                    </div>
-                    <div class="checkout_details_area clearfix pr-5 mt-100">
-                        <div class="d-flex justify-content-between flex-column flex-lg-row">
-                            <div class="table-responsive">
-                                @if (count(app('saveForLater')->getContent()) != 0)
-                                    <h4>Items saved for later</h4>
-                                    <p class="text-muted mb-5">You have {{ app('saveForLater')->getTotalQuantity() }} items in your saved for later list</p>
-                                    <table class="table table-borderless">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Product</th>
-                                                <th scope="col"></th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col" class="text-center">Quantity</th>
-                                                <th scope="col" class="text-right">Total</th>
-                                                <th> </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (app('saveForLater')->getContent() as $item)
-                                                <tr>
-                                                    <td width="15%">
-                                                        <a href="{!! route('product', ['slug' => getProduct($item->p_id)->slug]) !!}">
-                                                            <img src="{!! asset(getProduct($item->p_id)->medias->first()->url) !!}" width="100%" />
-                                                        </a>
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        <div class="cart-title text-left">
-                                                            <div>
-                                                                <span class="badge text-muted px-0">{{ __(getProduct($item->p_id)->brand->name) }}</span>
-                                                            </div>
-                                                            <a href="{!! route('product', ['slug' => getProduct($item->p_id)->slug]) !!}" class="text-dark h6">
-                                                                <div>
-                                                                    <strong>{{ $item->name }}</strong>
-                                                                </div>
-                                                            </a>
-                                                            <br>
-                                                            @foreach ($item->attributes as $attrb)
-                                                                <span class="text-muted">
-                                                                    <small>{{ $attrb }}</small>
-                                                                </span><br />
-                                                            @endforeach
-                                                        </div>
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        ${{ $item->price }}
-                                                    </td>
-                                                    <td class="align-middle" width="4%">
-                                                        <input class="form-control" type="number" min="0" value="{{ $item->quantity }}" max="{{ __(getProduct($item->p_id)->quantity) }}" />
-                                                    </td>
-                                                    <td class="align-middle text-right">
-                                                        <strong>${{ $item->price * $item->quantity }}</strong>
-                                                    </td>
-                                                    <td class="align-middle text-right">
-                                                        <a href="{!! route('cart.save.remove', ['id' => $item->id]) !!}">
-                                                            <i class="fa fa-times"></i>
-                                                        </a>
-                                                        <br>
-                                                        <a href="{!! route('cart.save.restore', ['id' => $item->id]) !!}">
-                                                            <i class="fas fa-shopping-cart"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                @else
-                                    {{--  --}}
-                                @endif
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -205,9 +130,9 @@
             const classname = document.querySelectorAll('.quantity');
             Array.from(classname).forEach(function(element) {
                 element.addEventListener('change', function(element) {
-                    const item = this.getAttribute('data-route')
-                    // console.log(item);
-                    axios.post(item, {
+                    const route = this.getAttribute('data-route');
+                    console.log(route);
+                    axios.post(route, {
                         quantity: this.value
                     })
                     .then(function (response) {
@@ -216,6 +141,7 @@
                     })
                     .catch(function (error) {
                         console.log(error);
+                        window.location.href = '{{ route('cart') }}';
                     });
                 });
             });

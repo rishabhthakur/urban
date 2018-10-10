@@ -151,6 +151,7 @@ return [
         Darryldecode\Cart\CartServiceProvider::class,
         Urban\Providers\SaveForLater::class,
         Urban\Providers\Wishlist::class,
+        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -214,7 +215,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         // 'Cart' => Darryldecode\Cart\Cart::class
     ],
 

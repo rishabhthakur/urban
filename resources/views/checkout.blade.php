@@ -135,13 +135,29 @@
                             @endforelse
                             <li><span>Subtotal</span> <span>${{ Cart::getSubTotal() }}</span></li>
                             <li><span>Shipping</span> <span>Free</span></li>
-                            <li><span>Total</span> <span>${{ Cart::getTotal() }}</span></li>
+                            <li><span>Total </span>
+                                <span class="h5 pt-2">
+                                    <strong>${{ Cart::getTotal() }}</strong>
+                                </span>
+                            </li>
                         </ul>
+
+                        <div class="mt-5">
+                            <div class="form-group">
+                                <label for="">Have a Coupon Code?</label>
+                                <div class="coupon_input_container">
+                                    <input type="text" name="coupon" class="form-control border-0" placeholder="Apply Coupon">
+                                    <button type="submit" class="submit_btn">
+                                        <i aria-hidden="true" class="fa fa-long-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="mb-4 mt-5">
                             <h5 class="mb-4">Pay with stripe</h5>
                             <p class="text-muted">
-                                Pay with your credit card via Stripe. TEST MODE ENABLED. In test mode, you can use the card number 4242424242424242 with any CVC and a valid expiration date or check the Testing Stripe documentation for more card numbers.
+                                Pay with your credit card via Stripe.
                             </p>
                             <div class="mt-3">
                                 <div class="form-group">
@@ -221,12 +237,12 @@
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         var options = {
-            name: document.getElementById('name_on_card');
-            address_line1: document.getElementById('address1');
-            address_line2: document.getElementById('address2');
-            address_city: document.getElementById('city');
-            address_state: document.getElementById('state');
-            address_zip: document.getElementById('postcode');
+            name: document.getElementById('name_on_card'),
+            address_line1: document.getElementById('address1'),
+            address_line2: document.getElementById('address2'),
+            address_city: document.getElementById('city'),
+            address_state: document.getElementById('state'),
+            address_zip: document.getElementById('postcode')
         }
         stripe.createToken(card, options).then(function(result) {
             if (result.error) {

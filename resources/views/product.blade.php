@@ -69,10 +69,12 @@
                         Add to cart
                     @endif
                 </button>
-                <!-- Favourite -->
-                <div class="product-favourite ml-4">
-                    <button name="wishlist" type="submit" class="favme fa fa-heart btn btn-link" formaction="{!! route('wishlist.add', ['id' => $product->id]) !!}"></button>
-                </div>
+                @if (Auth::check())
+                    <!-- Favourite -->
+                    <div class="product-favourite ml-4">
+                        <button name="wishlist" type="submit" class="favme fa fa-heart btn btn-link" formaction="{!! route('wishlist.add', ['id' => $product->id]) !!}"></button>
+                    </div>
+                @endif
             </div>
         </form>
     </div>

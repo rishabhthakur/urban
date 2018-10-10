@@ -6,6 +6,8 @@ use Urban\Product;
 use Urban\Adata;
 use Cart;
 
+use Illuminate\Support\Facades\Validator;
+
 class CartController extends Controller {
 
     public $duplicate;
@@ -92,101 +94,6 @@ class CartController extends Controller {
     }
 
     /**
-    * Display the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function save($id) {
-
-        $item = Cart::get($id);
-
-        $saveForLater = app('saveForLater');
-
-        if (!$saveForLater->isEmpty()) {
-            $list = $saveForLater->getContent();
-            foreach ($list as $listItem) {
-                // dd($item->attributes->toArray(), $this->getData($request['attributes']));
-                if ($listItem->attributes->toArray() === $item->attributes->toArray()) {
-                    $this->quickUpdateSave($item, $listItem->id);
-                    Cart::remove($id);
-                    return redirect()->back()->with([
-                        'success' => 'Cart updated.'
-                    ]);
-                }
-            }
-        }
-
-        Cart::remove($id);
-
-        $saveForLater->add([
-            'id' => $item->id,
-            'p_id' => $item->p_id,
-            'name' => $item->name,
-            'price' => $item->price,
-            'quantity' => $item->quantity,
-            'attributes' => $item->attributes->toArray()
-        ]);
-
-        return back()->with([
-            'success' => ' Item saved for later.'
-        ]);
-    }
-
-    /**
-    * Display the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function restore_save($id) {
-        $item = app('saveForLater')->get($id);
-        app('saveForLater')->remove($id);
-        Cart::add([
-            'id' => $item->id,
-            'p_id' => $item->p_id,
-            'name' => $item->name,
-            'price' => $item->price,
-            'quantity' => $item->quantity,
-            'attributes' => $item->attributes->toArray()
-        ]);
-
-        return back()->with([
-            'success' => ' Item added to cart.'
-        ]);
-    }
-
-    public function remove_save($id) {
-        app('saveForLater')->remove($id);
-
-        return back()->with([
-            'success' => ' Item saved for later.'
-        ]);
-    }
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function edit($id) {
-      //
-    }
-
-    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function quickUpdateSave($item, $id) {
-        app('saveForLater')->update($id, array(
-            'quantity' => $item->quantity,
-        ));
-    }
-
-    /**
     * Update the specified resource in storage.
     *
     * @param  \Illuminate\Http\Request  $request
@@ -213,33 +120,18 @@ class CartController extends Controller {
     * @return \Illuminate\Http\Response
     */
     public function update(Request $request, $id) {
-        if (isset($request->quantity)) {
-            $quantity = $request->quantity;
-        } else {
-            $quantity = 1;
-        }
-
         Cart::update($id, array(
-            'quantity' => $quantity,
+            'quantity' => array(
+                'relative' => false,
+                'value' => $request->quantity
+            ),
         ));
-
-        return redirect()->back()->with([
-            'success' => 'Cart updated.'
-        ]);
+        session()->flash('success', 'Cart updated.');
+        return response()->json([
+            'success' => true
+        ], 200);
     }
 
-    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function updateJson(Request $request, $rowId) {
-        Cart::update($rowId, ['qty' => request()->quantity]);
-        session()->flash('success', 'Cart was updated.');
-        return response()->json(['success' => true]);
-    }
     /**
     * Remove the specified resource from storage.
     *

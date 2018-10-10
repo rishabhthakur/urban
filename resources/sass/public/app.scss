@@ -525,10 +525,10 @@ img {
             width: 90px;
             display: block;
             text-align: center;
-            border-left: 1px solid $border-color;
+            border-left: none;
             height: 85px;
             line-height: 80px;
-            background-color: $bg-gray;
+            background-color: $white;
             @media #{$breakpoint-xs} {
                 width: 50px;
                 height: 50px;
@@ -1612,7 +1612,7 @@ img {
 
 .order-details-confirmation {
     width: 100%;
-    border: 2px solid #ebebeb;
+    border: 1px solid #ebebeb;
     padding: 40px;
     @media #{$breakpoint-xs} {
         margin-top: 100px;
@@ -2091,6 +2091,36 @@ label {
                 color: $blue;
             }
         }
+    }
+}
+
+// Coupon code input styles
+.coupon_input_container {
+    position: relative;
+    border-style: dashed;
+    border-color: $input-border-color;
+    color: #444;
+    background-color: #fff;
+    border-width: 1px;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    input {
+        font-size: 13px;
+    }
+    input:focus {
+        border-color: rgba(84,84,84,0.15) !important;
+        background-color: #fafafa;
+        box-shadow: none;
+    }
+    .submit_btn {
+        position: absolute;
+        right: 10px;
+        top: 11px;
+        border: none;
+        outline: none;
+        background: none;
+        cursor: pointer;
     }
 }
 

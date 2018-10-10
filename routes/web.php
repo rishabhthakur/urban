@@ -90,21 +90,9 @@ Route::group(['prefix' => 'cart'], function() {
     ]);
 
     // Shopping cart page
-    Route::get('/save/{id}', [
-        'uses' => 'cartController@save',
-        'as' => 'cart.save'
-    ]);
-
-    // Shopping cart page
-    Route::get('/save/restore/{id}', [
-        'uses' => 'cartController@restore_save',
-        'as' => 'cart.save.restore'
-    ]);
-
-    // Shopping cart page
-    Route::get('/save/reomve/{id}', [
-        'uses' => 'cartController@remove_save',
-        'as' => 'cart.save.remove'
+    Route::post('/update/{id}', [
+        'uses' => 'cartController@update',
+        'as' => 'cart.update'
     ]);
 });
 
