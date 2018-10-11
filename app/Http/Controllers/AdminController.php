@@ -8,6 +8,7 @@ use Urban\Product;
 use Urban\Category;
 use Urban\Stag;
 use Urban\Brand;
+use Urban\Order;
 use Urban\Attribute;
 use Urban\User;
 use Illuminate\Http\Request;
@@ -37,7 +38,8 @@ class AdminController extends Controller {
             'activities' => Activity::orderBy('created_at', 'DESC')->take(7)->get(),
             'products' => new Product,
             'users' => new User,
-            'settings' => new Settings
+            'settings' => new Settings,
+            'orders' => new Order
         ]);
     }
 

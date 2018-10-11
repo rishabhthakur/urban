@@ -6,19 +6,21 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Urban\Order;
 
 class NewOrder extends Notification
 {
     use Queueable;
 
+    public $order;
+
     /**
-     * Create a new notification instance.
+     * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
+    public function __construct(Order $order) {
+        $this->order = $order;
     }
 
     /**
@@ -29,7 +31,7 @@ class NewOrder extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -55,7 +57,8 @@ class NewOrder extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'name' => $this->order->bill_name,
+            'message' => ' placed a new order.'
         ];
     }
 }

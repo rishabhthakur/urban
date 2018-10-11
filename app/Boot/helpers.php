@@ -24,3 +24,24 @@ function salePercentage($rprice, $sprice) {
 function getProduct($id) {
     return Product::find($id);
 }
+
+function getNumbers() {
+    $tax = 21 / 100;
+    $discount = session()->get('coupon')['discount'] ?? 0;
+    $code = session()->get('coupon')['name'] ?? null;
+    $newSubtotal = (Cart::getSubtotal() - $discount);
+    if ($newSubtotal < 0) {
+        $newSubtotal = 0;
+    }
+    $newTax = $newSubtotal * $tax;
+    $newTotal = $newSubtotal * (1 + $tax);
+
+    return collect([
+        'tax' => $tax,
+        'discount' => $discount,
+        'code' => $code,
+        'newSubtotal' => $newSubtotal,
+        'newTax' => $newTax,
+        'newTotal' => $newTotal,
+    ]);
+}

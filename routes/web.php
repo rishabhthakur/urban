@@ -134,7 +134,7 @@ Route::group(['prefix' => 'checkout', 'middleware' => 'auth'], function() {
 
     /* Payment processing */
     Route::post('/pay', [
-        'uses' => 'PaymentController@store',
+        'uses' => 'PaymentsController@store',
         'as' => 'checkout.pay'
     ]);
 });

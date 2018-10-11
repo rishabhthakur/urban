@@ -76,10 +76,10 @@
                                     <a href="#">
                                         Orders
                                     </a>
-                                    <h1 class="mb-0">120</h1>
+                                    <h1 class="mb-0">{{ count($orders->get()) }}</h1>
                                     <div>
                                         <small>
-                                            21 Orders pending
+                                            {{ count($orders->where('shipped', 0)->get()) }} Orders pending
                                         </small>
                                     </div>
                                 </div>

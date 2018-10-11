@@ -2,6 +2,7 @@
 
 namespace Urban\Mail;
 
+use Urban\Order;
 use Urban\Settings;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -30,7 +31,7 @@ class OrderConfirmed extends Mailable
      */
     public function build()
     {
-        return $this->to($this->order->billing_email, $this->order->billing_name)
+        return $this->to($this->order->bill_email, $this->order->bill_name)
                     // ->bcc('another@another.com')
                     ->subject('Order for ' . Settings::first()->site_name)
                     ->markdown('emails.orders.confirmed');

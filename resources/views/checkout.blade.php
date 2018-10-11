@@ -23,7 +23,7 @@
     <div class="checkout_area section-padding-80">
         <form class="d-inline" action="{!! route('checkout.pay') !!}" method="post" enctype="multipart/form-data" id="payment-form">
             <div class="container">
-            <div class="row">
+                <div class="row">
 
                 <div class="col-12 col-md-6">
                     <div class="checkout_details_area clearfix">
@@ -146,10 +146,10 @@
                             <div class="form-group">
                                 <label for="">Have a Coupon Code?</label>
                                 <div class="coupon_input_container">
-                                    <input type="text" name="coupon" class="form-control border-0" placeholder="Apply Coupon">
+                                    {{-- <input type="text" name="coupon" class="form-control border-0" placeholder="Apply Coupon">
                                     <button type="submit" class="submit_btn">
                                         <i aria-hidden="true" class="fa fa-long-arrow-right"></i>
-                                    </button>
+                                    </button> --}}
                                 </div>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                             <div class="mt-3">
                                 <div class="form-group">
                                     <label for="name_on_card">Name on Card</label>
-                                    <input type="text" name="name_on_card" id="name_on_card" class="form-control" placeholder="Name on Card" required>
+                                    <input type="text" name="name_on_card" id="name_on_card" class="form-control" placeholder="Name on Card" value="Thavarshan" required>
                                 </div>
 
                                 <div class="form-group">
@@ -189,7 +189,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
         </form>
     </div>
     <!-- ##### Checkout Area End ##### -->
@@ -237,12 +237,13 @@
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         var options = {
-            name: document.getElementById('name_on_card'),
-            address_line1: document.getElementById('address1'),
-            address_line2: document.getElementById('address2'),
-            address_city: document.getElementById('city'),
-            address_state: document.getElementById('state'),
-            address_zip: document.getElementById('postcode')
+            name: document.getElementById('name_on_card').value,
+            address_line1: document.getElementById('address1').value,
+            address_line2: document.getElementById('address2').value,
+            address_city: document.getElementById('city').value,
+            address_state: document.getElementById('state').value,
+            address_zip: document.getElementById('postcode').value,
+            address_country: document.getElementById('country').value,
         }
         stripe.createToken(card, options).then(function(result) {
             if (result.error) {
