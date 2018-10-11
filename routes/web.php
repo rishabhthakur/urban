@@ -288,6 +288,32 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         ]);
     });
 
+    // Admin sales routes
+    Route::group(['prefix' => 'sales'], function() {
+
+        // Admin orders routes
+        Route::group(['prefix' => 'orders'], function() {
+
+            // Admin orders list
+            Route::get('/', [
+                'uses' => 'OrderController@index',
+                'as' => 'admin.sales.orders'
+            ]);
+
+            // Admin order show
+            Route::get('/{id}', [
+                'uses' => 'OrderController@show',
+                'as' => 'admin.sales.orders.show'
+            ]);
+        });
+
+        // Admin products list
+        Route::get('/coupons', [
+            'uses' => 'SalesController@coupons',
+            'as' => 'admin.sales.coupons'
+        ]);
+    });
+
     // Admin products routes
     Route::group(['prefix' => 'products'], function() {
 

@@ -40,19 +40,19 @@
     </a>
 </li>
 <li>
-    <a href="#sales" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle disabled">
+    <a href="#sales" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
         <i class="fas fa-shopping-cart mr-2"></i>
         Sales
     </a>
     <ul class="collapse list-unstyled" id="sales">
         <li>
-            <a href="#">Orders</a>
+            <a href="{!! route('admin.sales.orders') !!}">Orders</a>
+        </li>
+        <li>
+            <a href="{!! route('admin.sales.coupons') !!}">Coupon</a>
         </li>
         <li>
             <a href="#">Report</a>
-        </li>
-        <li>
-            <a href="#">Revenue</a>
         </li>
         <li>
             <a href="#">Reviews</a>

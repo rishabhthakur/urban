@@ -5,16 +5,16 @@ namespace Urban\Http\Controllers;
 use Urban\Order;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
-{
+class OrderController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        return view('admin.sales.orders.index')->with([
+            'orders' => Order::orderBy('created_at', 'DESC')->get()
+        ]);
     }
 
     /**
@@ -44,9 +44,10 @@ class OrderController extends Controller
      * @param  \Urban\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
-    {
-        //
+    public function show(Order $order, $id) {
+        return view('admin.sales.orders.show')->with([
+            'order' => Order::where('order_no', $id)->first()
+        ]);
     }
 
     /**
