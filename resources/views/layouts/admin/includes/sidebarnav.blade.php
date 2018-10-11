@@ -39,13 +39,20 @@
         Newsletter
     </a>
 </li>
-<li>
+<li
+    @if (
+        Route::currentRouteName() == 'admin.sales.orders' ||
+        Route::currentRouteName() == 'admin.sales.coupon'
+        )
+         class="active"
+    @endif
+>
     <a href="#sales" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
         <i class="fas fa-shopping-cart mr-2"></i>
         Sales
     </a>
     <ul class="collapse list-unstyled" id="sales">
-        <li>
+        <li @if (Route::currentRouteName() == 'admin.sales.orders') class="active" @endif>
             <a href="{!! route('admin.sales.orders') !!}">Orders</a>
         </li>
         <li>

@@ -17660,6 +17660,10 @@ ul ul a {
   background-color: #feefcf !important;
 }
 
+.bg-danger-light {
+  background-color: rgba(245, 54, 92, 0.1) !important;
+}
+
 .border-warning {
   border-left: 15px solid #fb6340;
 }

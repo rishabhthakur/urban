@@ -13415,3 +13415,7 @@ table thead tr th {
   padding: 0.5rem 1.5rem;
 }
 
+button:disabled {
+  cursor: not-allowed;
+}
+

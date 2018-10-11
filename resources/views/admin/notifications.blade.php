@@ -38,7 +38,7 @@
                                             <small>New message.</small>
                                         </span>
                                         @break
-                                    @case("Urban\Notifications\CustomerPurchase")
+                                    @case("Urban\Notifications\NewOrder")
                                         <div>
                                             <strong>{{ $not->data['name'] }}</strong> {{ $not->data['message'] }}
                                         </div>

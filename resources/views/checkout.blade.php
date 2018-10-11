@@ -39,10 +39,24 @@
                                     <div class="col-md-6">
                                         <label for="first_name">First Name <span>*</span></label>
                                         <input type="text" class="form-control" id="first_name" value="{{ Auth::user()->profile->first_name }}" name="first_name" required>
+                                        @if ($errors->has('first_name'))
+                                            <span class="text-danger form-text" role="alert">
+                                                <small>
+                                                    <strong>{{ $errors->first('first_name') }}</strong>
+                                                </small>
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col-md-6">
                                         <label for="last_name">Last Name <span>*</span></label>
                                         <input type="text" class="form-control" id="last_name" value="{{ Auth::user()->profile->last_name }}" name="last_name" required>
+                                        @if ($errors->has('last_name'))
+                                            <span class="text-danger form-text" role="alert">
+                                                <small>
+                                                    <strong>{{ $errors->first('last_name') }}</strong>
+                                                </small>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +72,14 @@
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="phone">Telephone <span>*</span></label>
-                                        <input type="number" class="form-control" id="phone" name="phone" min="0" value="{{ Auth::user()->profile->phone }}" placeholder="Telephone">
+                                        <input type="number" class="form-control" id="phone" name="phone" min="0" value="{{ Auth::user()->profile->phone }}" placeholder="Telephone" reqiured>
+                                        @if ($errors->has('phone'))
+                                            <span class="text-danger form-text" role="alert">
+                                                <small>
+                                                    <strong>{{ $errors->first('phone') }}</strong>
+                                                </small>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -69,18 +90,50 @@
 
                             <div class="col-12 mb-3">
                                 <label for="address">Address <span>*</span></label>
-                                <input type="text" class="form-control mb-3" id="address1" name="address1" value="{{ $bill->address1 }}" placeholder="Street Address, P.O. box">
+                                <input type="text" class="form-control mb-3" id="address1" name="address1" value="{{ $bill->address1 }}" placeholder="Street Address, P.O. box" required>
+                                @if ($errors->has('address1'))
+                                    <div class="mb-3">
+                                        <span class="text-danger form-text" role="alert">
+                                            <small>
+                                                <strong>{{ $errors->first('address1') }}</strong>
+                                            </small>
+                                        </span>
+                                    </div>
+                                @endif
                                 <input type="text" class="form-control" id="address2" name="address2" value="{{ $bill->address12 }}" placeholder="Apartment, suite, unit, building, floor, etc,">
+                                @if ($errors->has('address2'))
+                                    <div class="mb-3">
+                                        <span class="text-danger form-text" role="alert">
+                                            <small>
+                                                <strong>{{ $errors->first('address2') }}</strong>
+                                            </small>
+                                        </span>
+                                    </div>
+                                @endif
                             </div>
                             <div class="col-12 mb-3">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="postcode">Postcode <span>*</span></label>
-                                        <input type="text" class="form-control" id="postcode" name="postcode" value="{{ $bill->postcode }}">
+                                        <input type="text" class="form-control" id="postcode" name="postcode" value="{{ $bill->postcode }}" required>
+                                        @if ($errors->has('postcode'))
+                                            <span class="text-danger form-text" role="alert">
+                                                <small>
+                                                    <strong>{{ $errors->first('postcode') }}</strong>
+                                                </small>
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="city">Town/City <span>*</span></label>
-                                        <input type="text" class="form-control" id="city" name="city" value="{{ $bill->town_city }}">
+                                        <input type="text" class="form-control" id="city" name="city" value="{{ $bill->town_city }}" required>
+                                        @if ($errors->has('city'))
+                                            <span class="text-danger form-text" role="alert">
+                                                <small>
+                                                    <strong>{{ $errors->first('city') }}</strong>
+                                                </small>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -88,21 +141,35 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="state">Province <span>*</span></label>
-                                        <input type="text" class="form-control" id="state" name="state" value="{{ $bill->province_state }}">
+                                        <input type="text" class="form-control" id="state" name="state" value="{{ $bill->province_state }}" required>
+                                        @if ($errors->has('state'))
+                                            <span class="text-danger form-text" role="alert">
+                                                <small>
+                                                    <strong>{{ $errors->first('state') }}</strong>
+                                                </small>
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="country">Country <span>*</span></label>
-                                        <select class="w-100" id="country" name="country">
+                                        <select class="w-100" id="country" name="country" required>
                                             <option selected value="{{ $bill->country }}">{{ $bill->country }}</option>
-                                            <option value="usa">United States</option>
-                                            <option value="uk">United Kingdom</option>
-                                            <option value="ger">Germany</option>
-                                            <option value="fra">France</option>
-                                            <option value="ind">India</option>
-                                            <option value="aus">Australia</option>
-                                            <option value="bra">Brazil</option>
-                                            <option value="cana">Canada</option>
+                                            <option value="United States">United States</option>
+                                            <option value="United Kingdom">United Kingdom</option>
+                                            <option value="Germany">Germany</option>
+                                            <option value="France">France</option>
+                                            <option value="India">India</option>
+                                            <option value="Australia">Australia</option>
+                                            <option value="Brazil">Brazil</option>
+                                            <option value="Canada">Canada</option>
                                         </select>
+                                        @if ($errors->has('country'))
+                                            <span class="text-danger form-text" role="alert">
+                                                <small>
+                                                    <strong>{{ $errors->first('country') }}</strong>
+                                                </small>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -146,10 +213,17 @@
                             <div class="form-group">
                                 <label for="">Have a Coupon Code?</label>
                                 <div class="coupon_input_container">
-                                    {{-- <input type="text" name="coupon" class="form-control border-0" placeholder="Apply Coupon">
+                                    <input type="text" name="coupon" class="form-control border-0" placeholder="Apply Coupon">
+                                    @if ($errors->has('coupon'))
+                                        <span class="text-danger form-text" role="alert">
+                                            <small>
+                                                <strong>{{ $errors->first('coupon') }}</strong>
+                                            </small>
+                                        </span>
+                                    @endif
                                     <button type="submit" class="submit_btn">
                                         <i aria-hidden="true" class="fa fa-long-arrow-right"></i>
-                                    </button> --}}
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -163,6 +237,13 @@
                                 <div class="form-group">
                                     <label for="name_on_card">Name on Card</label>
                                     <input type="text" name="name_on_card" id="name_on_card" class="form-control" placeholder="Name on Card" value="Thavarshan" required>
+                                    @if ($errors->has('name_on_card'))
+                                        <span class="text-danger form-text" role="alert">
+                                            <small>
+                                                <strong>{{ $errors->first('name_on_card') }}</strong>
+                                            </small>
+                                        </span>
+                                    @endif
                                 </div>
 
                                 <div class="form-group">
@@ -185,7 +266,7 @@
                             </small>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block">Place Order</button>
+                        <button id="checkout-btn" type="submit" class="btn btn-primary btn-block">Place Order</button>
                     </div>
                 </div>
             </div>
@@ -236,6 +317,10 @@
     var form = document.getElementById('payment-form');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
+
+        // Disable submit button to prevent repeated clicks
+        document,getElementById('checkout-btn').disabled = true;
+
         var options = {
             name: document.getElementById('name_on_card').value,
             address_line1: document.getElementById('address1').value,
@@ -250,6 +335,10 @@
                 // Inform the user if there was an error.
                 var errorElement = document.getElementById('card-errors');
                 errorElement.textContent = result.error.message;
+
+                // Enable submit button if error
+                document,getElementById('checkout-btn').disabled = false;
+
             } else {
                 // Send the token to your server.
                 stripeTokenHandler(result.token);

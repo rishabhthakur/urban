@@ -5,6 +5,15 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                    @if ($order->error)
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                    <div class="my-1 rounded py-2 px-3 bg-danger text-white" role="alert">
+                                        <strong>{{ $order->error }}</strong>
+                                    </div>
+                            </div>
+                        </div>
+                    @endif
                     <div class="row mb-5">
                         <div class="col-md-5 mb-4">
                             <h6 class="heading">Order <strong>#{{ $order->order_no }}</strong> details</h6>
@@ -60,9 +69,39 @@
                                         <tbody>
                                             @foreach ($order->products as $product)
                                                 <tr>
-                                                    <td>{{ $product->name }}</td>
+                                                    <td>
+                                                        <div>
+                                                            <strong>{{ $product->name }}</strong>
+                                                        </div>
+                                                        <div class="text-muted">
+                                                            <span>
+                                                                <small>
+                                                                    ID: <strong>{{ $product->id }}</strong>
+                                                                </small>
+                                                            </span>
+                                                            @if ($product->pivot->sale_price)
+                                                                <span class="mx-1">|</span>
+                                                                <span>
+                                                                    <small>
+                                                                        Was on sale for <strong>${{ $product->pivot->sale_price }}</strong>
+                                                                    </small>
+                                                                </span>
+                                                            @endif
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        @if ($product->pivot->sale_price)
+                                                            ${{ $product->pivot->sale_price }} x {{ $product->pivot->quantity }}
+                                                        @else
+                                                            ${{ $product->regular_price }} x {{ $product->pivot->quantity }}
+                                                        @endif
+                                                    </td>
                                                     <td class="text-right">
-                                                        <strong>${{ $product->regular_price }}</strong>
+                                                        @if ($product->pivot->sale_price)
+                                                            <strong>${{ $product->pivot->sale_price * $product->pivot->quantity }}</strong>
+                                                        @else
+                                                            <strong>${{ $product->regular_price * $product->pivot->quantity }}</strong>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

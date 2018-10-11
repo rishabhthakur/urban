@@ -32,6 +32,10 @@ class Order extends Model {
     }
 
     public function products() {
-        return $this->belongsToMany('Urban\Product')->withPivot('quantity');
+        return $this->belongsToMany('Urban\Product')->withPivot([
+            'quantity',
+            'sale_price',
+            'regular_price'
+        ]);
     }
 }

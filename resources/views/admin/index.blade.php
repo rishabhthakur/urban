@@ -13,7 +13,7 @@
                         We’ve assembled some links to get you started:
                     </p>
                     <p>
-                        <a href="#" class="btn btn-primary disabled">Customize Your Site</a>
+                        <a href="#" class="btn btn-primary">Customize Your Site</a>
                     </p>
                     <div class="row mt-5">
                         <div class="col-md-6 mb-3">

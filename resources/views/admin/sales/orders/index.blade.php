@@ -52,11 +52,20 @@
                         </thead>
                         <tbody>
                             @foreach ($orders as $order)
-                                <tr>
+                                <tr @if ($order->error) class="bg-danger-light" @endif>
                                     <td>
+                                        @if ($order->error)
+                                            <div class="mb-1">
+                                                <span class="text-danger">
+                                                    <small>
+                                                        <strong>{{ $order->error }}</strong>
+                                                    </small>
+                                                </span>
+                                            </div>
+                                        @endif
                                         <a href="{!! route('admin.sales.orders.show', ['id' => $order->order_no]) !!}" class="text-dark">
                                             <h6>
-                                                <strong>#{{ $order->order_no }}</strong>
+                                                <strong>{{ $order->order_no }}</strong>
                                             </h6>
                                         </a>
                                         <small>

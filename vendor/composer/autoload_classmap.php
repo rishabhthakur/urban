@@ -3656,6 +3656,7 @@ return array(
     'Urban\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',
     'Urban\\Http\\Controllers\\PublicViewsController' => $baseDir . '/app/Http/Controllers/PublicViewsController.php',
     'Urban\\Http\\Controllers\\ReviewController' => $baseDir . '/app/Http/Controllers/ReviewController.php',
+    'Urban\\Http\\Controllers\\SalesController' => $baseDir . '/app/Http/Controllers/SalesController.php',
     'Urban\\Http\\Controllers\\SettingsController' => $baseDir . '/app/Http/Controllers/SettingsController.php',
     'Urban\\Http\\Controllers\\ShopController' => $baseDir . '/app/Http/Controllers/ShopController.php',
     'Urban\\Http\\Controllers\\TagController' => $baseDir . '/app/Http/Controllers/TagController.php',

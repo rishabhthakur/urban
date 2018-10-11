@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Mail;
 
 use Cart;
 
+use Urban\User;
+
+use Urban\Notifications\NewOrder;
+
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
 
@@ -45,7 +49,7 @@ class PaymentsController extends Controller {
             ]);
 
             // Insert into Orders table
-            $order = $this->addToOrdersTables($request, Auth::user(), null);
+            $order = $this->addToOrdersTables($request, null);
             // Send order confirmation email
             Mail::send(new OrderConfirmed($order));
             // Notify admin of purchase
@@ -64,12 +68,12 @@ class PaymentsController extends Controller {
 
     }
 
-    public function addToOrdersTables($request, $user, $message) {
+    public function addToOrdersTables($request, $message) {
         // Insert into orders table
         $order = Order::create([
-            'user_id' => $user->id,
-            'order_no' => str_random(4),
-            'bill_email' => $user->email,
+            'user_id' => Auth::id(),
+            'order_no' => uniqid('urbn-'),
+            'bill_email' => $request->email,
             'bill_name' => $request->first_name . ' ' . $request->last_name,
             'bill_phone' => $request->phone,
             'bill_address1'=> $request->address1,
@@ -91,6 +95,8 @@ class PaymentsController extends Controller {
                 'order_id' => $order->id,
                 'product_id' => $item->p_id,
                 'quantity' => $item->quantity,
+                'sale_price' => getProduct($item->p_id)->sale_price,
+                'regular_price' => getProduct($item->p_id)->regular_price
             ]);
         }
 
