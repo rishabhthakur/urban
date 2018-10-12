@@ -8,6 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Cart;
 
 class UpdateCoupon implements ShouldQueue
 {
@@ -33,7 +34,7 @@ class UpdateCoupon implements ShouldQueue
     {
         session()->put('coupon', [
             'name' => $this->coupon->code,
-            'discount' => $this->coupon->discount(Cart::subtotal()),
+            'discount' => $this->coupon->discount(Cart::getSubtotal()),
         ]);
     }
 }

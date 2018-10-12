@@ -149,7 +149,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
-        Urban\Providers\SaveForLater::class,
         Urban\Providers\Wishlist::class,
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
 

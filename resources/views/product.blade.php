@@ -23,9 +23,9 @@
         <h2>{{ $product->name }}</h2>
 
         @if ($product->sale_price)
-            <p class="product-price"><span class="old-price">${{ $product->regular_price }}</span> ${{ $product->sale_price }}</p>
+            <p class="product-price"><span class="old-price">{{ presentPrice($product->regular_price) }}</span> {{ presentPrice($product->sale_price) }}</p>
         @else
-            <p class="product-price">${{ $product->regular_price }}</p>
+            <p class="product-price">{{ presentPrice($product->regular_price) }}</p>
         @endif
 
         <p class="product-desc">

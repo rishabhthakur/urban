@@ -43,6 +43,18 @@
                         </span>
                     </div>
                     <div class="form-group">
+                        <label for="locale">Site Language</label>
+                        <select class="custom-select form-control" id="locale" name="locale">
+                            @foreach ($locales as $locale)
+                                <option value="{{ $locale->code }}"
+                                    @if ($settings->locale == $locale->code)
+                                        selected
+                                    @endif
+                                    >{{ $locale->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="role">New User Default Role</label>
                         <select class="custom-select form-control" name="role" id="role">
                             @foreach($roles as $role)
@@ -66,7 +78,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mt-5">
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
                 </form>

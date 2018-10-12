@@ -25,7 +25,7 @@
                     {{-- Product Reular Price & Sale Price --}}
                     <div class="form-group{{ $errors->has('regular_price') ? ' has-danger' : '' }} row mb-4">
                         <div class="col">
-                            <label for="regular_price">Regular Price</label>
+                            <label for="regular_price">Regular Price ({{ __(getCurrency()) }})</label>
                             <input type="text" name="regular_price" id="regular_price" class="form-control" placeholder="Regular Price" value="{{ old('regular_price') }}" required>
 
                             @if ($errors->has('regular_price'))
@@ -35,7 +35,7 @@
                             @endif
                         </div>
                         <div class="col">
-                            <label for="sale_price">Sale Price</label>
+                            <label for="sale_price">Sale Price ({{ __(getCurrency()) }})</label>
                             <input type="text" name="sale_price" id="sale_price" class="form-control" placeholder="Sale Price" value="{{ old('sale_price') }}"  >
 
                             @if ($errors->has('sale_price'))

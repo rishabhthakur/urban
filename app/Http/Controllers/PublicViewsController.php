@@ -31,7 +31,7 @@ class PublicViewsController extends Controller {
 
     public function index() {
         // dd(Cart::getContent());
-        // Cart::clear();
+        Cart::clear();
         $products = new Product;
         return view('welcome')->with([
             'latest' => $products::where('popular', true)->latest()->take(7)->get()

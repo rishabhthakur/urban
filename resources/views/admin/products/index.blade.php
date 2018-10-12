@@ -8,7 +8,7 @@
             </div>
             <div class="float-right text-right">
                 <a href="{!! route('admin.products.create') !!}" class="btn btn-primary">
-                    <i class="fas fa-cart-plus"></i>
+                    <i class="fas fa-plus"></i>
                 </a>
             </div>
         </div>
@@ -83,14 +83,14 @@
                                     <td class="text-center">
                                         @if ($product->sale_price)
                                             <div class="text-dark mb-1">
-                                                <strike>${{ $product->regular_price }}</strike>
+                                                <strike>{{ presentPrice($product->regular_price) }}</strike>
                                             </div>
                                             <div class="text-success">
-                                                ${{ $product->sale_price }}
+                                                {{ presentPrice($product->sale_price) }}
                                             </div>
                                         @else
                                             <div class="text-dark mb-1">
-                                                <strong>${{ $product->regular_price }}</strong>
+                                                <strong>{{ presentPrice($product->regular_price) }}</strong>
                                             </div>
                                         @endif
                                     </td>

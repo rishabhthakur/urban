@@ -16,6 +16,7 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('status')->default(1);
+            $table->string('locale')->default('en_US');
 
             $table->string('site_name');
             $table->text('tagline')->nullable();

@@ -5,6 +5,7 @@ namespace Urban\Http\Controllers;
 use Urban\Settings;
 use Urban\Dsettings;
 use Urban\Role;
+use Urban\Locale;
 use Urban\FileSystem;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,8 @@ class SettingsController extends Controller {
     public function index() {
         return view('admin.settings.index')->with([
             'settings' => $this->settings,
-            'roles' => Role::all()
+            'roles' => Role::all(),
+            'locales' => Locale::all()
         ]);
     }
 
@@ -112,6 +114,7 @@ class SettingsController extends Controller {
             'description' => 'required',
             'author' => 'required',
             'email' => 'required|email',
+            'locale' => 'required'
         ]);
 
         if(isset($request->membership)) {
@@ -128,6 +131,7 @@ class SettingsController extends Controller {
         $settings->email = $request->email;
         $settings->drole = $request->role;
         $settings->membership = $membership;
+        $settings->locale = $request->locale;
         $settings->save();
 
         return redirect(route('admin.settings'))->with('success', 'Changes saved.');

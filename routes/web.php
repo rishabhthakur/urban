@@ -79,19 +79,19 @@ Route::group(['prefix' => 'cart'], function() {
 
     // Shopping cart page
     Route::post('/add/{id}', [
-        'uses' => 'cartController@store',
+        'uses' => 'CartController@store',
         'as' => 'cart.add'
     ]);
 
     // Shopping cart page
     Route::get('/remove/{id}', [
-        'uses' => 'cartController@destroy',
+        'uses' => 'CartController@destroy',
         'as' => 'cart.remove'
     ]);
 
     // Shopping cart page
     Route::post('/update/{id}', [
-        'uses' => 'cartController@update',
+        'uses' => 'CartController@update',
         'as' => 'cart.update'
     ]);
 });
@@ -120,6 +120,21 @@ Route::group(['prefix' => 'wishlist'], function() {
     Route::get('/remove/{id}', [
         'uses' => 'WishListController@destroy',
         'as' => 'wishlist.remove'
+    ]);
+});
+
+// Coupons
+Route::group(['prefix' => 'coupon'], function() {
+
+    // Add coupon
+    Route::post('/add', [
+        'uses' => 'CartController@coupon_add',
+        'as' => 'coupon.add'
+    ]);
+
+    Route::get('/remove', [
+        'uses' => 'CartController@coupon_remove',
+        'as' => 'coupon.remove'
     ]);
 });
 

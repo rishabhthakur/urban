@@ -5,29 +5,13 @@ use Illuminate\Http\Request;
 use Urban\Product;
 use Urban\Adata;
 use Cart;
-
+use Urban\Coupon;
+use Urban\Jobs\UpdateCoupon;
 use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller {
 
     public $duplicate;
-
-    /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
-    public function index() {
-        //
-    }
-
-    /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
-    public function create() {
-    }
 
     public function getData($attributes) {
         $attrbs = array();
@@ -38,12 +22,6 @@ class CartController extends Controller {
         return $attrbs;
     }
 
-    /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
     public function store(Request $request, $id) {
 
         $product = Product::find($id);
@@ -93,13 +71,6 @@ class CartController extends Controller {
         ]);
     }
 
-    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
     public function quickUpdate(Request $request, $id) {
         if (isset($request->quantity)) {
             $quantity = $request->quantity;
@@ -112,13 +83,6 @@ class CartController extends Controller {
         ));
     }
 
-    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
     public function update(Request $request, $id) {
         Cart::update($id, array(
             'quantity' => array(
@@ -132,16 +96,39 @@ class CartController extends Controller {
         ], 200);
     }
 
-    /**
-    * Remove the specified resource from storage.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
     public function destroy($id) {
         Cart::remove($id);
         return redirect()->back()->with([
             'success' => 'Item removed from cart.'
+        ]);
+    }
+
+    /**
+     * Include coupon to cart subtotal
+     * @param Request $request coupon code
+     */
+    public function coupon_add(Request $request) {
+        $coupon = Coupon::where('code', $request->coupon)->first();
+        if (!$coupon) {
+            return back()->with([
+                'error' => 'Invalid coupon code. Please try again.'
+            ]);
+        }
+        if ($coupon->expire_at >= date("Y-m-d H:i:s")) {
+            return back()->with([
+                'error' => 'Coupon expired.'
+            ]);
+        }
+        dispatch_now(new UpdateCoupon($coupon));
+        return back()->with([
+            'success' => 'Coupon has been applied!'
+        ]);
+    }
+
+    public function coupon_remove() {
+        session()->forget('coupon');
+        return back()->with([
+            'success' => 'Coupon has been removed.'
         ]);
     }
 }

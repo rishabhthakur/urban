@@ -27,10 +27,10 @@
                                 @foreach ($item->attributes as $attrb)
                                     <p class="color">{{ $attrb }}</p>
                                 @endforeach
-                                <p class="color">${{ $item->price }} <span class="ml-1">x {{ $item->quantity }}</span></p>
+                                <p class="color">{{ presentPrice($item->price) }} <span class="ml-1">x {{ $item->quantity }}</span></p>
 
                                 <p class="price">
-                                    ${{ $item->price }}
+                                    {{ presentPrice($item->price) }}
                                 </p>
                             </div>
                         </span>
@@ -45,10 +45,22 @@
             @if (count(Cart::getContent()) > 0)
                 <h2>Summary</h2>
                 <ul class="summary-table">
-                    <li><span>subtotal:</span> <span>${{ Cart::getSubTotal() }}</span></li>
-                    <li><span>delivery:</span> <span>Free</span></li>
-                    <li><span>discount:</span> <span>-15%</span></li>
-                    <li><span>total:</span> <span>${{ Cart::getTotal() }}</span></li>
+                    <li><span>subtotal:</span> <span>
+                        @if (session()->has('coupon'))
+                            {{ presentPrice(getNumbers()['newSubtotal']) }}
+                        @else
+                            {{ presentPrice(Cart::getSubTotal()) }}
+                        @endif</span></li>
+                    <li><span>shipping:</span> <span>Free</span></li>
+                    @if (session()->has('coupon'))
+                        <li><span>discount:</span> <span>- {{ presentPrice(getNumbers()['discount']) }}</span></li>
+                    @endif
+                    <li><span>total:</span> <span>
+                    @if (session()->has('coupon'))
+                        {{ presentPrice(getNumbers()['newTotal']) }}
+                    @else
+                        {{ presentPrice(Cart::getTotal()) }}
+                    @endif</span></li>
                 </ul>
                 <div class="checkout-btn mt-100">
                     <a href="{!! route('checkout') !!}" class="btn btn-primary btn-block mb-1">Check Out</a>

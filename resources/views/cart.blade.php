@@ -23,7 +23,7 @@
 
                 <div class="col-12 col-md-7 col-lg-8">
                     <div class="checkout_details_area clearfix pr-5 mb-100">
-                        <div class="table-responsive">
+                        <div class="table-responsive mb-5">
                             @if (count(Cart::getContent()) != 0)
                                 <table class="table table-borderless mb-5">
                                     <thead>
@@ -63,13 +63,13 @@
                                                     </div>
                                                 </td>
                                                 <td class="align-middle">
-                                                    ${{ $item->price }}
+                                                    {{ presentPrice($item->price) }}
                                                 </td>
                                                 <td class="align-middle" width="4%">
                                                     <input class="form-control quantity" type="number" name="quantity" min="1" value="{{ $item->quantity }}" max="{{ __(getProduct($item->p_id)->quantity) }}" data-route="{!! route('cart.update', ['id' => $item->id]) !!}"/>
                                                 </td>
                                                 <td class="align-middle text-right">
-                                                    <strong>${{ $item->price * $item->quantity }}</strong>
+                                                    <strong>{{ presentPrice($item->price * $item->quantity) }}</strong>
                                                 </td>
                                                 <td class="align-middle text-right">
                                                     <a href="{!! route('cart.remove', ['id' => $item->id]) !!}">
@@ -88,12 +88,37 @@
                                 </p>
                             @endif
                         </div>
+                        @if (!Cart::isEmpty())
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form id="coupon-form" action="{!! route('coupon.add') !!}" method="post">
+                                        {{ csrf_field() }}
+                                        <div class="form-group">
+                                            <label for="coupon">Have a Coupon Code?</label>
+                                            <div class="coupon_input_container">
+                                                <input type="text" name="coupon" id="coupon" class="form-control border-0" placeholder="Apply Coupon">
+                                                @if ($errors->has('coupon'))
+                                                    <span class="text-danger form-text" role="alert">
+                                                        <small>
+                                                            <strong>{{ $errors->first('coupon') }}</strong>
+                                                        </small>
+                                                    </span>
+                                                @endif
+                                                <button type="submit" class="submit_btn">
+                                                    <i aria-hidden="true" class="fa fa-long-arrow-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        @endif
                         <div class="mt-5 d-flex justify-content-between flex-column flex-lg-row">
-                            <a href="{!! route('shop') !!}" class="btn btn-link text-muted px-0">
+                            <a href="{!! route('shop') !!}" class="btn btn-link text-muted px-0 mb-3">
                                 <i class="fa fa-chevron-left"></i> Continue Shopping
                             </a>
                             @if (count(Cart::getContent()) != 0)
-                                <a href="{!! route('checkout') !!}" class="btn btn-dark">
+                                <a href="{!! route('checkout') !!}" class="btn btn-dark mb-3">
                                     Proceed to checkout <i class="fa fa-chevron-right"></i>
                                 </a>
                             @endif
@@ -105,14 +130,32 @@
                     <div class="order-details-confirmation">
 
                         <div class="cart-page-heading">
-                            <h5>Your Order</h5>
+                            <h5>Cart Totals</h5>
                             <p>Shipping and additional costs are calculated based on values you have entered.</p>
                         </div>
 
                         <ul class="order-details-form mb-0">
-                            <li><span>Subtotal</span> <span>${{ Cart::getSubTotal() }}</span></li>
+                            @if (session()->has('coupon'))
+                                <li><span>
+                                    <a href="{!! route('coupon.remove') !!}">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                    Discount ({{ session()->get('coupon')['name'] }}) :</span> <span>- {{ presentPrice(getNumbers()['discount']) }}</span></li>
+                                <li><span>Subtotal</span> <span>{{ presentPrice(getNumbers()['newSubtotal']) }}</span></li>
+                            @else
+                                <li><span>Subtotal</span> <span>{{ presentPrice(Cart::getSubTotal()) }}</span></li>
+                            @endif
                             <li><span>Shipping</span> <span>Free</span></li>
-                            <li><span>Total</span> <span class="h5">${{ Cart::getTotal() }}</span></li>
+                            {{-- <li><span>Tax (21%)</span> <span>+ {{ presentPrice(getNumbers()['newSubtotal'] + getNumbers()['tax']) }}</span></li> --}}
+                            <li><span>Total </span>
+                                @if (session()->has('coupon'))
+                                    <span class="h5 pt-2">
+                                        <strong>{{ presentPrice(getNumbers()['newTotal']) }}</strong>
+                                    </span>
+                                @else
+                                    {{ presentPrice(Cart::getTotal()) }}
+                                @endif
+                            </li>
                         </ul>
 
                     </div>

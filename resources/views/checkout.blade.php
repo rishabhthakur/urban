@@ -195,38 +195,44 @@
                         <ul class="order-details-form mb-5">
                             <li><span>Product</span> <span>Total</span></li>
                             @forelse (Cart::getContent() as $item)
-                                <li><span>{{ $item->name }}</span> <span>${{ $item->price }} x {{ $item->quantity }}</span></li>
+                                <li>
+                                    <span>
+                                        {{ $item->name }} x {{ $item->quantity }}<br>
+                                        <small class="text-muted">
+                                            @forelse ($item->attributes as $attribute)
+                                                {{ $attribute }}<br />
+                                            @empty
+                                                {{--  --}}
+                                            @endforelse
+                                        </small>
+                                    </span>
+                                    <span>{{ presentPrice($item->price) }}</span>
+                                </li>
                             @empty
                                 <li><span>No items in cart</span></li>
-
                             @endforelse
-                            <li><span>Subtotal</span> <span>${{ Cart::getSubTotal() }}</span></li>
+                            @if (session()->has('coupon'))
+                                <li><span>
+                                    <a href="{!! route('coupon.remove') !!}">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                    Discount ({{ session()->get('coupon')['name'] }}) :</span> <span>- {{ presentPrice(getNumbers()['discount']) }}</span></li>
+                                <li><span>Subtotal</span> <span>{{ presentPrice(getNumbers()['newSubtotal']) }}</span></li>
+                            @else
+                                <li><span>Subtotal</span> <span>{{ presentPrice(Cart::getSubTotal()) }}</span></li>
+                            @endif
                             <li><span>Shipping</span> <span>Free</span></li>
+                            {{-- <li><span>Tax (21%)</span> <span>+ ${{ getNumbers()['newSubtotal'] + getNumbers()['tax'] }}</span></li> --}}
                             <li><span>Total </span>
-                                <span class="h5 pt-2">
-                                    <strong>${{ Cart::getTotal() }}</strong>
-                                </span>
+                                @if (session()->has('coupon'))
+                                    <span class="h5 pt-2">
+                                        <strong>{{ presentPrice(getNumbers()['newTotal']) }}</strong>
+                                    </span>
+                                @else
+                                    {{ presentPrice(Cart::getTotal()) }}
+                                @endif
                             </li>
                         </ul>
-
-                        <div class="mt-5">
-                            <div class="form-group">
-                                <label for="">Have a Coupon Code?</label>
-                                <div class="coupon_input_container">
-                                    <input type="text" name="coupon" class="form-control border-0" placeholder="Apply Coupon">
-                                    @if ($errors->has('coupon'))
-                                        <span class="text-danger form-text" role="alert">
-                                            <small>
-                                                <strong>{{ $errors->first('coupon') }}</strong>
-                                            </small>
-                                        </span>
-                                    @endif
-                                    <button type="submit" class="submit_btn">
-                                        <i aria-hidden="true" class="fa fa-long-arrow-right"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="mb-4 mt-5">
                             <h5 class="mb-4">Pay with stripe</h5>

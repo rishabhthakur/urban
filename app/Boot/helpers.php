@@ -1,6 +1,8 @@
 <?php
 
 use Urban\Product;
+use Urban\Settings; // General settings
+use Urban\Ssettings; // Shop settings
 
 /*
  * Still to be worked on
@@ -26,7 +28,7 @@ function getProduct($id) {
 }
 
 function getNumbers() {
-    $tax = 21 / 100;
+    $tax = 0;
     $discount = session()->get('coupon')['discount'] ?? 0;
     $code = session()->get('coupon')['name'] ?? null;
     $newSubtotal = (Cart::getSubtotal() - $discount);
@@ -44,4 +46,17 @@ function getNumbers() {
         'newTax' => $newTax,
         'newTotal' => $newTotal,
     ]);
+}
+
+function presentPrice($price) {
+    setlocale(LC_MONETARY, Settings::first()->locale);
+    $currency = '%n';
+    return money_format($currency, $price);
+}
+
+function getCurrency() {
+    $locale=Settings::first()->locale; //browser or user locale
+    $fmt = new NumberFormatter( $locale, NumberFormatter::CURRENCY );
+    $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
+    return $symbol;
 }

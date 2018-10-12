@@ -5,7 +5,15 @@ namespace Urban;
 use Illuminate\Database\Eloquent\Model;
 
 class Coupon extends Model {
-    
+
+    protected $fillable = [
+        'code',
+        'type',
+        'value',
+        'percent_off',
+        'expire_at'
+    ];
+
     public static function findByCode($code) {
         return self::where('code', $code)->first();
     }

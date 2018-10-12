@@ -16,16 +16,7 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        $coupon = Coupon::where('code', $request->coupon_code)->first();
-        if (!$coupon) {
-            return back()->with([
-                'error' => 'Invalid coupon code. Please try again.'
-            ]);
-        }
-        dispatch_now(new UpdateCoupon($coupon));
-        return back()->with([
-            'success' => 'Coupon has been applied!'
-        ]);
+
     }
 
 
@@ -37,9 +28,6 @@ class CouponController extends Controller
      */
     public function destroy()
     {
-        session()->forget('coupon');
-        return back()->with([
-            'success' => 'Coupon has been removed.'
-        ]);
+        
     }
 }
