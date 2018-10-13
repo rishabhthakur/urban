@@ -43,7 +43,7 @@
                         </span>
                     </div>
                     <div class="form-group">
-                        <label for="locale">Site Language</label>
+                        <label for="locale">Site Locale</label>
                         <select class="custom-select form-control" id="locale" name="locale">
                             @foreach ($locales as $locale)
                                 <option value="{{ $locale->code }}"
