@@ -61,6 +61,34 @@ class AttributeController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function vue_store(Request $request) {
+        $this->validate($request, [
+            'name' => 'required|string|min:2'
+        ]);
+
+        $existing = Attribute::where('name', $request->name)->first();
+        if($existing) {
+            return response()->json([
+                'message' => 'A term with the name provided already exists.'
+            ], 422);
+        }
+
+        $attribute = new Attribute;
+        $attribute->name = $request->name;
+        $attribute->slug = str_slug($request->name);
+        $attribute->save();
+
+        return response()->json([
+            'message' => 'OK'
+        ], 200);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -123,6 +151,33 @@ class AttributeController extends Controller
         $data->save();
 
         return back();
+    }
+
+    public function data_vue_store(Request $request, $id) {
+        $this->validate($request, [
+            'name' => 'required|string'
+        ]);
+
+        $existing = Adata::where('name', $request->name)->first();
+
+        if($existing) {
+           if ($existing->parent_id == $request->parent) {
+               return response()->json([
+                   'message' => 'A term with the name provided already exists.'
+               ], 422);
+           }
+        }
+
+        $data = new Adata;
+        $data->name = $request->name;
+        $data->slug = str_slug($request->name . '-' . str_random(7));
+        $data->description = '–––';
+        $data->attrb_id = $id;
+        $data->save();
+
+        return response()->json([
+            'status' => 'OK'
+        ], 200);
     }
 
     /**

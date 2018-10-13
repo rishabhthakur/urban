@@ -1,7 +1,10 @@
 <template>
     <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
-        <div class="mb-1" v-if="list.length > 0">
-            <div class="border rounded mb-2" v-for="attribute in list">
+        <div class="text-muted mb-2">
+            <small>Make sure to check the attribute checkbox to add the relevant attribute to the product.</small>
+        </div>
+        <div class="mb-3" v-if="list.length > 0">
+            <div class="border rounded mb-3" v-for="attribute in list">
                 <div class="attribute-title border-bottom p-2">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" name="attrbs[]" :id="attribute.slug" :value="attribute.id">
@@ -10,18 +13,34 @@
                         </label>
                     </div>
                 </div>
-                <div v-if="attribute.data.length > 0">
-                    <div class="attributes p-3" v-for="data in attribute.data">
-                        <div class="custom-control custom-checkbox custom-control-inline">
-                            <input type="checkbox" class="custom-control-input" name="data[]" :id="data.slug" :value="data.id">
-                            <label class="custom-control-label" :for="data.slug">
-                                {{ data.name }}
-                            </label>
+                <div>
+                    <div class="attributes p-3">
+                        <div class="row">
+                            <div class="col-md-6" v-if="attribute.data.length > 0">
+                                <div class="custom-control custom-checkbox custom-control-inline" v-for="data in attribute.data">
+                                    <input type="checkbox" class="custom-control-input" name="data[]" :id="data.slug" :value="data.id">
+                                    <label class="custom-control-label" :for="data.slug">
+                                        {{ data.name }}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6" v-else>
+                                No terms found.
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="heading mb-3">
+                                    Add new term
+                                </h6>
+                                <div class="form-group">
+                                    <label>Term Name</label>
+                                    <input type="text" class="form-control" v-model="adata.name" placeholder="Term Name">
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" v-on:click="createAttributeData(attribute.id)" class="btn btn-outline-primary btn-sm">Add New Term</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="mt-1" v-else>
-                    No attribute data found.
                 </div>
             </div>
         </div>
@@ -29,12 +48,23 @@
             No attributes found.
         </div>
         <div class="mt-4">
-            <a href="#">
+            <a href="#" v-on:click.prevent="visibility()">
                 <i class="fas fa-plus"></i> Add new attribute
             </a>
-        </div>
-        <div class="text-muted mt-2">
-            <small>Attribute must be selected in order for child attributes to be registered.</small>
+            <div v-if="errors.length > 0" class="mt-3">
+                <div class="error" v-for="error in errors">
+                    <small class="text-danger">{{ error.message }}</small>
+                </div>
+            </div>
+            <div class="mt-3" v-if="visible">
+                <div class="form-group">
+                    <label>Attribute Name</label>
+                    <input type="text" class="form-control" v-model="attribute.name" placeholder="Attribute Name">
+                </div>
+                <div class="form-group">
+                    <button type="button" v-on:click="createAttribute()" v-show="!edit" class="btn btn-outline-primary btn-sm">Add New Attribute</button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -52,8 +82,10 @@ export default {
             edit: false,
             list: [],
             attribute: {
-                name: '',
-                attrb_id: ''
+                name: ''
+            },
+            adata: {
+                name: ''
             }
         }
     },
@@ -71,7 +103,7 @@ export default {
         },
         fetchAttributeList: function() {
             // console.log('Fetching Categorys...');
-            axios.get('/api/attribute/' + this.to)
+            axios.get('/api/attribute')
                 .then((response) => {
                     // console.log(response.data);
                     this.list = response.data;
@@ -89,6 +121,23 @@ export default {
                 .then(function(){
                     self.attribute.name = '';
                     self.attribute.attrb_id = '';
+                    self.edit = false;
+                    self.fetchAttributeList();
+                })
+                .catch(error => {
+                    if(error.response.status == 422) {
+                        this.errors.push(error.response.data);
+                    }
+                });
+        },
+        createAttributeData: function(id) {
+            this.errors = [];
+            // console.log('Creating attribute...');
+            let self = this;
+            let params = Object.assign({}, self.adata);
+            axios.post('/api/attribute/data/store/' + id, params)
+                .then(function(){
+                    self.adata.name = '';
                     self.edit = false;
                     self.fetchAttributeList();
                 })

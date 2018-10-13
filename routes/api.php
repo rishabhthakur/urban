@@ -95,7 +95,7 @@ Route::middleware('api')->post('/tag/store', [
 
 
 /**
- * Products Brands API
+ * Products Attributes API
  * Used for create new brand vue omponent in add new product page
  */
 Route::middleware('api')->post('/attribute/store', [
@@ -103,6 +103,11 @@ Route::middleware('api')->post('/attribute/store', [
     'as' => 'attribute.vue.store'
 ]);
 
+Route::middleware('api')->post('/attribute/data/store/{id}', [
+    'uses' => 'AttributeController@data_vue_store',
+    'as' => 'attribute.data.vue.store'
+]);
+
 Route::middleware('api')->get('/attribute', function() {
-    return Attribute::orderBy('created_at', 'ASC')->get();
+    return Attribute::all();
 });
