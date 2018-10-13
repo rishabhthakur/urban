@@ -177,56 +177,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
-                            @forelse ($attributes as $attribute)
-                                <div class="border rounded mb-2">
-                                    <div class="attribute-title border-bottom p-2">
-                                        <div class="custom-control custom-checkbox">
-                                            @foreach ($product->attributes as $attrb)
-                                                <input type="checkbox" class="custom-control-input" name="attrbs[]" id="{{ $attribute->slug }}" value="{{ $attribute->id }}"
-                                                @if ($attrb->id == $attribute->id)
-                                                    checked
-                                                @endif>
-                                            @endforeach
-                                            <label class="custom-control-label" for="{{ $attribute->slug }}">
-                                                <strong>{{ $attribute->name }}</strong>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="attributes p-3">
-                                        @forelse ($attribute->data as $data)
-                                            <div class="custom-control custom-checkbox custom-control-inline">
-                                                @foreach ($product->adata as $dat)
-                                                    <input type="checkbox" class="custom-control-input" name="data[]" id="{{ $data->slug }}" value="{{ $data->id }}"
-                                                    @if ($dat->id == $data->id)
-                                                        checked
-                                                    @endif>
-                                                @endforeach
-                                                <label class="custom-control-label" for="{{ $data->slug }}">
-                                                    {{ $data->name }}
-                                                </label>
-                                            </div>
-                                        @empty
-                                            <div class="mt-1">
-                                                No attribute data found.
-                                            </div>
-                                        @endforelse
-                                    </div>
-                                </div>
-                            @empty
-                                <div class="mb-2">
-                                    No attributes found.
-                                </div>
-                            @endforelse
-                            <div class="mt-4">
-                                <a href="{!! route('admin.products.attributes') !!}">
-                                    <i class="fas fa-plus"></i> Add new attribute
-                                </a>
-                            </div>
-                            <div class="text-muted mt-2">
-                                <small>Attribute must be selected in order for child attributes to be registered.</small>
-                            </div>
-                        </div>
+                        <!-- Add new attribute -->
+                        <vue-newattribute
+                            @if ($edit)
+                                :attributes="{{ $product->attributes }}"
+                                :terms="{{ $product->adata }}"
+                                mode="edit"
+                            @endif>
+                        </vue-newattribute>
                         <div class="tab-pane fade" id="tabs-icons-text-4" role="tabpanel" aria-labelledby="tabs-icons-text-4-tab">
                             <p class="description">
                                 <div class="form-group">

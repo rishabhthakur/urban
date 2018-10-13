@@ -3,49 +3,103 @@
         <div class="text-muted mb-2">
             <small>Make sure to check the attribute checkbox to add the relevant attribute to the product.</small>
         </div>
-        <div class="mb-3" v-if="list.length > 0">
-            <div class="border rounded mb-3" v-for="attribute in list">
-                <div class="attribute-title border-bottom p-2">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" name="attrbs[]" :id="attribute.slug" :value="attribute.id">
-                        <label class="custom-control-label" :for="attribute.slug">
-                            <strong>{{ attribute.name }}</strong>
-                        </label>
+        <div v-if="mode == 'edit'">
+            <div class="mb-3" v-if="list.length > 0">
+                <div class="border rounded mb-3" v-for="attribute in list">
+                    <div class="attribute-title border-bottom p-2">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input"
+                            v-for="item in attributes"
+                            :checked="item.id == attribute.id"
+                            name="attrbs[]" :id="attribute.slug" :value="attribute.id">
+                            <label class="custom-control-label" :for="attribute.slug">
+                                <strong>{{ attribute.name }}</strong>
+                            </label>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <div class="attributes p-3">
-                        <div class="row">
-                            <div class="col-md-6" v-if="attribute.data.length > 0">
-                                <div class="custom-control custom-checkbox custom-control-inline" v-for="data in attribute.data">
-                                    <input type="checkbox" class="custom-control-input" name="data[]" :id="data.slug" :value="data.id">
-                                    <label class="custom-control-label" :for="data.slug">
-                                        {{ data.name }}
-                                    </label>
+                    <div>
+                        <div class="attributes p-3">
+                            <div class="row">
+                                <div class="col-md-6" v-if="attribute.data.length > 0">
+                                    <div class="custom-control custom-checkbox custom-control-inline mb-2" v-for="data in attribute.data">
+                                        <input type="checkbox" class="custom-control-input"
+                                        v-for="term in terms"
+                                        :checked="term.id == data.id"
+                                         name="data[]" :id="data.slug" :value="data.id">
+                                        <label class="custom-control-label" :for="data.slug">
+                                            {{ data.name }}
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6" v-else>
-                                No terms found.
-                            </div>
-                            <div class="col-md-6">
-                                <h6 class="heading mb-3">
-                                    Add new term
-                                </h6>
-                                <div class="form-group">
-                                    <label>Term Name</label>
-                                    <input type="text" class="form-control" v-model="adata.name" placeholder="Term Name">
+                                <div class="col-md-6" v-else>
+                                    No terms found.
                                 </div>
-                                <div class="form-group">
-                                    <button type="button" v-on:click="createAttributeData(attribute.id)" class="btn btn-outline-primary btn-sm">Add New Term</button>
+                                <div class="col-md-6">
+                                    <h6 class="heading mb-3">
+                                        Add new term
+                                    </h6>
+                                    <div class="form-group">
+                                        <label>Term Name</label>
+                                        <input type="text" class="form-control" v-model="adata.name" placeholder="Term Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" v-on:click="createAttributeData(attribute.id)" class="btn btn-outline-primary btn-sm">Add New Term</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="mb-2" v-else>
+                No attributes found.
+            </div>
         </div>
-        <div class="mb-2" v-else>
-            No attributes found.
+        <div v-else>
+            <div class="mb-3" v-if="list.length > 0">
+                <div class="border rounded mb-3" v-for="attribute in list">
+                    <div class="attribute-title border-bottom p-2">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" name="attrbs[]" :id="attribute.slug" :value="attribute.id">
+                            <label class="custom-control-label" :for="attribute.slug">
+                                <strong>{{ attribute.name }}</strong>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="attributes p-3">
+                            <div class="row">
+                                <div class="col-md-6" v-if="attribute.data.length > 0">
+                                    <div class="custom-control custom-checkbox custom-control-inline mb-2" v-for="data in attribute.data">
+                                        <input type="checkbox" class="custom-control-input" name="data[]" :id="data.slug" :value="data.id">
+                                        <label class="custom-control-label" :for="data.slug">
+                                            {{ data.name }}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" v-else>
+                                    No terms found.
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="heading mb-3">
+                                        Add new term
+                                    </h6>
+                                    <div class="form-group">
+                                        <label>Term Name</label>
+                                        <input type="text" class="form-control" v-model="adata.name" placeholder="Term Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" v-on:click="createAttributeData(attribute.id)" class="btn btn-outline-primary btn-sm">Add New Term</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-2" v-else>
+                No attributes found.
+            </div>
         </div>
         <div class="mt-4">
             <a href="#" v-on:click.prevent="visibility()">
@@ -72,8 +126,9 @@
 <script>
 export default {
     props: [
-        'to',
-        'categories'
+        'attributes',
+        'terms',
+        'mode'
     ],
     data() {
         return  {
@@ -90,7 +145,7 @@ export default {
         }
     },
     mounted() {
-        // console.log('Category component...');
+        console.log(this.terms);
         this.fetchAttributeList();
     },
     methods: {

@@ -179,7 +179,6 @@
                         </div>
                         <!-- Add new attribute -->
                         <vue-newattribute></vue-newattribute>
-
                         <div class="tab-pane fade" id="tabs-icons-text-4" role="tabpanel" aria-labelledby="tabs-icons-text-4-tab">
                             <p class="description">
                                 <div class="form-group">
