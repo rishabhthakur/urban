@@ -11,8 +11,8 @@
                             <input type="checkbox" class="custom-control-input"
                             v-for="item in attributes"
                             :checked="item.id == attribute.id"
-                            name="attrbs[]" :id="attribute.slug" :value="attribute.id">
-                            <label class="custom-control-label" :for="attribute.slug">
+                            name="attrbs[]" :id="attribute.slug + attribute.id" :value="attribute.id">
+                            <label class="custom-control-label" :for="attribute.slug + attribute.id">
                                 <strong>{{ attribute.name }}</strong>
                             </label>
                         </div>
@@ -56,17 +56,17 @@
             </div>
         </div>
         <div v-else>
-            <div class="mb-3" v-if="list.length > 0">
+            <div class="mb-3 accordion" v-if="list.length > 0" id="attribute">
                 <div class="border rounded mb-3" v-for="attribute in list">
                     <div class="attribute-title border-bottom p-2">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" name="attrbs[]" :id="attribute.slug" :value="attribute.id">
-                            <label class="custom-control-label" :for="attribute.slug">
+                            <input type="checkbox" class="custom-control-input" name="attrbs[]" :id="attribute.slug + attribute.id" :value="attribute.id" data-toggle="collapse" :data-target="'#'+attribute.slug" aria-expanded="true" :aria-controls="attribute.slug">
+                            <label class="custom-control-label" :for="attribute.slug + attribute.id">
                                 <strong>{{ attribute.name }}</strong>
                             </label>
                         </div>
                     </div>
-                    <div>
+                    <div :id="attribute.slug" class="collapse" aria-labelledby="headingOne" data-parent="#attribute">
                         <div class="attributes p-3">
                             <div class="row">
                                 <div class="col-md-6" v-if="attribute.data.length > 0">
@@ -145,7 +145,6 @@ export default {
         }
     },
     mounted() {
-        console.log(this.terms);
         this.fetchAttributeList();
     },
     methods: {
