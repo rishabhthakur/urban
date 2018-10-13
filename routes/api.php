@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use Urban\Category;
+use Urban\Attribute;
 use Urban\Brand;
 use Urban\Tag;
 use Urban\User;
@@ -91,3 +92,17 @@ Route::middleware('api')->post('/tag/store', [
     'uses' => 'TagController@vue_store',
     'as' => 'tag.vue.store'
 ]);
+
+
+/**
+ * Products Brands API
+ * Used for create new brand vue omponent in add new product page
+ */
+Route::middleware('api')->post('/attribute/store', [
+    'uses' => 'AttributeController@vue_store',
+    'as' => 'attribute.vue.store'
+]);
+
+Route::middleware('api')->get('/attribute', function() {
+    return Attribute::orderBy('created_at', 'ASC')->get();
+});

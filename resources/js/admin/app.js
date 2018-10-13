@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('vue-newbrand', require('./components/NewBrand.vue'));
 Vue.component('vue-newcategory', require('./components/NewCategory.vue'));
 Vue.component('vue-newtag', require('./components/NewTag.vue'));
+Vue.component('vue-newattribute', require('./components/NewAttribute.vue'));
 
 
 // import { store } from './store'
