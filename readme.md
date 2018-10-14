@@ -3,25 +3,6 @@
 Urban is a Laravel based CMS platform specifically designed for Ecommerce purposes.
 It incorporates an elegantly designed admin and front end. Is fully customizable and easy to use.
 
-The repository contains the Urban online shop package for Laravel 5.7*
-integrating the Urban e-commerce library into Laravel. It comes preconfigured with shop theme and is ready
-to be used out of the box. The package provides controllers for e.g. faceted filter, product lists and detail views,
-for searching products as well as carts and the checkout process. A full set of
-pages including routing is also available for a quick start.
-
-[![Urban Laravel demo](https://Urban.org/fileadmin/user_upload/laravel-demo.jpg)](http://laravel.demo.Urban.org/)
-
-## Table of content
-
-- [Distribution](#distribution)
-- [Important notice](#important-notice)
-- [Installation/Update](#installation-or-update)
-- [Setup](#setup)
-- [Admin](#admin)
-- [Hints](#hints)
-- [License](#license)
-- [Links](#links)
-
 ## Distribution
 
 If you want to set up a new application or test Urban, we recommend the
@@ -29,35 +10,8 @@ If you want to set up a new application or test Urban, we recommend the
 complete shop system including demo data for a quick start without the need
 to follow the steps described in this readme.
 
-## Important notice
-
-If you use **Laravel 5.4+** and don't have the latest MySQL version installed, you
-will probably get an error like `Specified key was too long; max key length is 767 bytes`.
-To circumvent this problem, you should change the database charset/collation in your
-`config/database.php` file **before the tables are created** to:
-
-```php
-'mysql' => [
-    // ...
-    'charset' => 'utf8',
-    'collation' => 'utf8_unicode_ci',
-    // ...
-]
-```
-
-## Installation or update
-
-This document is for the latest Urban Laravel **2018.10 release and later**.
-
-- Stable release: 2018.07 (Laravel 5.6 to 5.7)
-- LTS release: 2017.10 (Laravel 5.5 to 5.7)
-
-If you want to **upgrade between major versions**, please have a look into the
-[upgrade guide](https://Urban.org/docs/Laravel/Upgrade)!
-
-The Urban Laravel web shop package is a composer based library that can be
-installed easiest by using [Composer](https://getcomposer.org). First, you need
-to **clone the master repository**:
+The Urban web application is a Laravel application so ti install it
+you simply clone the repository **clone the master repository**:
 
 ```sh
 git clone https://github.com/Thavarshan/urban.git
@@ -108,25 +62,15 @@ Then, you should be able to call the catalog list page in your browser. For a
 quick start, you can use the integrated web server that is available since PHP 5.4.
 Simply execute this command in the base directory of your application:
 
-```php artisan serve```
-
-Point your browser to the shop page using:
-
-http://127.0.0.1:8000/index.php/shop
-
-**Note:** Integrating the Urban package adds some routes like `/api` or `/admin` to your
-Laravel installation but the **home page stays untouched!**
-
-**Caution:** CSRF protection is enabled by default but for the ```/confirm``` and ```/update```
-routes, you may have to [disable CSRF](http://laravel.com/docs/5.1/routing#csrf-excluding-uris)
-if one of the payment providers is sending data via POST requests.
-
 ## Admin
 
-The e-mail address is the user name for login and the account will work for the
-frontend too. To protect the new account, the command will ask you for a password.
-The same command can create limited accounts by using "--editor" or "--api" instead of
-"--admin". If you use "--super" the account will have access to all sites.
+The e-mail address is the username for login and the account will work for the
+frontend too.
+
+**Default admin login credentials**
+`Username: admin@urban.com`
+`Password: secret`
+
 
 As a last step, you need to extend the `boot()` method of your
 `App\Providers\AuthServiceProvider` class and add the lines to define how
@@ -136,8 +80,8 @@ If your `./public` directory isn't writable by your web server, you have to crea
 directories:
 
 ```
-mkdir public/files public/preview public/uploads
-chmod 777 public/files public/preview public/uploads
+mkdir public/uploads
+chmod 777 public/uploads
 ```
 
 In a production environment, you should be more specific about the granted permissions!
@@ -162,10 +106,3 @@ case, login won't work because Laravel requires to log out first.
 
 The Urban Laravel ecommerce package is licensed under the terms of the MIT license and
 is available for free.
-
-<!-- * [Web site](https://Urban.org/Laravel)
-* [Documentation](https://Urban.org/docs/Laravel)
-* [Forum](https://Urban.org/help/laravel-package-f18/)
-* [Issue tracker](https://github.com/Urban/Urban-laravel/issues)
-* [Composer packages](https://packagist.org/packages/Urban/Urban-laravel)
-* [Source code](https://github.com/Urban/Urban-laravel) -->

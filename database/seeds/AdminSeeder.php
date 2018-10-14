@@ -12,10 +12,10 @@ class AdminSeeder extends Seeder
     public function run() {
 
         $user = Urban\User::create([
-            'name' => 'Thavarshan',
-            'email' => 'tjthavarshan@gmail.com',
-            'password' => bcrypt('alpha26'),
-            'slug' => str_slug('thavarshan'),
+            'name' => 'Administrator',
+            'email' => 'admin@urban.com',
+            'password' => bcrypt('secret'),
+            'slug' => str_slug('admin'),
             'role_id' => 1,
             'admin' => 1,
             'email_verified_at' => date("Y-m-d H:i:s")
@@ -32,10 +32,12 @@ class AdminSeeder extends Seeder
         Urban\Profile::create([
             'user_id' => $user->id,
             'avatar' => 'user.jpg',
-            'first_name' => 'Thavarshan',
-            'last_name' => 'Thayananthajothy',
+            'first_name' => 'Urban',
+            'last_name' => 'Administrator',
             'bio' => 'Any fool can use a computer. Many do.'
         ]);
+
+        // For testing purposes
 
         Urban\Address::create([
             'user_id' => $user->id,
