@@ -68,9 +68,10 @@ The e-mail address is the username for login and the account will work for the
 frontend too.
 
 **Default admin login credentials**
-`Username: admin@urban.com`
-`Password: secret`
-
+```
+Username: admin@urban.com
+Password: secret
+```
 
 As a last step, you need to extend the `boot()` method of your
 `App\Providers\AuthServiceProvider` class and add the lines to define how
